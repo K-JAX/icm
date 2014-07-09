@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ICM Demo</title>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+ <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+	
+
+ 
+  
+	
+	jQuery('#array div div').click(function() {
+		jQuery(this).addClass('active');
+	});
+	
+	
+
+		jQuery('#more').click(function() {
+			jQuery('.seemore').show('slow');
+			jQuery('#blurmatrix, #engage').hide();
+		});
+	
+		jQuery('animatescroll').click(function() {
+		var body = jQuery("html, body");
+			body.animate({scrollTop:1500}, '500', 'swing', function() { 
+		});
+	});
+});
+
+
+
+</script>
+
+<style>
+h1 , h3{
+	font-size:35px;
+	text-align:center;	
+	max-width:730px;
+	margin:auto;
+	color:#8faaa4;
+	font-weight:100;
+	margin-bottom:5px;
+}
+.seemore{
+	display:none;	
+}
+
+.seemore p{
+	margin:0 10% 5%;	
+}
+
+h3{
+	font-size:17px;	
+}
+
+#learnmore{
+	background-image:url(learnmore.png);	
+	height:733px;
+	width:790px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:auto;
+}
+#array div div{
+	background-image:url(calltoaction.png);
+	background-position:98px 0;
+	width:98px;
+	height:97px;
+	display:inline-block;
+}
+
+#rsix .six{
+	background-position:0px 0px;	
+}
+
+#array div div:hover, #array div div.active{
+	background-image:url(secondgo.jpg);
+	position:relative;
+	left:10px;
+	cursor:pointer;
+}
+
+#rsix .six:hover{
+	background-image:url(calltoaction.png);
+	left:0;	
+}
+
+#array div.even{
+	margin-left:50px;
+}
+
+p#more {
+    margin: 10px auto;
+	height:8.5%;
+    text-align: center;
+	left:43.5%;
+	width:6%;
+	position:absolute;
+	bottom:24.5%;
+	background-image:url(icmlogo.png);
+	background-size:100% auto;
+	cursor:pointer;
+	z-index:20;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	background:#efefef;
+}
+
+#learnmore, #spacer{
+	display:none;	
+}
+#learnmore {
+	position:relative;	
+}
+#learnmore iframe{
+	left:60%;
+	position:absolute;
+	top:175px;
+}
+
+#matrix{
+	background-image:url(clearmatrix.jpg);
+	background-size:cover;
+	width:100%;
+	padding-bottom:69%;
+	position:relative;
+}
+#wrapper {
+  width: 100%;
+  height: 10000px;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2469.678735339%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#blurmatrix{
+	background-image:url(60matrix.jpg);
+	width:100%;
+	padding-bottom:69%;
+	background-size:100%;
+	position:absolute;
+}
+
+#titletext{
+	position:absolute;
+	top: 1%;
+   text-align: center;
+   width: 100%;	
+   z-index:40;
+}
+
+
+#engage{
+	bottom:32%;
+	max-width:26%;
+	right:1%;
+	z-index:40;
+	position:absolute;
+	z-index:40;	
+}
+
+.leftside{
+	width:46%;
+	display:inline-block;
+	text-align:right;	
+	vertical-align:top;
+		margin-right:4%;
+
+}
+
+.seemore h3{
+	font-size:25px;
+	margin-bottom:5%;	
+}
+
+img{
+	max-width:100%;	
+}
+.rightside{
+	margin-left:4%;
+	width:45%;
+	display:inline-block;	
+	vertical-align:top;
+}
+
+.leftside h4, .rightside h4{
+	color:#8faaa5;
+	font-size:24px;
+	line-height:8px;	
+}
+
+.leftside h4 span, .rightside h4 span{
+	font-size:51px;
+	font-weight:100;
+	line-height:57px;
+	display:block;
+}
+
+@media (max-width: 868px){
+h1{
+	font-size:25px;
+}
+h3{
+	font-size:15px;
+}
+}
+
+@media (max-width: 568px){
+h1{
+	font-size:17px;
+}
+h3{
+	font-size:8px;
+}
+
+
+}
+
+@media (max-width: 330px){
+
+p#more{
+	bottom:22%;
+	height:8.5%;
+	left:41%;
+	width:8%;	
+}
+
+#engage{
+	max-width:34%;
+	right:16%;
+	top:10%;
+}
+#blurmatrix, #matrix{
+	background-position:top center;
+	background-size:138% auto;	
+	padding-bottom:95%;
+}
+}
+path{
+	fill:none;
+	stroke:#333; 
+	stroke-width:2;	
+}
+</style>
+
+</head>
+
+<body>
+
+	<div id="skrollr-body" style="text-align:center; padding-top: 200px;">
+		
+<svg version="1.1" id="Layer_1" viewBox="0 0 400 400" >
+
+<!-- Main Path -->
+<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data-0="stroke-dashoffset:6000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 20 40 L 4 30 L 4 12 L 20 2 L 36 12 L 36 30 L 20 40 L 20 60 L 4 72 L 4 90 L 20 100 L 36 90 L 36 72 L 20 60" />
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 32 16 L 32 26" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 19 35 L 10 29" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 10 12.5 L 19 7" />
+	<!-- second -->
+			
+				
+		<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+				data-0="stroke-dashoffset:7200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 60 L 36 72 L 36 90 L 52 100 L 68 90 L 68 72 L 52 60" />
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 32 76 L 32 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 19 95 L 10 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 10 72.5 L 19 66" />	
+				
+			<!-- Third -->
+		
+				
+				
+		<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+				data-0="stroke-dashoffset:7600;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 20 100 L 20 118 L 36 128 L 52 118 L 52 100" />
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 64 76 L 64 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 95 L 42 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 42 72.5 L 51 66" />	
+
+
+
+
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:9500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 48 104 L 48 114" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:8200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 36 123 L 26 117" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:9900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 26 100.5 L 35 95" />	
+
+
+
+	<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+				data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 36 128 L 36 190 L 52 200 L 68 190 L 68 172 L 52 160 L 36 172" />		
+	
+				
+
+				
+				
+				
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0" data-0="stroke-dashoffset:19000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 200 L 52 218 L 68 230 L 84 220 L 84 202 L 68 190 " />			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:19500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 64 178 L 64 188" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:18200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 196 L 42 189" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 42 172.5 L 51 166" />
+			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:19500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 80 206 L 80 216" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:18200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 68 224 L 58 217" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
+		
+		
+		
+		
+				
+</svg>
+
+
+
+	</div>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.22/skrollr.min.js"></script>
+	<script type="text/javascript">
+	skrollr.init({
+		forceHeight: false
+	});
+	</script>
+
+
+<div id="matrix">
+<div class="seemore" id="titletext">
+    <h1>WE BRING LIFE INTO FOCUS</h1>
+    <h3>(engage with ICM and make your goals crystal clear)</h3>
+</div>
+<p id="more"></p>
+<img src="engage.png" alt="" id="engage" title="" />
+<div id="blurmatrix"></div>
+</div>
+
+
+
+
+
+<div id="spacer"></div>
+
+<div class="seemore">
+
+
+
+
+
+<p>Money Management is what we know…….but it isn’t who we are.  We are husbands, wives, fathers, sons, & daughters.  We are skiers, Crossfitters, cyclists, golfers & little league coaches.  We are chauffers, band aide applicators and jesters for the enjoyment of 3 year olds.  We understand that investments are more than just money; they are hopes, dreams, futures as well as pasts and presents.  We live life.  We understand.  </p>
+
+<iframe src="http://fast.wistia.net/embed/iframe/zokauap588?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="400" height="222"></iframe>
+
+<p>In our spare time we’ve spent 236,700 hours, 9,862 full days(ok we may have slept) or 29,587 workdays(8 hour days) in pursuit of education.  We have 9 undergraduate degrees, 5 advanced degrees & 3 CFA Charterholders. </p>
+  
+<p>We are academics, we are quantitative researchers, we are economist.  Wed have navigated the best and worst of what markets have to offer.  We diligently seek to master our craft in the pursuit of a greater understanding of how capital markets function and the impact this has on life.  While we have tried our best, we haven’t put a man on the moon yet but are working on it.  We encourage you to take this uncommon journey with us.  </p>
+<h3>Scientific Investing. Bringing Life into Focus.</h3>
+
+<div class="leftside">
+<img src="looks.jpg" width="374" />
+<h4>WHAT IT <br />
+<span>LOOKS</span><br />
+LIKE TO WORKW ITH ICM</h4>
+
+<a href="/left-brain.html"><img src="gear.png" width="300" alt="Left Brain" title="Left Brain" /></a>
+
+</div>
+
+
+<div class="rightside">
+<img src="feels.jpg" width="370" />
+<h4>WHAT IT <br />
+<span>FEELS</span><br />
+LIKE TO WORKW ITH ICM</h4>
+
+<a href="/right-brain.html"><img src="draw.png" width="300" alt="Right Brain" title="Right Brain" /></a>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
