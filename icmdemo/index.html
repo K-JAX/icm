@@ -7,26 +7,24 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-<script type="text/javascript">
-jQuery( document ).ready(function() {
-	
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.22/skrollr.min.js"></script>
 
  
-  
-	
+            
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+
 	jQuery('#array div div').click(function() {
 		jQuery(this).addClass('active');
 	});
 	
+	jQuery('#more').click(function() {
+		jQuery('.seemore').show('slow');
+		jQuery('#blurmatrix, #engage').hide();
+		
+	});
 	
-
-		jQuery('#more').click(function() {
-			jQuery('.seemore').show('slow');
-			jQuery('#blurmatrix, #engage').hide();
-		});
-	
-		jQuery('animatescroll').click(function() {
+	jQuery('animatescroll').click(function() {
 		var body = jQuery("html, body");
 			body.animate({scrollTop:1500}, '500', 'swing', function() { 
 		});
@@ -47,7 +45,16 @@ h1 , h3{
 	font-weight:100;
 	margin-bottom:5px;
 }
+
+iframe{
+	text-align:center;
+	display:block;
+	margin:auto;
+	margin-bottom:4%;	
+}
+
 .seemore{
+	position:relative;
 	display:none;	
 }
 
@@ -170,8 +177,17 @@ body{
    width: 100%;	
    z-index:40;
 }
-
-
+#c1container{
+	width:100%;	
+	padding-bottom:26%;
+}
+#cluster1{
+	width:13%;
+	margin-right:20%;
+	float:right;	
+	position:relative;
+	margin-top:-8%;
+}
 #engage{
 	bottom:32%;
 	max-width:26%;
@@ -189,7 +205,9 @@ body{
 		margin-right:4%;
 
 }
-
+.leftside a, .rightside a{
+	display:block;	
+}
 .seemore h3{
 	font-size:25px;
 	margin-bottom:5%;	
@@ -218,12 +236,30 @@ img{
 	display:block;
 }
 
+#cluster2{
+	width:38%;
+}
+
+#cluster3{
+	width:38%;	
+}
+#cluster0{
+	z-index:50;
+	position:absolute;
+	right:50%;
+	bottom:155px;
+	width:5px;
+}
+
 @media (max-width: 868px){
 h1{
 	font-size:25px;
 }
 h3{
 	font-size:15px;
+}
+#cluster0{
+	bottom:7.1%;
 }
 }
 
@@ -260,8 +296,32 @@ p#more{
 }
 path{
 	fill:none;
-	stroke:#333; 
-	stroke-width:2;	
+	stroke:#666; 
+	stroke-width:1;	
+}
+
+#drawnline{
+	position:absolute;
+	bottom:8%;
+	left:33%;	
+	z-index:60;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
 }
 </style>
 
@@ -269,106 +329,7 @@ path{
 
 <body>
 
-	<div id="skrollr-body" style="text-align:center; padding-top: 200px;">
-		
-<svg version="1.1" id="Layer_1" viewBox="0 0 400 400" >
 
-<!-- Main Path -->
-<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data-0="stroke-dashoffset:6000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 20 40 L 4 30 L 4 12 L 20 2 L 36 12 L 36 30 L 20 40 L 20 60 L 4 72 L 4 90 L 20 100 L 36 90 L 36 72 L 20 60" />
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 32 16 L 32 26" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 19 35 L 10 29" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 10 12.5 L 19 7" />
-	<!-- second -->
-			
-				
-		<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-				data-0="stroke-dashoffset:7200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 60 L 36 72 L 36 90 L 52 100 L 68 90 L 68 72 L 52 60" />
-			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 32 76 L 32 86" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 19 95 L 10 89" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 10 72.5 L 19 66" />	
-				
-			<!-- Third -->
-		
-				
-				
-		<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-				data-0="stroke-dashoffset:7600;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 20 100 L 20 118 L 36 128 L 52 118 L 52 100" />
-				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:9000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 64 76 L 64 86" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:8000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 95 L 42 89" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 42 72.5 L 51 66" />	
-
-
-
-
-				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:9500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 48 104 L 48 114" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:8200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 36 123 L 26 117" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:9900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 26 100.5 L 35 95" />	
-
-
-
-	<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
-				data-0="stroke-dashoffset:10000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 36 128 L 36 190 L 52 200 L 68 190 L 68 172 L 52 160 L 36 172" />		
-	
-				
-
-				
-				
-				
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0" data-0="stroke-dashoffset:19000;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 200 L 52 218 L 68 230 L 84 220 L 84 202 L 68 190 " />			
-			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:19500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 64 178 L 64 188" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:18200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 52 196 L 42 189" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 42 172.5 L 51 166" />
-			
-			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:19500;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 80 206 L 80 216" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:18200;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 68 224 L 58 217" />
-
-<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
-data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
-		
-		
-		
-		
-				
-</svg>
-
-
-
-	</div>
-
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.22/skrollr.min.js"></script>
-	<script type="text/javascript">
-	skrollr.init({
-		forceHeight: false
-	});
-	</script>
 
 
 <div id="matrix">
@@ -381,13 +342,9 @@ data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashof
 <div id="blurmatrix"></div>
 </div>
 
-
-
-
-
 <div id="spacer"></div>
 
-<div class="seemore">
+<div class="seemore cf">
 
 
 
@@ -402,13 +359,194 @@ data-0="stroke-dashoffset:19900;" stroke-miterlimit="10" data-end="stroke-dashof
 <p>We are academics, we are quantitative researchers, we are economist.  Wed have navigated the best and worst of what markets have to offer.  We diligently seek to master our craft in the pursuit of a greater understanding of how capital markets function and the impact this has on life.  While we have tried our best, we haven’t put a man on the moon yet but are working on it.  We encourage you to take this uncommon journey with us.  </p>
 <h3>Scientific Investing. Bringing Life into Focus.</h3>
 
+<div id="c1container">
+<svg version="1.1" id="cluster0" viewBox="0 0 3 900" >
+
+<!-- Main Path -->
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0"  stroke-miterlimit="10" data-0="stroke-dashoffset:11000;" data-end="stroke-dashoffset:0;"  d = "M 2 0 L 2 900" />
+
+</svg>
+
+<svg version="1.1" id="cluster1" style=" transform:rotate(-33deg);" viewBox="0 0 100 250 " >
+
+<!-- Main Path -->
+<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 20 40 L 4 30 L 4 12 L 20 2 L 36 12 L 36 30 L 20 40 L 20 60 L 4 72 L 4 90 L 20 100 L 36 90 L 36 72 L 20 60" />
+
+
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 32 16 L 32 26" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 19 35 L 10 29" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:3000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 10 12.5 L 19 7" />
+	<!-- second -->
+			
+				
+		<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+				data--100-bottom="stroke-dashoffset:7200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 60 L 36 72 L 36 90 L 52 100 L 68 90 L 68 72 L 52 60" />
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 32 76 L 32 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 19 95 L 10 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 10 72.5 L 19 66" />	
+				
+			<!-- Third -->
+		
+				
+				
+		<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 20 100 L 20 118 L 36 128 L 52 118 L 52 100" />
+				
+				
+				
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 76 L 64 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 95 L 42 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 72.5 L 51 66" />	
+
+
+
+
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 48 104 L 48 114" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 123 L 26 117" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 26 100.5 L 35 95" />	
+
+
+
+	<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0" data-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 128 L 36 190 L 52 200 L 68 190 L 68 172 L 52 160 L 36 172" />		
+	
+				
+				
+				
+				
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:19000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 200 L 52 218 L 68 230 L 84 220 L 84 202 L 68 190 " />			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 178 L 64 188" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 196 L 42 189" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 172.5 L 51 166" />
+			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 80 206 L 80 216" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 68 224 L 58 217" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
+			
+</svg>
+ </div>
+
 <div class="leftside">
 <img src="looks.jpg" width="374" />
 <h4>WHAT IT <br />
 <span>LOOKS</span><br />
 LIKE TO WORKW ITH ICM</h4>
+<svg version="1.1" id="cluster2" style=" transform:rotate(33deg);" viewBox="0 0 100 250 " >
 
-<a href="/left-brain.html"><img src="gear.png" width="300" alt="Left Brain" title="Left Brain" /></a>
+<!-- Main Path -->
+<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 20 40 L 4 30 L 4 12 L 20 2 L 36 12 L 36 30 L 20 40 L 20 60 L 4 72 L 4 90 L 20 100 L 36 90 L 36 72 L 20 60" />
+
+
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 32 16 L 32 26" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 19 35 L 10 29" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:3000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 10 12.5 L 19 7" />
+	<!-- second -->
+			
+				
+		<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+				data--100-bottom="stroke-dashoffset:7200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 60 L 36 72 L 36 90 L 52 100 L 68 90 L 68 72 L 52 60" />
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 32 76 L 32 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 19 95 L 10 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 10 72.5 L 19 66" />	
+				
+			<!-- Third -->
+		
+				
+				
+		<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 20 100 L 20 118 L 36 128 L 52 118 L 52 100" />
+				
+				
+				
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 76 L 64 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 95 L 42 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 72.5 L 51 66" />	
+
+
+
+
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 48 104 L 48 114" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 123 L 26 117" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 26 100.5 L 35 95" />	
+
+
+
+	<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0" data-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 128 L 36 190 L 52 200 L 68 190 L 68 172 L 52 160 L 36 172" />		
+	
+				
+				
+				
+				
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:19000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 200 L 52 218 L 68 230 L 84 220 L 84 202 L 68 190 " />			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 178 L 64 188" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 196 L 42 189" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 172.5 L 51 166" />
+			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 80 206 L 80 216" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 68 224 L 58 217" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
+			
+</svg>
+<a href="/left-brain.html"><img src="gear.png" width="300" style="position:relative;top:-22px;" alt="Left Brain" title="Left Brain" /></a>
 
 </div>
 
@@ -418,13 +556,106 @@ LIKE TO WORKW ITH ICM</h4>
 <h4>WHAT IT <br />
 <span>FEELS</span><br />
 LIKE TO WORKW ITH ICM</h4>
+<svg version="1.1" id="cluster3" viewBox="0 0 100 250 " >
 
+<!-- Main Path -->
+<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 20 40 L 4 30 L 4 12 L 20 2 L 36 12 L 36 30 L 20 40 L 20 60 L 4 72 L 4 90 L 20 100 L 36 90 L 36 72 L 20 60" />
+
+
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 32 16 L 32 26" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:5000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 19 35 L 10 29" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:3000;" stroke-miterlimit="10" data--500-bottom="stroke-dashoffset:0;" d = "M 10 12.5 L 19 7" />
+	<!-- second -->
+			
+				
+		<path id="s3" style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+				data--100-bottom="stroke-dashoffset:7200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 60 L 36 72 L 36 90 L 52 100 L 68 90 L 68 72 L 52 60" />
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 32 76 L 32 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 19 95 L 10 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 10 72.5 L 19 66" />	
+				
+			<!-- Third -->
+		
+				
+				
+		<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 20 100 L 20 118 L 36 128 L 52 118 L 52 100" />
+				
+				
+				
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 76 L 64 86" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 95 L 42 89" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:10000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 72.5 L 51 66" />	
+
+
+
+
+				<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:8000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 48 104 L 48 114" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:7000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:8200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 123 L 26 117" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:9000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:9900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 26 100.5 L 35 95" />	
+
+
+
+	<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5000;stroke-dashoffset:0" data-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 36 128 L 36 190 L 52 200 L 68 190 L 68 172 L 52 160 L 36 172" />		
+	
+				
+				
+				
+				
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:19000;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 200 L 52 218 L 68 230 L 84 220 L 84 202 L 68 190 " />			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 64 178 L 64 188" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 52 196 L 42 189" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--100-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 42 172.5 L 51 166" />
+			
+			<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19500;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 80 206 L 80 216" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:17000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 68 224 L 58 217" />
+
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:19000;stroke-dashoffset:0"
+data--200-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
+			
+</svg>
 <a href="/right-brain.html"><img src="draw.png" width="300" alt="Right Brain" title="Right Brain" /></a>
 
 </div>
-
 </div>
 
+	
 
+
+
+  <script type="text/javascript">
+  //skrollr.init({forceHeight: false});
+		jQuery('#more').click(function() {
+ 		setTimeout(function(){skrollr.init({forceHeight: false});}, 1000);
+		});
+</script>
 </body>
 </html>
