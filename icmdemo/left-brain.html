@@ -1,0 +1,693 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Left Brain</title>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+ <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.22/skrollr.min.js"></script>
+
+ 
+            
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+
+	
+	
+	jQuery('animatescroll').click(function() {
+		var body = jQuery("html, body");
+			body.animate({scrollTop:1500}, '500', 'swing', function() { 
+		});
+	});
+});
+
+
+
+</script>
+
+<style>
+.grayspace{
+	background:#e2e2e2;
+	border-radius:10px;
+	padding:10px;
+	position:relative;	
+}
+
+.greyspace img{
+	position:absolute;
+	top:15px;
+	right:-15px;	
+}
+.slideout{
+	position:relative;	
+}
+.slideicon{
+	position:absolute;
+	z-index:50;	
+}
+
+h1 , h3{
+	font-size:35px;
+	text-align:center;	
+	max-width:730px;
+	margin:auto;
+	color:#8faaa4;
+	font-weight:100;
+	margin-bottom:5px;
+}
+
+
+iframe{
+	text-align:center;
+	display:block;
+	margin:auto;
+	margin-bottom:4%;	
+}
+
+.seemore{
+	position:relative;
+	display:none;
+	margin-top:4%;	
+}
+
+.seemore p{
+	margin:0 10% 5%;	
+}
+
+h3{
+	font-size:17px;	
+}
+
+#learnmore{
+	background-image:url(learnmore.png);	
+	height:733px;
+	width:790px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:auto;
+}
+#array div div{
+	background-image:url(calltoaction.png);
+	background-position:98px 0;
+	width:98px;
+	height:97px;
+	display:inline-block;
+}
+
+#rsix .six{
+	background-position:0px 0px;	
+}
+
+#array div div:hover, #array div div.active{
+	background-image:url(secondgo.jpg);
+	position:relative;
+	left:10px;
+	cursor:pointer;
+}
+
+#rsix .six:hover{
+	background-image:url(calltoaction.png);
+	left:0;	
+}
+
+#array div.even{
+	margin-left:50px;
+}
+
+p#more {
+    margin: 10px auto;
+	height:8.5%;
+    text-align: center;
+	left:43.5%;
+	width:6%;
+	position:absolute;
+	bottom:24.5%;
+	background-image:url(icmlogo.png);
+	background-size:100% auto;
+	cursor:pointer;
+	z-index:20;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	background:#f6fbf9;
+}
+
+#learnmore, #spacer{
+	display:none;	
+}
+#learnmore {
+	position:relative;	
+}
+#learnmore iframe{
+	left:60%;
+	position:absolute;
+	top:175px;
+}
+
+#matrix{
+	background-image:url(clearmatrix.jpg);
+	background-size:cover;
+	width:100%;
+	padding-bottom:69%;
+	position:relative;
+}
+#wrapper {
+  width: 100%;
+  height: 10000px;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2469.678735339%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#blurmatrix{
+	background-image:url(60matrix.jpg);
+	width:100%;
+	padding-bottom:69%;
+	background-size:100%;
+	position:absolute;
+}
+
+#titletext{
+	position:absolute;
+	top: 1%;
+   text-align: center;
+   width: 100%;	
+   z-index:40;
+}
+#c1container{
+	width:100%;	
+	padding-bottom:26%;
+}
+#cluster1{
+	width:13%;
+	margin-right:20%;
+	float:right;	
+	position:relative;
+	margin-top:-8%;
+}
+#engage{
+	bottom:32%;
+	max-width:26%;
+	right:1%;
+	z-index:40;
+	position:absolute;
+	z-index:40;	
+}
+
+.leftside{
+	width:46%;
+	display:inline-block;
+	text-align:right;	
+	vertical-align:top;
+		margin-right:4%;
+
+}
+.leftside a, .rightside a{
+	display:block;	
+}
+.seemore h3{
+	font-size:25px;
+	margin-bottom:5%;	
+}
+
+img{
+	max-width:100%;	
+}
+
+#pagelimiter{
+	max-width:1280px;
+	margin:auto;	
+}
+.rightside{
+	margin-left:4%;
+	width:45%;
+	display:inline-block;	
+	vertical-align:top;
+}
+
+.leftside h4, .rightside h4{
+	color:#8faaa5;
+	font-size:24px;
+	line-height:8px;	
+}
+
+.leftside h4 span, .rightside h4 span{
+	font-size:51px;
+	font-weight:100;
+	line-height:57px;
+	display:block;
+}
+
+#cluster2{
+	width:38%;
+}
+
+#cluster3{
+	width:38%;	
+}
+#cluster0{
+	z-index:50;
+	position:absolute;
+	right:50%;
+	top:0;
+	width:2px;
+}
+
+#branch{
+	z-index:0;
+	position:absolute;
+	right:0;
+	left:0;
+	margin-right:auto;
+	margin-left:auto;
+	top:19%;
+	width:10%;
+}
+.text-right, .text-left{
+	display:inline-block;
+	width:48%;
+}
+
+.text-right p, .text-right h2, .text-left p,  .text-left h2{
+	font-size:14px;
+	margin:auto;
+	max-width:155px;
+	text-align:justify;
+
+}
+
+#skrollr-body{
+	position:relative;	
+}
+
+.text-left h2, .text-right h2{
+	color:#fff;
+	font-weight:100;
+	text-transform:uppercase;
+	font-size:20px;
+	margin-bottom:12px;
+	position:relative;
+	left:10px;
+	letter-spacing:.3em;	
+}
+#history{
+	background-image:url(lefttopbg.jpg);
+	width:100%;
+	background-size:100%;	
+}
+
+
+
+@media (max-height: 800px){
+
+#pagelimiter{
+	
+	max-width:1000px;	
+}
+
+#c1container{
+	padding-bottom:60%;	
+}
+}
+@media (max-height: 600px){
+
+
+
+
+#pagelimiter{
+	
+	max-width:800px;	
+}
+
+
+}
+
+@media (max-height: 400px){
+#c1container{
+	padding-bottom:38%;	
+}
+
+}
+
+@media (max-width: 1400px){
+	#cluster0{
+		width:4.5px	
+	}
+
+}
+
+
+@media (max-width: 1180px){
+	#cluster0{
+		width:4px	
+	}
+
+}
+
+
+@media (max-width: 868px){
+h1{
+	font-size:25px;
+}
+h3{
+	font-size:15px;
+}
+#cluster0, #clusterb{
+	bottom:7.1%;
+}
+
+
+}
+
+@media (max-width: 568px){
+h1{
+	font-size:17px;
+}
+h3{
+	font-size:8px;
+}
+
+.blank{
+	display:none;	
+}
+
+.text-left, .text-right{
+	width:100%;	
+}
+
+.text-left p, .text-right p{
+	max-width:230px;	
+}
+
+
+}
+
+@media (max-width: 330px){
+
+p#more{
+	bottom:22%;
+	height:8.5%;
+	left:41%;
+	width:8%;	
+}
+
+#engage{
+	max-width:34%;
+	right:16%;
+	top:10%;
+}
+#blurmatrix, #matrix{
+	background-position:top center;
+	background-size:138% auto;	
+	padding-bottom:95%;
+}
+}
+path{
+	fill:none;
+	stroke:#666; 
+	stroke-width:1;	
+}
+
+#drawnline{
+	position:absolute;
+	bottom:8%;
+	left:33%;	
+	z-index:60;
+}
+
+.leftside img, .rightside img{
+	z-index:100;
+	position:relative;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+.sectionlimit{
+	margin:auto;
+	max-width:950px;
+	position:relative;
+	clear:both;
+
+}
+#history{
+	color:#fff;
+	padding-top:10%;
+	padding-bottom:24%;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-color:#000;
+}
+
+#leftcluster1{
+	position:absolute;
+	top:19%;
+	left:50%;	
+}
+
+#rightcluster1{
+	position:absolute;
+	top:0%;
+	left:-4%;	
+	width:100%;
+}
+hr{
+	border:none;
+	color:#000;	
+	margin:15% 0;
+}
+
+#philosophy{
+	background:url(science.jpg);	
+	padding-top:10%;
+	background-position:top center;
+}
+
+#philosophy img{
+	padding-top:6%;
+	padding-bottom:6%;
+	max-width:60%;	
+}
+
+#data{
+	background:#fff;	
+}
+
+#getstarted a{
+	color:#fff;
+	display:block;
+	text-decoration:none;
+	padding:90% 0 20%;
+	font-size:46px;
+	
+}
+
+#getstarted{
+	background-image:url(vask.jpg);
+	background-color:#8f7b6b;	
+	text-align:center;
+	background-repeat:no-repeat;
+}
+
+section{
+	background-size:100% auto;
+	width:100%;	
+}
+
+iframe{
+	max-width:100%;	
+}
+
+
+</style>
+
+</head>
+
+<body>
+<div id="skrollr-body">
+<svg version="1.1" id="rightcluster1" style="" width="960px" height="1500px" viewBox="0 0 960 1500 " >
+
+<!-- Main Path -->
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 483 0 L 483 221 L 466.5 230 L 466.5 249 L 483 258 L 483 277 L 500 286 " />  
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--120-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 483 221 L 500 230 L 517 221 L 533.5 230 L 533.5 249 L 517 258 L 516.5 277 L 500 286 M 500 230 L 500 249 L 517 258 M 483.5 258 L 500 249 M 500 286 L 500 306 L 516.5 315 L 516.5 334 L 533 343 L 550 334 L 566.5 343 L 582.5 334 L 582.5 315.28 L 566 306 L 550 315 L 533 306 L 516 315 M 550 315 L 550 334" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--120-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 469.5 232.28 L 469.5 247.28 M 483 224.73 L 496 232 M 517 224.73 L 530 232 M 530 247 L 517 254 M 513 275 L 500 282 M 486.5 275.28 L 486.5 260.28 M 519.5 317.28 L 519.5 332.28 M 533 309.73 L 546 317 M 546 332 L 533 339 M 566 309.73 L 579 317 M 579 332 L 566 339" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--105-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 533 343 L 533 362 L 516.5 371 L 516.5 390 L 533 399 L 549.5 390 L 549.5 371 L 533 362 M 582.5 334 L 598.5 343 L 598.5 362 L 615.5 371 L 632 362 L 631.5 343 L 648.5 334 L 648.5 315 L 632 306 L 615.5 315 L 615 334 L 631.5 343 L 632 362 L 649 371 L 649 390 L 632.5 399 L 632.5 418 L 649 427 L  " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--180-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 615 334 L 598.5 343 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = " M 649 390 L 665.5 399 L 665.5 418 L 649 427 L 649 522 L 665.5 531 L 665.5 550 L 649 559 632.5 550  M 649 522 L 632.5 531 L 632.5 550 L 615.5 559 L 599 550 L 582.5 559 L 565.5 550 L 565.5 531 L 549 522 L 532.5 531 L 532.5 550 L 549 559 L 565.5 550 M 615.5 559 L 615.5 578 L 632.5 587 L 649 578 L 665.5 587 L 665.5 606 L 649 615 L 632.5 606 L 632.5 587" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--120-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = " M 615.5 578 L 599 587 L 582.5 578 M 582.5 559 L 582.5 578 L 565.5 587.28 L 565.5 606 L 548.5 615 L 532.5 606.14 L 515.5 615 L 515 634 L 498.5 643 L 498.5 662 L 515 671 L 531.5 662 L 531.5 643 L 548.5 634 L 548.5 615 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--180-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = " M 531.5 643 L 515.5 634 L 498.5 643 L M 515.5 615 L 515.5 634 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 515.5 615 L 499 606 L 482.5 615 L 482.5 634 L 498.5 643 L 498.5 662 L 482.5 672.78 L 482.5 746.28 L 506.5 760 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 506.5 760 L 523 751 L 539.5 760 L 539.5 779 L 523.5 788 L 506 779 L 506.5 760 M 506.5 779 L 489.8 788 L 489.5 807 L 506 816 L 522.5 807 M 540 779 L 556.5 788 L 556.5 807 L 540 816 L 523.5 807 L 523.5 788 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 506 816 L 505.5 835 L 450.5 835 L 450.5 854.14 L 434 863.07 L 417.5 854 L 417.5 835 M 450.5 835 L 434 826 L 417.5 835 L 401 826.07 L 384.5 835.14 L 368.5 826 L 368.5 807 L 352 798 L335.5 807 L 335.5 826 L 318.5 835.28 L 318.5 M 368.5 826 L 352 835 M 335.5 826 L 352 835 L 352 854 L 335 863 " />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--150-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 368.5 826 L 352 835 L 335.5 826 M 368.5 826 L 352 835 L 335.5 826 L 318.5 835.28 L 318.5 854 L 335 863 L 351.5 854 L 351.5 835" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 318.5 854 L 302 863 L 285.5 854 L 285.5 835 L 269 826 L 252.5 835 L 236 826 L 219.5 835 L 219.5 854 L 236.5 863 L 236.5 882 L 219.5 891 L 219 910 L 202.5 919 L 202.5 938 L 219 947 L 235.5 938 L 235.5 919 L 219 910" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--180-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 235.5 919 L 252.5 910 L 252.5 891 L 236 882 M 252.5 891 L 269.5 882 L 269.5 863 M 285.5 854 L 269.5 863 L 252.5 854 L 252.5 835 M 236.5 863 L 253 854" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 335 863 L 335 960 L 318.5 969 318.5 988 L 335 997 L 351.5 988 L 351.5 969 L 335 960" />
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--180-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 540 816 L 540 835 L 557 844 L 574 835 L 590.5 844 L 607 835 L 623.5 844 L 640 835 L 656.5 844 L 657 863 L 673.5 872 L 673.5 891 L 657 900 L 640.5 891 L 640.5 872 L 657 863 M 557.5 844 L 557.5 863 L 574 872 L 590.5 863 L 590.5 844 M 590.5 863 L 607 872 L 623.5 863 L 623.5 844 M 623.5 863 L 640.5 872 M 657 863 L 640.5 872 L 640.5 891 L 657 900"/>
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--120-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 657 900 L 657 983.28 L 673.5 992 L 673.5 1011 L 657 1020 L 640.5 1011 L 640.5 992 L 657 983 M 657 1020 L 657 1039 L 639.5 1048 L 623 1039 606.5 1048 L606.5 1067 L 623 1076 622.5 1095 L 639 1104 L 655.5 1095 L 655.5 1076 L 639.5 1067 L 639.5 1048 M 639.5 1067 L 623 1076 L 567 1106 L 550.5 1097 L 533.5 1106 L 517 1097 L 500.5 1106 L 500.5 1125 L 517 1134 L 533 1125 L 533.5 1106 L 550 1097 L 549.5 1061 L 549.5 1042 L 533 1033 L 516.5 1042 L 516.5 1061 L 533 1070 L 549.5 1061 M 567 1106 L 567 1125 L 550 1134 L 533 1125 M 550 1134 L 549 1153 L 533 1162 L 516.5 1153 L 516.5 1134 "/>
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--120-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 533 1162 L 482.5 1190 L 482.5 1270 L 447.5 1290 L 447.5 1309 L 431 1318 L 414.5 1309 L 414.5 1290 M 447.5 1290 L 431 1281 L 414.5 1290 L 414.5 1271 L 365 1243 L 348.5 1252 L 348.5 1233 L 332 1224 L 315.5 1233 L 315.5 1252 L 332 1261 L 348.5 1252 M 332 1224 L 332.5 1205 L 316 1196 L 300 1205 L 300 1224 L 316 1233 M 315.5 1252 L 299 1261 L 282.5 1252 L 283 1233 L 300 1224 M 282.5 1233 L 266.5 1224 L 266.5 1205 L 283 1196 L 283.5 1177 L 300 1168 L 316.5 1177 L 333 1168 L 349.5 1177 L 349.5 1196 L "/>
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 399.5 1149 L 416.5 1140 L 416.5 1121 L 400 1112 L 383.5 1121 L 383 1140 L 399.5 1149 L 399.5 1168 L 383 1177 L 366.5 1168 L 366.5 1149 L 383 1140 M 383 1177 L 383 1196 L 366 1205 L 350 1196 L 332.5 1205 L 316 1196 L 300 1205 L 283.5 1196 L 84 1298 L 67.5 1307 L67.5 1326 L 84 1335 L 100.5 1326 L 100.5 1307 L 84 1298 "/>
+
+<path  style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0" data--100-bottom="stroke-dashoffset:6000;" stroke-miterlimit="10" data--1000-bottom="stroke-dashoffset:0;" d = "M 84 1335 L 100.5 1344 L 100.5 1398 L 55.5 1423 L 55.5 1442 L 39 1451 L 22.5 1442 L 22.5 1423 L 39 1414 L 55.5 1423 M 22.5 1423 L 6 1414 L -10.5 1423 L -10.5 1442 L 6 1451 L 22.5 1442 M 6 1451 L 6 1470 L -10 1479 L -26.5 1470 L -26.5 1451 L -10.5 1442"/>
+
+
+</svg>
+<section id="history" class="cf">
+
+<div class="sectionlimit">
+<div class="text-left cf">
+<h2>History</h2>
+<p>Created in 2009. ICM was built to bridge the divide between institutional advisors and everyday advisors. We offer an uncommon perspective to asset management. Uncommon in both its clearity and discipline. Our origin is as a “lift out” of the investment department form one of the nations largest mutual insurance companies. </p>
+<p>Our investment process was used to manage one of the nation’s largest pension departments.</p>
+</div>
+<div class="text-right blank"></div>
+<hr />
+
+
+
+
+
+<div class="text-left blank"></div>
+
+<div class="text-right cf">
+<h2>Expertise</h2>
+<p>The collective experience of our principals spans more than 70 years. As an investment team with our roots in quantitative research, each investment decision is made with strict care and precise calculation. We do not invest on hunches and more importantly we make investment decisions not business decisions masked as investment decisions. </p>
+</div>
+
+<hr />
+
+</div>
+
+
+
+
+</section>
+<section id="philosophy">
+<div class="sectionlimit">
+
+<iframe src="http://fast.wistia.net/embed/iframe/zokauap588?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="788" height="442"></iframe>
+
+<img src="hexelements.png" alt="equations" data--120-bottom="padding-top:0px;" data--1000-bottom="padding-top:200px;" style="padding-top:100px"  />
+
+</div>
+</section>
+
+
+<section id="data">
+<div class="sectionlimit">
+
+<h2>MARKET EFFICIENCY</h2>
+<img src="percentvalue.png" alt="PRESENT VALUE OF DIVIDENDS VS. ACTUAL STOCK PRICE"/>
+
+<h2>Do Valuations Matter</h2>
+<img src="percentvalue.png" alt="S & P 500 10 year rolling returns"/>
+</div>
+
+<img src="sciencetoy.jpg" alt="science toy"  style="float:left; max-width:70%; padding:10% 0;"/>
+<div class="sectionlimit">
+
+<div class="slideout">
+<img src="2.png" class="slideicon" />
+    <div class="grayspace">
+        <h3>Long Term Capital Markets Expectation</h3>
+        <p>Historical estimates of risk and return.</p>
+            <img src="5.png" />
+
+    </div>
+</div>
+
+<div class="slideout">
+<img src="1.png" class="slideicon" />
+    <div class="grayspace">
+    <h3>Long Term Valuation Analysis</h3>
+    <p>Quantify the return opportunity from various valuation levels.</p>
+        <img src="6.png" />
+
+    </div>
+</div>
+<div class="slideout">
+<img src="3.png" class="slideicon" />
+    <div class="grayspace">
+    <h3>Current Valuation Analysis</h3>
+    <p>Measure and Quantify fair value as well as depersion from fair value while being mindful of paradigm shifts.</p>    <img src="7.png" />
+
+    </div>
+</div>
+<div class="slideout">
+<img src="4.png" class="slideicon" />
+    <div class="grayspace">
+    <h3>Tactical Decision</h3>
+    <p>Over or underweight decision as well as product selection implemented in a series of meaningful steps building into a position as valuations become more compelling.</p>
+    <img src="8.png" />
+    </div>
+</div>
+
+</div>
+</section>
+
+<section id="getstarted">
+
+<a href="/contact">GET STARTED WITH US</a>
+
+</section>
+
+
+
+
+</div>
+
+  <script type="text/javascript">
+skrollr.init({forceHeight: false});
+
+</script>
+</body>
+</html>

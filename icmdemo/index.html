@@ -55,7 +55,8 @@ iframe{
 
 .seemore{
 	position:relative;
-	display:none;	
+	display:none;
+	margin-top:4%;	
 }
 
 .seemore p{
@@ -118,7 +119,7 @@ p#more {
 
 body{
 	font-family: 'Open Sans', sans-serif;
-	background:#efefef;
+	background:#f6fbf9;
 }
 
 #learnmore, #spacer{
@@ -216,6 +217,11 @@ body{
 img{
 	max-width:100%;	
 }
+
+#pagelimiter{
+	max-width:1280px;
+	margin:auto;	
+}
 .rightside{
 	margin-left:4%;
 	width:45%;
@@ -247,9 +253,67 @@ img{
 	z-index:50;
 	position:absolute;
 	right:50%;
-	bottom:155px;
+	bottom:158px;
 	width:5px;
 }
+
+#clusterb{
+	z-index:0;
+	position:absolute;
+	right:0;
+	left:0;
+	margin-right:auto;
+	margin-left:auto;
+	bottom:157px;
+	width:10%;
+}
+
+@media (max-height: 800px){
+
+#pagelimiter{
+	
+	max-width:1000px;	
+}
+
+#c1container{
+	padding-bottom:60%;	
+}
+}
+@media (max-height: 600px){
+
+
+
+
+#pagelimiter{
+	
+	max-width:800px;	
+}
+
+
+}
+
+@media (max-height: 400px){
+#c1container{
+	padding-bottom:38%;	
+}
+
+}
+
+@media (max-width: 1400px){
+	#cluster0{
+		width:4.5px	
+	}
+
+}
+
+
+@media (max-width: 1180px){
+	#cluster0{
+		width:4px	
+	}
+
+}
+
 
 @media (max-width: 868px){
 h1{
@@ -258,9 +322,11 @@ h1{
 h3{
 	font-size:15px;
 }
-#cluster0{
+#cluster0, #clusterb{
 	bottom:7.1%;
 }
+
+
 }
 
 @media (max-width: 568px){
@@ -306,6 +372,11 @@ path{
 	left:33%;	
 	z-index:60;
 }
+
+.leftside img, .rightside img{
+	z-index:100;
+	position:relative;
+}
 .cf:before,
 .cf:after {
     content: " "; /* 1 */
@@ -328,9 +399,8 @@ path{
 </head>
 
 <body>
-
-
-
+<div id="skrollr-body">
+<div id="pagelimiter">
 
 <div id="matrix">
 <div class="seemore" id="titletext">
@@ -361,11 +431,18 @@ path{
 
 <div id="c1container">
 <svg version="1.1" id="cluster0" viewBox="0 0 3 900" >
-
 <!-- Main Path -->
 <path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0"  stroke-miterlimit="10" data-0="stroke-dashoffset:11000;" data-end="stroke-dashoffset:0;"  d = "M 2 0 L 2 900" />
 
 </svg>
+
+
+<svg version="1.1" id="clusterb" viewBox="0 0 80 2" >
+<!-- Main Path -->
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0"  stroke-miterlimit="10" data--100-bottom="stroke-dashoffset:6000;" data--1000-bottom="stroke-dashoffset:0;"  d = "M 40 1 L 80 1" />
+<path style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6000;stroke-dashoffset:0"  stroke-miterlimit="10" data--100-bottom="stroke-dashoffset:6000;" data--400-bottom="stroke-dashoffset:0;"  d = "M 40 1 L 0 1" />
+</svg>
+
 
 <svg version="1.1" id="cluster1" style=" transform:rotate(-33deg);" viewBox="0 0 100 250 " >
 
@@ -546,7 +623,7 @@ data--200-bottom="stroke-dashoffset:18200;" stroke-miterlimit="10" data--600-bot
 data--200-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bottom="stroke-dashoffset:0;" d = "M 58 200.5 L 67 195" />		
 			
 </svg>
-<a href="/left-brain.html"><img src="gear.png" width="300" style="position:relative;top:-22px;" alt="Left Brain" title="Left Brain" /></a>
+<a href="/left-brain.html"><img src="gear.png" width="300" style="position:relative;top:-23px;" alt="Left Brain" title="Left Brain" /></a>
 
 </div>
 
@@ -647,9 +724,10 @@ data--200-bottom="stroke-dashoffset:19900;" stroke-miterlimit="10" data--600-bot
 </div>
 </div>
 
+</div>
 	
 
-
+</div>
 
   <script type="text/javascript">
   //skrollr.init({forceHeight: false});
