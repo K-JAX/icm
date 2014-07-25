@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+	#container{
+		margin:auto;
+		width:700px;	
+	}
+    </style>
+  <title>ICM Canvas</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.2.min.js"></script>
+    <script defer="defer">
+	
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 578,
+        height: 200
+      });
+      var layer = new Kinetic.Layer();
+ 
+      var path = new Kinetic.Path({
+        x: 240,
+        y: 40,
+        data: 'M12.582,9.55LC3.251,16.237,0.921,29.021,7.08,38.564z',
+        fill: 'green',
+        scale: {x:2, y:2}
+      });
+
+      // add the shape to the layer
+      layer.add(path);
+
+      // add the layer to the stage
+      stage.add(layer);
+  
+    </script>
+  </body>
+</html>

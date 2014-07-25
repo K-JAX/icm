@@ -1,0 +1,559 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,800italic);
+
+body{
+color:#414141;
+}
+
+.grayspace img{
+	position:absolute;
+	top:23px;
+	right:-5%;
+	width:10%;	
+}
+.grayspace{
+	background:#e2e2e2;
+	border-radius:10px;
+	padding:1% 7% 2% 14%;
+	height:70px;
+	position:relative;	
+	width:70%;
+}
+.grayspace h3{
+	color:#000;
+	font-size:14px;
+	font-weight:400;
+	text-align:left;	
+}
+
+.slideout{
+	position:relative;	
+	width:60%;
+	margin:8% auto;
+}
+
+.slideout p{
+	font-size:12px;	
+	margin:0;
+}
+
+.slideicon{
+	position:absolute;
+	z-index:50;
+	top:-8%;
+	left:-10%;
+	width:21%;	
+}
+
+h1 , h3{
+	font-size:28px;
+	text-align:center;	
+	max-width:730px;
+	letter-spacing:.08em;
+	margin:auto;
+	color:#8faaa4;
+	font-weight:100;
+	margin-bottom:5px;
+}
+
+#titletext p{
+	color:#8faaa4;
+	letter-spacing:.17em;
+}
+
+iframe{
+	text-align:center;
+	display:block;
+	margin:auto;
+	margin-bottom:4%;	
+}
+
+.seemore{
+	position:relative;
+	display:none;
+	margin-top:4%;	
+}
+
+.seemore p{
+	margin:0 10% 5%;	
+	font-size:13px;
+	letter-spacing:.05em;
+	line-height:280%;
+}
+
+h3{
+	font-size:17px;	
+}
+
+#learnmore{
+	background-image:url(../images/learnmore.png);	
+	height:733px;
+	width:790px;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:auto;
+}
+#array div div{
+	background-image:url(../images/calltoaction.png);
+	background-position:98px 0;
+	width:98px;
+	height:97px;
+	display:inline-block;
+}
+
+#rsix .six{
+	background-position:0px 0px;	
+}
+
+#array div div:hover, #array div div.active{
+	background-image:url(../images/secondgo.jpg);
+	position:relative;
+	left:10px;
+	cursor:pointer;
+}
+
+#rsix .six:hover{
+	background-image:url(../images/calltoaction.png);
+	left:0;	
+}
+
+#array div.even{
+	margin-left:50px;
+}
+
+p#more {
+    margin: 10px auto;
+	height:8.5%;
+    text-align: center;
+	left:43.5%;
+	width:6%;
+	position:absolute;
+	bottom:24.5%;
+	background-image:url(../images/icmlogo.png);
+	background-size:100% auto;
+	cursor:pointer;
+	z-index:20;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	margin:0;
+}
+
+#learnmore, #spacer{
+	display:none;	
+}
+#learnmore {
+	position:relative;	
+}
+#learnmore iframe{
+	left:60%;
+	position:absolute;
+	top:175px;
+}
+
+#matrix{
+	background-image:url(../images/clearmatrix.jpg);
+	background-size:cover;
+	width:100%;
+	padding-bottom:69%;
+	position:relative;
+}
+#wrapper {
+  width: 100%;
+  height: 10000px;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2469.678735339%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#blurmatrix{
+	background-image:url(../images/60matrix.jpg);
+	width:100%;
+	padding-bottom:69%;
+	background-size:100%;
+	position:absolute;
+}
+
+#titletext{
+	position:absolute;
+	top: 1%;
+   text-align: center;
+   width: 100%;	
+   z-index:40;
+}
+#c1container{
+	width:100%;	
+	padding-bottom:26%;
+}
+#cluster1{
+	width:13%;
+	margin-right:20%;
+	float:right;	
+	position:relative;
+	margin-top:-8%;
+}
+#engage{
+	bottom:32%;
+	max-width:26%;
+	right:1%;
+	z-index:40;
+	position:absolute;
+	z-index:40;	
+}
+
+.leftside{
+	width:46%;
+	display:inline-block;
+	text-align:right;	
+	vertical-align:top;
+		margin-right:4%;
+
+}
+.leftside a, .rightside a{
+	display:block;	
+}
+.seemore h3{
+	font-size:25px;
+	margin-bottom:5%;
+	letter-spacing:.08em;	
+}
+
+img{
+	max-width:100%;	
+}
+
+#pagelimiter{
+	max-width:1280px;
+	margin:auto;	
+}
+.rightside{
+	margin-left:4%;
+	width:45%;
+	display:inline-block;	
+	vertical-align:top;
+}
+.front h1{
+	display:none;	
+}
+
+#titletext h1{
+	display:block;	
+}
+
+.leftside h4, .rightside h4{
+	color:#8faaa5;
+	font-size:24px;
+	line-height:8px;
+	font-weight:100;	
+}
+
+.leftside h4 span, .rightside h4 span{
+	font-size:51px;
+	font-weight:100;
+	line-height:57px;
+	display:block;
+}
+
+#cluster2{
+	width:38%;
+}
+
+#cluster3{
+	width:38%;	
+}
+#cluster0{
+	z-index:50;
+	position:absolute;
+	right:50%;
+	top:0;
+	width:2px;
+}
+
+#branch{
+	z-index:0;
+	position:absolute;
+	right:0;
+	left:0;
+	margin-right:auto;
+	margin-left:auto;
+	top:19%;
+	width:10%;
+}
+.text-right, .text-left{
+	display:inline-block;
+	width:48%;
+}
+
+.text-right p, .text-right h2, .text-left p,  .text-left h2{
+	font-size:14px;
+	margin:auto;
+	max-width:155px;
+	text-align:justify;
+
+}
+
+#skrollr-body{
+	position:relative;	
+}
+
+.text-left h2, .text-right h2{
+	color:#fff;
+	font-weight:100;
+	text-transform:uppercase;
+	font-size:20px;
+	margin-bottom:12px;
+	position:relative;
+	left:10px;
+	letter-spacing:.3em;	
+}
+#history{
+	background-image:url(../images/lefttopbg.jpg);
+	width:100%;
+	background-size:100%;	
+}
+
+
+path{
+	fill:none;
+	stroke:#CCC; 
+	stroke-width:1;	
+}
+
+#drawnline{
+	position:absolute;
+	bottom:8%;
+	left:33%;	
+	z-index:60;
+}
+
+.leftside img, .rightside img{
+	z-index:100;
+	position:relative;
+}
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+.sectionlimit{
+	margin:auto;
+	max-width:950px;
+	position:relative;
+	clear:both;
+
+}
+#history{
+	color:#fff;
+	padding-top:16%;
+	padding-bottom:24%;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-color:#000;
+}
+
+#leftcluster1{
+	position:absolute;
+	top:19%;
+	left:50%;	
+}
+
+#rightcluster1{
+	position:absolute;
+	top:0%;
+	left:-4%;	
+	width:100%;
+}
+hr{
+	border:none;
+	color:#000;	
+	margin:15% 0;
+}
+
+#philosophy{
+	background:url(../images/science.jpg);	
+	padding-top:10%;
+	background-position:top center;
+}
+
+#philosophy img{
+	padding-top:6%;
+	padding-bottom:6%;
+	max-width:60%;	
+}
+
+#data{
+	background:#fff;	
+}
+
+#getstarted a{
+	color:#fff;
+	display:block;
+	text-decoration:none;
+	padding:90% 0 20%;
+	font-size:46px;
+	
+}
+
+#getstarted{
+	background-image:url(../images/vask.jpg);
+	background-color:#8f7b6b;	
+	text-align:center;
+	background-repeat:no-repeat;
+}
+
+section{
+	background-size:100% auto;
+	width:100%;	
+}
+
+iframe{
+	max-width:100%;	
+}
+
+
+
+
+@media (max-height: 800px){
+
+#pagelimiter{
+	
+	max-width:1000px;	
+}
+
+#c1container{
+	padding-bottom:60%;	
+}
+
+}
+
+@media (max-height: 600px){
+
+#pagelimiter{
+	max-width:800px;	
+}
+
+}
+
+@media (max-height: 400px){
+#c1container{
+	padding-bottom:38%;	
+}
+
+}
+
+@media (max-width: 1400px){
+	#cluster0{
+		width:4.5px	
+	}
+
+}
+
+
+@media (max-width: 1180px){
+	#cluster0{
+		width:4px	
+	}
+	
+
+
+}
+
+
+@media (max-width: 868px){
+h1{
+	font-size:25px;
+}
+h3, #titletext p{
+	font-size:15px;
+}
+#cluster0, #clusterb{
+	bottom:7.1%;
+}
+	hr{
+	margin:30% 0;
+}
+
+}
+
+@media (max-width: 568px){
+h1{
+	font-size:17px;
+}
+h3, #titletext p{
+	font-size:8px;
+}
+
+.blank{
+	display:none;	
+}
+
+.text-left, .text-right{
+	width:100%;	
+}
+
+.text-left p, .text-right p{
+	max-width:230px;	
+}
+
+.grayspace p{
+	font-size:9px;
+}
+.grayspace h3{
+	font-size:12px;
+}
+.grayspace{
+	width:90%;
+}
+
+
+}
+
+@media (max-width: 330px){
+
+p#more{
+	bottom:22%;
+	height:8.5%;
+	left:41%;
+	width:8%;	
+}
+
+#engage{
+	max-width:34%;
+	right:16%;
+	top:10%;
+}
+#blurmatrix, #matrix{
+	background-position:top center;
+	background-size:138% auto;	
+	padding-bottom:95%;
+}
+}
+
+/* No files to import found in partials/components/**\/* */
