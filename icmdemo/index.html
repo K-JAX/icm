@@ -26,23 +26,70 @@ jQuery( document ).ready(function() {
 		jQuery('.seemore').show('slow');
 		jQuery('#blurmatrix, #engage').hide();
 		
-		jQuery('#mask1 circle').show('fast');
-		var path = document.querySelector('#topcluster path');
-	var length = path.getTotalLength();
-	// Clear any previous transition
-	path.style.transition = path.style.WebkitTransition =
-	  'none';
-	// Set up the starting positions
-	path.style.strokeDasharray = length + ' ' + length;
-	path.style.strokeDashoffset = length;
-	// Trigger a layout so styles are calculated & the browser
-	// picks up the starting position before animating
-	path.getBoundingClientRect();
-	// Define our transition
-	path.style.transition = path.style.WebkitTransition =
-	  'stroke-dashoffset 2s ease-in-out';
-	// Go!
-	path.style.strokeDashoffset = '0';
+		 
+		
+		
+		
+		// Show lines
+		setTimeout(function(){
+			jQuery('#path1').css('stroke-dashoffset','0');
+		
+		}, 100);
+		setTimeout(function(){
+			jQuery('#path2').css('stroke-dashoffset','0');
+		
+		}, 500);
+		setTimeout(function(){
+			jQuery('#path3').css('stroke-dashoffset','0');
+		
+		}, 700);
+		
+		setTimeout(function(){
+			jQuery('#path4').css('stroke-dashoffset','0');
+		
+		}, 800);
+		
+		
+		
+		//squggle
+		
+	
+		setTimeout(function(){
+			jQuery('#path1').css('stroke-dasharray','0');
+		}, 1100);
+		setTimeout(function(){
+			jQuery('#path2').css('stroke-dasharray','0');
+		}, 1500);
+		setTimeout(function(){
+			jQuery('#path3').css('stroke-dasharray','0');
+		}, 1700);
+		setTimeout(function(){
+			jQuery('#path4').css('stroke-dasharray','0');
+		}, 1800);
+			
+		
+		//go away and clear	
+			
+		setTimeout(function(){
+			jQuery('#mask1 circle').show('fast');
+			jQuery('#path1').css('stroke-dashoffset','950');
+			jQuery('#path1').css('stroke-dasharray','950');
+		}, 2200);
+		
+		setTimeout(function(){
+			jQuery('#path2').css('stroke-dashoffset','1437');
+			jQuery('#path2').css('stroke-dasharray','1437');
+		}, 2600);
+		
+		setTimeout(function(){
+			jQuery('#path3').css('stroke-dashoffset','2549');
+			jQuery('#path3').css('stroke-dasharray','2549');
+		}, 2700);
+		
+		setTimeout(function(){
+			jQuery('#path4').css('stroke-dashoffset','1241');
+			jQuery('#path4').css('stroke-dasharray','1241');
+		}, 1800);
 		
 		
 		
@@ -457,7 +504,12 @@ path{
 	padding-bottom:93%;
 }
 
-
+#topcluster path{
+	-webkit-transition: 1s ease-in-out; 
+  -moz-transition: 1s ease-in-out; 
+  -o-transition: 1s ease-in-out; 
+  transition: 1s ease-in-out; 	
+}
  #pencil { 
   -webkit-transition: .2s ease-in-out; 
   -moz-transition: .2s ease-in-out; 
@@ -488,6 +540,26 @@ path{
 	display:none;	
 }
 
+#path1{
+	stroke-dasharray:915;
+	stroke-dashoffset:915;
+}
+
+#path2{
+	stroke-dasharray:1437;
+	stroke-dashoffset:1437;
+}
+
+#path3{
+	stroke-dasharray:2549;
+	stroke-dashoffset:2549;
+}
+
+#path4{
+	stroke-dasharray:1241;
+	stroke-dashoffset:1241;
+}
+
 </style>
 
 </head>
@@ -508,8 +580,8 @@ path{
             <feGaussianBlur stdDeviation="12" />
         </filter>
         <mask id="mask1">
-            <circle cx="35.5%" cy="59%" r="80" fill="white" id="circle1" filter="url(#filter2)" />
-            <circle cx="14.5%" cy="46%" r="80" fill="white" id="circle2" filter="url(#filter2)" />
+            <circle cx="35.5%" cy="78%" r="80" fill="white" id="circle1" filter="url(#filter2)" />
+            <circle cx="29.5%" cy="73%" r="80" fill="white" id="circle2" filter="url(#filter2)" />
         </mask>
         <image xlink:href="clearmatrix.jpg" width="100%" height="100%" mask="url(#mask1)"></image>
     </svg>
@@ -517,13 +589,13 @@ path{
 
 <!-- Main Path -->  
 
-<path stroke-miterlimit="10" d = "M 430.4 495.88 L 463.09 552.43 L 528.38 552.43 L 561.02 495.88 L 528.37 439.33 L 561.02 382.78 L 626.5 382.78 L 658.96 439.33 L 626.5 495.88 L 561.02 495.88 M 626.5 495.88 L 659.15 552.43 L 724.38 552.43 L 757.03 495.88 L 724.45 439.33 L 658.96 439.33 M 724.38 552.43 L 757.03 608.98 L 822.33 608.98 L 854.97 552.43 L 822.33 495.88 L 757.03 495.88" />
+<path id="path4" stroke-miterlimit="10" d = "M 430.4 495.88 L 463.09 552.43 L 528.38 552.43 L 561.02 495.88 L 528.37 439.33 L 561.02 382.78 L 626.5 382.78 L 658.96 439.33 L 626.5 495.88 L 561.02 495.88 M 626.5 495.88 L 659.15 552.43 L 724.38 552.43 L 757.03 495.88 L 724.45 439.33 L 658.96 439.33 M 724.38 552.43 L 757.03 608.98 L 822.33 608.98 L 854.97 552.43 L 822.33 495.88 L 757.03 495.88" />
 
-<path stroke-miterlimit="10"  d = "M 724.45 439.33 L 757.1 382.78 L 724.45 326.23 L 758.03 269.68 L 725.38 213.14 L 758.03 156.59 L 823.33 156.59 L 855.97 213.14 L 922.04 213.14 L 954.69 156.59 L 922.04 100.04 L 856.74 100.04 L 823.33 156.59 L 758.03 156.59 L 724.45 100.04 L 659.15 100.04 L 626.5 156.59 L 658.96 213.14 L 725.38 213.14 L 658.96 213.14 L 626.5 269.68 M 658.96 326.23 L 724.45 326.23 M 430.44 382.78 L 463.09 326.23 L 528.38 326.23 L 561.03 269.68 L 528.38 213.14 L 561.03 156.59 L 528.38 100.04 L 463.09 100.04 L 430.44 156.59 L 366.07 156.59 L 333.42 213.14 L 366.05 269.68 L 430.44 269.68 L 463.09 326.23  M 430.44 269.68 L 463.09 213.14 L 430.44 156.59 L 463.09 213.14 L 528.38 213.14" />
+<path id="path3" stroke-miterlimit="10"  d = "M 724.45 439.33 L 757.1 382.78 L 724.45 326.23 L 758.03 269.68 L 725.38 213.14 L 758.03 156.59 L 823.33 156.59 L 855.97 213.14 L 922.04 213.14 L 954.69 156.59 L 922.04 100.04 L 856.74 100.04 L 823.33 156.59 L 758.03 156.59 L 724.45 100.04 L 659.15 100.04 L 626.5 156.59 L 658.96 213.14 L 725.38 213.14 L 658.96 213.14 L 626.5 269.68 L 658.96 326.23 L 724.45 326.23 M 430.44 382.78 L 463.09 326.23 L 528.38 326.23 L 561.03 269.68 L 528.38 213.14 L 561.03 156.59 L 528.38 100.04 L 463.09 100.04 L 430.44 156.59 L 366.07 156.59 L 333.42 213.14 L 366.05 269.68 L 430.44 269.68 L 463.09 326.23  M 430.44 269.68 L 463.09 213.14 L 430.44 156.59 L 463.09 213.14 L 528.38 213.14" />
 
-<path stroke-miterlimit="10" d = "M 333.42 213.14 L 268.12 213.14 L 235.35 156.59 L 268 100.04 L 235.35 43.49 L 170.05 43.49 L 137.4 100.04 L 72.12 100.04 L 39.47 156.59 L 72.12 213.14 L 137.42 213.14 L 170.05 156.59 L 137.4 100.04 L 170.05 156.59 L 235.35 156.59 L 268.12 213.14 L 235.35 269.68 L 268 326.23 L 235.35 382.78 L 170.05 382.78 L 137.4 326.23 L 170.05 269.68 L 235.35 269.68 " />
+<path id="path2" stroke-miterlimit="10" d = "M 333.42 213.14 L 268.12 213.14 L 235.35 156.59 L 268 100.04 L 235.35 43.49 L 170.05 43.49 L 137.4 100.04 L 72.12 100.04 L 39.47 156.59 L 72.12 213.14 L 137.42 213.14 L 170.05 156.59 L 137.4 100.04 L 170.05 156.59 L 235.35 156.59 L 268.12 213.14 L 235.35 269.68 L 268 326.23 L 235.35 382.78 L 170.05 382.78 L 137.4 326.23 L 170.05 269.68 L 235.35 269.68 " />
 
-<path stroke-miterlimit="10" d = "M 366.07 495.88 L 333.42 552.43 L 268.12 552.43 L 235.35 608.98 L 170.05 608.98 L 137.42 552.43 L 170.07 495.88 L 137.42 439.33 L 72.12 439.33 L 39.47 495.88 L 72.12 552.43 L 137.42 552.43 L 170.07 495.88 L 235.35 495.88 L 268.12 552.43" />
+<path id="path1" stroke-sasharray="0,0" stroke-miterlimit="10" d = "M 366.07 495.88 L 333.42 552.43 L 268.12 552.43 L 235.35 608.98 L 170.05 608.98 L 137.42 552.43 L 170.07 495.88 L 137.42 439.33 L 72.12 439.33 L 39.47 495.88 L 72.12 552.43 L 137.42 552.43 L 170.07 495.88 L 235.35 495.88 L 268.12 552.43" />
 
 </svg>
 
