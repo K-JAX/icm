@@ -2,6 +2,7 @@
 
 body{
 color:#414141;
+background:#f6fbf9;
 }
 
 .grayspace img{
@@ -127,8 +128,9 @@ p#more {
 	left:43.5%;
 	width:6%;
 	position:absolute;
-	bottom:24.5%;
+	bottom:25%;
 	background-image:url(../images/icmlogo.png);
+	background-repeat:no-repeat;
 	background-size:100% auto;
 	cursor:pointer;
 	z-index:20;
@@ -152,10 +154,6 @@ body{
 }
 
 #matrix{
-	background-image:url(../images/clearmatrix.jpg);
-	background-size:cover;
-	width:100%;
-	padding-bottom:69%;
 	position:relative;
 }
 #wrapper {
@@ -172,6 +170,31 @@ body{
     vertical-align: middle;
     overflow: hidden;
 }
+.blur{
+	max-width:100%;
+}
+
+ #pencil { 
+  -webkit-transition: .2s ease-in-out; 
+  -moz-transition: .2s ease-in-out; 
+  -o-transition: .2s ease-in-out; 
+  transition: .2s ease-in-out; 
+  
+ -webkit-transform: scale(.95); 
+ -moz-transform: scale(.95); 
+ -o-transform: scale(.95); 
+ -ms-transform: scale(.95); 
+ transform: scale(.9) translate(15px,15px); 
+  } 
+ 
+#rightbrain:hover #pencil { 
+ -webkit-transform: scale(1) translate(0px,0px); 
+ -moz-transform: scale(1) translate(0px,0px); 
+ -o-transform: scale(1) translate(0px,0px); 
+ -ms-transform: scale(1) translate(0px,0px); 
+ transform: scale(1) translate(0px,0px); 
+ }
+
 
 .svg-content {
     display: inline-block;
@@ -207,13 +230,46 @@ body{
 	margin-top:-8%;
 }
 #engage{
-	bottom:32%;
-	max-width:26%;
-	right:1%;
+	bottom:34%;
+	max-width:18%;
+	right:6%;
 	z-index:40;
 	position:absolute;
 	z-index:40;	
 }
+
+svg text{
+font-size: 5em;
+text-align: center;
+max-width: 730px;
+margin: auto;
+fill: #8faaa4;
+font-weight: 100;
+margin-bottom: 5px;	
+font-family:"franklin-gothic-urw",sans-serif;
+}
+object.svgobject {
+	width: 100%;
+	display: block;
+	height: auto;
+	position: relative;
+	padding-top: 69%;
+}
+.svgobject svg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#ontop{
+	position:absolute;
+	z-index:50;
+	pointer-events:none;
+	top:0;
+}
+
 
 .leftside{
 	width:46%;
@@ -329,7 +385,7 @@ img{
 
 path{
 	fill:none;
-	stroke:#CCC; 
+	stroke:#333; 
 	stroke-width:1;	
 }
 
@@ -421,11 +477,38 @@ hr{
 	
 }
 
+#drawnline{
+	position:absolute;
+	bottom:8%;
+	left:33%;	
+	z-index:60;
+}
+
+.leftside a, .rightside a{
+	display:block;
+	max-width:300px;
+	position:relative;
+}
+
+#leftgears, #rightbrian{
+	width:100%;
+}
+
+#leftbrain path, #rightbrain path{
+	fill:#fff;	
+	stroke:none;
+}
+
 #getstarted{
 	background-image:url(../images/vask.jpg);
 	background-color:#8f7b6b;	
 	text-align:center;
 	background-repeat:no-repeat;
+}
+
+#lefttrigger{
+	width:100%;
+	padding-bottom:93%;
 }
 
 section{
@@ -437,6 +520,44 @@ iframe{
 	max-width:100%;	
 }
 
+
+#topcluster{
+	position:absolute;
+	top:11%;
+	left:23.5%;	
+	width:63%;
+}
+
+#topcluster path{
+	-webkit-transition: 1s ease-in-out; 
+  -moz-transition: 1s ease-in-out; 
+  -o-transition: 1s ease-in-out; 
+  transition: 1s ease-in-out; 	
+}
+
+#mask1 circle{
+	display:none;	
+}
+
+#path1{
+	stroke-dasharray:915;
+	stroke-dashoffset:915;
+}
+
+#path2{
+	stroke-dasharray:1437;
+	stroke-dashoffset:1437;
+}
+
+#path3{
+	stroke-dasharray:2549;
+	stroke-dashoffset:2549;
+}
+
+#path4{
+	stroke-dasharray:1241;
+	stroke-dashoffset:1241;
+}
 
 
 

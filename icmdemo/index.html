@@ -22,7 +22,7 @@ jQuery( document ).ready(function() {
 	});
 	
 	
-	jQuery('#more').click(function() {
+	jQuery('#more, #engage').click(function() {
 		jQuery('.seemore').show('slow');
 		jQuery('#blurmatrix, #engage').hide();
 		
@@ -33,20 +33,24 @@ jQuery( document ).ready(function() {
 		// Show lines
 		setTimeout(function(){
 			jQuery('#path1').css('stroke-dashoffset','0');
-		
+			jQuery('text').attr("filter","url(#filter2)");		
 		}, 100);
 		setTimeout(function(){
 			jQuery('#path2').css('stroke-dashoffset','0');
+			jQuery('text').attr("filter","url(#filter3)");		
 		
 		}, 500);
 		setTimeout(function(){
 			jQuery('#path3').css('stroke-dashoffset','0');
+			jQuery('text').attr("filter","url(#filter4)");		
+
 		
 		}, 700);
 		
 		setTimeout(function(){
 			jQuery('#path4').css('stroke-dashoffset','0');
-		
+			jQuery('text').attr("filter","url(#filter5)");		
+
 		}, 800);
 		
 		
@@ -56,12 +60,18 @@ jQuery( document ).ready(function() {
 	
 		setTimeout(function(){
 			jQuery('#path1').css('stroke-dasharray','0');
+			jQuery('text').attr("filter","url(#filter6)");		
+
 		}, 1100);
 		setTimeout(function(){
 			jQuery('#path2').css('stroke-dasharray','0');
+			jQuery('text').attr("filter","url(#filter7)");		
+
 		}, 1500);
 		setTimeout(function(){
 			jQuery('#path3').css('stroke-dasharray','0');
+			jQuery('text').attr("filter","url(#filter8)");		
+
 		}, 1700);
 		setTimeout(function(){
 			jQuery('#path4').css('stroke-dasharray','0');
@@ -69,30 +79,66 @@ jQuery( document ).ready(function() {
 			
 		
 		//go away and clear	
-			
-		setTimeout(function(){
-			jQuery('#mask1 circle').show('fast');
-			jQuery('#path1').css('stroke-dashoffset','950');
-			jQuery('#path1').css('stroke-dasharray','950');
-		}, 2200);
 		
 		setTimeout(function(){
+			jQuery('#mask1 .bottomleft').show('slow');
+		}, 1600);
+		
+			setTimeout(function(){
+			jQuery('#mask1 .topleft').show('slow');
+			jQuery('text').attr("filter","url(#filter9)");		
+
+		}, 2000);
+		
+		
+		setTimeout(function(){
+			jQuery('#mask1 .bottomright').show('slow');
+		}, 2400);
+		
+		
+		
+		setTimeout(function(){
+			jQuery('#path1').css('stroke-dashoffset','950');
+			jQuery('#path1').css('stroke-dasharray','950');
+			jQuery('#mask1 .topright').show('slow');
+			jQuery('text').attr("filter","url(#filter10)");		
+
+
+		}, 2200);
+		
+			setTimeout(function(){
 			jQuery('#path2').css('stroke-dashoffset','1437');
 			jQuery('#path2').css('stroke-dasharray','1437');
+			jQuery('.phase2').show('slow');
+
 		}, 2600);
 		
 		setTimeout(function(){
 			jQuery('#path3').css('stroke-dashoffset','2549');
 			jQuery('#path3').css('stroke-dasharray','2549');
+			jQuery('.phase3').show('slow');
+			jQuery('text').attr("filter","url(#filter11)");		
+
+
 		}, 2700);
 		
 		setTimeout(function(){
 			jQuery('#path4').css('stroke-dashoffset','1241');
 			jQuery('#path4').css('stroke-dasharray','1241');
-		}, 1800);
+			jQuery('.phase4').show('slow');
+		}, 2800);
+		
+		setTimeout(function(){
+				jQuery('.phase5').show('slow');		
+		}, 3200);
 		
 		
 		
+		setTimeout(function(){
+				jQuery('text').attr("filter","none");
+				jQuery('#topimage').attr("filter","none");		
+		
+		}, 3600);
 	});
 	
 	jQuery('animatescroll').click(function() {
@@ -195,6 +241,7 @@ p#more {
 	position:absolute;
 	top:63%;
 	background-image:url(icmlogo.png);
+	background-repeat:no-repeat;
 	background-size:100% auto;
 	cursor:pointer;
 	z-index:20;
@@ -229,7 +276,7 @@ engage.png{
 
 #topcluster{
 	position:absolute;
-	top:32.5%;
+	top:11%;
 	left:23.5%;	
 	width:63%;
 }
@@ -279,9 +326,9 @@ engage.png{
 	margin-top:-8%;
 }
 #engage{
-	bottom:32%;
-	max-width:26%;
-	right:1%;
+	bottom:34%;
+	max-width:18%;
+	right:6%;
 	z-index:40;
 	position:absolute;
 	z-index:40;	
@@ -510,6 +557,16 @@ path{
   -o-transition: 1s ease-in-out; 
   transition: 1s ease-in-out; 	
 }
+svg text{
+font-size: 5em;
+text-align: center;
+max-width: 730px;
+margin: auto;
+fill: #8faaa4;
+font-weight: 100;
+margin-bottom: 5px;	
+}
+
  #pencil { 
   -webkit-transition: .2s ease-in-out; 
   -moz-transition: .2s ease-in-out; 
@@ -559,6 +616,27 @@ path{
 	stroke-dasharray:1241;
 	stroke-dashoffset:1241;
 }
+object.svgobject {
+	width: 100%;
+	display: block;
+	height: auto;
+	position: relative;
+	padding-top: 69%;
+}
+svg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#ontop{
+	position:absolute;
+	z-index:50;
+	pointer-events:none;
+	top:0;
+}
 
 </style>
 
@@ -570,21 +648,116 @@ path{
 <div id="skrollr-body">
 <div id="pagelimiter">
 <div id="matrix">
-
+<object class="svgobject">
 <svg class="blur" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1677" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
 
-<image filter="url(#filter2)" xlink:href="clearmatrix.jpg" width="100%" height="100%"/></image>
+<image filter="url(#filter6)" id="topimage" xlink:href="clearmatrix.jpg" width="100%" height="100%"/></image>
 
-       
-        <filter id="filter2">
-            <feGaussianBlur stdDeviation="12" />
-        </filter>
-        <mask id="mask1">
-            <circle cx="35.5%" cy="78%" r="80" fill="white" id="circle1" filter="url(#filter2)" />
-            <circle cx="29.5%" cy="73%" r="80" fill="white" id="circle2" filter="url(#filter2)" />
-        </mask>
-        <image xlink:href="clearmatrix.jpg" width="100%" height="100%" mask="url(#mask1)"></image>
+   <filter id="filter1">
+		<feGaussianBlur stdDeviation="25" />
+	</filter>
+	
+	   <filter id="filter2">
+		<feGaussianBlur stdDeviation="20" />
+	</filter>
+	
+	   <filter id="filter3">
+		<feGaussianBlur stdDeviation="18" />
+	</filter>
+	
+	
+	   <filter id="filter4">
+		<feGaussianBlur stdDeviation="17" />
+	</filter>
+	   <filter id="filter5">
+		<feGaussianBlur stdDeviation="15" />
+	</filter>
+	   <filter id="filter6">
+		<feGaussianBlur stdDeviation="13" />
+	</filter>
+	   <filter id="filter7">
+		<feGaussianBlur stdDeviation="10" />
+	</filter>
+	   <filter id="filter8">
+		<feGaussianBlur stdDeviation="7" />
+	</filter>
+	   <filter id="filter9">
+		<feGaussianBlur stdDeviation="4" />
+	</filter>
+	
+	   <filter id="filter10">
+		<feGaussianBlur stdDeviation="3" />
+	</filter>
+	
+	
+	   <filter id="filter11">
+		<feGaussianBlur stdDeviation="1" />
+	</filter>
+	
+	
+	
+	<mask id="mask1">
+	<circle cx="35.5%" cy="78%" r="80" fill="white" id="circle1" class="bottomleft" filter="url(#filter2)" />
+	<circle cx="29.5%" cy="73%" r="80" fill="white" id="circle2" class="bottomleft" filter="url(#filter2)" />
+	
+	<circle cx="29.5%" cy="83%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="29.5%" cy="64%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="23.5%" cy="68.5%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="23.5%" cy="78%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="34.5%" cy="68.3%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="34.5%" cy="86.3%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="40.5%" cy="83.3%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="40.5%" cy="73.3%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	
+
+	<circle cx="29.5%" cy="44%" r="80" fill="white" id="circle3" class="topleft" filter="url(#filter2)" />
+	<circle cx="34.5%" cy="42%" r="80" fill="white" id="circle4" class="topleft" filter="url(#filter2)" />
+	<circle cx="34.5%" cy="59.3%" r="80" fill="white" id="circle5" class="topleft" filter="url(#filter2)" />
+	<circle cx="46%" cy="50.5%" r="80" fill="white" id="circle6" class="topleft" filter="url(#filter2)" />
+	<circle cx="52%" cy="46%" r="80" fill="white" id="circle7" class="topleft" filter="url(#filter2)" />
+	<circle cx="52%" cy="55%" r="80" fill="white" id="circle8" class="topleft" filter="url(#filter2)" />
+	
+	<circle cx="41%" cy="64.5%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	<circle cx="40.5%" cy="56%" r="80" fill="white" class="phase2" filter="url(#filter2)" />
+	
+	<circle cx="40.5%" cy="45%" r="80" fill="white" class="phase3" filter="url(#filter2)" />
+	<circle cx="40.5%" cy="36%" r="80" fill="white" class="phase3" filter="url(#filter2)" />
+	<circle cx="40.5%" cy="27%" r="80" fill="white" class="phase3" filter="url(#filter2)" />
+	<circle cx="46.5%" cy="41%" r="80" fill="white" class="phase3" filter="url(#filter2)" />
+	<circle cx="52%" cy="36%" r="80" fill="white" class="phase3" filter="url(#filter2)" />
+	
+	
+	<circle cx="63%" cy="43.5%" r="80" fill="white" id="circle9" class="topright" filter="url(#filter2)" />
+	<circle cx="63%" cy="55.5%" r="80" fill="white" id="circle10" class="topright" filter="url(#filter2)" />
+	<circle cx="74%" cy="44.5%" r="80" fill="white" id="circle11" class="topright" filter="url(#filter2)" />
+	
+	<circle cx="57%" cy="42%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="68%" cy="51%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="57%" cy="51%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="57%" cy="61%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="46.5%" cy="59.5%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="46.5%" cy="30.5%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+	<circle cx="46.5%" cy="59.5%" r="80" fill="white" class="phase4" filter="url(#filter2)" />
+
+	<circle cx="58%" cy="69.5%" r="80" fill="white" id="circle12" class="bottomright" filter="url(#filter2)" />
+	<circle cx="63%" cy="73.5%" r="80" fill="white" id="circle13" class="bottomright" filter="url(#filter2)" />
+	<circle cx="69%" cy="78.5%" r="80" fill="white" id="circle14" class="bottomright" filter="url(#filter2)" />
+	
+	
+	<circle cx="51.5%" cy="64.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	<circle cx="51.5%" cy="73.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	<circle cx="51.5%" cy="82.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	<circle cx="57.5%" cy="78.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	<circle cx="29.5%" cy="55.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	<circle cx="34.5%" cy="51.5%" r="80" fill="white" class="phase5" filter="url(#filter2)" />
+	
+	</mask>
+	
+    <image xlink:href="clearmatrix.jpg" width="100%" height="100%" mask="url(#mask1)"></image>
+	<text filter="url(#filter1)" x="400" y="200">We Bring life into focus</text>
     </svg>
+</object>
+<object class="svgobject" id="ontop">
 <svg version="1.1" id="topcluster"viewBox="0 0 1100 700 " >
 
 <!-- Main Path -->  
@@ -598,13 +771,8 @@ path{
 <path id="path1" stroke-sasharray="0,0" stroke-miterlimit="10" d = "M 366.07 495.88 L 333.42 552.43 L 268.12 552.43 L 235.35 608.98 L 170.05 608.98 L 137.42 552.43 L 170.07 495.88 L 137.42 439.33 L 72.12 439.33 L 39.47 495.88 L 72.12 552.43 L 137.42 552.43 L 170.07 495.88 L 235.35 495.88 L 268.12 552.43" />
 
 </svg>
+</object>
 
-
-
-<div class="seemore" id="titletext">
-    <h1>WE BRING LIFE INTO FOCUS</h1>
-    <h3>(engage with ICM and make your goals crystal clear)</h3>
-</div>
 <p id="more"></p>
 <img src="engage.png" id="engage" alt="" title="" />
 </div>
