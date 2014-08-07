@@ -4,15 +4,8 @@ jQuery( document ).ready(function() {
 		jQuery(this).addClass('active');
 	});
 	
-	
-	jQuery('#lefttrigger').hover(function() {
-			jQuery(this).hide();
-	});
-	
-	
-	jQuery('#more, #engage').click(function() {
-		jQuery('.seemore').show();
-		jQuery('#blurmatrix, #engage').hide();
+	jQuery('#more span, #engage').click(function() {
+		jQuery('#engage, #more span').hide();
 
 		
 		// Show lines
@@ -118,18 +111,24 @@ jQuery( document ).ready(function() {
 		setTimeout(function(){
 				jQuery('text').attr("filter","none");
 				jQuery('#topimage').attr("filter","none");		
-		
+				jQuery('.seemore').show();
 		}, 3600);
+		
 	});
 	
-	jQuery('animatescroll').click(function() {
-		var body = jQuery("html, body");
-			body.animate({scrollTop:1500}, '500', 'swing', function() { 
-		});
+	jQuery('#startbutton').click(function(event) {
+		event.preventDefault();
+		
+		
+		setTimeout(function(){
+				jQuery('#startbutton').hide();
+		}, 3600);
+		
+		
+		jQuery('html, body').animate({
+    		scrollTop: jQuery("#article-1").offset().top - 100
+ 		}, 3300);
 	});
-	
-	
-	
 	
 	
 });

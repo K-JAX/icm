@@ -96,7 +96,8 @@
     </footer>
   <?php endif; ?>
 
-  <div<?php print $content_attributes; ?>>
+  <div id="article-<?php print $node->nid; ?>"<?php print $content_attributes; ?>>
+  
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);

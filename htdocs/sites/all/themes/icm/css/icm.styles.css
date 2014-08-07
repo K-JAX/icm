@@ -2,7 +2,7 @@
 
 body{
 color:#414141;
-background:#f6fbf9;
+background:#eef3ef;
 }
 
 .grayspace img{
@@ -11,6 +11,15 @@ background:#f6fbf9;
 	right:-5%;
 	width:10%;	
 }
+
+.pathobject svg path{
+	stroke:#eef3ef;	
+}
+
+#leftbrain{
+	float:right;
+}
+
 .grayspace{
 	background:#e2e2e2;
 	border-radius:10px;
@@ -71,11 +80,36 @@ iframe{
 .seemore{
 	position:relative;
 	display:none;
-	margin-top:4%;	
+	padding-top:4%;
+	margin:auto;	
+	max-width:1070px;
+	box-shadow:0 5px 5px #666;
+}
+
+.front article{
+	padding-top:86%;	
+}
+
+article{
+	padding-right:3%;
+	padding-left:3%;
+	position:relative;
+	z-index:10;	
+}
+
+
+#startbutton{
+	margin:-26px auto;
+	cursor:pointer;
+	display:block;
+	max-width:49px;
+	position:relative;
+	left:6px;
+	z-index:20;
 }
 
 .seemore p{
-	margin:0 10% 5%;	
+	margin:0 20% 5%;	
 	font-size:13px;
 	letter-spacing:.05em;
 	line-height:280%;
@@ -121,6 +155,12 @@ h3{
 	margin-left:50px;
 }
 
+#endpath{
+	bottom:10%;	
+	padding-top:210%;
+}
+
+
 p#more {
     margin: 10px auto;
 	height:8.5%;
@@ -132,8 +172,15 @@ p#more {
 	background-image:url(../images/icmlogo.png);
 	background-repeat:no-repeat;
 	background-size:100% auto;
+	
+}
+
+p#more span{
+	display:block;	
 	cursor:pointer;
 	z-index:20;
+	width:100%;
+	padding-top:100%;
 }
 
 body{
@@ -173,8 +220,8 @@ body{
 .blur{
 	max-width:100%;
 }
-
- #pencil { 
+/*
+ #rightbrain #brush, #gear1, #gear2, #gear3 { 
   -webkit-transition: .2s ease-in-out; 
   -moz-transition: .2s ease-in-out; 
   -o-transition: .2s ease-in-out; 
@@ -184,17 +231,25 @@ body{
  -moz-transform: scale(.95); 
  -o-transform: scale(.95); 
  -ms-transform: scale(.95); 
- transform: scale(.9) translate(15px,15px); 
+ transform: scale(.9) translate(15px,15px);
+
   } 
  
-#rightbrain:hover #pencil { 
+
+ 
+#rightbrain:hover #brush, #leftbrain:hover #gear1, #leftbrain:hover #gear2, #leftbrain:hover #gear3 { 
  -webkit-transform: scale(1) translate(0px,0px); 
  -moz-transform: scale(1) translate(0px,0px); 
  -o-transform: scale(1) translate(0px,0px); 
  -ms-transform: scale(1) translate(0px,0px); 
  transform: scale(1) translate(0px,0px); 
  }
+*/
 
+#rightbrain #brush  { 
+   stroke:#9FB7B3;
+ stroke-width:3; 
+  }
 
 .svg-content {
     display: inline-block;
@@ -218,22 +273,12 @@ body{
    width: 100%;	
    z-index:40;
 }
-#c1container{
-	width:100%;	
-	padding-bottom:26%;
-}
-#cluster1{
-	width:13%;
-	margin-right:20%;
-	float:right;	
-	position:relative;
-	margin-top:-8%;
-}
+
+
 #engage{
-	bottom:34%;
-	max-width:18%;
-	right:6%;
-	z-index:40;
+	bottom:30%;
+	max-width:19%;
+	right:30%;
 	position:absolute;
 	z-index:40;	
 }
@@ -255,13 +300,22 @@ object.svgobject {
 	position: relative;
 	padding-top: 69%;
 }
-.svgobject svg {
+.svgobject svg, .pathobject svg {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
+.pathobject{
+	width: 100%;
+	display: block;
+	height: auto;
+	position: absolute;
+	padding-top:157%;
+	z-index:0;
+}
+
 
 #ontop{
 	position:absolute;
@@ -284,7 +338,7 @@ object.svgobject {
 }
 .seemore h3{
 	font-size:25px;
-	margin-bottom:5%;
+	margin-bottom:18%;
 	letter-spacing:.08em;	
 }
 
@@ -293,7 +347,6 @@ img{
 }
 
 #pagelimiter{
-	max-width:1280px;
 	margin:auto;	
 }
 .rightside{
@@ -315,6 +368,7 @@ img{
 	font-size:24px;
 	line-height:8px;
 	font-weight:100;	
+	margin-bottom:77%;
 }
 
 .leftside h4 span, .rightside h4 span{
@@ -398,6 +452,7 @@ path{
 
 .leftside img, .rightside img{
 	z-index:100;
+	top:25px;
 	position:relative;
 }
 .cf:before,
@@ -486,12 +541,20 @@ hr{
 
 .leftside a, .rightside a{
 	display:block;
-	max-width:300px;
+	max-width:51%;
 	position:relative;
+	left:3%;
+}
+
+.leftside a{
+	top:-49px;	
+}
+.rightside a{
+	top:-45px;
 }
 
 #leftgears, #rightbrian{
-	width:100%;
+	max-width:100%;
 }
 
 #leftbrain path, #rightbrain path{
@@ -561,6 +624,20 @@ iframe{
 
 
 
+@media (max-height: 1400px){
+#pagelimiter{
+	
+	max-width:1400px;	
+}
+}
+
+@media (max-height: 1200px){
+#pagelimiter{
+	
+	max-width:1100px;	
+}
+}
+
 @media (max-height: 800px){
 
 #pagelimiter{
@@ -582,7 +659,11 @@ iframe{
 
 }
 
-@media (max-height: 400px){
+@media (max-height: 500px){
+	#pagelimiter{
+	max-width:600px;	
+}
+
 #c1container{
 	padding-bottom:38%;	
 }
@@ -595,14 +676,29 @@ iframe{
 	}
 
 }
+@media (min-width: 1200px){
+p#more {
+	bottom:25.5%;
+}
+}
 
+@media (min-width: 1070px){
+.seemore{
+	background:#f6fbf9;
+}
 
+.pathobject svg path{
+stroke:#F6FBFE;	
+}
+
+}
 @media (max-width: 1180px){
 	#cluster0{
 		width:4px	
 	}
-	
-
+	#startbutton{
+	display:none;	
+	}
 
 }
 
@@ -619,6 +715,10 @@ h3, #titletext p{
 }
 	hr{
 	margin:30% 0;
+}
+
+.seemore h3{
+	max-width:465px;	
 }
 
 }
@@ -653,28 +753,44 @@ h3, #titletext p{
 	width:90%;
 }
 
+.leftside h4, .rightside h4{
+	font-size:15px;
+	line-height:4px;	
+}
+
+.rightside{
+	margin-left:12px;	
+}
 
 }
 
-@media (max-width: 330px){
+@media (max-width: 420px){
+
+.leftside h4, .rightside h4{
+	font-size:12px;	
+}
+
+.leftside h4 span, .rightside h4 span {
+    font-size: 37px;
+    line-height: 36px;
+}
 
 p#more{
-	bottom:22%;
-	height:8.5%;
-	left:41%;
-	width:8%;	
+	bottom:23%;
 }
 
-#engage{
-	max-width:34%;
-	right:16%;
-	top:10%;
+.seemore h3{
+	font-size:20px;	
 }
-#blurmatrix, #matrix{
-	background-position:top center;
-	background-size:138% auto;	
-	padding-bottom:95%;
+
+.seemore p{
+	margin:0 13% 5%;	
 }
+
+.leftside img, .rightside img{
+	top:5px;	
+}
+
 }
 
 /* No files to import found in partials/components/**\/* */
