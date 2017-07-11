@@ -1,0 +1,25 @@
+/*--------------------------------*/
+/* Page - Advisor Series Insights */
+/*--------------------------------*/
+
+/* Play buttons */
+.modal {
+    float: left;
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto auto 85px auto;
+    padding-right: 11px;
+    border: none;
+    border-right: solid 2px #c38656;
+    background-image: url(../images/play.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+    font-size: 15px;
+    text-decoration: none;
+    margin-right:11px;
+    &:hover {
+        background-image: url(../images/orangeplay.svg);
+    }
+}

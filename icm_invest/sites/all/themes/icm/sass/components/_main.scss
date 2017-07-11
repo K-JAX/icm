@@ -1,0 +1,23 @@
+/*------*/
+/* Main */
+/*------*/
+
+.l-main {
+    padding-top: 10%;
+}
+
+.page-node-1, .page-node-2, .page-node-3 {
+    .l-main {
+        padding-top: 0;
+    }
+}
+
+.field--name-body, .field--name-field-link {
+    margin: auto;
+}
+
+@media (max-width: $medium) {
+    .l-main {
+        padding-top: 70px;
+    }
+}

@@ -1,0 +1,91 @@
+/*------------*/
+/* Typography */
+/*------------*/
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,800italic);
+
+h1, h3 {
+    max-width: 730px;
+    margin: auto auto 5px auto;
+    color: #8faaa4;
+    font-weight: 100;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    padding-bottom: 1%;
+    color: #333;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 17px;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.node__content p {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.node__content h3 {
+    margin: 12px 0;
+    color: #333;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+a {
+    color: #111;
+}
+
+hr {
+    margin: 5% 0;
+    border: none;
+    color: #000;
+}
+
+/*-------------------------------------------------------*/
+
+/*
+ * Max Width Media Queries
+ */
+
+@media (max-width: $large) {
+    h1 {
+        font-size: 25px;
+    }
+
+    h3, #titletext p {
+        font-size: 15px;
+    }
+    
+    hr {
+        margin: 5% 0;
+    }
+}
+
+@media (max-width: $medium) {
+    h1 {
+        font-size: 17px;
+    }
+    
+    h3, #titletext p {
+        font-size: 8px;
+    }
+}

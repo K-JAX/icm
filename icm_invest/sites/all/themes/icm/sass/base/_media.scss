@@ -1,0 +1,40 @@
+/*-------*/
+/* Media */
+/*-------*/
+
+img, media {
+    max-width: 100%;
+}
+
+iframe {
+    display: block;
+    margin: auto auto 4% auto;
+    text-align: center;
+}
+
+svg text {
+    max-width: 730px;
+    margin: auto auto 5px auto;
+    font-family: 'franklin-gothic-urw', sans-serif;
+    font-size: 5em;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    fill: #8faaa4;
+}
+
+object.svgobject {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-top: 69%;
+}
+
+.svgobject svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
