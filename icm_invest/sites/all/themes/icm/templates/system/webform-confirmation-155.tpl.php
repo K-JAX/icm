@@ -249,21 +249,16 @@ switch(true){
     break;
     
 }
-    
-    
-    
-
-            
 
 echo 'Based on your Time Horizon and Risk Tolerance you may belong in the ' . $strategy_info[$strategy_id]['title'] . '. <p>'. $strategy_info[$strategy_id]['description']  .'</p>';
 //print_r($dataArray);
-$strategy_id = 5;
-$horizon = 12;
+//$strategy_id = 10;
+//$horizon = 10;
 //int_r($submission); ?>
 
 <div style="position:relative">
-<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 10){echo(14+ 13/2.2*$horizon).'%';}else{echo'77%';}; ?>; left:<?php echo (10/2.6*$strategy_id+7).'%'; ?>;"  src="/sites/all/themes/icm/images/icmlogo.png" />
-<img src="/sites/all/themes/icm/images/risk-matrix.jpg" />
+<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 10){echo(12+ 13/2.2*$horizon).'%';}else{echo'72%';}; ?>; left:<?php echo (10/2.7*$strategy_id+12).'%'; ?>;"  src="/sites/all/themes/icm/images/icmlogo.png" />
+<img style="width:100%" src="/sites/all/themes/icm/images/risk-matrix.jpg" />
 </div>
 <p><em>All data presented in this matrix is prepared using information we believe to be correct at the time of production, but may be subject to revision and/or adjustment. Graphs, charts, formulas and other data should not be used alone to determine investment decisions without considering all disclosure information, offering documents and other relevant data. </em></p>
 
