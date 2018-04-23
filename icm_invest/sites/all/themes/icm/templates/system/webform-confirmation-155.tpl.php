@@ -45,35 +45,86 @@ $horizon = 0;
 $strategy_id = 0;
 $strategy_info = array( array( 
                       title => 'Fixed Income Completion', 
-                      description => 'The Fixed Income Completion investor profile describes conservative investors seeking safety of their investment capital and who rely on investments for the current income they provide.  The entire portfolio will be allocated to fixed income investments.  An investment in bonds has the risk of principal loss. The investor may find the "Capital Preservation & Inflation Hedge" investor profile fits their needs and risk tolerance as well.',
+                      description => '<p>The Fixed Income Completion investor profile describes conservative investors seeking safety of their investment capital and who rely on investments for the current income they provide. The entire portfolio will be allocated to fixed income investments. An investment in bonds has the risk of principal loss.</p>
+
+<p>The investor may find the following investor profile fits their needs and risk tolerance as well:</p>
+<ul><li>Capital Preservation & Inflation Hedge</li></ul>',
                     ),
                array( title => 'Capital Preservation & Inflation Hedge', 
-                      description => 'The Capital Preservative & Inflation Hedge investor profile describes conservative investors seeking safety of their investment capital and who rely on investments for the current income they provide. A small percentage of the portfolio will be allocated to equity investments to obtain some capital appreciation in the portfolio.  An investment in either equities or bonds has the risk of principal loss. The investor may find the "Fixed Income Completion" or "Income & Inflation Hedge" investor profiles fits their needs and risk tolerance as well.' ,
+                      description => 'The Capital Preservative & Inflation Hedge investor profile describes conservative investors seeking safety of their investment capital and who rely on investments for the current income they provide. A small percentage of the portfolio will be allocated to equity investments to obtain some capital appreciation in the portfolio. An investment in either equities or bonds has the risk of principal loss.</p> 
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul><li>Fixed Income Completion</li><li>Income & Inflation Hedge</li></ul>' ,
                     ),
                array( title => 'Income & Inflation Hedge', 
-                      description => 'The Income & Inflation Hedge investor profile describes conservative investors seeking safety of principal.  A majority of the portfolio will be allocated to income-generating investments.  However,  Income & Inflation Hedge investors also recognize the fact that a portion of their investment capital will also be allocated to equity investments to obtain higher returns in the portfolio. The investor may find the "Capital Preservative & Inflation Hedge" or "Defensive Growth" investor profiles fits their needs and risk tolerance as well.',
+                      description => '<p>The Income & Inflation Hedge investor profile describes conservative investors seeking safety of principal. A majority of the portfolio will be allocated to income-generating investments. However, Income & Inflation Hedge investors also recognize the fact that a portion of their investment capital will also be allocated to equity investments to obtain higher returns in the portfolio. </p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul><li>Capital Preservative & Inflation Hedge</li>
+<li>Defensive Growth</li></ul>',
                     ),
                 array( title => 'Defensive Growth', 
-                       description => 'The Defensive Growth investor profile describes investors seeking both current income and growth of principal, but who feel more comfortable with a portfolio that has a higher percentage of their assets allocated to income-generating investments.  An investment in either equities or bonds has the risk of principal loss.  The investor may find the  "Income & Inflation Hedge" or "Balanced Growth" investor profiles fits their needs and risk tolerance as well.',
+                       description => '<p>The Defensive Growth investor profile describes investors seeking both current income and growth of principal, but who feel more comfortable with a portfolio that has a higher percentage of their assets allocated to income-generating investments. An investment in either equities or bonds has the risk of principal loss. </p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul><li>Income & Inflation Hedge</li>
+<li>Balanced Growth</li>',
                      ),
                 
                       array( title => 'Balanced Growth/Tactical Income(TICE)', 
-                              description => 'The Balanced Growth investor profile describes investors seeking both growth of principal and current income in their portfolio.  The portfolio generally has an equal weighting in both bonds and equities.  Equity and bond investments are not guaranteed against the risk of principal loss. The investor may find the  "Defensive Growth", "Risk Controlled Growth", or "Tactical Income Strategy" (TICE) investor profiles fits their needs and risk tolerance as well.',
+                              description => '<p>The Balanced Growth investor profile describes investors seeking both growth of principal and current income in their portfolio.  The portfolio generally has an equal weighting in both bonds and equities.  Equity and bond investments are not guaranteed against the risk of principal loss.</p> 
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul>
+<li>Defensive Growth</li>
+<li>Risk Controlled Growth</li>
+<li>Tactical Income Strategy (TICE)</li></ul>',
                     ),
                     array( title => 'Risk Controlled Growth/TICE', 
-                            description => 'The Risk Controlled Growth investor profile describes investors seeking a reasonable rate of return, who desire an emphasis on domestic and international equity investments.  A portion of the investments will be invested in fixed income investments in order to help potentially balance the volatility of stock market fluctuations.  Equity and bond investments are not guaranteed against the risk of principal loss. The investor may find the  "Balanced Growth", "Conservative Capital Appreciation", or "Tactical Income Strategy" (TICE) investor profiles fits their needs and risk tolerance as well. ',
+                            description => '<p>The Risk Controlled Growth investor profile describes investors seeking a reasonable rate of return, who desire an emphasis on domestic and international equity investments. A portion of the investments will be invested in fixed income investments in order to help potentially balance the volatility of stock market fluctuations. Equity and bond investments are not guaranteed against the risk of principal loss. </p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul><li>Balanced Growth</li>
+<li>Conservative Capital Appreciation</li>
+<li>Tactical Income Strategy (TICE)</li></ul> ',
                           ),
                       array( title => 'Conservative Capital Appreciation/TICE', 
-                              description => 'The Conservative Capital Appreciation investor profile describes investors seeking a moderate rate of return from their investment portfolio.  The portfolio will have a higher weighting in both domestic and international equity investments.  These investors are comfortable with fluctuations in the equity markets and are willing to assume the possibility of loss of principal that goes along with equity and bond investments. The investor may find the  "Risk Controlled Growth", "Moderate Capital Appreciation", or "Tactical Income Strategy" (TICE) investor profiles fits their needs and risk tolerance as well. ',
+                              description => '<p>The Conservative Capital Appreciation investor profile describes investors seeking a moderate rate of return from their investment portfolio. The portfolio will have a higher weighting in both domestic and international equity investments. These investors are comfortable with fluctuations in the equity markets and are willing to assume the possibility of loss of principal that goes along with equity and bond investments.</p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul>
+<li>Risk Controlled Growth</li>
+<li>Moderate Capital Appreciation</li>
+<li>Tactical Income Strategy (TICE)</li></ul>',
                             ),
                     array( title => 'Moderate Capital Appreciation/TICE', 
-                            description => 'The Moderate Capital Appreciation investor profile describes moderately aggressive investors, seeking a high rate of return from their investment portfolios.  This portfolio will have a higher percentage of its assets in volatile equity investments.  Investors are willing to assume fluctuations in their portfolios including possible loss of principal in exchange for higher capital appreciation potential. The investor may find the  "Conservative Capital Appreciation", "Aggressive Capital Appreciation", or "Tactical Income Strategy" (TICE) investor profiles fits their needs and risk tolerance as well.',
+                            description => '<p>The Moderate Capital Appreciation investor profile describes moderately aggressive investors, seeking a high rate of return from their investment portfolios. This portfolio will have a higher percentage of its assets in volatile equity investments. Investors are willing to assume fluctuations in their portfolios including possible loss of principal in exchange for higher capital appreciation potential.</p> 
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul>
+<li>Conservative Capital Appreciation</li>
+<li>Aggressive Capital Appreciation</li>
+<li>Tactical Income Strategy (TICE)</li>
+</ul>
+',
                           ),
                       array( title => 'Aggressive Capital Appreciation/TICE', 
-                              description => 'The Aggressive Capital Appreciation investor profile describes aggressive investors seeking a higher rate of return from their investment portfolios.  These investors are comfortable with a portfolio that has a majority of its investments in more volatile equity investments.  They are willing to assume the risk of principal loss associated with this allocation in exchange for the opportunity to achieve a higher rate of return. The investor may find the  "Moderate Capital Appreciation", "Equity Completion" or "Tactical Income Strategy" (TICE) investor profiles fits their needs and risk tolerance as well.',
+                              description => '<p>The Aggressive Capital Appreciation investor profile describes aggressive investors seeking a higher rate of return from their investment portfolios. These investors are comfortable with a portfolio that has a majority of its investments in more volatile equity investments. They are willing to assume the risk of principal loss associated with this allocation in exchange for the opportunity to achieve a higher rate of return. </p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul>
+<li>Moderate Capital Appreciation</li>
+<li>Equity Completion</li>
+<li>Tactical Income Strategy (TICE)</li>
+</ul>
+',
                             ),
                         array( title => 'Equity Completion/TICE', 
-                                description => 'The Equity Completion investor profile describes very aggressive investors seeking the highest possible rate of return.  The portfolio will have substantially all of its principal allocated to equity investments.  These investors are willing to assume the possibility of high volatility, especially in the short-term, and loss of principal in exchange for the opportunity to achieve the maximum rate of return. The investor may find the  "Aggressive Capital Appreciation" or "Tactical Income Strategy" (TICE)  investor profiles fits their needs and risk tolerance as well.',
+                                description => '<p>The Equity Completion investor profile describes very aggressive investors seeking the highest possible rate of return.  The portfolio will have substantially all of its principal allocated to equity investments.  These investors are willing to assume the possibility of high volatility, especially in the short-term, and loss of principal in exchange for the opportunity to achieve the maximum rate of return.</p>
+
+<p>The investor may find the following investor profiles fit their needs and risk tolerance as well:</p>
+<ul><li>Aggressive Capital Appreciation</li>
+<li>Tactical Income Strategy (TICE)</li></ul>',
                               ),
              );
 
@@ -100,8 +151,8 @@ foreach ($questions as $question) {
         
 }
 
-// echo 'Horizon Score: ' . $horizon . '<br />';
-// echo 'Risk Score: ' . $sum . '<br />';
+ // echo 'Horizon Score: ' . $horizon . '<br />';
+ // echo 'Risk Score: ' . $sum . '<br />';
 
 switch(true){
     case ($horizon >= 0 && $horizon <= 3):
@@ -250,16 +301,54 @@ switch(true){
     
 }
 
-echo 'Based on your Time Horizon and Risk Tolerance you may belong in the ' . $strategy_info[$strategy_id]['title'] . '. <p>'. $strategy_info[$strategy_id]['description']  .'</p>';
-//print_r($dataArray);
-//$strategy_id = 10;
-//$horizon = 10;
-//int_r($submission); ?>
+// $strategy_id = 10;
+// $horizon = 3;
+?>
 
-<div style="position:relative">
-<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 10){echo(12+ 13/2.2*$horizon).'%';}else{echo'72%';}; ?>; left:<?php echo (10/2.7*$strategy_id+12).'%'; ?>;"  src="/sites/all/themes/icm/images/icmlogo.png" />
+<style>
+    .l-main{
+        padding-top:0%;
+    }
+    #right-copy{
+        font-size:18px;
+    }
+    #risk-matrix{
+        position:relative;
+    }
+    p{
+        color:#000;
+    }
+    @media screen and (min-width: 1250px){
+        #right-copy{
+            width:35%;
+            display:inline-block;
+            margin-left:20px;
+            margin-top:50px;
+        }
+        #risk-matrix{
+            width:60%;
+            display:inline-block;
+            vertical-align:top;
+        }
+    }
+    
+    
+</style>
+
+<?php // print_r($strategy_id); ?>
+
+
+<div id="risk-matrix">
+<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 1){echo'17%';}elseif($horizon <= 10){echo(12+ 13/2.2*$horizon).'%';}else{echo'72%';}; ?>; left:<?php echo (10/2.7*$strategy_id+12).'%'; ?>;"  src="/sites/all/themes/icm/images/icmlogo.png" />
 <img style="width:100%" src="/sites/all/themes/icm/images/risk-matrix.jpg" />
 </div>
+
+<div id="right-copy">
+<p>Based on your Time Horizon and Risk Tolerance you may belong in the: <br /><strong><?php echo $strategy_info[$strategy_id-1]['title']; ?></strong>. <br />
+<?php echo $strategy_info[$strategy_id-1]['description']; ?>
+
+</div>
+
 <p><em>All data presented in this matrix is prepared using information we believe to be correct at the time of production, but may be subject to revision and/or adjustment. Graphs, charts, formulas and other data should not be used alone to determine investment decisions without considering all disclosure information, offering documents and other relevant data. </em></p>
 
 
