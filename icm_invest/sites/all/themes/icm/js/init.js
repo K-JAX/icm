@@ -1,21 +1,5 @@
 jQuery( function( $ ) {
     
-    // if(!jQuery.cookie('visits')){
-    //     jQuery.cookie('visits',1, {expires: 30});
-    // }
-    // jQuery.cookie('visits', (parseInt(jQuery.cookie('visits')) + 1), {expires: 30})
-    // will expire after 30 days
-    
-    var overlayContact = function(){
-        if (parseInt(jQuery.cookie('visits')) > 2) {
-            $('.seemore, .l-footer').show();
-            $('text').attr("filter","none");
-            $('#topimage').attr("filter","none");
-            $('#engage, #more span').hide();
-            greenLight = true;
-        }
-    };
-    setTimeout(overlayContact, 180);
     
     
     $('#array div div').click(function() {

@@ -20,6 +20,88 @@
     *zoom: 1;
 }
 
+#block-formblock-user-register{
+      position:fixed;
+      top:10%;
+      width:90%;
+      background:#FFF;
+      padding:10px 40px;
+      z-index:50000;
+      left:0;
+      right:0;
+      margin:auto;
+      max-width:750px;
+      max-height:80%;
+      overflow:auto;
+      display:none;
+}
+
+.user-register-form{
+      .description{
+            line-height:15px;
+            margin-top:10px;
+      }
+      legend{
+            font-size:20px;
+      }
+      fieldset{
+            margin:0;
+      }
+      
+      .form-item-user-roles{
+            label, select{
+            display:inline-block;
+            }
+            
+            label{
+                  margin-right:20px;
+            }
+      }
+      
+      #edit-account{
+            .form-item{
+                display:inline-block;
+                width:45%;  
+                vertical-align:top; 
+                &:first-child{
+                      margin-right:4%;
+                }
+              }
+      }
+      
+      .field-name-field-first-name, .field-name-field-last-name{
+            display:inline-block;
+            width:30%;  
+            vertical-align:top; 
+            margin-right:4%;
+            
+      }
+
+      .field-name-field-state{
+            width:25%;  
+            display:inline-block;
+            
+      }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 10000;
+    display:none;
+}
+
+
+
+
 article {
     position: relative;
     z-index: 10;
@@ -141,6 +223,9 @@ section {
 audio {
     max-width: 100%;
 }
+
+
+
 
 /*-------------------------------------------------------*/
 
