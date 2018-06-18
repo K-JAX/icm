@@ -1,8 +1,6 @@
 jQuery( function( $ ) {
-    
-    
-    
-    $('#array div div').click(function() {
+
+   $('#array div div').click(function() {
         $(this).addClass('active');
     });
     
