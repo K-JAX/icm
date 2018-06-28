@@ -229,10 +229,11 @@ hr {
   right: 0;
   min-height: 90px;
   padding: 25px 10px 20px;
-  background: #FFF;
+  background: #333;
+  color: #FFF;
   text-align: center; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003109}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003110}}
 #overlay {
   position: fixed;
   top: 0;
@@ -247,44 +248,44 @@ hr {
   z-index: 10000;
   display: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003128}}
 article {
   position: relative;
   z-index: 10; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003133}}
 section {
   overflow: hidden;
   width: 100%;
   background-size: 99.999% auto;
   background-repeat: no-repeat; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003140}}
 .sectionlimit {
   position: relative;
   clear: both;
   z-index: 10;
   max-width: 950px;
   margin: auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003146}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003147}}
   .sectionlimit p {
     font-family: 'Open Sans', sans-serif; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003150}}
     .sectionlimit p span {
       font-size: 19px;
       letter-spacing: 0.06em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003157}}
 .text-right, .text-left {
   vertical-align: top;
   display: inline-block;
   width: 48%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003161}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003162}}
   .text-right h2, .text-right p, .text-left h2, .text-left p {
     max-width: 355px;
     margin: 0 auto;
     text-align: justify; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003167}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003168}}
   .text-right h2, .text-left h2 {
     position: relative;
     left: 0;
@@ -294,66 +295,66 @@ section {
     font-weight: 100;
     letter-spacing: 0.3em;
     text-transform: uppercase; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003178}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003179}}
   .text-right p, .text-left p {
     margin-bottom: 15px;
     font-size: 14px;
     letter-spacing: 0.1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003186}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003187}}
 .text-center p, .text-left p {
   font-family: 'adobe-caslon-pro', serif !important;
   font-size: 20px;
   line-height: 30px;
   text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003192}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003193}}
   .text-center p svg, .text-left p svg {
     height: 9px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003196}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003197}}
   .text-center p span, .text-left p span {
     font-family: "Open Sans", sans-serif !important;
     font-size: 23px;
     font-style: normal;
     font-weight: 600;
     text-transform: uppercase; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003203}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003204}}
     .text-center p span.case, .text-left p span.case {
       text-transform: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003210}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003211}}
 .text-right {
   padding-left: 18%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003213}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003214}}
   .text-right h2, .text-right p {
     color: #454545; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003218}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003219}}
 .text-center p {
   max-width: 355px;
   margin: 0 auto 15px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003223}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003224}}
 #skrollr-body {
   position: relative;
   overflow: hidden; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003228}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003229}}
 .hide {
   display: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003232}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003233}}
 .Layer_1 {
   width: 10%;
   margin-bottom: 3%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003237}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003238}}
 .divider {
   fill: #000; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003240}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003241}}
   .divider.white {
     fill: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003245}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003246}}
 audio {
   max-width: 100%; }
 
@@ -362,7 +363,7 @@ audio {
  * Min Width Media Queries
  */
 @media (min-width: 1070px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003259}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003260}}
   .text-center p {
     max-width: 620px; } }
 /*-------------------------------------------------------*/
@@ -370,29 +371,29 @@ audio {
  * Max Width Media Queries
  */
 @media (max-width: 868px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003272}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003273}}
   .text-center p, .text-left p {
     font-size: 13px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003275}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003276}}
     .text-center p span, .text-left p span {
       font-size: 10px; } }
 @media (max-width: 568px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003283}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003284}}
   .blank {
     display: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003287}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003288}}
   .text-left, .text-right {
     width: 100%; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003290}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003291}}
     .text-left p, .text-right p {
       max-width: 230px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003296}}
   .text-right {
     padding-left: 0%; } }
 @media (max-width: 420px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003301}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/derek\.watterson\/Documents\/git\/icm\/icm_invest\/sites\/all\/themes\/icm\/sass\/base\/_utility\.scss}line{font-family:\00003302}}
   .text-center {
     padding: 0 5%; } }
 /*------------------*/
