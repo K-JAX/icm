@@ -487,17 +487,31 @@ function letsGo(event){
 					if ( ! pathDone ) {
 						pathDone = true;
 						// do stuff
-						jQuery('.anumerate').each(function () {
-							var $this = jQuery(this);
-							$this.show();
-							jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
-								duration: 2000,
-								easing: 'swing',
-								step: function () {
-								  $this.text(commafy((Math.ceil(this.Counter))));
-								}
-							});
-						});
+                        		jQuery('.anumerate').each(function () {
+                        			jQuery(this).show();
+                        		});
+                                    jQuery('.counter').each(function() {
+                  		   	   var $this = $(this),
+                  		   	   countTo = $this.attr('data-count');
+
+                  		   	   $({ countNum: $this.text()}).animate({
+                  		   	     countNum: countTo
+                  		   	   },
+                  		   	   {
+                  		   	     duration: 2800,
+                  		   	     easing:'linear',
+                  		   	     step: function() {
+                  		   	       $this.text(commafy(Math.floor(this.countNum)));
+                  		   	     },
+                  		   	     complete: function() {
+                  		   	       $this.text(commafy(this.countNum));
+                  		   	     }
+
+                  		   	});  
+                     	         });
+                                    
+                                    
+                                
 					}
 				}
 			}
