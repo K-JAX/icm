@@ -1,0 +1,1 @@
+window.flipbook_pages = [ {src: 'images/pages/page1.jpg', w: 1415, h: 1926},  {src: 'images/pages/page2.jpg', w: 1488, h: 1926},  {src: 'images/pages/page3.jpg', w: 1488, h: 1926},  {src: 'images/pages/page4.jpg', w: 1488, h: 1926},  {src: 'images/pages/page5.jpg', w: 1466, h: 1926},  {src: 'images/pages/page6.jpg', w: 1488, h: 1926}, ];
