@@ -39,20 +39,18 @@ module.exports = function (grunt) {
       }
     },
 
-    compass: {
-      options: {
-        config: 'config.rb',
-        bundleExec: true,
-        force: true
-      },
-      dev: {
-        options: {
-          environment: 'development'
+    compass: {                  // Task
+      dist: {                   // Target
+        options: {              // Target options
+          sassDir: 'sass',
+          cssDir: 'css',
+          environment: 'production'
         }
       },
-      dist: {
+      dev: {                    // Another target
         options: {
-          environment: 'production'
+          sassDir: 'sass',
+          cssDir: 'css'
         }
       }
     },
@@ -61,14 +59,14 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['js/{,**/}*.js', '!js/{,**/}*.min.js']
+      all: ['js/{,**/}*.js', '!js/{,**/}*.min.js'] 
     },
 
     uglify: {
       dev: {
         options: {
           mangle: false,
-          compress: false,
+          // compress: false,
           beautify: true
         },
         files: [{
@@ -88,7 +86,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           mangle: true,
-          compress: true
+          // compress: true
         },
         files: [{
           expand: true,
@@ -116,7 +114,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'uglify:dist',
     'compass:dist',
-    'jshint'
+    // 'jshint'
   ]);
 
 };
