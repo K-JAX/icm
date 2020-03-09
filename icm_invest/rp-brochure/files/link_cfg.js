@@ -1,1 +1,0 @@
-window.link_options = {color: "#0000ff", fadeIn: false, visible: true, "background-color": "#a6a6a6", "background-image": ""};
