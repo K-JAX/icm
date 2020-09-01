@@ -186,17 +186,17 @@ function cluster_svg($id, $style) {
 							stroke-miterlimit="10"
 							data-bottom-top="stroke-dashoffset:820; stroke-dasharray:820"
 							data-center="stroke-dashoffset:300; stroke-dasharray:0"
-							d="M 14.5 21.5 L 14.5 293.5 L 68.5 293.5 L 68.5 21.5 L 14.5 21.5 M 100.5 205.5 L 100.5 293.5 L 148.5 293.5 L 148.5 205.5 L 100.5 205.5"
+							d="M 14.5 91.5 L 14.5 293.5 L 68.5 293.5 L 68.5 91.5 L 14.5 91.5 M 100.5 182.5 L 100.5 293.5 L 148.5 293.5 L 148.5 182.5 L 100.5 182.5"
 						/>
 					</svg>
 					<p>
-						S&amp;P 500: 11.1%<br> 
+						S&amp;P 500: 6.06%<br> 
 						Vs<br>
-						Stock Fund Investor: 3.7%
+						Average Equity Fund Investor: 4.25%
 					</p>
 				</div>
 
-				<div id="twomorecharts">
+				<div id="twomorecharts" style="margin-top:120px;">
 					<svg version="1.1"  width="170" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 149.12 76.83" enable-background="new 0 0 149.12 76.83" xml:space="preserve">
 						<path
 							style="stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:300;stroke-dashoffset:0; stroke:#FFF; fill:none;"
@@ -213,13 +213,14 @@ function cluster_svg($id, $style) {
 							d= "M 4.78 75.34 L 66.28 61.44 L 103.54 24.89 L 148.89 9.9"
 						/> 
 					</svg>
-					<p>Small endowments underperformed <br>by 1.5% &ndash; 2%</p>
+					<br/>
+					<p style="margin-top: 20px;">Small endowments underperformed <br>by 0.50% &ndash; 1.30% annually over the prior 10 years.</p>
 				</div>
 				
 				<div id="chartssource">
 					<p>
-						S&P/Individual Investor Returns – Dalbar QAIB Study 2014,  Data 30 Years Ending 12/2013<br />
-						Endowment Results – 2014 Nacubo-Commonfund Endowment Study
+						S&P/Individual Investor Returns – DALBAR QAIB Study 2020 (20 Years Ending 12/31/2019)<br />
+						Endowment Results – NACUBO-TIAA Study of Endowments (Fiscal year ending 6/30/2019)
 					</p>
 				</div>
 
@@ -347,7 +348,7 @@ function cluster_svg($id, $style) {
 			</div>
 		
 			<div class="text-center lincoln">
-				<p>"It is said an Eastern monarch once charged his wise men to invent him a sentence, to be ever in view, and which should be true and appropriate in all times and situations. They presented him the words: 'And this, too, shall pass away.' How much it expresses! How chastening in the hour of pride!—how consoling in the depths of affliction! 'And this, too, shall pass away.' And yet let us hope it is not quite true."</p>
+				<p>"It is said an Eastern monarch once charged his wise men to invent him a sentence, to be ever in view, and which should be true and appropriate in all times and situations. They presented him the words: 'And this, too, shall pass away.' How much it expresses! How chastening in the hour of pride!—how consoling in the depths of affliction! 'And this, too, shall pass away.' And yet let us hope it is not quite true." </p>
 				<p>-ABRAHAM LINCOLN</p>
 			</div>
 			
@@ -476,7 +477,7 @@ function cluster_svg($id, $style) {
 	<section id="philosophy">
 		<div class="sectionlimit">
 			<div class="text-center">
-				<p><a class="calloutbox laylay" href="http://app.brainshark.com/icm-institutional/vu?pi=zHSzCJdhVzFlJZz0&intk=446572483&advisorid=3000550"><span>Watch</span> a <span>Presentation</span> on the <span class="case">iCM</span> <span>investment Philosophy</span></a></p>
+				<p><a class="calloutbox laylay" href="https://app.brainshark.com/icm-institutional/vu?pi=zHSzCJdhVzFlJZz0&intk=446572483&advisorid=3000550"><span>Watch</span> a <span>Presentation</span> on the <span class="case">iCM</span> <span>investment Philosophy</span></a></p>
 			</div>
 		</div>
 	</section>
