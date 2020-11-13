@@ -13,5 +13,9 @@
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "scripts": {
+    "start": "",
+    "build": "grunt build --gruntfile drupal/sites/all/icm/Gruntfile.js"
   }
 }

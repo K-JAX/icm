@@ -1,0 +1,54 @@
+version: '3.1'
+
+services:
+    drupal:
+        image: drupal:7.69
+        # container_name: icm
+        volumes:
+            - ./drupal:/var/www/html:cached
+            - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+        depends_on:
+            - mysql
+        environment:
+            DRUPAL_DATABASE_HOST: icm-mysql
+            DRUPAL_DATABASE_PORT: 3306
+            DRUPAL_DATABASE_NAME: blugiant_icm_inv
+            DRUPAL_DATABASE_USERNAME: blugiant_icm_inv
+            DRUPAL_DATABASE_PASSWORD: RxnweRFv
+            # Generate a salt with: `php -r "echo bin2hex(random_bytes(25));"`
+            DRUPAL_HASH_SALT: db0de8a1556aa5348f87cfc950cd2c9641713d46e9412c8b05
+        ports:
+            - "80:80"
+        restart: always
+    # Uncomment the volumes line and set to the local path of your Drupal
+    # installation, if you need to work with a local codebase.
+    # volumes:
+    #   - ~/Sites/drupal-container:/var/www/html:rw,delegated
+
+    mysql:
+        image: mysql:5.7
+        container_name: icm-mysql
+        # volumes:
+            # - ./config/mysql/config:/etc/mysql/conf.d
+            # - ./config/mysql/mysql-dump:/var/lib/mysql
+        environment:
+          MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+          MYSQL_DATABASE: blugiant_icm_inv
+          MYSQL_USER: blugiant_icm_inv
+          MYSQL_PASSWORD: RxnweRFv
+        ports:
+          - "3306:3306"
+    pma:
+        image: phpmyadmin/phpmyadmin
+        volumes:
+            - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: blugiant_icm_inv
+            PMA_PASSWORD: RxnweRFv
+            PHP_UPLOAD_MAX_FILESIZE: 1G
+            PHP_MAX_INPUT_VARS: 1G
+        depends_on:
+            - mysql
+        ports:
+            - "8001:8001"
