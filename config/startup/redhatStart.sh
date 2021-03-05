@@ -1,6 +1,6 @@
 #!/bin/bash
 
-podman network create --subnet 192.6.0.1/16 newicmnet
+# podman network create --subnet 192.6.0.1/16 newicmnet
 
 # podman pod create --name=icm --share cgroup,ipc,uts
 
@@ -13,7 +13,7 @@ podman run \
     -e MYSQL_USER=blugiant_icm_inv \
     -e MYSQL_PASSWORD=RxnweRFv \
     --add-host icm-mysql:127.0.0.1 \
-    -p 3306:3306 \
+    -p 3307:3307 \
     -d mysql:5.7
 
 

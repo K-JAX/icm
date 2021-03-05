@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+    icm-mysql:
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
+            - MYSQL_DATABASE=blugiant_icm_inv
+            - MYSQL_USER=blugiant_icm_inv
+            - MYSQL_PASSWORD=RxnweRFv
+        image: mysql:5.7
+        volumes:
+            - ./config/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
+        ports:
+            - "3307:3307"
+        restart: always
+        networks:
+            - icm
+    drupal:
+        depends_on: 
+            - icm-mysql
+        volumes:
+            - ./drupal:/var/www/html
+            - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+        ports:
+            - "8080:80"
+        environment:
+            - DRUPAL_DATABASE_HOST=icm-mysql
+            - DRUPAL_DATABASE_PORT=3306
+            - DRUPAL_DATABASE_NAME=blugiant_icm_inv
+            - DRUPAL_DATABASE_USERNAME=blugiant_icm_inv
+            - DRUPAL_DATABASE_PASSWORD=RxnweRFv
+        image: drupal:7.69
+        restart: always
+        networks:
+            - icm
+    # phpmyadmin:
+    #     depends_on: 
+    #         - icm-mysql
+    #     networks:
+    #         - icm
+    #     environment:
+    #         - PMA_HOST=icm-mysql
+    #         - PMA_USER=blugiant_icm_inv
+    #         - PMA_PASSWORD=RxnweRFv
+    #         - PHP_UPLOAD_MAX_FILESIZE=1G
+    #         - PHP_MAX_INPUT_VARS=1
+    #     ports:
+    #         - "8001:80"
+    #     image: phpmyadmin/phpmyadmin
+    #     restart: always
+    #     networks:
+    #         - icm
+networks:
+  icm:
