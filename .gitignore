@@ -1,12 +1,20 @@
 # Ignore configuration files that may contain sensitive information.
-drupal/sites/*/settings*.php
+drupal*/sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
-drupal/sites/*/files
-drupal/sites/*/private
+drupal*/sites/*/files
+drupal*/sites/*/private
+drupal/web/sites/*/files
+drupal/web/sites/*/private
 .sass-cache/*
 
 node_modules/
 
 backup/
 
+vendor/
+
+data/
+data-old/
+
+migrate_tools/
