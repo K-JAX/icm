@@ -1,0 +1,13 @@
+better_emails.config_adjustments:
+  title: 'Better Emails options'
+  route_name: better_emails.options_form
+  description: 'Adjustments for Better Emails'
+  parent: system.admin_config_system
+  weight: 100
+# Emails menu items definition
+entity.emails.collection:
+  title: 'Emails'
+  route_name: entity.emails.collection
+  description: 'List Emails (bundles)'
+  parent: system.admin_structure
+  weight: 99

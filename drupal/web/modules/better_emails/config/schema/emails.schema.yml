@@ -1,0 +1,15 @@
+better_emails.emails.*:
+  type: config_entity
+  label: 'Emails config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    description:
+      type: description
+      label: 'Description'
+    uuid:
+      type: string

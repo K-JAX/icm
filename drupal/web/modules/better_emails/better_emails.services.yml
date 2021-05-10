@@ -1,0 +1,11 @@
+services:
+  logger.channel.better_emails:
+    parent: logger.channel_base
+    arguments: ['better_emails']
+
+  ic_mails.route_subscriber:
+    class: Drupal\better_emails\Routing\RouteSubscriber
+    arguments:
+      - '@config.factory'
+    tags:
+      - { name: event_subscriber, priority: 10 }

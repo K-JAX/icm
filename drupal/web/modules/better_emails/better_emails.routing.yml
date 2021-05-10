@@ -1,0 +1,24 @@
+
+better_emails.better_emails_controller_adjustmentsAction:
+  path: '/admin/config/system/better_emails'
+  defaults:
+    _controller: '\Drupal\better_emails\Controller\BetterEmailsController::adjustmentsAction'
+    _title: 'Better Emails Adjustments'
+  requirements:
+    _permission: 'access content'
+
+better_emails.options_form:
+  path: '/admin/config/system/better_emails/options'
+  defaults:
+    _form: '\Drupal\better_emails\Form\OptionsForm'
+    _title: 'OptionsForm'
+  requirements:
+    _access: 'TRUE'
+
+better_emails.email_preview:
+  path: '/admin/config/system/better_emails/email_preview/{email_id}'
+  defaults:
+    _controller: '\Drupal\better_emails\Controller\BetterEmailsController::emailPreviewAction'
+    _title: 'Preview Email'
+  requirements:
+    _permission: 'access content'

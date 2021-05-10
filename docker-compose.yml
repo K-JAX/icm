@@ -9,9 +9,9 @@ services:
             - MYSQL_PASSWORD=${PW}
         image: mysql:5.7
         volumes:
-            # - ./data-old:/var/lib/mysql:Z
+            - ./data-old:/var/lib/mysql:Z
             # - ./data-old:/docker-entrypoint-initdb.d/1.sql
-            - ./config-old/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
+            # - ./config-old/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
         ports:
             - "3307:3307"
         restart: always
@@ -66,9 +66,9 @@ services:
         networks:
             - icm
     icm-drupal:
-        depends_on: 
+        depends_on:
             - icm-mysql
-        build: ./config
+        # build: ./config
         volumes:
             - ./drupal/web:/var/www/html
             - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
@@ -80,7 +80,7 @@ services:
             - DRUPAL_DATABASE_NAME=${DB}
             - DRUPAL_DATABASE_USERNAME=${DB}
             - DRUPAL_DATABASE_PASSWORD=${PW}
-        image: drupal:8.9.14-apache
+        image: drupal:9.1-apache
         restart: always
         networks:
             - icm

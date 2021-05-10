@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains better_emails.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function better_emails_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the better_emails module.
+    case 'help.page.better_emails':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Improvements for Core Emails') . '</p>';
+      return $output;
+
+    default:
+  }
+}

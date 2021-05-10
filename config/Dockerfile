@@ -1,7 +1,23 @@
-FROM drupal:8.9.14-apache
+# FROM drupal:8.9.14-apache
 
-# Replacing the existing drush since it seems to be causing problems right now.
-RUN rm -rf /usr/local/bin/drush
-RUN composer global require drush/drush
-RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
-RUN drush --version
+# # setup openssh-server for sftp
+# RUN apt-get update && apt-get install -y openssh-server
+# RUN mkdir /var/run/sshd
+# RUN echo 'root:WRITECUSTOMPASSWORDHERE' | chpasswd
+# RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# # SSH & Keeping Session Alive 
+# RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+# ENV NOTVISIBLE "in users profile"
+# RUN echo "export VISIBLE=now" >> /etc/profile
+
+# EXPOSE 22
+# CMD ["/usr/sbin/sshd", "-D"]
+
+
+# # Replacing the existing drush since it seems to be causing problems right now.
+# RUN rm -rf /usr/local/bin/drush
+# RUN composer global require drush/drush
+# RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
+# RUN drush --version

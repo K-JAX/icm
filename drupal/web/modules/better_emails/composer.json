@@ -1,0 +1,13 @@
+{
+    "name": "better_emails",
+    "type": "drupal-module",
+    "description": "Improvements for Core Emails",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/better_emails",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/better_emails",
+        "source": "http://cgit.drupalcode.org/better_emails"
+    }
+}
