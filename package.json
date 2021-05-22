@@ -1,21 +1,26 @@
 {
-  "name": "nstar",
-  "version": "1.0.0",
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "^1.0.4",
-    "grunt-compass": "^0.3.9",
-    "grunt-contrib-compass": "^1.1.1",
-    "grunt-contrib-jshint": "^2.1.0",
-    "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-shell": "^3.0.1"
+    "snowpack": "^3.5.1"
   },
-  "engines": {
-    "node": ">=0.8.0"
-  },
+  "name": "icm-drupal-theme",
+  "description": "*<span style=\"color: gray;\">Drupal version 9.1</span>*",
+  "version": "2.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "",
-    "build": "grunt build --gruntfile drupal/sites/all/icm/Gruntfile.js"
+    "watch": "npx snowpack build --watch --config drupal/web/themes/custom/icm/snowpack.config.js",
+    "build": "npx snowpack build --config drupal/web/themes/custom/icm/snowpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/ddubbua/icm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/ddubbua/icm/issues"
+  },
+  "homepage": "https://bitbucket.org/ddubbua/icm#readme",
+  "dependencies": {
+    "@snowpack/plugin-sass": "^1.4.0"
   }
 }

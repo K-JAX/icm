@@ -68,7 +68,7 @@ services:
     icm-drupal:
         depends_on:
             - icm-mysql
-        # build: ./config
+        build: ./config
         volumes:
             - ./drupal/web:/var/www/html
             - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini

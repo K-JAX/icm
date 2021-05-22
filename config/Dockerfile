@@ -1,4 +1,4 @@
-# FROM drupal:8.9.14-apache
+FROM drupal:9.1-apache
 
 # # setup openssh-server for sftp
 # RUN apt-get update && apt-get install -y openssh-server
@@ -17,7 +17,7 @@
 
 
 # # Replacing the existing drush since it seems to be causing problems right now.
-# RUN rm -rf /usr/local/bin/drush
-# RUN composer global require drush/drush
-# RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
-# RUN drush --version
+RUN rm -rf /usr/local/bin/drush
+RUN composer global require drush/drush
+RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
+RUN drush --version

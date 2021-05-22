@@ -3,6 +3,9 @@ type: theme
 description: "Theme used by iCM company for main presentation of the site icm-invest.com."
 core_version_requirement: ^9
 base theme: classy
+libraries:
+  - icm/global-styling
+  - icm/global-scripts
 regions:
   header: Header
   content: Content
