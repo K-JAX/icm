@@ -6,7 +6,21 @@ module.exports = {
   mount: {
     "src/": "/",
   },
-  plugins: ["@snowpack/plugin-sass"],
+  plugins: [
+    [
+      "@snowpack/plugin-babel",
+      {
+        input: [".js", ".mjs", ".jsx", ".ts", ".tsx"],
+        transformOptions: {
+          presets: ["@babel/preset-env"],
+          targets: {
+            browsers: "> 0.00%",
+          },
+        },
+      },
+    ],
+    ["@snowpack/plugin-sass", { style: "compressed" }],
+  ],
   packageOptions: {
     /* ... */
   },
@@ -16,5 +30,10 @@ module.exports = {
   buildOptions: {
     out: "dist/",
     /* ... */
+  },
+  optimize: {
+    minify: true,
+    sourceMap: "external",
+    targets: "es2017",
   },
 };
