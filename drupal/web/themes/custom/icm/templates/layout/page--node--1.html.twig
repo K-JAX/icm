@@ -42,46 +42,41 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">	
 
-  <header role="banner">
-    {{ page.header }}
-  </header>
+<div class="layout-container container">
+	<header role="banner" class="row">
+		{{ page.header }}
+	</header>
 
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
 
-  {{ page.breadcrumb }}
+	<main role="main">
+		<a id="main-content" tabindex="-1"></a>
+		{# link is in html.html.twig #}
 
-  {{ page.highlighted }}
+		<div class="layout-content container">
+			{{ page.content }}
+		</div>
+		{# /.layout-content #}
 
-  {{ page.help }}
+		{% if page.sidebar_first %}
+			<aside class="layout-sidebar-first" role="complementary">
+				{{ page.sidebar_first }}
+			</aside>
+		{% endif %}
 
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+		{% if page.sidebar_second %}
+			<aside class="layout-sidebar-second" role="complementary">
+				{{ page.sidebar_second }}
+			</aside>
+		{% endif %}
 
-    <div class="layout-content">
-      {{ page.content }}
-    </div>{# /.layout-content #}
+	</main>
 
-    {% if page.sidebar_first %}
-      <aside class="layout-sidebar-first" role="complementary">
-        {{ page.sidebar_first }}
-      </aside>
-    {% endif %}
+	{% if page.footer %}
+		<footer role="contentinfo">
+			{{ page.footer }}
+		</footer>
+	{% endif %}
 
-    {% if page.sidebar_second %}
-      <aside class="layout-sidebar-second" role="complementary">
-        {{ page.sidebar_second }}
-      </aside>
-    {% endif %}
-
-  </main>
-
-  {% if page.footer %}
-    <footer role="contentinfo">
-      {{ page.footer }}
-    </footer>
-  {% endif %}
-
-</div>{# /.layout-container #}
+</div>
+{# /.layout-container #}
