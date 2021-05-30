@@ -24,31 +24,74 @@
   We call a macro which calls itself to render the full tree.
   @see https://twig.symfony.com/doc/1.x/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0) }}
-{% macro menu_links(items, attributes, menu_level) %}
+{{ menus.menu_links(items, attributes, 0, logged_in) }}
+
+{% macro menu_links(items, attributes, menu_level, logged_in) %}
+
 	{% import _self as menus %}
 	{% if items %}
+
+
 		{% if menu_level == 0 %}
-			<ul{{attributes.addClass(['menu','navbar'])}}>
+
+			<button class="menu-burger" onclick="activate(this)" aria-label="Main menu" aria-expanded="false">
+				<div class="bread"></div>
+				<div class="ham"></div>
+				<div class="cheese"></div>
+			</button>
+
+			{% set ulClasses = [
+				'menu', 
+				'navbar',
+				'mb-0',
+				logged_in ? 'logged_in'
+			] %}
+
+			<ul id="main-menu" {{attributes.addClass(ulClasses)}} aria-expanded="false">
 			{% else %}
 				<ul class="menu">
 				{% endif %}
+
+
 				{% for item in items %}
 					{%
-        set classes = [
-          'menu-item',
-		  'nav-item',
-          item.is_expanded ? 'menu-item--expanded',
-          item.is_collapsed ? 'menu-item--collapsed',
-          item.in_active_trail ? 'menu-item--active-trail',
-        ]
-      %}
-					<li{{item.attributes.addClass(classes)}}>
-						{{ link(item.title, item.url, item.attributes.addClass('nav-link')) }}
-						{% if item.below %}
-							{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+						set classes = [
+						'menu-item',
+						'nav-item',
+						item.is_expanded ? 'menu-item--expanded',
+						item.is_collapsed ? 'menu-item--collapsed',
+						item.in_active_trail ? 'menu-item--active-trail',
+						]
+					%}
+					{% if 'logged-out-only' in item.url.options.attributes.class[0] %}
+						{% if not logged_in %}
+							<li{{item.attributes.addClass(classes)}}>
+								{{ link(item.title, item.url, {'class': ['nav-link']}) }}
+								{% if item.below %}
+									{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+								</li>
+							{% endif %}
 						{% endif %}
-					</li>
+					{% elseif 'icon-only' in item.url.options.attributes.class[0] %}
+						<li{{item.attributes.addClass(classes)}}>
+							<span href="javascript:void(0)" id="{{item.url.options.attributes.id}}" class="nav-link">
+								<i class="far fa-user"></i>
+							</span>
+							{% if item.below %}
+								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+							{% endif %}
+						</li>
+
+					{% else %}
+						<li{{item.attributes.addClass(classes)}}>
+							{{ link(item.title, item.url, {'class': ['nav-link']}) }}
+							{% if item.below %}
+								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+							{% endif %}
+						</li>
+
+					{% endif %}
+
 				{% endfor %}
 			</ul>
 		{% endif %}

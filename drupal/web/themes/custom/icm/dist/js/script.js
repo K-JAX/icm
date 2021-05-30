@@ -1,10 +1,9 @@
-// vendor imports
-// import "bootstrap";
-var x = 2;
+// initialize the scroller
+AOS.init();
 
-var add = function add(n) {
-  console.log("anything what?");
-  return n + 150;
+var activate = function activate(e) {
+  var active = e.getAttribute("aria-expanded") === "false" ? "true" : "false";
+  e.setAttribute("aria-expanded", active);
+  var menu = document.querySelectorAll("#main-menu")[0];
+  menu.setAttribute("aria-expanded", active);
 };
-
-add(2);

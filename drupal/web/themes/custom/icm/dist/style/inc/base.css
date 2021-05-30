@@ -1,0 +1,14 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  color: #2064af;
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+}
+
+[data-aos] {
+  pointer-events: inherit !important;
+}

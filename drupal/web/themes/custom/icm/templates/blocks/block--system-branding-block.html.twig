@@ -18,7 +18,8 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-	'col'
+	'col-md-5',
+	'col-7'
   ]
 %}
 	<div{{attributes.addClass(classes)}}>
@@ -30,16 +31,22 @@
 	{% endif %}
 	{{ title_suffix }}
 		{% block content %}
-			<div class="col d-flex"> {% if site_logo %}
+			<div class="col d-flex align-items-center"> {% if site_logo %}
 				<a href="{{ path('<front>') }}" rel="home" class="site-logo">
 					<img width="46" src="{{ site_logo }}" alt="{{ 'Home'|t }}"/>
 				</a>
 			{% endif %}
-			{% if site_name %}
-				<div class="site-name">
-					<a class="h1" href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
-				</div>
-			{% endif %}
+			{# currently keeping this hard coded so that I can style the font of individual letters{% if site_name %}
+																																								<div class="site-name">
+																																									<a class="h3 text-decoration-none" href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
+																																								</div>
+																																							{% endif %} #}
+			<div class="site-name">
+				<a class="text-decoration-none" href="{{ path('<front>') }}" rel="home">
+					<b>I</b>ntegrated
+					<b>C</b>apital
+					<b>M</b>anagement</a>
+			</div>
 			{% if site_slogan %}
 				<div class="site-slogan">{{ site_slogan }}</div>
 			{% endif %}

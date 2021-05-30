@@ -7,3 +7,19 @@ global-scripts:
   version: 1.x
   js:
     dist/js/script.js: {}
+  dependencies:
+    - icm/aos-script
+fonts:
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&': { type: external, minified: true }
+
+aos-script:
+  js:
+    'https://unpkg.com/aos@next/dist/aos.js': { type: external, minified: true }
+aos-style:
+  css:
+    theme:
+      'https://unpkg.com/aos@next/dist/aos.css': { type: external, minified: true }
+
+

@@ -22,10 +22,18 @@
   "homepage": "https://bitbucket.org/ddubbua/icm#readme",
   "dependencies": {
     "@babel/preset-env": "^7.14.2",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@snowpack/plugin-babel": "^2.1.7",
+    "@snowpack/plugin-postcss": "^1.4.0",
     "@snowpack/plugin-sass": "^1.4.0",
+    "aos": "^3.0.0-beta.6",
     "babel-preset-minify": "^0.5.1",
-    "bootstrap": "^5.0.1"
+    "bootstrap": "^5.0.1",
+    "css-loader": "^5.2.6",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "postcss-import": "^14.0.2",
+    "style-loader": "^2.0.0"
   },
   "browserslist": ">0.0%"
 }

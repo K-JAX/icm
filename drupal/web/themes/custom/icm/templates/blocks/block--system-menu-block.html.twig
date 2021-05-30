@@ -36,12 +36,16 @@
     'block',
     'block-menu',
     'navigation',
+	'col',
+	'd-flex',
+	'justify-content-end',
+	'align-items-center',
     'menu--' ~ derivative_plugin_id|clean_class,
   ]
 %}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav
-	class="col d-flex" role="navigation" aria-labelledby="{{ heading_id }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
+	role="navigation" aria-labelledby="{{ heading_id }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
 	{# Label. If not displayed, we still provide it for screen readers. #}
 	{% if not configuration.label_display %}
 		{% set title_attributes = title_attributes.addClass('visually-hidden') %}

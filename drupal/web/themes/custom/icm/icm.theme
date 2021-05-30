@@ -1,0 +1,45 @@
+<?php
+/**
+ * Implements hook_preprocess_HOOK() for menu.html.twig
+ */
+function icm_preprocess_menu(&$variables) {
+	// Allow the logged_in variable to go into 
+	// global $user;
+
+	// if ( \Drupal::currentUser()->isAuthenticated() ) {
+	// // Logged in user
+	// 	echo 'yes ';
+	// }
+	// else {
+	// // Not logged in
+	// 	echo 'no ';
+	// }
+	$variables['test_var'] = 'changed';
+	// foreach ($variables['items'] as $item) {
+	// 	// get options
+
+	// 	global $user;
+
+	// 	if ( $user->uid ) {
+	// 	// Logged in user
+	// 		$item['attributes']->addClass('logged-in');
+	// 	}
+	// 	else {
+	// 	// Not logged in
+	// 		$item['attributes']->addClass('not-logged-in');
+
+	// 	}
+
+	// }
+	// return [
+	// 	'menu' => [
+	// 	  'variables' => ['test_var' => 'anything'],
+	// 	  'path' => 'themes/custom/icm/templates/navigation'
+	// 	],
+	//   ];
+
+}
+
+// function menu_link_attributes_preprocess_menu(&$variables) {
+// 	_menu_link_attributes_preprocess_menu_items($variables['items']);
+//   }

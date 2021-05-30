@@ -1,0 +1,20 @@
+@import "./var";
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  color: $blue;
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+}
+
+// for drupal
+
+// for vendors
+
+[data-aos] {
+  pointer-events: inherit !important;
+}

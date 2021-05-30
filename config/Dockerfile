@@ -21,3 +21,6 @@ RUN rm -rf /usr/local/bin/drush
 RUN composer global require drush/drush
 RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
 RUN drush --version
+
+RUN composer require drupal/devel
+RUN composer require kint-php/kint

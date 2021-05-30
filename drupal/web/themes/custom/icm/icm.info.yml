@@ -6,6 +6,9 @@ base theme: classy
 libraries:
   - icm/global-styling
   - icm/global-scripts
+  - icm/fonts
+  - icm/aos-script
+  - icm/aos-style
 regions:
   header: Header
   content: Content

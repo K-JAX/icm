@@ -1,0 +1,13 @@
+.dialog-off-canvas-main-canvas {
+  position: relative;
+}
+
+.menu-item--expanded {
+  list-style-type: circle;
+  list-style-image: url(../../../../../core/misc/menu-expanded.png);
+  margin-left: 1em;
+  pointer: cursor;
+}
+.menu-item--expanded > .nav-link {
+  padding-left: 0;
+}

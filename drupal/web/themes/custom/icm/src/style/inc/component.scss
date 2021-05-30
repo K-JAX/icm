@@ -1,0 +1,219 @@
+@import "./var";
+@import "./anim";
+
+.site-logo {
+  margin-right: 22px;
+  img {
+    @media all and (max-width: 1200px) {
+      width: 32px;
+    }
+    @media all and (max-width: 768px) {
+      width: 20px;
+    }
+  }
+}
+
+.site-name {
+  a {
+    font-size: 1.75em;
+    white-space: nowrap;
+    @media all and (max-width: 1200px) {
+      white-space: normal;
+      font-size: 1.4em;
+    }
+    @media all and (max-width: 992px) {
+      font-size: 1.4em;
+    }
+    font-weight: 300;
+    b {
+      font-weight: 400;
+    }
+  }
+}
+
+.blue-angle {
+  z-index: -1;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  background: $blueGrad;
+  transform: translate(-80%, -50%) rotate(45deg);
+}
+
+.region-header {
+  background: white;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1rem 5rem 1rem;
+  transition: padding 0s, margin 0s;
+  &[data-aos="stick"].aos-animate {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 1.25rem 2.5rem 1rem 2.5rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    animation: slideDown 0.5s forwards;
+  }
+  .navbar {
+    font-size: 0.875em;
+    .nav-item {
+      .nav-link {
+        color: $blue;
+        display: inline-block;
+        font-weight: 500;
+        opacity: 0.75;
+        transition: 0.125s;
+        &.is-active {
+          color: desaturate($blue, 65%);
+          opacity: 1;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    & > .nav-item:not(:last-of-type):after {
+      content: "/";
+      color: $orange;
+    }
+    .menu-item--expanded {
+      position: relative;
+      .menu {
+        position: absolute;
+        min-width: 150px;
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.2s;
+        background: white;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+        transform-origin: top;
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      &:hover {
+        .menu {
+          max-height: 300px;
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+    }
+    @media all and (max-width: 992px) {
+      position: fixed;
+      z-index: 3;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      align-content: flex-start;
+      padding-top: 67px;
+      font-size: 1.15em;
+      background: white;
+      box-shadow: -1px 0 8px 0 rgba(0, 0, 0, 0.5);
+      transition: 0.4s;
+      &[aria-expanded="true"] {
+        right: 0;
+      }
+      .nav-item {
+        width: 100%;
+        order: 2;
+        &:not(:last-of-type):after {
+          content: "";
+        }
+        &:last-of-type {
+          order: 1;
+        }
+      }
+      .menu-item--expanded {
+        .menu {
+          position: relative;
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+#account + .menu {
+  right: -5px;
+  @media all and (max-width: 992px) {
+    right: initial;
+  }
+}
+
+.toolbar-tray-open.toolbar-horizontal.toolbar-fixed
+  .region-header[data-aos="stick"].aos-animate {
+  top: 79px;
+}
+
+@media all and (max-width: 992px) {
+  .toolbar-tray-open.toolbar-vertical.toolbar-fixed .navbar {
+    top: 39px;
+  }
+  .region-header[data-aos="stick"].aos-animate .navbar {
+    padding-top: 0;
+  }
+}
+
+.header-placeholder {
+  &[data-aos="stick"].aos-animate {
+    height: 183px;
+  }
+}
+
+.menu-burger {
+  display: none;
+  position: relative;
+  z-index: 4;
+  width: 30px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  outline: none;
+  transition: 0.1s;
+  opacity: 0.8;
+  @media all and (max-width: 992px) {
+    display: inline-block;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  div {
+    position: absolute;
+    width: 100%;
+    background: $blue;
+    height: 2px;
+    border-radius: 100px;
+    margin: auto;
+    transition: 0.35s;
+    &.bread {
+      top: 0;
+      bottom: 100%;
+    }
+    &.ham {
+      top: 0;
+      bottom: 0;
+    }
+    &.cheese {
+      top: 100%;
+      bottom: 0;
+    }
+  }
+  &[aria-expanded="true"] {
+    .bread {
+      bottom: 0;
+      transform: rotate(45deg);
+    }
+    .ham {
+      opacity: 0;
+    }
+    .cheese {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
