@@ -43,7 +43,7 @@
  */
 #}
 
-<div class="layout-container container-fluid">
+<div class="layout-container container-fluid px-0">
 
 	<header role="banner" class="mx-4">
 		{{ page.header }}
@@ -54,27 +54,107 @@
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
-		<div class="layout-content container">
-			{{ page.content }}
-		</div>
-		{# /.layout-content #}
+		<section class="hero-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6">
+						<span class="eyebrow">Scientific Investing</span>
+						<h1 class="page-head">Investment management<br/>with an
+							<strong>uncommon clarity</strong>.</h1>
+						<hr class="short orange my-4">
+						<p>For more than a decade, Integrated Capital Management (iCM) has served the investment management needs of a diverse group of clients by making the complex world of finance simple.</p>
+						<br/>
+						<p>Our approach to investment management is centered around advanced mathematics, systems and data analysis.  We refer to this as Scientific Investing.</p>
+						<br/>
+						<p>This process, coupled with our valuation-based investment philosophy, allows us to create a wide array of portfolios to fit investors of varying size and need.</p>
+						<br/>
+						<p>Take this journey with us.</p>
+						<div class="btn-group mt-2" role="group" aria-label="Button group to identify your specialty or contact us.">
+							<button class="ul-btn">I am an Advisor</button>
+							<button class="ul-btn">I am an Investor</button>
 
-		{% if page.sidebar_first %}
-			<aside class="layout-sidebar-first" role="complementary">
-				{{ page.sidebar_first }}
-			</aside>
-		{% endif %}
+							<button href="/contact-0" class="ul-btn">
+								<a href="#">Contact Us</a>
+							</button>
 
-		{% if page.sidebar_second %}
-			<aside class="layout-sidebar-second" role="complementary">
-				{{ page.sidebar_second }}
-			</aside>
-		{% endif %}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<section class="who my-5 muted-blue-grad">
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<svg></svg>
+					<img class="left-img"/>
+					<svg></svg>
+				</div>
+				<div class="col-12 col-lg-6">
+					<span class="eyebrow">Who we are</span>
+					<h2>At iCM, Investment Management is the mission that defines us.</h2>
+					<hr class="short orange my-4">
+					<p>We are market scholars, quantitative researchers, economists, and purveyors of investing truths. Above all, we are students of our profession who have navigated the best and worst of what the markets have to offer.  We diligently pursue a mastery of our craft and are always seeking a deeper understanding of how capital markets function and the drivers of market behavior.</p>
+					<br/>
+					<p>Our Mission is to deliver an investment solution, rooted in our scientific process, that is both understandable and fundamentally sound, bringing clarity to a world that is driven by cliches and half-truths.</p>
+					<div class="btn-group mt-2" role="group" aria-label="Button group to identify your specialty or contact us.">
+						<a href="#" class="ul-btn">About Us</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="team">
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<span class="eyebrow">Our team</span>
+					<h2>Meet the Team</h2>
+					<br/>
+					<p>We have navigated the best and worst of what markets have to offer. We diligently seek to master our craft in the pursuit of a greater understanding of how capital markets function and the impact this has on life. While we have tried our best, we haven’t put a man on the moon yet, but we're working on it. We encourage you to take this uncommon journey with us.</p>
+					<div class="row">
+						<a href="#">Meet the Team</a>
+						<a href="#">Contact Us</a>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6">
+					<img class="over-under-graphics"/>
+				</div>
+			</div>
+		</section>
+
+		<section class="social">
+			<div class="row">
+				<h2>We are active. Find us on social media.</h2>
+				<p>We share tools and insights to keep up to date with the shifting landscape.</p>
+			</div>
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<h3>Instagram</h3>
+					<div class="row">
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+						<div class="grid-square"></div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6">
+					<h3>Tweets</h3>
+					<div class="tweet-box"></div>
+					<svg></svg>
+				</div>
+			</div>
+		</section>
 
 	</main>
 
 	{% if page.footer %}
-		<footer role="contentinfo">
+		<footer class='site-footer px-4 py-5' role="contentinfo">
 			{{ page.footer }}
 		</footer>
 	{% endif %}

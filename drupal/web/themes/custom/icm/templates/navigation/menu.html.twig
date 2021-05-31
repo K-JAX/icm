@@ -34,12 +34,6 @@
 
 		{% if menu_level == 0 %}
 
-			<button class="menu-burger" onclick="activate(this)" aria-label="Main menu" aria-expanded="false">
-				<div class="bread"></div>
-				<div class="ham"></div>
-				<div class="cheese"></div>
-			</button>
-
 			{% set ulClasses = [
 				'menu', 
 				'navbar',
@@ -72,16 +66,6 @@
 								</li>
 							{% endif %}
 						{% endif %}
-					{% elseif 'icon-only' in item.url.options.attributes.class[0] %}
-						<li{{item.attributes.addClass(classes)}}>
-							<span href="javascript:void(0)" id="{{item.url.options.attributes.id}}" class="nav-link">
-								<i class="far fa-user"></i>
-							</span>
-							{% if item.below %}
-								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-							{% endif %}
-						</li>
-
 					{% else %}
 						<li{{item.attributes.addClass(classes)}}>
 							{{ link(item.title, item.url, {'class': ['nav-link']}) }}

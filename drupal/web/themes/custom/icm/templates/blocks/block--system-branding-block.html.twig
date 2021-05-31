@@ -18,8 +18,8 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-	'col-md-5',
-	'col-7'
+	'col-lg-5',
+	'col-9'
   ]
 %}
 	<div{{attributes.addClass(classes)}}>
@@ -37,10 +37,10 @@
 				</a>
 			{% endif %}
 			{# currently keeping this hard coded so that I can style the font of individual letters{% if site_name %}
-																																								<div class="site-name">
-																																									<a class="h3 text-decoration-none" href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
-																																								</div>
-																																							{% endif %} #}
+																																														<div class="site-name">
+																																															<a class="h3 text-decoration-none" href="{{ path('<front>') }}" rel="home">{{ site_name }}</a>
+																																														</div>
+																																													{% endif %} #}
 			<div class="site-name">
 				<a class="text-decoration-none" href="{{ path('<front>') }}" rel="home">
 					<b>I</b>ntegrated

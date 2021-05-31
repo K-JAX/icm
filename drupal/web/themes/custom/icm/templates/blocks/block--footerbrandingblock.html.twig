@@ -1,0 +1,18 @@
+{# 
+Footer branding column
+ #}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+	'col-lg-2',
+	'col-12'
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+	<div class="px-4 d-flex justify-content-around">
+		{{ content }}
+	</div>
+</div>

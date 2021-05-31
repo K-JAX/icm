@@ -11317,6 +11317,11 @@ a {
   color: inherit;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  font-family: "Oswald", sans-serif;
+}
+
 [data-aos] {
   pointer-events: inherit !important;
 }
@@ -11347,6 +11352,9 @@ a {
   margin-right: 22px;
 }
 @media all and (max-width: 1200px) {
+  .site-logo {
+    margin-right: 8px;
+  }
   .site-logo img {
     width: 32px;
   }
@@ -11364,13 +11372,17 @@ a {
 }
 @media all and (max-width: 1200px) {
   .site-name a {
-    white-space: normal;
     font-size: 1.4em;
   }
 }
 @media all and (max-width: 992px) {
   .site-name a {
     font-size: 1.4em;
+  }
+}
+@media all and (max-width: 768px) {
+  .site-name a {
+    font-size: 1em;
   }
 }
 .site-name a b {
@@ -11414,6 +11426,11 @@ a {
   opacity: 0.75;
   transition: 0.125s;
 }
+@media all and (max-width: 1200px) {
+  .region-header .navbar .nav-item .nav-link {
+    padding: 0.5rem 0.4rem;
+  }
+}
 .region-header .navbar .nav-item .nav-link.is-active {
   color: #63676c;
   opacity: 1;
@@ -11454,7 +11471,7 @@ a {
     width: 300px;
     height: 100vh;
     align-content: flex-start;
-    padding-top: 67px;
+    padding-top: 36px;
     font-size: 1.15em;
     background: white;
     box-shadow: -1px 0 8px 0 rgba(0, 0, 0, 0.5);
@@ -11466,6 +11483,10 @@ a {
   .region-header .navbar .nav-item {
     width: 100%;
     order: 2;
+    padding-left: 10px;
+  }
+  .region-header .navbar .nav-item .nav-link {
+    width: 100%;
   }
   .region-header .navbar .nav-item:not(:last-of-type):after {
     content: "";
@@ -11494,7 +11515,7 @@ a {
 }
 
 @media all and (max-width: 992px) {
-  .toolbar-tray-open.toolbar-vertical.toolbar-fixed .navbar {
+  .toolbar-tray-open.toolbar-vertical.toolbar-fixed .region-header .navbar {
     top: 39px;
   }
 
@@ -11559,7 +11580,149 @@ a {
   transform: rotate(-45deg);
 }
 
+.site-footer {
+  background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+}
+.site-footer #block-footerbrandingblock {
+  position: relative;
+}
+@media all and (min-width: 993px) {
+  .site-footer #block-footerbrandingblock:after {
+    content: "";
+    position: absolute;
+    height: 80%;
+    border-right: 1px solid white;
+    top: 0;
+    bottom: 0;
+    right: 3%;
+    margin: auto;
+  }
+}
+.site-footer #block-footerbrandingblock .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.site-footer .menu-footer-block h2 {
+  font-family: "Oswald", sans-serif;
+  position: relative;
+}
+.site-footer .menu-footer-block h2:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.5em;
+  width: 100%;
+  height: 1px;
+  background: #e7cc89;
+}
+.site-footer .navbar {
+  display: block;
+  margin-left: 0;
+  margin-top: 1em;
+}
+.site-footer .navbar .nav-link {
+  color: white;
+  font-size: 1.25em;
+  padding-left: 0;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  transition: 0.25s;
+}
+.site-footer .navbar .nav-link:hover {
+  opacity: 0.8;
+}
+.site-footer #block-footersocialmenu ul {
+  display: flex;
+}
+.site-footer #block-footersocialmenu ul .nav-link {
+  font-size: 1.75em;
+}
+
+.btn-group .ul-btn {
+  position: relative;
+  margin: 0 0.5em;
+}
+.btn-group .ul-btn:first-of-type {
+  margin-left: 0;
+}
+.btn-group .ul-btn:not(:first-of-type):before {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 100%;
+  left: -0.5em;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #e7cc89;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 1.5em;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.page-head {
+  font-weight: light;
+}
+
 .priority-button {
   background: #e7cc89;
   font-weight: 800;
+}
+
+.ul-btn {
+  font-size: 1.45em;
+  border: none;
+  opacity: 1;
+  transition: 0.25s;
+  border-bottom: 1px solid #e7cc89;
+  box-shadow: 0 0 0 0 #e7cc89 inset;
+  text-decoration: none;
+}
+.ul-btn:hover {
+  opacity: 0.85;
+  box-shadow: 0 -6px 6px -3px #e7cc89 inset;
+}
+.ul-btn a {
+  text-decoration: none;
+}
+
+.blue {
+  color: #2064af;
+}
+
+.light-orange {
+  color: #e7cc89;
+}
+
+.orange {
+  color: #FAA61B;
+}
+
+.muted-blue-grad {
+  background: white;
+  background: linear-gradient(135deg, white 0%, #e8eef5 100%);
+}
+
+.short {
+  width: 74px;
+  height: 3px !important;
+  opacity: 1;
 }

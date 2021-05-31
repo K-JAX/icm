@@ -1,9 +1,77 @@
 // Utility classes
 @import "./var";
 
+// font
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 1.5em;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.page-head {
+  font-weight: light;
+}
+
 .priority-button {
-  background: $orange;
+  background: $lightOrange;
   font-weight: 800;
 }
 
- 
+// button
+.ul-btn {
+  font-size: 1.45em;
+  border: none;
+  opacity: 1;
+  transition: 0.25s;
+  border-bottom: 1px solid $lightOrange;
+  box-shadow: 0 0 0 0 $lightOrange inset;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.85;
+    box-shadow: 0 -6px 6px -3px $lightOrange inset;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+// color
+.blue {
+  color: $blue;
+}
+.light-orange {
+  color: $lightOrange;
+}
+
+.orange {
+  color: $orange;
+}
+
+.muted-blue-grad {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 238, 245, 1) 100%
+  );
+}
+
+// hr
+.short {
+  width: 74px;
+  height: 3px !important;
+  opacity: 1;
+}

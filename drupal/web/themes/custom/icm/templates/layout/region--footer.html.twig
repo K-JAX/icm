@@ -1,0 +1,17 @@
+{# 
+/**
+* File for overriding the footer theme
+ #}
+
+{% 
+	set classes = [
+    'region',
+    'region-' ~ region|clean_class,
+    'row',
+	'align-items-center',
+	'text-white',
+	'justify-content-center'
+	] 
+ %}
+
+<div {{attributes.addClass(classes)}}>{{content}}</div>

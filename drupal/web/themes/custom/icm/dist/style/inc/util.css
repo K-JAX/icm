@@ -1,4 +1,67 @@
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 1.5em;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.page-head {
+  font-weight: light;
+}
+
 .priority-button {
   background: #e7cc89;
   font-weight: 800;
+}
+
+.ul-btn {
+  font-size: 1.45em;
+  border: none;
+  opacity: 1;
+  transition: 0.25s;
+  border-bottom: 1px solid #e7cc89;
+  box-shadow: 0 0 0 0 #e7cc89 inset;
+  text-decoration: none;
+}
+.ul-btn:hover {
+  opacity: 0.85;
+  box-shadow: 0 -6px 6px -3px #e7cc89 inset;
+}
+.ul-btn a {
+  text-decoration: none;
+}
+
+.blue {
+  color: #2064af;
+}
+
+.light-orange {
+  color: #e7cc89;
+}
+
+.orange {
+  color: #FAA61B;
+}
+
+.muted-blue-grad {
+  background: white;
+  background: linear-gradient(135deg, white 0%, #e8eef5 100%);
+}
+
+.short {
+  width: 74px;
+  height: 3px !important;
+  opacity: 1;
 }
