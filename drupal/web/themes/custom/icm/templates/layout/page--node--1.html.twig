@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a single page.
+ * Theme override to display a single page. FOR THE HOME PAGE
  *
  * The doctype, html, head and body tags are not in this template. Instead they
  * can be found in the html.html.twig template in this directory.
@@ -54,11 +54,11 @@
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
-		<section class="hero-section">
+		<section class="hero-section home py-5 mb-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-lg-6">
-						<span class="eyebrow">Scientific Investing</span>
+						<span class="eyebrow text-uppercase">Scientific Investing</span>
 						<h1 class="page-head">Investment management<br/>with an
 							<strong>uncommon clarity</strong>.</h1>
 						<hr class="short orange my-4">
@@ -84,69 +84,86 @@
 			</div>
 		</section>
 
-		<section class="who my-5 muted-blue-grad">
-			<div class="row">
-				<div class="col-12 col-lg-6">
-					<svg></svg>
-					<img class="left-img"/>
-					<svg></svg>
-				</div>
-				<div class="col-12 col-lg-6">
-					<span class="eyebrow">Who we are</span>
-					<h2>At iCM, Investment Management is the mission that defines us.</h2>
-					<hr class="short orange my-4">
-					<p>We are market scholars, quantitative researchers, economists, and purveyors of investing truths. Above all, we are students of our profession who have navigated the best and worst of what the markets have to offer.  We diligently pursue a mastery of our craft and are always seeking a deeper understanding of how capital markets function and the drivers of market behavior.</p>
-					<br/>
-					<p>Our Mission is to deliver an investment solution, rooted in our scientific process, that is both understandable and fundamentally sound, bringing clarity to a world that is driven by cliches and half-truths.</p>
-					<div class="btn-group mt-2" role="group" aria-label="Button group to identify your specialty or contact us.">
-						<a href="#" class="ul-btn">About Us</a>
+		<section class="who my-5 pt-5 muted-blue-grad position-relative">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6">
+						<figure class="img-dec underlay right"><img class="" src="https://via.placeholder.com/538x692"/></figure>
+						<svg viewbox="0 0 640 60" class="left-svg-text">
+							<text x="0" y="65" fill="none" stroke-width="1">iCM</text>
+						</svg>
+					</div>
+					<div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+						<span class="eyebrow">Who we are</span>
+						<h2>At iCM, Investment Management is the mission that defines us.</h2>
+						<hr class="short orange my-4">
+						<p>We are market scholars, quantitative researchers, economists, and purveyors of investing truths. Above all, we are students of our profession who have navigated the best and worst of what the markets have to offer.  We diligently pursue a mastery of our craft and are always seeking a deeper understanding of how capital markets function and the drivers of market behavior.</p>
+						<br/>
+						<p>Our Mission is to deliver an investment solution, rooted in our scientific process, that is both understandable and fundamentally sound, bringing clarity to a world that is driven by cliches and half-truths.</p>
+						<div class="btn-group mt-2" role="group" aria-label="Button group to identify your specialty or contact us.">
+							<a href="#" class="ul-btn">About Us</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="team">
-			<div class="row">
-				<div class="col-12 col-lg-6">
-					<span class="eyebrow">Our team</span>
-					<h2>Meet the Team</h2>
-					<br/>
-					<p>We have navigated the best and worst of what markets have to offer. We diligently seek to master our craft in the pursuit of a greater understanding of how capital markets function and the impact this has on life. While we have tried our best, we haven’t put a man on the moon yet, but we're working on it. We encourage you to take this uncommon journey with us.</p>
-					<div class="row">
-						<a href="#">Meet the Team</a>
-						<a href="#">Contact Us</a>
+		<section class="team my-5 py-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+						<span class="eyebrow">Our team</span>
+						<h2>Meet the Team</h2>
+						<hr class="short orange my-4">
+						<p>We have navigated the best and worst of what markets have to offer. We diligently seek to master our craft in the pursuit of a greater understanding of how capital markets function and the impact this has on life. While we have tried our best, we haven’t put a man on the moon yet, but we're working on it. We encourage you to take this uncommon journey with us.</p>
+						<div class="btn-group mt-2" role="group" aria-label="Button group to identify your specialty or contact us.">
+							<button class="ul-btn">
+								<a href="#">Meet the Team</a>
+							</button>
+							<button class="ul-btn">
+								<a href="#">Contact Us</a>
+							</button>
+						</div>
 					</div>
-				</div>
-				<div class="col-12 col-lg-6">
-					<img class="over-under-graphics"/>
+					<div class="col-12 col-lg-6">
+						<figure class="img-dec overlay left"><img class="" src="https://via.placeholder.com/419x610"/></figure>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="social">
-			<div class="row">
-				<h2>We are active. Find us on social media.</h2>
-				<p>We share tools and insights to keep up to date with the shifting landscape.</p>
-			</div>
-			<div class="row">
-				<div class="col-12 col-lg-6">
-					<h3>Instagram</h3>
-					<div class="row">
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-						<div class="grid-square"></div>
-					</div>
+		<section class="social py-5 my-5 muted-blue-grad">
+			<div class="container">
+				<div class="row text-center">
+					<span class="eyebrow">Social Media</span>
+					<h2 class="mb-3">We are active. Find us on social media.</h2>
+					<p>We share tools and insights to keep up to date with the shifting landscape.</p>
 				</div>
-				<div class="col-12 col-lg-6">
-					<h3>Tweets</h3>
-					<div class="tweet-box"></div>
-					<svg></svg>
+				<div class="row">
+					<div class="col-12 col-lg-8 d-flex flex-column align-content-center">
+						<div>
+							<h3 class="underline-title h2 fw-lighter">Instagram</h3>
+							<div class="temp-grid-squares my-5">
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+								<div class="grid-square"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-lg-4">
+						<h3 class="underline-title h2 fw-lighter">Tweets</h3>
+						<div class="tweet-box my-5">
+							<a class="twitter-timeline" href="https://twitter.com/iCMInvest?ref_src=twsrc%5Etfw">Tweets by iCMInvest</a>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</section>

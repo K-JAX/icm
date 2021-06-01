@@ -13,8 +13,21 @@
 .eyebrow {
   font-size: 1.5em;
   font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
   font-weight: 600;
+}
+
+.underline-title {
+  position: relative;
+  width: 255px;
+}
+.underline-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25em;
+  width: 100%;
+  height: 1px;
+  background: #faa61b;
 }
 
 .page-head {
@@ -43,6 +56,26 @@
   text-decoration: none;
 }
 
+.btn.blue {
+  background-color: #2064af;
+  color: white;
+}
+
+.btn.blueGrad {
+  background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+  color: white;
+}
+
+.btn.orange {
+  background-color: #faa61b;
+  color: white;
+}
+
+.btn.orangeGrad {
+  background: linear-gradient(135deg, #fabb51 0%, #bb7d13 100%);
+  color: white;
+}
+
 .blue {
   color: #2064af;
 }
@@ -52,7 +85,11 @@
 }
 
 .orange {
-  color: #FAA61B;
+  color: #faa61b;
+}
+
+.bg-blueGrad {
+  background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
 }
 
 .muted-blue-grad {
@@ -64,4 +101,9 @@
   width: 74px;
   height: 3px !important;
   opacity: 1;
+}
+
+.panel {
+  background: white;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }

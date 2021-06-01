@@ -7,3 +7,8 @@ const activate = (e) => {
   let menu = document.querySelectorAll("#main-menu")[0];
   menu.setAttribute("aria-expanded", active);
 };
+
+const closePopUp = (e) => {
+  let popup = document.querySelectorAll(".floating-popup");
+  popup[0].classList.add("exit-popup");
+};

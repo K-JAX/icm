@@ -1,0 +1,14 @@
+name: Template Whisperer
+type: module
+description: Provides a formalized way to declare and suggest page templates.
+core_version_requirement: ^8.8 || ^9
+package: Fields types
+
+dependencies:
+  - drupal:field
+  - drupal:views
+
+# Information added by Drupal.org packaging script on 2020-03-27
+version: '8.x-3.0-alpha1'
+project: 'template_whisperer'
+datestamp: 1585325411
