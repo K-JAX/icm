@@ -1,4 +1,7 @@
-FROM drupal:9.1-apache
+FROM drupal:9.1.10-apache
+
+# I need mysqli extension installed to backup the database
+RUN docker-php-ext-install mysqli && apachectl restart
 
 # # setup openssh-server for sftp
 # RUN apt-get update && apt-get install -y openssh-server

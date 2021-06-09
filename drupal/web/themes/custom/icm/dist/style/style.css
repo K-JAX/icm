@@ -9,9 +9,20 @@ a {
   color: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 300;
   font-family: "Oswald", sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-style: italic;
+  opacity: 0.5;
 }
 
 [data-aos] {
@@ -569,6 +580,43 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3em;
 }
 
+.blog-list .entry .img-container {
+  position: relative;
+  margin-top: -15%;
+  margin-left: -2%;
+}
+.blog-list .entry .img-container img {
+  position: relative;
+  z-index: 1;
+}
+.blog-list .entry .img-container:before {
+  content: "";
+  z-index: 0;
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  top: -8%;
+  left: -9%;
+  background: #faa61b;
+}
+.blog-list .entry h2:hover {
+  color: white;
+  opacity: 0.8;
+}
+.blog-list .entry .cta {
+  bottom: 0;
+  right: 0;
+}
+
+.external-resources.panel .external-link i {
+  font-size: 1.5em;
+}
+
+.market-insights.panel ul li i {
+  font-size: 1.1em;
+  margin-right: 1em;
+}
+
 .roboto {
   font-family: "Roboto", sans-serif;
 }
@@ -601,6 +649,10 @@ h1, h2, h3, h4, h5, h6 {
   background: #faa61b;
 }
 
+.panel-icon {
+  font-size: 3.8em;
+}
+
 .page-head {
   font-weight: light;
 }
@@ -608,6 +660,14 @@ h1, h2, h3, h4, h5, h6 {
 .priority-button {
   background: #e7cc89;
   font-weight: 800;
+}
+
+.hover-opacity {
+  opacity: 1;
+  transition: 0.125s;
+}
+.hover-opacity:hover {
+  opacity: 0.85;
 }
 
 .ul-btn {
@@ -663,9 +723,21 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
 }
 
+.bg-lightGray {
+  background: #e0e0e0;
+}
+
+.bg-lighterGray {
+  background: #f2f2f2;
+}
+
 .muted-blue-grad {
   background: white;
   background: linear-gradient(135deg, white 0%, #e8eef5 100%);
+}
+
+.inset-shadow {
+  box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
 
 .short {

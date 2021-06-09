@@ -545,3 +545,54 @@
     }
   }
 }
+
+.blog-list {
+  .entry {
+    .img-container {
+      position: relative;
+      margin-top: -15%;
+      margin-left: -2%;
+      img {
+        position: relative;
+        z-index: 1;
+      }
+      &:before {
+        content: "";
+        z-index: 0;
+        position: absolute;
+        width: 40px;
+        height: 50px;
+        top: -8%;
+        left: -9%;
+        background: $orange;
+      }
+    }
+    h2 {
+      &:hover {
+        color: white;
+        opacity: 0.8;
+      }
+    }
+    .cta {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.external-resources.panel {
+  .external-link {
+    i {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.market-insights.panel {
+  ul li {
+    i {
+      font-size: 1.1em;
+      margin-right: 1em;
+    }
+  }
+}

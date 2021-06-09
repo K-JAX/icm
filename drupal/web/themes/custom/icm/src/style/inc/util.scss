@@ -34,6 +34,10 @@
   }
 }
 
+.panel-icon {
+  font-size: 3.8em;
+}
+
 .page-head {
   font-weight: light;
 }
@@ -41,6 +45,15 @@
 .priority-button {
   background: $lightOrange;
   font-weight: 800;
+}
+
+// links
+.hover-opacity {
+  opacity: 1;
+  transition: 0.125s;
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 // button
@@ -97,6 +110,14 @@
   background: $blueGrad;
 }
 
+.bg-lightGray {
+  background: #e0e0e0;
+}
+
+.bg-lighterGray {
+  background: #f2f2f2;
+}
+
 .muted-blue-grad {
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -104,6 +125,12 @@
     rgba(255, 255, 255, 1) 0%,
     rgba(232, 238, 245, 1) 100%
   );
+}
+
+// shadow
+
+.inset-shadow {
+  box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
 
 // hr

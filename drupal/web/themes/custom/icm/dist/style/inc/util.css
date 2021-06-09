@@ -30,6 +30,10 @@
   background: #faa61b;
 }
 
+.panel-icon {
+  font-size: 3.8em;
+}
+
 .page-head {
   font-weight: light;
 }
@@ -37,6 +41,14 @@
 .priority-button {
   background: #e7cc89;
   font-weight: 800;
+}
+
+.hover-opacity {
+  opacity: 1;
+  transition: 0.125s;
+}
+.hover-opacity:hover {
+  opacity: 0.85;
 }
 
 .ul-btn {
@@ -92,9 +104,21 @@
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
 }
 
+.bg-lightGray {
+  background: #e0e0e0;
+}
+
+.bg-lighterGray {
+  background: #f2f2f2;
+}
+
 .muted-blue-grad {
   background: white;
   background: linear-gradient(135deg, white 0%, #e8eef5 100%);
+}
+
+.inset-shadow {
+  box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
 
 .short {

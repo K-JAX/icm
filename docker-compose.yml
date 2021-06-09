@@ -72,6 +72,7 @@ services:
         volumes:
             - ./drupal/web:/var/www/html
             - ./config/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+            - ./drupal/composer.json:/opt/drupal/composer.json
         ports:
             - "8080:80"
         environment:
@@ -80,7 +81,7 @@ services:
             - DRUPAL_DATABASE_NAME=${DB}
             - DRUPAL_DATABASE_USERNAME=${DB}
             - DRUPAL_DATABASE_PASSWORD=${PW}
-        image: drupal:9.1-apache
+        image: drupal:9.1.10-apache
         restart: always
         networks:
             - icm
