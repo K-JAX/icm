@@ -1,0 +1,7 @@
+name: Cookies Page Cache
+type: module
+description: 'My Custom Module is for updating cache value of cookie.'
+package: Custom
+core: 8.x
+hidden: false
+core_version_requirement: ^8 || ^9

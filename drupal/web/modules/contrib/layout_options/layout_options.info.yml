@@ -1,0 +1,13 @@
+name: 'Layout Options'
+type: module
+description: 'Provides a layout plugin that allows for styling options to be added to layouts via YAML files'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Layout'
+dependencies:
+  - drupal:layout_discovery
+
+# Information added by Drupal.org packaging script on 2021-02-01
+version: '8.x-1.0'
+project: 'layout_options'
+datestamp: 1612212974

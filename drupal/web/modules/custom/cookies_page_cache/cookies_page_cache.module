@@ -1,0 +1,10 @@
+<?php 
+/**
+ * Implementation of 
+ */
+
+
+function cookies_page_cache_preprocess_node(&$variables){
+  $variables['#cache']['contexts' ][] = 'cookies:userType';
+  // kint($variables['#cache']['contexts' ]);
+}

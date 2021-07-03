@@ -1,3 +1,5 @@
+@import "./var";
+
 .dialog-off-canvas-main-canvas {
   position: relative;
 }
@@ -9,5 +11,16 @@
   pointer: cursor;
   & > .nav-link {
     padding-left: 0;
+  }
+}
+
+.region-content {
+  .tabs.primary {
+    border-bottom: 1px solid $blue;
+  }
+  .page-title,
+  .block-local-tasks-block,
+  #edit-actions {
+    margin-left: 40px;
   }
 }

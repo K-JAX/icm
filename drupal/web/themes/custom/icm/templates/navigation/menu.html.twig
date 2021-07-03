@@ -57,24 +57,13 @@
 						item.in_active_trail ? 'menu-item--active-trail',
 						]
 					%}
-					{% if 'logged-out-only' in item.url.options.attributes.class[0] %}
-						{% if not logged_in %}
-							<li{{item.attributes.addClass(classes)}}>
-								{{ link(item.title, item.url, {'class': ['nav-link']}) }}
-								{% if item.below %}
-									{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-								</li>
-							{% endif %}
-						{% endif %}
-					{% else %}
-						<li{{item.attributes.addClass(classes)}}>
-							{{ link(item.title, item.url, {'class': ['nav-link']}) }}
-							{% if item.below %}
-								{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-							{% endif %}
-						</li>
 
-					{% endif %}
+					<li{{item.attributes.addClass(classes)}}>
+						{{ link(item.title, item.url, {'href': ['/test'], 'data-test': ['something'], 'class': ['nav-link']}) }}
+						{% if item.below %}
+							{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+						{% endif %}
+					</li>
 
 				{% endfor %}
 			</ul>

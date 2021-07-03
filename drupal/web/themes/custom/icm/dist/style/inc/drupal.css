@@ -11,3 +11,12 @@
 .menu-item--expanded > .nav-link {
   padding-left: 0;
 }
+
+.region-content .tabs.primary {
+  border-bottom: 1px solid #2064af;
+}
+.region-content .page-title,
+.region-content .block-local-tasks-block,
+.region-content #edit-actions {
+  margin-left: 40px;
+}

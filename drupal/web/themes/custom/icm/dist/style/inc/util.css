@@ -117,6 +117,11 @@
   background: linear-gradient(135deg, white 0%, #e8eef5 100%);
 }
 
+.faded-white-grad {
+  background: white;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
 .inset-shadow {
   box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
@@ -130,4 +135,14 @@
 .panel {
   background: white;
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.full-height-bg {
+  background-size: auto 110% !important;
+}
+
+@media all and (max-width: 768px) {
+  .mobile-no-bg {
+    background-image: none !important;
+  }
 }

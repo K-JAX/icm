@@ -1,0 +1,7 @@
+name: Block Cookie Condition
+type: module
+description: 'My Custom Module is for showing/hiding blocks based on cookies.'
+package: Custom
+core: 8.x
+hidden: false
+core_version_requirement: ^8 || ^9

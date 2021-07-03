@@ -296,6 +296,9 @@
   .ul-btn {
     position: relative;
     margin: 0 0.5em;
+    padding: 0 0.35em;
+    background: white;
+    white-space: nowrap;
     &:first-of-type {
       margin-left: 0;
     }
@@ -356,10 +359,10 @@
         left: -5%;
       }
       &:after {
-        bottom: -30px;
-        left: 65%;
-        width: 207px;
-        height: 265px;
+        top: 62%;
+        right: -10px;
+        width: 39%;
+        height: 42%;
         background: $lightOrange;
         opacity: 0.45;
       }
@@ -403,36 +406,26 @@
   }
 }
 
-.temp-grid-squares {
-  display: grid;
-  grid-template-columns: 180px 180px 180px;
-  grid-template-rows: 180px 180px 180px;
-  column-gap: 38px;
-  row-gap: 38px;
-  .grid-square {
-    background: gray;
-  }
-}
-
 .tweet-box {
   width: 100%;
   height: 600px;
   background: white;
   box-shadow: 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
+  overflow: auto;
 }
 
 .icon-container {
   height: 150px;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   img {
-    width: 98px;
     object-fit: contain;
   }
 }
 
-.floating-popup {
+.floating-popup,
+.spb-popup-main-wrapper.spb_bottom_right {
   position: fixed;
   z-index: 4;
   width: 405px;
@@ -440,6 +433,7 @@
   bottom: 10%;
   right: -100%;
   animation: slideIn 0.75s 3s forwards;
+  border: none;
   background-color: white;
   box-shadow: 0 18px 25px 0 rgba(0, 0, 0, 0.25);
   transition: 0.25s;
@@ -458,12 +452,15 @@
   }
 }
 
-.close-button {
+.close-button,
+.spb_close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  content: "";
+  color: transparent;
+  top: 0;
+  right: 19px;
+  width: 25px;
+  height: 25px;
   border: none;
   transition: 0.25s;
   &:hover {
@@ -594,5 +591,65 @@
       font-size: 1.1em;
       margin-right: 1em;
     }
+  }
+}
+
+// tooltips over buttons
+[data-toggle="tooltip"] {
+  position: relative;
+  .tooltip {
+    position: absolute;
+    z-index: 4;
+    top: 124%;
+    width: 60vw;
+    color: $blue;
+    border: 1px solid $blue;
+    border-radius: 300px;
+    background: white;
+    padding: 2em 2.5em;
+    opacity: 1;
+    font-size: 1.1em;
+    text-align: center;
+    transition: 0.25s;
+    transform: translateY(0);
+    box-shadow: 2px 3px 20px 2px rgba(0, 0, 0, 0.25);
+    &:before {
+      position: absolute;
+      content: "";
+      z-index: 1;
+      width: 20px;
+      height: 20px;
+      background: white;
+      left: 10%;
+      top: -10px;
+      transform: rotate(45deg);
+      margin: auto;
+      border-left: 1px solid $blue;
+      border-top: 1px solid $blue;
+    }
+    &.entering,
+    &.removing {
+      transform: translateY(-10px);
+      overflow: hidden;
+      opacity: 0;
+    }
+  }
+}
+
+.cc_banner {
+  .cc_btn.cc_btn_accept_all {
+    border-radius: 0;
+    background-color: $blue;
+    color: white;
+    transition: 0.25s;
+    &:hover {
+      border-radius: 0;
+      background-color: $blue;
+      color: white;
+      opacity: 0.9;
+    }
+  }
+  .cc_logo {
+    display: none;
   }
 }

@@ -35,6 +35,7 @@
 assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
+
 /**
  * Enable local development services.
  */
@@ -94,6 +95,7 @@ $settings['cache']['bins']['render'] = 'cache.backend.null';
  * Disable Dynamic Page Cache.
  *
  * Note: you should test with Dynamic Page Cache enabled, to ensure the correct
+ * 
  * cacheability metadata is present (and hence the expected behavior). However,
  * in the early stages of development, you may want to disable it.
  */
@@ -153,3 +155,9 @@ $settings['skip_permissions_hardening'] = TRUE;
  * the language or field module.
  */
 # $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
+$settings['cache'] = 0;
+$settings['block_cache'] = 0;
+$settings['views_skip_cache'] = TRUE;
+$settings['page_compression'] = 0;
+$settings['preprocess_css'] = 0;
+$settings['preprocess_js'] = 0;

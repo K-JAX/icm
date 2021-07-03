@@ -2,7 +2,7 @@ name: iCM Drupal Theme
 type: theme
 description: "Theme used by iCM company for main presentation of the site icm-invest.com."
 core_version_requirement: ^9
-base theme: classy
+base theme: "classy"
 libraries:
   - icm/fonts
   - icm/aos-script

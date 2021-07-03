@@ -127,6 +127,16 @@
   );
 }
 
+.faded-white-grad {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+}
+
 // shadow
 
 .inset-shadow {
@@ -144,4 +154,16 @@
 .panel {
   background: white;
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+// background-image
+
+.full-height-bg {
+  background-size: auto 110% !important;
+}
+
+.mobile-no-bg {
+  @media all and (max-width: 768px) {
+    background-image: none !important;
+  }
 }

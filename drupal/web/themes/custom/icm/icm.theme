@@ -2,11 +2,59 @@
 /**
  * Theme hooks
  */
+// use Drupal\Core\Session;
 
-function icm_theme_suggestions_block_alter(array &$suggestions, array $variables)
+//  Producing a better template suggest for pages
+function icm_theme_suggestions_page_alter(array &$suggestions, array $variables) 
 {
-    $uglyName      = $variables['elements']['#configuration']['label'];
-    $lCaseName     = strtolower($uglyName);
-    $blockName     = str_replace(' ', '_', str_replace("'", '', $lCaseName));
-    $suggestions[] = 'block__' . $blockName;
+    if( isset($variables['page']['#title']) ){
+        $request = \Drupal::request();
+        $route_match = \Drupal::routeMatch();
+        $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+        $name = format_suggestion_name($page_title);
+        $suggestions[] = 'page__' . $name;
+    }
+
+}
+
+// // Producing a better name for my custom blocks so that I don't have to use suggestion based on ID
+// function icm_theme_suggestions_block_alter(array &$suggestions, array $variables)
+// {
+
+//     if ( isset($variables['elements']['#configuration']['label']) ){
+//         $blockName     = format_suggestion_name($variables['elements']['#configuration']['label']);
+//         $suggestions[] = 'block__' . $blockName;
+//     }
+// }
+
+
+use Symfony\Component\HttpFoundation\Cookie;
+// // Creating variable based on cookie so that I can change content based on userType of anonymous users
+function icm_preprocess_page(&$variables){
+		
+		$route_name = \Drupal::routeMatch()->getRouteName();
+
+		if( $route_name == 'user.register'){
+			user_cookie_save(array('userType' => 'banana'));
+		}
+		// kint($_COOKIE);
+
+
+//     \Drupal::service('page_cache_kill_switch')->trigger();
+//     // $cookie = Session::getCookie('userType');
+//     // kint($cookie);
+//     // $build['#cache']['max-age'] = 0;
+//     // $variables['#cache']['max-age'] = 0;
+//     // \Drupal::service('page_cache_kill_switch')->trigger();
+
+//     // if ( !isset($variables["userType"]) && isset($_COOKIE["userType"]) ) {
+//     //     $variables["userType"] = $_COOKIE["userType"];
+//     // }
+}
+
+function format_suggestion_name( $name )
+{
+    $lCaseName     = strtolower($name);
+    $final_name     = str_replace(' ', '_', str_replace("'", '', $lCaseName));
+    return $final_name;
 }

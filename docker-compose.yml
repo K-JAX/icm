@@ -81,7 +81,7 @@ services:
             - DRUPAL_DATABASE_NAME=${DB}
             - DRUPAL_DATABASE_USERNAME=${DB}
             - DRUPAL_DATABASE_PASSWORD=${PW}
-        image: drupal:9.1.10-apache
+        image: drupal:9.2.0-apache
         restart: always
         networks:
             - icm
