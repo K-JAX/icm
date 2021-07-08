@@ -1,0 +1,60 @@
+modal_page.modal.*:
+  type: config_entity
+  label: 'Modal config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    uuid:
+      type: string
+    label:
+      type: label
+      label: 'Label'
+    body.value:
+      type: text
+      label: 'Body'
+    pages:
+      type: text
+      label: 'Pages'
+    parameters:
+      type: text
+      label: 'Parameters'
+    auto_open:
+      type: boolean
+      label: 'Auto Open'
+    open_modal_on_element_click:
+      type: string
+      label: 'Open this modal clicking on this element'
+    langcode:
+      type: string
+      label: 'Language'
+    ok_label_button:
+      type: string
+      label: 'OK Label Button'
+    enable_dont_show_again_option:
+      type: boolean
+      label: 'Enable option Dont show again'
+    dont_show_again_label:
+      type: string
+      label: 'Dont show again'
+    modal_size:
+      type: list_string
+      label: 'Modal Size'
+    close_modal_esc_key:
+      type: boolean
+      label: 'Close Modal pressing ESC key'
+    close_modal_clicking_outside:
+      type: boolean
+      label: 'Close Modal clicking outside the Modal'
+    roles:
+      type: list_string
+      label: 'Who can access this Modal'
+    type:
+      type: list_string
+      label: 'Modal Type'
+    delay_display:
+      type: string
+      label: 'Delay to display'
+    published:
+      type: boolean
+      label: 'Published'

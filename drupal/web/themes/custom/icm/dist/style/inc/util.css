@@ -58,6 +58,7 @@
   transition: 0.25s;
   border-bottom: 1px solid #e7cc89;
   box-shadow: 0 0 0 0 #e7cc89 inset;
+  background: transparent;
   text-decoration: none;
 }
 .ul-btn:hover {
@@ -68,7 +69,8 @@
   text-decoration: none;
 }
 
-.btn.blue {
+.btn.blue,
+.btn.btn-primary {
   background-color: #2064af;
   color: white;
 }
@@ -100,6 +102,10 @@
   color: #faa61b;
 }
 
+.white {
+  color: #fff;
+}
+
 .bg-blueGrad {
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
 }
@@ -122,8 +128,72 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.2) 100%);
 }
 
+.diagonal-section {
+  position: relative;
+  z-index: 1;
+}
+.diagonal-section > * {
+  position: relative;
+  z-index: 1;
+}
+.diagonal-section:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+  width: 200%;
+  height: 105%;
+  inset: 0 0 0 0;
+  margin: auto;
+  transform-origin: center center;
+  transform: rotate(-7deg) translate(-25%, -25%);
+}
+@media all and (max-width: 992px) {
+  .diagonal-section:before {
+    height: 120%;
+    transform: rotate(-7deg) translate(-25%, -10%);
+  }
+}
+@media all and (min-width: 1500px) {
+  .diagonal-section:before {
+    height: 140%;
+  }
+}
+.diagonal-section:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 200%;
+  height: 105%;
+  inset: 0 0 0 0;
+  margin: auto;
+  transform-origin: center center;
+  transform: rotate(-7deg) translate(-20%, -25%);
+  background: url("/sites/default/files/2021-07/img-lincoln_0.png");
+  background-repeat: no-repeat;
+  background-position: 65% 45%;
+  background-size: auto 150%;
+}
+@media all and (max-width: 992px) {
+  .diagonal-section:after {
+    z-index: 0;
+    opacity: 0.3;
+    height: 120%;
+    transform: rotate(-7deg) translate(-20%, -10%);
+  }
+}
+@media all and (min-width: 1500px) {
+  .diagonal-section:after {
+    height: 140%;
+  }
+}
+
 .inset-shadow {
   box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
+}
+
+.inset-section {
+  box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
 }
 
 .short {
@@ -145,4 +215,9 @@
   .mobile-no-bg {
     background-image: none !important;
   }
+}
+
+.img-fluid img {
+  max-width: 100%;
+  height: auto;
 }

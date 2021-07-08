@@ -64,6 +64,7 @@
   transition: 0.25s;
   border-bottom: 1px solid $lightOrange;
   box-shadow: 0 0 0 0 $lightOrange inset;
+  background: transparent;
   text-decoration: none;
   &:hover {
     opacity: 0.85;
@@ -74,7 +75,8 @@
   }
 }
 
-.btn.blue {
+.btn.blue,
+.btn.btn-primary {
   background-color: $blue;
   color: white;
 }
@@ -104,6 +106,10 @@
 
 .orange {
   color: $orange;
+}
+
+.white {
+  color: #fff;
 }
 
 .bg-blueGrad {
@@ -137,10 +143,71 @@
   );
 }
 
+.diagonal-section {
+  position: relative;
+  z-index: 1;
+  // background: $blueGrad;
+  // transform: rotate(-7deg);
+  // & > * {
+  //   transform: rotate(7deg);
+  // }
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: $blueGrad;
+    width: 200%;
+    height: 105%;
+    inset: 0 0 0 0;
+    margin: auto;
+    transform-origin: center center;
+    transform: rotate(-7deg) translate(-25%, -25%);
+    @media all and (max-width: 992px) {
+      height: 120%;
+      transform: rotate(-7deg) translate(-25%, -10%);
+    }
+    @media all and (min-width: 1500px) {
+      height: 140%;
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 200%;
+    height: 105%;
+    inset: 0 0 0 0;
+    margin: auto;
+    transform-origin: center center;
+    transform: rotate(-7deg) translate(-20%, -25%);
+    background: url("/sites/default/files/2021-07/img-lincoln_0.png");
+    background-repeat: no-repeat;
+    background-position: 65% 45%;
+    background-size: auto 150%;
+    @media all and (max-width: 992px) {
+      z-index: 0;
+      opacity: 0.3;
+      height: 120%;
+      transform: rotate(-7deg) translate(-20%, -10%);
+    }
+    @media all and (min-width: 1500px) {
+      height: 140%;
+    }
+  }
+}
+
 // shadow
 
 .inset-shadow {
   box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
+}
+
+.inset-section {
+  box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
 }
 
 // hr
@@ -165,5 +232,12 @@
 .mobile-no-bg {
   @media all and (max-width: 768px) {
     background-image: none !important;
+  }
+}
+
+.img-fluid {
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }

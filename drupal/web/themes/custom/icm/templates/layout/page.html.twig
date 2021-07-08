@@ -42,9 +42,17 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
 
-	<header role="banner">
+{% set corner = node.field_background_hero_image_posi.value %}
+{% if corner == "Top-Right" %}
+	{% set yVal = '-10%' %}
+{% else %}
+	{% set yVal = '100%' %}
+{% endif %}
+
+<div class="layout-container" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
+
+	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
 
@@ -61,7 +69,9 @@
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
-		<div class="layout-content">
+		<div
+			class="layout-content">
+			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}
@@ -81,7 +91,7 @@
 	</main>
 
 	{% if page.footer %}
-		<footer class='site-footer' role="contentinfo">
+		<footer class='site-footer px-4 py-5' role="contentinfo">
 			{{ page.footer }}
 		</footer>
 	{% endif %}

@@ -1,15 +1,28 @@
 // initialize the scroller
 AOS.init();
 
-// (function ($) {
-//   // Argument passed from InvokeCommand.
-//   $.fn.setUserTypeCookie = function (argument) {
-//     console.log(argument);
+(function ($) {
+  // // Argument passed from InvokeCommand.
+  // $.fn.setUserTypeCookie = function (argument) {
+  //   console.log(argument);
 
-//     // Set cookie accordingly
-//     document.cookie = "userType=" + argument;
-//   };
-// })(jQuery);
+  //   // Set cookie accordingly
+  //   document.cookie = "userType=" + argument;
+  // };
+  // var myDropdown = $(".dropdown-toggle");
+
+  $(".dropdown-toggle").each(function () {
+    var toggle = this;
+    toggle.addEventListener("show.bs.dropdown", function (toggle) {
+      $(this).parents(".col-lg-4").addClass("focus");
+      $(".two-sides-section").addClass("blur");
+    });
+    toggle.addEventListener("hide.bs.dropdown", function () {
+      $(this).parents(".col-lg-4").removeClass("focus");
+      $(".two-sides-section").removeClass("blur");
+    });
+  });
+})(jQuery);
 
 const activate = (e) => {
   let active = e.getAttribute("aria-expanded") === "false" ? "true" : "false";

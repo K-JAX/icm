@@ -1,0 +1,288 @@
+<?php
+
+/**
+ * @file
+ * Main file for the Modal Page.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+include_once __DIR__ . '/includes/modal_page.install.inc';
+
+/**
+ * Implements hook_form_alter().
+ */
+function modal_page_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if ($form_id == 'modal_add_form' || $form_id == 'modal_edit_form') {
+    $form['#attached']['library'][] = 'modal_page/modal-page-admin';
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function modal_page_page_attachments(array &$attachments) {
+
+  $config = \Drupal::config('modal_page.settings');
+
+  // Verify if needs to load Bootstrap CDN.
+  $load_bootstrap = $config->get('load_bootstrap');
+
+  $entity_manager = \Drupal::entityTypeManager();
+  $entity_storage = $entity_manager->getStorage('modal');
+  $modals = $entity_storage->loadMultiple();
+
+  if (!empty($modals)) {
+
+    // Load Modal Page Library.
+    $attachments['#attached']['library'][] = 'modal_page/modal-page';
+
+    // Load Bootstrap Library only if necessary.
+    if (!empty($load_bootstrap)) {
+      $attachments['#attached']['library'][] = 'modal_page/modal-page-bootstrap';
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function modal_page_theme() {
+  return [
+    'modal_page_modal' => [
+      'variables' => [
+        'do_not_show_again' => NULL,
+        'title' => NULL,
+        'display_title' => NULL,
+        'text' => NULL,
+        'delay_display' => NULL,
+        'modal_size' => NULL,
+        'button' => NULL,
+        'id' => NULL,
+        'close_modal_esc_key' => NULL,
+        'close_modal_clicking_outside' => NULL,
+        'modal_header_classes' => NULL,
+        'modal_footer_classes' => NULL,
+        'enable_modal_header' => NULL,
+        'enable_modal_footer' => NULL,
+        'display_button_x_close' => NULL,
+        'open_modal_on_element_click' => NULL,
+        'auto_open' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function modal_page_preprocess_html(&$variables) {
+
+  $modalsToShow = \Drupal::service('modal_page.modals')->checkModalToShow();
+
+  if (empty($modalsToShow)) {
+    return FALSE;
+  }
+
+  foreach ($modalsToShow as $modalToShow) {
+
+    $doNotShowAgain = FALSE;
+
+    if (!empty($modalToShow['do_not_show_again'])) {
+      $doNotShowAgain = $modalToShow['do_not_show_again'];
+    }
+
+    $title = $modalToShow['title'];
+    $displayTitle = $modalToShow['display_title'];
+    $text = $modalToShow['text'];
+    $delayDisplay = $modalToShow['delay_display'];
+    $modalSize = $modalToShow['modal_size'];
+    $button = $modalToShow['button'];
+    $id = $modalToShow['id'];
+    $openModalOnElementClick = $modalToShow['open_modal_on_element_click'];
+    $autoOpen = $modalToShow['auto_open'];
+    $closeModalEscKey = $modalToShow['close_modal_esc_key'];
+    $closeModalClickingOutside = $modalToShow['close_modal_clicking_outside'];
+    $modalHeaderClasses = 'modal-page-content modal-header';
+    $modalFooterClasses = 'modal-footer modal-page-footer';
+    $enableModalHeader = $modalToShow['enable_modal_header'];
+    $enableModalFooter = $modalToShow['enable_modal_footer'];
+    $displayButtonXclose = $modalToShow['display_button_x_close'];
+
+    if (empty($modalToShow['insert_horizontal_line_header'])) {
+      $modalHeaderClasses .= ' ';
+      $modalHeaderClasses .= 'modal-no-border';
+    }
+
+    if (empty($modalToShow['insert_horizontal_line_footer'])) {
+      $modalFooterClasses .= ' ';
+      $modalFooterClasses .= 'modal-no-border';
+    }
+
+    $variables['page_top']['slidedown_templates'][] = [
+      '#theme' => 'modal_page_modal',
+      '#do_not_show_again' => $doNotShowAgain,
+      '#title' => $title,
+      '#display_title' => $displayTitle,
+      '#text' => $text,
+      '#delay_display' => $delayDisplay,
+      '#modal_size' => $modalSize,
+      '#button' => $button,
+      '#id' => $id,
+      '#close_modal_esc_key' => $closeModalEscKey,
+      '#close_modal_clicking_outside' => $closeModalClickingOutside,
+      '#modal_header_classes' => $modalHeaderClasses,
+      '#modal_footer_classes' => $modalFooterClasses,
+      '#enable_modal_header' => $enableModalHeader,
+      '#enable_modal_footer' => $enableModalFooter,
+      '#display_button_x_close' => $displayButtonXclose,
+      '#open_modal_on_element_click' => $openModalOnElementClick,
+      '#auto_open' => $autoOpen,
+    ];
+
+    if (isset($modalToShow['do_not_show_again']) && !empty($modalToShow['do_not_show_again'])) {
+      $variables['page_top']['slidedown_templates']['#do_not_show_again'] = $modalToShow['do_not_show_again'];
+    }
+
+    // Drupal Settings.
+    $verifyLoadBootstrapAutomatically = \Drupal::config('modal_page.settings')->get('verify_load_bootstrap_automatically');
+
+    $variables['#attached']['drupalSettings']['modal_page']['verify_load_bootstrap_automatically'] = $verifyLoadBootstrapAutomatically;
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function modal_page_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.modal_page':
+
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Modal Page is the easiest and fastest way to put a modal on specific pages. For more information, see the online handbook entry for <a target="_blank" href="@modal_page">Modal Page</a>.', ['@modal_page' => 'https://www.drupal.org/project/modal_page']) . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<p>' . t('You only need to configure the modal text and on which page it should appear. When someone visits this page, this modal will be displayed.') . '</p>';
+      $output .= '<dl>';
+      $output .= '<h3>' . t('Displaying modals') . '</h3>';
+      $output .= '<p>' . t('The configuration page of Modal Page can be accessed in <i>Structure</i>  » <i>Modal</i> screen. When followed the correct pattern, the modal can be displayed on screen very easily.') . '</p>';
+      $output .= '<p>' . t('<a href="@modal_page_configuration">Click here</a> to redirect to Modal Page configuration.', ['@modal_page_configuration' => \Drupal::urlGenerator()->generateFromRoute('modal_page.settings')]) . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function modal_page_entity_presave(EntityInterface $entity) {
+
+  // Default value only for Modals.
+  if (empty($entity->bundle()) || $entity->bundle() != 'modal') {
+    return;
+  }
+
+  // Set Default value for Label.
+  if ($entity->getLabel() === NULL) {
+
+    // Get Default Label.
+    $defaultLabel = (string) t('Modal generated at timestamp: @timestamp@', [
+      '@timestamp@' => time(),
+    ]);
+
+    // Set Label.
+    $entity->setLabel($defaultLabel);
+
+    // Display Title as false.
+    $entity->setDisplayTitle(FALSE);
+  }
+
+  // Default value for Display Title.
+  if ($entity->getDisplayTitle() === NULL) {
+    $entity->setDisplayTitle(TRUE);
+  }
+
+  // Default value for Modal Type.
+  if ($entity->getType() === NULL) {
+    $entity->setType('page');
+  }
+
+  // Default value for Pages.
+  if ($entity->getPages() === NULL) {
+    $entity->setPages('');
+  }
+
+  // Default value for auto-open.
+  if ($entity->getAutoOpen() === NULL) {
+    $entity->setAutoOpen(TRUE);
+  }
+
+  // Default value for Modal Header.
+  if ($entity->getEnableModalHeader() === NULL) {
+    $entity->setEnableModalHeader(TRUE);
+  }
+
+  // Default value for Button X.
+  if ($entity->getDisplayButtonXclose() === NULL) {
+    $entity->setDisplayButtonXclose(TRUE);
+  }
+
+  // Default value for Horizontal Line Header.
+  if ($entity->getInsertHorizontalLineHeader() === NULL) {
+    $entity->setInsertHorizontalLineHeader(TRUE);
+  }
+
+  // Default value for Horizontal line.
+  if ($entity->getInsertHorizontalLineFooter() === NULL) {
+    $entity->setInsertHorizontalLineFooter(TRUE);
+  }
+
+  // Default value for Modal.
+  if ($entity->getEnableModalFooter() === NULL) {
+    $entity->setEnableModalFooter(TRUE);
+  }
+
+  // Default value OK Label Button.
+  if ($entity->getOkLabelButton() === NULL) {
+    $entity->setOkLabelButton((string) t('OK'));
+  }
+
+  // Default value Show Option.
+  if ($entity->getEnableDontShowAgainOption() === NULL) {
+    $entity->setEnableDontShowAgainOption(TRUE);
+  }
+
+  // Default value for Don't Show Again Label.
+  if ($entity->getDontShowAgainLabel() === NULL) {
+    $entity->setDontShowAgainLabel((string) t("Don't show again"));
+  }
+
+  // Default value for Get Modal size.
+  if ($entity->getModalSize() === NULL) {
+    $entity->setModalSize('modal-md');
+  }
+
+  // Default value for Modal Esc Key.
+  if ($entity->getCloseModalEscKey() === NULL) {
+    $entity->setCloseModalEscKey(TRUE);
+  }
+
+  // Default value for Modal Outside.
+  if ($entity->getCloseModalClickingOutside() === NULL) {
+    $entity->setCloseModalClickingOutside(TRUE);
+  }
+
+  // Default value Published.
+  if ($entity->getPublished() === NULL) {
+    $entity->setPublished(TRUE);
+  }
+
+  // Default value for Roles.
+  if ($entity->getRoles() === NULL) {
+    $entity->setRoles([]);
+  }
+}

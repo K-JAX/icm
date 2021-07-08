@@ -1,0 +1,108 @@
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+/* legacy */
+.img-dec {
+  position: relative;
+  text-align: center;
+}
+.img-dec:before, .img-dec:after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+}
+.img-dec img {
+  position: relative;
+  z-index: 1;
+}
+.img-dec.underlay.right:before {
+  width: 161px;
+  height: 160px;
+  background: url("../../img/blue-dots.png") no-repeat;
+  top: -5%;
+  left: -5%;
+}
+.img-dec.underlay.right:after {
+  top: 62%;
+  right: -10px;
+  width: 39%;
+  height: 42%;
+  background: #e7cc89;
+  opacity: 0.45;
+}
+.img-dec.overlay.left:before {
+  width: 206px;
+  height: 82px;
+  bottom: -30px;
+  left: 5%;
+  z-index: 2;
+  background: #faa61b;
+  opacity: 0.85;
+}
+.img-dec.overlay.left:after {
+  width: 271px;
+  height: 522px;
+  top: -7%;
+  left: 45%;
+  background: #2064af;
+}
+
+/* //legacy */
+.block-inline-blocksimple-image.has-decoration .field--type-image {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.block-inline-blocksimple-image.has-decoration .field--type-image:before, .block-inline-blocksimple-image.has-decoration .field--type-image:after {
+  position: absolute;
+  content: "";
+}
+.block-inline-blocksimple-image.has-decoration .field--type-image img {
+  position: relative;
+  z-index: 1;
+}
+.block-inline-blocksimple-image.single-square-corner .field--type-image:before, .block-inline-blocksimple-image.reverse-single-square-corner .field--type-image:before {
+  width: 150px;
+  height: 192px;
+  top: -2%;
+  z-index: 0;
+  background: #faa61b;
+  opacity: 0.45;
+}
+.block-inline-blocksimple-image.single-square-corner .field--type-image:before {
+  left: -4%;
+}
+.block-inline-blocksimple-image.reverse-single-square-corner .field--type-image:before {
+  right: -4%;
+}
+.block-inline-blocksimple-image.opaque-square-corners .field--type-image:before, .block-inline-blocksimple-image.reverse-opaque-square-corners .field--type-image:before {
+  width: 206px;
+  height: 82px;
+  bottom: -30px;
+  z-index: 2;
+  background: #faa61b;
+  opacity: 0.85;
+}
+.block-inline-blocksimple-image.opaque-square-corners .field--type-image:after, .block-inline-blocksimple-image.reverse-opaque-square-corners .field--type-image:after {
+  width: 271px;
+  height: 522px;
+  top: -7%;
+  background: #2064af;
+}
+.block-inline-blocksimple-image.opaque-square-corners .field--type-image:before {
+  right: -5%;
+}
+.block-inline-blocksimple-image.opaque-square-corners .field--type-image:after {
+  left: -15%;
+}
+.block-inline-blocksimple-image.reverse-opaque-square-corners .field--type-image:before {
+  left: -5%;
+}
+.block-inline-blocksimple-image.reverse-opaque-square-corners .field--type-image:after {
+  right: -15%;
+}

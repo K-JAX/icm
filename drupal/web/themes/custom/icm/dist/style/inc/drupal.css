@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.layout-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .menu-item--expanded {
   list-style-type: circle;
   list-style-image: url(../../../../../core/misc/menu-expanded.png);
@@ -19,4 +25,22 @@
 .region-content .block-local-tasks-block,
 .region-content #edit-actions {
   margin-left: 40px;
+}
+
+.field--name-field-specific-content-type {
+  display: none;
+}
+
+.layout-builder-block {
+  background: transparent;
+}
+
+.layout-builder__section .layout-builder__link--remove,
+.layout-builder__section .layout-builder__link--configure {
+  position: relative;
+  z-index: 2;
+}
+
+.container-inline {
+  display: inline-block;
 }

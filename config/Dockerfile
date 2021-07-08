@@ -18,6 +18,11 @@ RUN docker-php-ext-install mysqli && apachectl restart
 # EXPOSE 22
 # CMD ["/usr/sbin/sshd", "-D"]
 
+# Installing git if possible
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
+
 
 # # Replacing the existing drush since it seems to be causing problems right now.
 RUN rm -rf /usr/local/bin/drush
