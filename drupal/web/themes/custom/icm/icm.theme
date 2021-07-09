@@ -4,6 +4,12 @@
  */
 // use Drupal\Core\Session;
 
+// function icm_theme_suggestions_node_alter(array &$suggestions, array $variables){
+//     if($variables['elements']['#node']->getType() == 'article'){
+//         $suggestions[] = 'page__node__article';
+//     }
+// }
+
 //  Producing a better template suggest for pages
 function icm_theme_suggestions_page_alter(array &$suggestions, array $variables) 
 {
@@ -15,7 +21,18 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
         $suggestions[] = 'page__' . $name;
     }
 
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        $suggestions[] = 'page__' . $node->bundle();
+      }
+
+    // kint($variables);
+    
+    // if($variables['elements']['#node']->getType() == 'article'){
+    //     $suggestions[] = 'page__article';        
+    // }
+
 }
+
 
 // // Producing a better name for my custom blocks so that I don't have to use suggestion based on ID
 // function icm_theme_suggestions_block_alter(array &$suggestions, array $variables)
@@ -30,9 +47,22 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 function icm_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables, $hook) {
     if(isset($variables['view']->filter['type']->value)){
         if(reset($variables['view']->filter['type']->value) == 'left_right_brain_investing_stat'){
-            // kint($variables['view']);
             $suggestions[] = 'views_view_unformatted__left_right';
-        }    
+        }
+        if(reset($variables['view']->filter['type']->value) == 'team_member'){
+            $suggestions[] = 'views_view_unformatted__team_members';
+        }
+    }
+}
+
+function icm_theme_suggestions_views_view_grid_alter(array &$suggestions, array $variables, $hook) {
+    if(isset($variables['view']->filter['type']->value)){
+        if(reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians'){
+            $suggestions[] = 'views_view_grid__strategy_platform_list';
+        }
+        if(reset($variables['view']->filter['type']->value) == 'article'){
+            $suggestions[] = 'views_view_grid__recent_blog_posts_grid';
+        }
     }
 }
 
@@ -48,12 +78,21 @@ function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array
         if(reset($variables['view']->filter['type']->value) == 'advisor_service_square'){
             $suggestions[] = 'views_view_field__advisor_service_' . $variables['field']->field;
         }
+
+        if(reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians'){
+            $suggestions[] = 'views_view_field__strategy_platform_' . $variables['field']->field;
+        }
+
     }
   }
 
 use Symfony\Component\HttpFoundation\Cookie;
 // // Creating variable based on cookie so that I can change content based on userType of anonymous users
 function icm_preprocess_page(&$variables){
+        // Define {{ field_image }} field value available in the template.  
+        if (isset($variables['node'])) {
+            $variables['page']['image_in_page'] = $variables['node']->field_image->view();
+          }
 		
 		$route_name = \Drupal::routeMatch()->getRouteName();
 

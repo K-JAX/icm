@@ -18,5 +18,4 @@
  * @see template_preprocess_views_view_field()
  */
 #}
-{{ kint(row[field]) }}
-<button aria-expanded="false" class="btn dropdown-toggle oswald rounded-0" data-bs-toggle="dropdown" id="dropdownMenuButton1" type="button">{{ output -}}</button>
+<button class="btn advisor-service-toggle oswald rounded-0" data-bs-toggle="collapse" id="advisor-service-toggle-{{row.id}}" data-bs-target="#advisor-services-{{row.id}}" aria-expanded="false" aria-controls="collapseExample">{{ output -}}</button>

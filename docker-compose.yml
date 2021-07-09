@@ -100,5 +100,33 @@ services:
             - "8001:80"
         image: phpmyadmin/phpmyadmin
         restart: always
+    # default-mysql:
+    #     environment:
+    #         - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
+    #         - MYSQL_DATABASE='test'
+    #         - MYSQL_USER='test'
+    #         - MYSQL_PASSWORD='test'
+    #     image: mysql:latest
+    #     # volumes:
+    #     #     - ./data:/var/lib/mysql:Z
+    #     #     - ./config/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
+    #     ports:
+    #         - "3309:3309"
+    #     restart: always
+    #     networks:
+    #         - icm
+    # default-drupal:
+    #     image: drupal:9.2.0-apache
+    #     restart: always
+    #     networks:
+    #         - icm
+    #     ports: 
+    #         - "9080:80"
+    #     environment:
+    #         - DRUPAL_DATABASE_HOST=default-mysql
+    #         - DRUPAL_DATABASE_PORT=3306
+    #         - DRUPAL_DATABASE_NAME=test
+    #         - DRUPAL_DATABASE_USERNAME=test
+    #         - DRUPAL_DATABASE_PASSWORD=test
 networks:
   icm:

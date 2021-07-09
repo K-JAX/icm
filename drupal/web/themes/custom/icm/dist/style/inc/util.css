@@ -69,6 +69,10 @@
   text-decoration: none;
 }
 
+.btn {
+  border-radius: 0;
+}
+
 .btn.blue,
 .btn.btn-primary {
   background-color: #2064af;
@@ -106,8 +110,16 @@
   color: #fff;
 }
 
+.gray {
+  color: #828282;
+}
+
 .bg-blueGrad {
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+}
+
+.bg-orange {
+  background: #e7cc89;
 }
 
 .bg-lightGray {
@@ -188,6 +200,10 @@
   }
 }
 
+.document-shadow {
+  box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.25);
+}
+
 .inset-shadow {
   box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
@@ -220,4 +236,16 @@
 .img-fluid img {
   max-width: 100%;
   height: auto;
+}
+
+@media all and (max-width: 992px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .mobile-only {
+    display: none;
+  }
 }

@@ -47,6 +47,10 @@
   font-weight: 800;
 }
 
+// spacing
+
+// // spacing
+
 // links
 .hover-opacity {
   opacity: 1;
@@ -73,6 +77,10 @@
   a {
     text-decoration: none;
   }
+}
+
+.btn {
+  border-radius: 0;
 }
 
 .btn.blue,
@@ -112,8 +120,16 @@
   color: #fff;
 }
 
+.gray {
+  color: #828282;
+}
+
 .bg-blueGrad {
   background: $blueGrad;
+}
+
+.bg-orange {
+  background: $lightOrange;
 }
 
 .bg-lightGray {
@@ -202,6 +218,14 @@
 
 // shadow
 
+.document-shadow {
+  box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.25);
+}
+
+// .shadow {
+//   box-shadow: 0 4px 13px 0;
+// }
+
 .inset-shadow {
   box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
@@ -241,3 +265,18 @@
     height: auto;
   }
 }
+
+// desktop / mobile
+.desktop-only {
+  @media all and (max-width: 992px) {
+    display: none;
+  }
+}
+
+.mobile-only {
+  @media all and (min-width: 992px) {
+    display: none;
+  }
+}
+
+// // desktop / mobile

@@ -9,6 +9,10 @@ AOS.init();
   //   document.cookie = "userType=" + argument;
   // };
   // var myDropdown = $(".dropdown-toggle");
+  $(".advisor-service-toggle").on("click", function () {
+    $(".advisor-service-toggle:not(#" + $(this).attr("id") + ")").addClass("collapsed").attr("aria-expanded", "false");
+    $(".body-text").removeClass("show");
+  });
   $(".dropdown-toggle").each(function () {
     var toggle = this;
     toggle.addEventListener("show.bs.dropdown", function (toggle) {

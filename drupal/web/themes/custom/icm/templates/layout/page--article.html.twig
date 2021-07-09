@@ -42,15 +42,13 @@
  * @see html.html.twig
  */
 #}
-
-{% set corner = node.field_background_hero_image_posi.value %}
-{% if corner == "Top-Right" %}
-	{% set yVal = '-5%' %}
-{% else %}
-	{% set yVal = '100%' %}
-{% endif %}
-
-<div class="layout-container" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
+{# {%
+set mainClasses = [
+		'container',
+	'document-shadow',
+]
+%} #}
+<div class="layout-container">
 
 	<header role="banner" class="mx-4">
 		{{ page.header }}
@@ -65,13 +63,14 @@
 
 	{{ page.help }}
 
-	<main role="main">
+	<main role="main" class="mb-5">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
+		{{page.image_in_page}}
 
-		<div
-			class="layout-content">
-			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
+		<div class="layout-content container bg-white document-shadow">
+			{# {{ kint( [node.field_image.entity | keys, page.image_in_page['#item'] ] ) }} #}
+			<img class="author-image" src="{{file_url(node.Owner.user_picture.0.entity.uri.value)}}" alt="Image of the article author, {{node.Owner.name.value}}">
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}
@@ -91,7 +90,7 @@
 	</main>
 
 	{% if page.footer %}
-		<footer class='site-footer px-4 py-5' role="contentinfo">
+		<footer class='site-footer mt-5 px-4 py-5' role="contentinfo">
 			{{ page.footer }}
 		</footer>
 	{% endif %}
