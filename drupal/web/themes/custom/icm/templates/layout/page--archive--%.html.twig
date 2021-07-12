@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a single page. FOR THE ABOUT PAGE
+ * Theme override to display a single page.
  *
  * The doctype, html, head and body tags are not in this template. Instead they
  * can be found in the html.html.twig template in this directory.
@@ -43,18 +43,55 @@
  */
 #}
 
-<div class="layout-container container-fluid px-0">
+{% set corner = node.field_background_hero_image_posi.value %}
+{% if corner == "Top-Right" %}
+	{% set yVal = '-5%' %}
+{% else %}
+	{% set yVal = '100%' %}
+{% endif %}
+
+<div class="layout-container" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
 
 	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
 
+	{{ page.primary_menu }}
+	{{ page.secondary_menu }}
+
+	{{ page.breadcrumb }}
+
+	{{ page.highlighted }}
+
+	{{ page.help }}
 
 	<main role="main">
 		<a id="main-content" tabindex="-1"></a>
-		{{ page.content }}
+		{# link is in html.html.twig #}
+		<div class="container blog-list">
+			<div class="row">
+				<div
+					class="layout-content col-lg-8 col-12 p-0">
+					{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
+					{{ page.content }}
+				</div>
+				{# /.layout-content #}
+
+				{% if page.sidebar_first %}
+					<aside class="layout-sidebar-first col-lg-4 col-12" role="complementary">
+						{{ page.sidebar_first }}
+					</aside>
+				{% endif %}
+
+				{% if page.sidebar_second %}
+					<aside class="layout-sidebar-second col-lg-4 col-12" role="complementary">
+						{{ page.sidebar_second }}
+					</aside>
+				{% endif %}
+			</div>
+		</div>
 	</main>
-	{# <div class="floating-popup d-flex flex-column justify-content-center align-content-center text-align-center px-2"> <button class="close-button" onclick="closePopUp(this)"></button> <p class="oswald fs-5">Get in control and <strong>manage your risk</strong>.</p> <a href="#" class="btn orange">Schedule a call</a></div> #}
+
 	{% if page.footer %}
 		<footer class='site-footer px-4 py-5' role="contentinfo">
 			{{ page.footer }}

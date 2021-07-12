@@ -260,6 +260,7 @@
 
 .site-footer {
   background: $blueGrad;
+  padding: 3rem 1.5rem;
   #block-footerbrandingblock {
     position: relative;
     @media all and (min-width: 993px) {
@@ -355,6 +356,7 @@
 }
 
 .hero-section {
+  position: relative;
   background-repeat: no-repeat;
   background-size: auto 108%;
   @media all and (max-width: 992px) {
@@ -366,7 +368,7 @@
   position: absolute;
   transform-origin: bottom left;
   transform: rotate(90deg);
-  top: -10%;
+  top: 100%;
   bottom: 0;
   left: 0;
   margin: auto;
@@ -1250,6 +1252,53 @@
       h6 {
         color: $blue;
       }
+    }
+  }
+}
+
+.archive.dropdown {
+  .dropdown-toggle {
+    position: relative;
+    z-index: 2;
+  }
+  .dropdown-menu {
+    z-index: 1;
+    display: block;
+    max-height: 0;
+    padding: 0 1rem;
+    overflow: hidden;
+    transform: translateY(-1px);
+    transition: 0.35s;
+    &.show {
+      max-height: 400px;
+      transform: translateY(0px);
+      padding: 1.5rem 1rem;
+    }
+  }
+}
+
+.col-box {
+  font-size: 1.125rem;
+  margin: 0;
+  li {
+    margin-left: 0;
+  }
+}
+
+.search-block-form {
+  width: 100%;
+  form {
+    display: flex;
+    align-items: center;
+    .form-type-search {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+    .search-button {
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
     }
   }
 }

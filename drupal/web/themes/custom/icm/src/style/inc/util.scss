@@ -104,6 +104,18 @@
   color: white;
 }
 
+.btn.clear {
+  background: transparent;
+  color: $blue;
+  border: 1px solid gray;
+}
+
+.btn.white {
+  color: $blue;
+  background: white;
+  border: 1px solid gray;
+}
+
 // color
 .blue {
   color: $blue;
@@ -239,6 +251,7 @@
   width: 74px;
   height: 3px !important;
   opacity: 1;
+  margin: 1rem 0;
 }
 
 // decoration

@@ -22,15 +22,24 @@ h6 {
 input[type=text],
 input[type=email],
 input[type=tel],
+input[type=search],
 textarea {
   font-size: 1.1rem;
   background: #e6e6e6;
   border: none;
-  padding: 0.25em 0.35em;
+  padding: 0.75em 0.35em;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+input[type=search]:focus,
+textarea:focus {
+  background: white;
 }
 
 input::placeholder,
 textarea::placeholder {
+  color: black;
   font-style: italic;
   opacity: 0.5;
 }

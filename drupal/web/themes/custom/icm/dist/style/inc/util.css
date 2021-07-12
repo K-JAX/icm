@@ -94,6 +94,18 @@
   color: white;
 }
 
+.btn.clear {
+  background: transparent;
+  color: #2064af;
+  border: 1px solid gray;
+}
+
+.btn.white {
+  color: #2064af;
+  background: white;
+  border: 1px solid gray;
+}
+
 .blue {
   color: #2064af;
 }
@@ -216,6 +228,7 @@
   width: 74px;
   height: 3px !important;
   opacity: 1;
+  margin: 1rem 0;
 }
 
 .panel {

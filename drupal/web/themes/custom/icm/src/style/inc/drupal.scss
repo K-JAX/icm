@@ -1,5 +1,5 @@
 @import "./var";
-
+@import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
 .dialog-off-canvas-main-canvas {
   position: relative;
 }
@@ -7,7 +7,7 @@
 .layout-container {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 .menu-item--expanded {
@@ -27,7 +27,8 @@
   .page-title,
   .block-local-tasks-block,
   #edit-actions {
-    margin-left: 40px;
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 
@@ -49,4 +50,11 @@
 
 .container-inline {
   display: inline-block;
+}
+
+input#edit-submit {
+  font-family: "Font Awesome\ 5 Free";
+  content: "f002";
+  background-color: transparent;
+  border: 0;
 }

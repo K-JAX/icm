@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
 html,
 body {
   font-family: "Roboto", sans-serif;
@@ -22,15 +23,24 @@ h6 {
 input[type=text],
 input[type=email],
 input[type=tel],
+input[type=search],
 textarea {
   font-size: 1.1rem;
   background: #e6e6e6;
   border: none;
-  padding: 0.25em 0.35em;
+  padding: 0.75em 0.35em;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+input[type=search]:focus,
+textarea:focus {
+  background: white;
 }
 
 input::placeholder,
 textarea::placeholder {
+  color: black;
   font-style: italic;
   opacity: 0.5;
 }
@@ -60,7 +70,6 @@ input[type=submit]:hover {
 .layout-container {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
 }
 
 .menu-item--expanded {
@@ -79,7 +88,8 @@ input[type=submit]:hover {
 .region-content .page-title,
 .region-content .block-local-tasks-block,
 .region-content #edit-actions {
-  margin-left: 40px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .field--name-field-specific-content-type {
@@ -98,6 +108,13 @@ input[type=submit]:hover {
 
 .container-inline {
   display: inline-block;
+}
+
+input#edit-submit {
+  font-family: "Font Awesome 5 Free";
+  content: "f002";
+  background-color: transparent;
+  border: 0;
 }
 
 @keyframes slideDown {
@@ -470,6 +487,7 @@ input[type=submit]:hover {
 
 .site-footer {
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+  padding: 3rem 1.5rem;
 }
 .site-footer #block-footerbrandingblock {
   position: relative;
@@ -559,6 +577,7 @@ input[type=submit]:hover {
 }
 
 .hero-section {
+  position: relative;
   background-repeat: no-repeat;
   background-size: auto 108%;
 }
@@ -572,7 +591,7 @@ input[type=submit]:hover {
   position: absolute;
   transform-origin: bottom left;
   transform: rotate(90deg);
-  top: -10%;
+  top: 100%;
   bottom: 0;
   left: 0;
   margin: auto;
@@ -1428,6 +1447,51 @@ input[type=submit]:hover {
   color: #2064af;
 }
 
+.archive.dropdown .dropdown-toggle {
+  position: relative;
+  z-index: 2;
+}
+.archive.dropdown .dropdown-menu {
+  z-index: 1;
+  display: block;
+  max-height: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  transform: translateY(-1px);
+  transition: 0.35s;
+}
+.archive.dropdown .dropdown-menu.show {
+  max-height: 400px;
+  transform: translateY(0px);
+  padding: 1.5rem 1rem;
+}
+
+.col-box {
+  font-size: 1.125rem;
+  margin: 0;
+}
+.col-box li {
+  margin-left: 0;
+}
+
+.search-block-form {
+  width: 100%;
+}
+.search-block-form form {
+  display: flex;
+  align-items: center;
+}
+.search-block-form form .form-type-search {
+  width: 100%;
+}
+.search-block-form form .form-type-search input {
+  width: 100%;
+}
+.search-block-form form .search-button {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
 .roboto {
   font-family: "Roboto", sans-serif;
 }
@@ -1522,6 +1586,18 @@ input[type=submit]:hover {
 .btn.orangeGrad {
   background: linear-gradient(135deg, #fabb51 0%, #bb7d13 100%);
   color: white;
+}
+
+.btn.clear {
+  background: transparent;
+  color: #2064af;
+  border: 1px solid gray;
+}
+
+.btn.white {
+  color: #2064af;
+  background: white;
+  border: 1px solid gray;
 }
 
 .blue {
@@ -1646,6 +1722,7 @@ input[type=submit]:hover {
   width: 74px;
   height: 3px !important;
   opacity: 1;
+  margin: 1rem 0;
 }
 
 .panel {

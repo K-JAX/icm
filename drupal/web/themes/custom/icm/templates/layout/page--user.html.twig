@@ -42,7 +42,7 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
+<div class="layout-container container-fluid px-0">
 
 	<header role="banner">
 		{{ page.header }}
@@ -57,27 +57,21 @@
 
 	{{ page.help }}
 
-	<main role="main">
+	<main role="main ">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
-
-		<div class="layout-content">
-			{{ page.content }}
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+					<h1 class="page-head">Account</h1>
+					<hr class="short orange my-4">
+				</div>
+				<div class="layout-content">
+					{{ page.content }}
+				</div>
+				{# /.layout-content #}
+			</div>
 		</div>
-		{# /.layout-content #}
-
-		{% if page.sidebar_first %}
-			<aside class="layout-sidebar-first" role="complementary">
-				{{ page.sidebar_first }}
-			</aside>
-		{% endif %}
-
-		{% if page.sidebar_second %}
-			<aside class="layout-sidebar-second" role="complementary">
-				{{ page.sidebar_second }}
-			</aside>
-		{% endif %}
-
 	</main>
 
 	{% if page.footer %}

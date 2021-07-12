@@ -368,6 +368,7 @@
 
 .site-footer {
   background: linear-gradient(90deg, #8fb9e7 0%, #2064af 50%, #194a81 100%);
+  padding: 3rem 1.5rem;
 }
 .site-footer #block-footerbrandingblock {
   position: relative;
@@ -457,6 +458,7 @@
 }
 
 .hero-section {
+  position: relative;
   background-repeat: no-repeat;
   background-size: auto 108%;
 }
@@ -470,7 +472,7 @@
   position: absolute;
   transform-origin: bottom left;
   transform: rotate(90deg);
-  top: -10%;
+  top: 100%;
   bottom: 0;
   left: 0;
   margin: auto;
@@ -1324,4 +1326,49 @@
 .page-node-type-article .layout-content article h5,
 .page-node-type-article .layout-content article h6 {
   color: #2064af;
+}
+
+.archive.dropdown .dropdown-toggle {
+  position: relative;
+  z-index: 2;
+}
+.archive.dropdown .dropdown-menu {
+  z-index: 1;
+  display: block;
+  max-height: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  transform: translateY(-1px);
+  transition: 0.35s;
+}
+.archive.dropdown .dropdown-menu.show {
+  max-height: 400px;
+  transform: translateY(0px);
+  padding: 1.5rem 1rem;
+}
+
+.col-box {
+  font-size: 1.125rem;
+  margin: 0;
+}
+.col-box li {
+  margin-left: 0;
+}
+
+.search-block-form {
+  width: 100%;
+}
+.search-block-form form {
+  display: flex;
+  align-items: center;
+}
+.search-block-form form .form-type-search {
+  width: 100%;
+}
+.search-block-form form .form-type-search input {
+  width: 100%;
+}
+.search-block-form form .search-button {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
 }

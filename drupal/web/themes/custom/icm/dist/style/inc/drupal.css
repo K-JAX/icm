@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
 .dialog-off-canvas-main-canvas {
   position: relative;
 }
@@ -5,7 +6,6 @@
 .layout-container {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
 }
 
 .menu-item--expanded {
@@ -24,7 +24,8 @@
 .region-content .page-title,
 .region-content .block-local-tasks-block,
 .region-content #edit-actions {
-  margin-left: 40px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .field--name-field-specific-content-type {
@@ -43,4 +44,11 @@
 
 .container-inline {
   display: inline-block;
+}
+
+input#edit-submit {
+  font-family: "Font Awesome 5 Free";
+  content: "f002";
+  background-color: transparent;
+  border: 0;
 }

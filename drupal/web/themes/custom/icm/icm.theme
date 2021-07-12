@@ -17,7 +17,11 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
         $request = \Drupal::request();
         $route_match = \Drupal::routeMatch();
         $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+        if(gettype($page_title) != 'string'){
+            $page_title = reset($page_title);
+        }
         $name = format_suggestion_name($page_title);
+        // $name = format_suggestion_name($variables['page']['#title']);
         $suggestions[] = 'page__' . $name;
     }
 
@@ -25,11 +29,6 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
         $suggestions[] = 'page__' . $node->bundle();
       }
 
-    // kint($variables);
-    
-    // if($variables['elements']['#node']->getType() == 'article'){
-    //     $suggestions[] = 'page__article';        
-    // }
 
 }
 
@@ -43,6 +42,25 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 //         $suggestions[] = 'block__' . $blockName;
 //     }
 // }
+
+function icm_theme_suggestions_views_view_alter(array &$suggestions, array $variables){
+    if($variables['view']->id() === 'archive'){
+        $suggestions[] = 'views_view_monthly_archive';
+    }
+    
+}
+
+function icm_theme_suggestions_views_view_summary_alter(array &$suggestions, array $variables){
+    $view_name = $variables['view']->id();
+    $view_type = $variables['view']->getDisplay()->display['id'];
+    if($view_name === 'archive' && $view_type === 'block_1'){
+        $suggestions[] = 'views_view_summary__monthly_archive_dropdown';
+    }elseif($view_name === 'archive' && $view_type === 'page_1'){
+        $suggestions[] = 'views_view_summary__monthly_archive_columns';
+    }
+
+    
+}
 
 function icm_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables, $hook) {
     if(isset($variables['view']->filter['type']->value)){
@@ -91,7 +109,10 @@ use Symfony\Component\HttpFoundation\Cookie;
 function icm_preprocess_page(&$variables){
         // Define {{ field_image }} field value available in the template.  
         if (isset($variables['node'])) {
-            $variables['page']['image_in_page'] = $variables['node']->field_image->view();
+            if( null !== $variables['node']->field_image){
+                $variables['page']['image_in_page'] = $variables['node']->field_image->view();
+
+            }
           }
 		
 		$route_name = \Drupal::routeMatch()->getRouteName();
@@ -114,9 +135,38 @@ function icm_preprocess_page(&$variables){
 //     // }
 }
 
-function format_suggestion_name( $name )
-{
-    $lCaseName     = strtolower($name);
-    $final_name     = str_replace(' ', '_', str_replace("'", '', $lCaseName));
-    return $final_name;
+function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    // kint($form);
+    $form['keys']['#attributes']['placeholder'] = t('Search posts');
+
+}
+
+/**
+ * @param $suggestions
+ * @param array $variables
+ */
+function icm_theme_suggestions_input_alter(&$suggestions, array $variables) {
+    $element = $variables['element'];
+  
+    if (isset($element['#attributes']['data-twig-suggestion'])) {
+      $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+    }
+  }
+  
+  /**
+   * @param $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param $form_id
+   */
+  function icm_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if ($form['#form_id'] === 'search_block_form') {  
+      $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'search_results_submit';
+      $form['actions']['submit']['#attributes']['class'][] = 'search-box__button';
+    }
+  }
+  
+function format_suggestion_name( $name ){
+        $lCaseName     = strtolower($name);
+        $final_name     = str_replace(' ', '_', str_replace("'", '', $lCaseName));
+        return $final_name;
 }
