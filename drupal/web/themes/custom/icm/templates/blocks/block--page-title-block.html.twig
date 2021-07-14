@@ -30,15 +30,27 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
+	'container-fluid',
   ]
 %}
-<div{{attributes.addClass(classes)}}>
-	{{ title_prefix }}
-	{% if label %}
-		<h2{{title_attributes}}>{{ label }}</h2>
-	{% endif %}
-	{{ title_suffix }}
-	{% block content %}
-		{{ content }}
-	{% endblock %}
-</div>
+
+{# {{ kint(title_hidden) }} #}
+
+{% set userEditorCondition = 'administrator' in user.getroles(TRUE) or 'author' in user.getroles(TRUE) %}
+
+{% if (userEditorCondition) or title_hidden.value == 0 %}
+	<div{{attributes.addClass(classes)}}>
+		<div class="row">
+			<div class="col-12">
+				{{ title_prefix }}
+				{% if label %}
+					<h2{{title_attributes}}>{{ label }}</h2>
+				{% endif %}
+				{{ title_suffix }}
+				{% block content %}
+					{{ content }}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endif %}

@@ -1229,6 +1229,12 @@
   .layout-content {
     position: relative;
     padding: 5em 10em;
+    @media all and (max-width: 992px) {
+      padding: 2em 3em;
+      .page-title {
+        padding-right: 2em;
+      }
+    }
     .author-image {
       position: absolute;
       width: 162px;
@@ -1236,11 +1242,24 @@
       top: -1%;
       left: -1.5%;
       box-shadow: 1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+      @media all and (max-width: 992px) {
+        width: 100px;
+        left: auto;
+        right: -1.5%;
+      }
     }
     .region-content .page-title,
     .region-content .block-local-tasks-block,
     .region-content #edit-actions {
       margin-left: 0;
+    }
+    .block-page-title-block {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .block-local-tasks-block .tasks-block {
+      padding-left: 0;
+      padding-right: 0;
     }
     article {
       color: black;
@@ -1252,6 +1271,9 @@
       h6 {
         color: $blue;
       }
+    }
+    .node__links {
+      display: none;
     }
   }
 }
@@ -1302,3 +1324,25 @@
     }
   }
 }
+
+.node--view-mode-teaser {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.page-node-type-page {
+  .block-page-title-block {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .block-local-tasks-block {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+// breadcrumbs
+.breadcrumb {
+  margin-top: 0.75rem;
+}
+// // breadcrumbs
