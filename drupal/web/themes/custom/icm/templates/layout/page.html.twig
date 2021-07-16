@@ -50,7 +50,7 @@
 	{% set yVal = '100%' %}
 {% endif %}
 
-<div class="layout-container" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
+<div class="layout-container container-fluid" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
 
 	<header role="banner" class="mx-4">
 		{{ page.header }}
@@ -65,19 +65,19 @@
 
 	{{ page.help }}
 
-	<main role="main">
+	<main role="main" class="row">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
 		<div
-			class="layout-content">
+			class="layout-content {{page.sidebar_first ? 'col-12 col-md-9' : ''}} px-0">
 			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}
 
 		{% if page.sidebar_first %}
-			<aside class="layout-sidebar-first" role="complementary">
+			<aside class="layout-sidebar-first col-12 col-md-3" role="complementary">
 				{{ page.sidebar_first }}
 			</aside>
 		{% endif %}

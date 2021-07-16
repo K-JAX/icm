@@ -205,6 +205,7 @@
   font-weight: 500;
   opacity: 0.75;
   transition: 0.125s;
+  padding: 0.5rem 0.8rem;
 }
 @media all and (max-width: 1200px) {
   .region-header .navbar .nav-item .nav-link {

@@ -9,6 +9,10 @@ body {
 
 a {
   color: inherit;
+  &:hover {
+    color: inherit;
+    opacity: 0.85;
+  }
 }
 
 h1,
