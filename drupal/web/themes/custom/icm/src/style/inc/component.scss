@@ -2,6 +2,7 @@
 @import "./anim";
 
 @import "./components/img";
+@import "./components/contact-form";
 
 .site-logo {
   margin-right: 22px;
@@ -590,6 +591,14 @@
     }
     .comment-add {
       display: none;
+    }
+  }
+}
+
+.panel {
+  .panel-header {
+    p {
+      margin-bottom: 0;
     }
   }
 }
@@ -1347,3 +1356,19 @@
   margin-top: 0.75rem;
 }
 // // breadcrumbs
+
+.region-sidebar-first {
+  #block-addressblock {
+    padding: 0;
+    .map-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+    address {
+      color: $lightGray;
+    }
+  }
+}

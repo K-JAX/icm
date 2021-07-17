@@ -35,8 +35,8 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 
 
 // // Producing a better name for my custom blocks so that I don't have to use suggestion based on ID
-// function icm_theme_suggestions_block_alter(array &$suggestions, array $variables)
-// {
+// function icm_theme_suggestions_block_alter(array &$suggestions, array $variables){
+    // kint($variables);
 
 //     if ( isset($variables['elements']['#configuration']['label']) ){
 //         $blockName     = format_suggestion_name($variables['elements']['#configuration']['label']);

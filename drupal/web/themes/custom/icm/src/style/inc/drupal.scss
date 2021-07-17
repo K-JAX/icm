@@ -10,7 +10,7 @@
   // overflow-x: hidden;
 }
 
-.menu-item--expanded {
+.region-header .menu-item--expanded {
   list-style-type: circle;
   list-style-image: url(../../../../../core/misc/menu-expanded.png);
   margin-left: 1em;
@@ -29,6 +29,19 @@
   #edit-actions {
     margin-left: 0;
     padding-left: 0;
+  }
+}
+
+.region-sidebar-first {
+  .block {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    &:first-of-type {
+      padding-top: 1.5rem;
+    }
+    &:last-of-type {
+      padding-bottom: 1.5rem;
+    }
   }
 }
 

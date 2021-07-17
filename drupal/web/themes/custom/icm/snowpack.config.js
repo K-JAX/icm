@@ -19,7 +19,17 @@ module.exports = {
         },
       },
     ],
-    ["@snowpack/plugin-sass", { style: "compressed" }],
+    [
+      "@snowpack/plugin-sass",
+      {
+        compilerOptions: {
+          style: "compressed",
+          loadPath: "src/style",
+          sourceMap: true,
+          embedSourceMap: true,
+        },
+      },
+    ],
   ],
   packageOptions: {
     /* ... */
@@ -29,11 +39,12 @@ module.exports = {
   },
   buildOptions: {
     out: "dist/",
+    sourceMap: true,
     /* ... */
   },
   optimize: {
     minify: true,
-    sourceMap: "external",
+    // sourceMap: "external",
     targets: "es2017",
   },
 };

@@ -1,8 +1,1 @@
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
+@keyframes slideDown{0%{transform:translateY(-100%)}100%{transform:translateY(0%)}}/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22data:;charset=utf-8,@keyframes%2520slideDown%2520%257B%250A%2520%25200%2525%2520%257B%250A%2520%2520%2520%2520transform:%2520translateY(-100%2525);%250A%2520%2520%257D%250A%2520%2520100%2525%2520%257B%250A%2520%2520%2520%2520transform:%2520translateY(0%2525);%250A%2520%2520%257D%250A%257D%250A%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA,qBACE,GACE,4BAEF,KACE%22%7D */

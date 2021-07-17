@@ -70,14 +70,14 @@
 		{# link is in html.html.twig #}
 
 		<div
-			class="layout-content {{page.sidebar_first ? 'col-12 col-md-9' : ''}} px-0">
+			class="layout-content {{page.sidebar_first ? 'col-12 col-lg-9' : ''}} px-0">
 			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}
 
 		{% if page.sidebar_first %}
-			<aside class="layout-sidebar-first col-12 col-md-3" role="complementary">
+			<aside class="layout-sidebar-first col-12 col-lg-3" role="complementary">
 				{{ page.sidebar_first }}
 			</aside>
 		{% endif %}
