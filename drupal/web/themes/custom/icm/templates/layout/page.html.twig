@@ -44,14 +44,19 @@
 #}
 
 {% set corner = node.field_background_hero_image_posi.value %}
-{% if corner == "Top-Right" %}
+{% if corner == 'Top-Right' %}
 	{% set yVal = '-5%' %}
 {% else %}
 	{% set yVal = '100%' %}
 {% endif %}
 
-<div class="layout-container container-fluid" style="background-image: url({{file_url(node.field_background_hero_image.entity.fileuri)}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;" {{attributes}}>
-
+<div class="layout-container container-fluid px-0"
+	style="background-image: url({{
+	file_url(
+		node.field_background_hero_image.entity.fileuri
+	)
+	}}); background-position: 100% {{ yVal }}; background-size: auto;  background-repeat: no-repeat;"
+	{{ attributes }}>
 	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
@@ -69,8 +74,7 @@
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
-		<div
-			class="layout-content {{page.sidebar_first ? 'col-12 col-lg-9' : ''}} px-0">
+		<div class="layout-content {{ page.sidebar_first ? 'col-12 col-lg-9' : '' }} px-0">
 			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
 			{{ page.content }}
 		</div>
@@ -87,14 +91,6 @@
 				{{ page.sidebar_second }}
 			</aside>
 		{% endif %}
-
 	</main>
-
-	{% if page.footer %}
-		<footer class='site-footer px-4 py-5' role="contentinfo">
-			{{ page.footer }}
-		</footer>
-	{% endif %}
-
+	{% include '@icm/includes/footer.html.twig' %}
 </div>
-{# /.layout-container #}

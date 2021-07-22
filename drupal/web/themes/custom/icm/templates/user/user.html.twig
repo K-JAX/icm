@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ */
+#}
+{% set classes = ['profile', 'panel', 'p-3', 'mb-4'] %}
+<article {{ attributes.addClass(classes) }}>
+	{% if content %}
+		<div class="panel-header d-flex justify-content-between mb-3">
+			<h2 {{ title_attributes.addClass(['underline-title', 'full', 'blue', 'fw-normal', 'fs-3']) }}>
+				{% trans %}Account Info{% endtrans %}
+			</h2>
+			<i class="panel-icon fas fa-user-alt"></i>
+		</div>
+		<div class="row pt-3">
+			<div class="col-md-5 col-12">
+				<div class="field-listing field-first-last-name mb-5">
+					<i class="field-icon fas fa-id-badge me-3"></i>
+					<span>
+						{{ content.field_first_name[0]['#context']['value'] }}
+						{{ content.field_last_name[0]['#context']['value'] }}
+					</span>
+				</div>
+				<div class="field-listing state-field mb-4">
+					<i class="field-icon fas fa-map-marked me-3"></i>
+					<span>{{ content.field_state[0]['#markup'] }}</span>
+				</div>
+			</div>
+			<div class="col-md-7 col-12">
+				<div class="field-listing field-member mb-5">
+					{% set processed_member_markup = {
+						'#type': 'processed_text',
+						'#text': content.member_for['#markup'],
+						'#format': 'full_html'
+					} %}
+					<i class="field-icon far fa-calendar-check me-3"></i>
+					<span class="d-flex">{{ processed_member_markup }}</span>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</article>

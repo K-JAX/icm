@@ -10,15 +10,14 @@
 //     }
 // }
 
-
 //  Producing a better template suggest for pages
-function icm_theme_suggestions_page_alter(array &$suggestions, array $variables) 
+function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 {
-    if( isset($variables['page']['#title']) ){
-        $request = \Drupal::request();
+    if (isset($variables['page']['#title'])) {
+        $request     = \Drupal::request();
         $route_match = \Drupal::routeMatch();
-        $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-        if(gettype($page_title) != 'string'){
+        $page_title  = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+        if (gettype($page_title) != 'string') {
             $page_title = reset($page_title);
         }
         $name = format_suggestion_name($page_title);
@@ -28,113 +27,123 @@ function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
         $suggestions[] = 'page__' . $node->bundle();
-      }
-
+    }
 
 }
-
 
 // // Producing a better name for my custom blocks so that I don't have to use suggestion based on ID
-// function icm_theme_suggestions_block_alter(array &$suggestions, array $variables){
-    // kint($variables);
+// function icm_theme_suggestions_block_alter(array &$suggestions, array $variables)
+// {
 
-//     if ( isset($variables['elements']['#configuration']['label']) ){
-//         $blockName     = format_suggestion_name($variables['elements']['#configuration']['label']);
-//         $suggestions[] = 'block__' . $blockName;
-//     }
+// kint($variables);
+
+// if ( isset($variables['elements']['#configuration']['label']) ){
+//     $blockName     = format_suggestion_name($variables['elements']['#configuration']['label']);
+//     $suggestions[] = 'block__' . $blockName;
+// }
 // }
 
-function icm_theme_suggestions_views_view_alter(array &$suggestions, array $variables){
-    if($variables['view']->id() === 'archive'){
+function icm_theme_suggestions_views_view_alter(array &$suggestions, array $variables)
+{
+    if ($variables['view']->id() === 'archive') {
         $suggestions[] = 'views_view_monthly_archive';
     }
-    
+
 }
 
-function icm_theme_suggestions_views_view_summary_alter(array &$suggestions, array $variables){
+function icm_theme_suggestions_views_view_summary_alter(array &$suggestions, array $variables)
+{
     $view_name = $variables['view']->id();
     $view_type = $variables['view']->getDisplay()->display['id'];
-    if($view_name === 'archive' && $view_type === 'block_1'){
+    if ($view_name === 'archive' && $view_type === 'block_1') {
         $suggestions[] = 'views_view_summary__monthly_archive_dropdown';
-    }elseif($view_name === 'archive' && $view_type === 'page_1'){
+    } elseif ($view_name === 'archive' && $view_type === 'page_1') {
         $suggestions[] = 'views_view_summary__monthly_archive_columns';
     }
 }
 
-function icm_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables, $hook) {
-    if(isset($variables['view']->filter['type']->value)){
-        if(reset($variables['view']->filter['type']->value) == 'left_right_brain_investing_stat'){
+function icm_theme_suggestions_views_view_unformatted_alter(array &$suggestions, array $variables, $hook)
+{
+    if (isset($variables['view']->filter['type']->value)) {
+        if (reset($variables['view']->filter['type']->value) == 'left_right_brain_investing_stat') {
             $suggestions[] = 'views_view_unformatted__left_right';
         }
-        if(reset($variables['view']->filter['type']->value) == 'team_member'){
+        if (reset($variables['view']->filter['type']->value) == 'team_member') {
             $suggestions[] = 'views_view_unformatted__team_members';
         }
     }
 }
 
-function icm_theme_suggestions_views_view_grid_alter(array &$suggestions, array $variables, $hook) {
-    if(isset($variables['view']->filter['type']->value)){
-        if(reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians'){
+function icm_theme_suggestions_views_view_grid_alter(array &$suggestions, array $variables, $hook)
+{
+    if (isset($variables['view']->filter['type']->value)) {
+        if (reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians') {
             $suggestions[] = 'views_view_grid__strategy_platform_list';
         }
-        if(reset($variables['view']->filter['type']->value) == 'article'){
+        if (reset($variables['view']->filter['type']->value) == 'article') {
             $suggestions[] = 'views_view_grid__recent_blog_posts_grid';
         }
     }
 }
 
-function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array $variables, $hook) {
+function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array $variables, $hook)
+{
 
-    // if($variables['view']->id() == 'left_brain_stats_list'){
-    if(isset($variables['view']->filter['type']->value)){
+    if (isset($variables['view']->filter['bundle']->value)) {
+        if (reset($variables['view']->filter['bundle']->value) === 'market_insight') {
+            $suggestions[] = 'views_view_field__market_insight';
+        }
 
-        if(reset($variables['view']->filter['type']->value) == 'left_right_brain_investing_stat'){
+    }
+    if (isset($variables['view']->filter['type']->value)) {
+
+        if (reset($variables['view']->filter['type']->value) == 'left_right_brain_investing_stat') {
             // kint(reset($variables['view']->filter['type']->value));
             $suggestions[] = 'views_view_field__left_right_' . $variables['field']->field;
         }
-        if(reset($variables['view']->filter['type']->value) == 'advisor_service_square'){
+        if (reset($variables['view']->filter['type']->value) == 'advisor_service_square') {
             $suggestions[] = 'views_view_field__advisor_service_' . $variables['field']->field;
         }
 
-        if(reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians'){
+        if (reset($variables['view']->filter['type']->value) == 'strategy_platforms_custodians') {
             $suggestions[] = 'views_view_field__strategy_platform_' . $variables['field']->field;
         }
 
     }
-  }
-
-use Symfony\Component\HttpFoundation\Cookie;
-// // Creating variable based on cookie so that I can change content based on userType of anonymous users
-function icm_preprocess_page(&$variables){
-        // Define {{ field_image }} field value available in the template.  
-        if (isset($variables['node'])) {
-            if( null !== $variables['node']->field_image){
-                $variables['page']['image_in_page'] = $variables['node']->field_image->view();
-
-            }
-          }
-		
-		$route_name = \Drupal::routeMatch()->getRouteName();
-
-		if( $route_name == 'user.register'){
-			user_cookie_save(array('userType' => 'banana'));
-		}
-		// kint($_COOKIE);
-
-
-//     \Drupal::service('page_cache_kill_switch')->trigger();
-//     // $cookie = Session::getCookie('userType');
-//     // kint($cookie);
-//     // $build['#cache']['max-age'] = 0;
-//     // $variables['#cache']['max-age'] = 0;
-//     // \Drupal::service('page_cache_kill_switch')->trigger();
-
-//     // if ( !isset($variables["userType"]) && isset($_COOKIE["userType"]) ) {
-//     //     $variables["userType"] = $_COOKIE["userType"];
-//     // }
 }
 
-function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+// // Creating variable based on cookie so that I can change content based on userType of anonymous users
+function icm_preprocess_page(&$variables)
+{
+    // Define {{ field_image }} field value available in the template.
+    if (isset($variables['node'])) {
+        if (null !== $variables['node']->field_image) {
+            $variables['page']['image_in_page'] = $variables['node']->field_image->view();
+
+        }
+    }
+
+    $route_name = \Drupal::routeMatch()->getRouteName();
+
+    if ($route_name == 'user.register') {
+        user_cookie_save(array('userType' => 'banana'));
+    }
+    // kint($_COOKIE);
+
+//     \Drupal::service('page_cache_kill_switch')->trigger();
+    //     // $cookie = Session::getCookie('userType');
+    //     // kint($cookie);
+    //     // $build['#cache']['max-age'] = 0;
+    //     // $variables['#cache']['max-age'] = 0;
+    //     // \Drupal::service('page_cache_kill_switch')->trigger();
+
+//     // if ( !isset($variables["userType"]) && isset($_COOKIE["userType"]) ) {
+    //     //     $variables["userType"] = $_COOKIE["userType"];
+    //     // }
+}
+
+function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
     // kint($form);
     $form['keys']['#attributes']['placeholder'] = t('Search posts');
 
@@ -144,42 +153,43 @@ function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInt
  * @param $suggestions
  * @param array $variables
  */
-function icm_theme_suggestions_input_alter(&$suggestions, array $variables) {
+function icm_theme_suggestions_input_alter(&$suggestions, array $variables)
+{
     $element = $variables['element'];
-  
+
     if (isset($element['#attributes']['data-twig-suggestion'])) {
-      $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+        $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
     }
-  }
-  
-  /**
-   * @param $form
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   * @param $form_id
-   */
-  function icm_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-    if ($form['#form_id'] === 'search_block_form') {  
-      $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'search_results_submit';
-      $form['actions']['submit']['#attributes']['class'][] = 'search-box__button';
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function icm_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    if ($form['#form_id'] === 'search_block_form') {
+        $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'search_results_submit';
+        $form['actions']['submit']['#attributes']['class'][]              = 'search-box__button';
     }
-  }
+}
 
 // function icm_preprocess_node(&$variables){
-    // kint($variables['node']->field_hide_title->getValue());
-    // kint($variables);
+// kint($variables['node']->field_hide_title->getValue());
+// kint($variables);
 // }
-
-use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function icm_preprocess_block(&$variables) {
-    if(isset($variables['elements']['#plugin_id'])){
-        if($variables['elements']['#plugin_id'] === 'page_title_block'){
+function icm_preprocess_block(&$variables)
+{
+    if (isset($variables['elements']['#plugin_id'])) {
+        if ($variables['elements']['#plugin_id'] === 'page_title_block') {
             $node = \Drupal::routeMatch()->getParameter('node');
-            if(isset($node->field_hide_title)){
-                $hidden_value = $node->field_hide_title->getValue();
+            if (isset($node->field_hide_title)) {
+                $hidden_value              = $node->field_hide_title->getValue();
                 $variables['title_hidden'] = reset($hidden_value);
                 // kint($variables);
             }
@@ -188,27 +198,28 @@ function icm_preprocess_block(&$variables) {
 
 }
 
-function icm_preprocess_breadcrumb(&$variables) {
-    $request = \Drupal::request();
+function icm_preprocess_breadcrumb(&$variables)
+{
+    $request     = \Drupal::request();
     $route_match = \Drupal::routeMatch();
-    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-  
+    $page_title  = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
     $variables['#cache']['contexts'][] = 'url';
     if (count($variables['breadcrumb']) <= 1) {
-      $variables['breadcrumb'] = [];
+        $variables['breadcrumb'] = [];
+    } else {
+        $breadcrumb_title = theme_get_setting('breadcrumb_title');
+        if ($breadcrumb_title) {
+            $variables['breadcrumb'][] = array(
+                'text' => $page_title,
+            );
+        }
     }
-    else {
-      $breadcrumb_title = theme_get_setting('breadcrumb_title');
-      if ($breadcrumb_title) {
-        $variables['breadcrumb'][] = array(
-          'text' => $page_title
-        );
-      }
-    }
-  }
+}
 
-function format_suggestion_name( $name ){
-        $lCaseName     = strtolower($name);
-        $final_name     = str_replace(' ', '_', str_replace("'", '', $lCaseName));
-        return $final_name;
+function format_suggestion_name($name)
+{
+    $lCaseName  = strtolower($name);
+    $final_name = str_replace(' ', '_', str_replace("'", '', $lCaseName));
+    return $final_name;
 }

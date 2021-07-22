@@ -1,50 +1,54 @@
 // Utility classes
-@import "./var";
+@import './var';
 
 // font
 .roboto {
-  font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .oswald {
-  font-family: "Oswald", sans-serif;
+	font-family: 'Oswald', sans-serif;
 }
 
 .fw-medium {
-  font-weight: 500;
+	font-weight: 500;
 }
 
 .eyebrow {
-  font-size: 1.5em;
-  font-family: "Oswald", sans-serif;
-  font-weight: 600;
+	font-size: 1.5em;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 600;
 }
 
 .underline-title {
-  position: relative;
-  width: 255px;
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -0.25em;
-    width: 100%;
-    height: 1px;
-    background: $orange;
-  }
-}
-
-.panel-icon {
-  font-size: 3.8em;
+	position: relative;
+	// width: 255px;
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -0.25em;
+		width: 100%;
+		height: 1px;
+		background: $orange;
+	}
+	&.full {
+		width: 95%;
+	}
+	&.blue {
+		&:after {
+			background: $blue;
+		}
+	}
 }
 
 .page-head {
-  font-weight: light;
+	font-weight: light;
 }
 
 .priority-button {
-  background: $lightOrange;
-  font-weight: 800;
+	background: $lightOrange;
+	font-weight: 800;
 }
 
 // spacing
@@ -53,185 +57,189 @@
 
 // links
 .hover-opacity {
-  opacity: 1;
-  transition: 0.125s;
-  &:hover {
-    opacity: 0.85;
-  }
+	opacity: 1;
+	transition: 0.125s;
+	&:hover {
+		opacity: 0.85;
+	}
 }
 
 // button
 .ul-btn {
-  font-size: 1.45em;
-  border: none;
-  opacity: 1;
-  transition: 0.25s;
-  border-bottom: 1px solid $lightOrange;
-  box-shadow: 0 0 0 0 $lightOrange inset;
-  background: transparent;
-  text-decoration: none;
-  &:hover {
-    opacity: 0.85;
-    box-shadow: 0 -6px 6px -3px $lightOrange inset;
-  }
-  a {
-    text-decoration: none;
-  }
+	font-size: 1.45em;
+	border: none;
+	opacity: 1;
+	transition: 0.25s;
+	border-bottom: 1px solid $lightOrange;
+	box-shadow: 0 0 0 0 $lightOrange inset;
+	background: transparent;
+	text-decoration: none;
+	&:hover {
+		opacity: 0.85;
+		box-shadow: 0 -6px 6px -3px $lightOrange inset;
+	}
+	a {
+		text-decoration: none;
+	}
 }
 
 .btn {
-  border-radius: 0;
+	border-radius: 0;
 }
 
 .btn.blue,
 .btn.btn-primary {
-  background-color: $blue;
-  color: white;
+	background-color: $blue;
+	color: white;
+	border: none;
 }
 
 .btn.blueGrad {
-  background: $blueGrad;
-  color: white;
+	background: $blueGrad;
+	color: white;
+	border: none;
 }
 
 .btn.orange {
-  background-color: $orange;
-  color: white;
+	background-color: $orange;
+	color: white;
+	border: none;
 }
 
 .btn.orangeGrad {
-  background: $orangeGrad;
-  color: white;
+	background: $orangeGrad;
+	color: white;
+	border: none;
 }
 
 .btn.clear {
-  background: transparent;
-  color: $blue;
-  border: 1px solid gray;
+	background: transparent;
+	color: $blue;
+	border: 1px solid gray;
 }
 
 .btn.white {
-  color: $blue;
-  background: white;
-  border: 1px solid gray;
+	color: $blue;
+	background: white;
+	border: 1px solid gray;
 }
 
 // color
 .blue {
-  color: $blue;
+	color: $blue;
 }
 .light-orange {
-  color: $lightOrange;
+	color: $lightOrange;
 }
 
 .orange {
-  color: $orange;
+	color: $orange;
 }
 
 .white {
-  color: #fff;
+	color: #fff;
 }
 
 .gray {
-  color: #828282 !important;
+	color: #828282 !important;
 }
 
 .bg-blueGrad {
-  background: $blueGrad;
+	background: $blueGrad;
 }
 
 .bg-orange {
-  background: $lightOrange;
+	background: $lightOrange;
 }
 
 .bg-lightGray {
-  background: #e0e0e0;
+	background: #e0e0e0;
 }
 
 .bg-lighterGray {
-  background: #f2f2f2;
+	background: #f2f2f2;
 }
 
 .muted-blue-grad {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(232, 238, 245, 1) 100%
-  );
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(232, 238, 245, 1) 100%
+	);
 }
 
 .faded-white-grad {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.95) 0%,
+		rgba(255, 255, 255, 0.9) 50%,
+		rgba(255, 255, 255, 0.2) 100%
+	);
 }
 
 .diagonal-section {
-  position: relative;
-  z-index: 1;
-  // background: $blueGrad;
-  // transform: rotate(-7deg);
-  // & > * {
-  //   transform: rotate(7deg);
-  // }
-  & > * {
-    position: relative;
-    z-index: 1;
-  }
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: $blueGrad;
-    width: 200%;
-    height: 105%;
-    inset: 0 0 0 0;
-    margin: auto;
-    transform-origin: center center;
-    transform: rotate(-7deg) translate(-25%, -25%);
-    @media all and (max-width: 992px) {
-      height: 120%;
-      transform: rotate(-7deg) translate(-25%, -10%);
-    }
-    @media all and (min-width: 1500px) {
-      height: 140%;
-    }
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    width: 200%;
-    height: 105%;
-    inset: 0 0 0 0;
-    margin: auto;
-    transform-origin: center center;
-    transform: rotate(-7deg) translate(-20%, -25%);
-    background: url("/sites/default/files/2021-07/img-lincoln_0.png");
-    background-repeat: no-repeat;
-    background-position: 65% 45%;
-    background-size: auto 150%;
-    @media all and (max-width: 992px) {
-      z-index: 0;
-      opacity: 0.3;
-      height: 120%;
-      transform: rotate(-7deg) translate(-20%, -10%);
-    }
-    @media all and (min-width: 1500px) {
-      height: 140%;
-    }
-  }
+	position: relative;
+	z-index: 1;
+	// background: $blueGrad;
+	// transform: rotate(-7deg);
+	// & > * {
+	//   transform: rotate(7deg);
+	// }
+	& > * {
+		position: relative;
+		z-index: 1;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		background: $blueGrad;
+		width: 200%;
+		height: 105%;
+		inset: 0 0 0 0;
+		margin: auto;
+		transform-origin: center center;
+		transform: rotate(-7deg) translate(-25%, -25%);
+		@media all and (max-width: 992px) {
+			height: 120%;
+			transform: rotate(-7deg) translate(-25%, -10%);
+		}
+		@media all and (min-width: 1500px) {
+			height: 140%;
+		}
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		z-index: 0;
+		width: 200%;
+		height: 105%;
+		inset: 0 0 0 0;
+		margin: auto;
+		transform-origin: center center;
+		transform: rotate(-7deg) translate(-20%, -25%);
+		background: url('/sites/default/files/2021-07/img-lincoln_0.png');
+		background-repeat: no-repeat;
+		background-position: 65% 45%;
+		background-size: auto 150%;
+		@media all and (max-width: 992px) {
+			z-index: 0;
+			opacity: 0.3;
+			height: 120%;
+			transform: rotate(-7deg) translate(-20%, -10%);
+		}
+		@media all and (min-width: 1500px) {
+			height: 140%;
+		}
+	}
 }
 
 // shadow
 
 .document-shadow {
-  box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.25);
 }
 
 // .shadow {
@@ -239,62 +247,72 @@
 // }
 
 .inset-shadow {
-  box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
+	box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
 }
 
 .inset-section {
-  box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
+	box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25) inset;
 }
 
 .inset-bubble {
-  background: white;
-  border-radius: 300px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25) inset;
+	background: white;
+	border-radius: 300px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25) inset;
 }
 // hr
 .short {
-  width: 74px;
-  height: 3px !important;
-  opacity: 1;
-  margin: 1rem 0;
-}
-
-// decoration
-.panel {
-  background: white;
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+	width: 74px;
+	height: 3px !important;
+	opacity: 1;
+	margin: 1rem 0;
 }
 
 // background-image
 
 .full-height-bg {
-  background-size: auto 110% !important;
+	background-size: auto 110% !important;
 }
 
 .mobile-no-bg {
-  @media all and (max-width: 768px) {
-    background-image: none !important;
-  }
+	@media all and (max-width: 768px) {
+		background-image: none !important;
+	}
 }
 
 .img-fluid {
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+	img {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 // desktop / mobile
 .desktop-only {
-  @media all and (max-width: 992px) {
-    display: none;
-  }
+	@media all and (max-width: 992px) {
+		display: none;
+	}
 }
 
 .mobile-only {
-  @media all and (min-width: 992px) {
-    display: none;
-  }
+	@media all and (min-width: 992px) {
+		display: none;
+	}
 }
 
 // // desktop / mobile
+
+.more-link {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: $orange;
+	color: white;
+	padding: 1rem 1.25rem;
+	font-weight: 600;
+	&:hover {
+		opacity: 0.85;
+	}
+	a {
+		text-decoration: none;
+	}
+}

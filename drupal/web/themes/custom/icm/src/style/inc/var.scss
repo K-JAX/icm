@@ -5,16 +5,17 @@ $orange: #faa61b;
 $lightGray: #e6e6e6;
 
 $blueGrad: linear-gradient(
-  90deg,
-  rgba(143, 185, 231, 1) 0%,
-  rgba(32, 100, 175, 1) 50%,
-  rgba(25, 74, 129, 1) 100%
+	90deg,
+	rgba(143, 185, 231, 1) 0%,
+	rgba(32, 100, 175, 1) 50%,
+	rgba(25, 74, 129, 1) 100%
 );
 
 $orangeGrad: linear-gradient(
-  135deg,
-  rgba(250, 187, 81, 1) 0%,
-  rgba(187, 125, 19, 1) 100%
+	135deg,
+	rgba(250, 187, 81, 1) 0%,
+	rgba(187, 125, 19, 1) 100%
 );
 
-$oswald: "Oswald", sans-serif;
+$oswald: 'Oswald', sans-serif;
+$roboto: 'Roboto', sans-serif;

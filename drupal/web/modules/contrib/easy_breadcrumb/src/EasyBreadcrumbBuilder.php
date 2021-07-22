@@ -567,7 +567,6 @@ class EasyBreadcrumbBuilder implements BreadcrumbBuilderInterface {
           if ($i == 0
               && $this->config->get(EasyBreadcrumbConstants::INCLUDE_TITLE_SEGMENT)
               && !$this->config->get(EasyBreadcrumbConstants::TITLE_SEGMENT_AS_LINK)) {
-            $title = $this->truncator($title);
             $links[] = Link::createFromRoute($title, '<none>');
           }
           elseif ($route_match->getRouteObject()) {
@@ -575,7 +574,6 @@ class EasyBreadcrumbBuilder implements BreadcrumbBuilderInterface {
             if ($this->config->get(EasyBreadcrumbConstants::ABSOLUTE_PATHS)) {
               $url->setOption('absolute', TRUE);
             }
-            $title = $this->truncator($title);
             $links[] = new Link($title, $url);
           }
 

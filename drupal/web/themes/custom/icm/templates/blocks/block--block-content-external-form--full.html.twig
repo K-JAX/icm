@@ -25,24 +25,22 @@
  * @see template_preprocess_block()
  */
 #}
-{%
-  set classes = [
-    'block',
-    'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
-  ]
-%}
-<div{{attributes.addClass(classes)}}>
+{% set classes = ['block', 'block-' ~ (configuration.provider|clean_class), 'block-' ~ (plugin_id|clean_class)] %}
+<div {{ attributes.addClass(classes) }}>
 	{{ title_prefix }}
 	{% if label %}
-		<h2{{title_attributes}}>{{ label }}</h2>
+		<h2 {{ title_attributes }}>
+			{{ label }}
+		</h2>
 	{% endif %}
 	{{ title_suffix }}
 	{% block content %}
-		<div class="panel p-4 block-webform-block">
+		<div class="panel p-4 decorated double-corner">
 			<div class="panel-header d-flex justify-content-between">
-				<h2 class="underline-title">{{ content.field_form_title}}</h2>
-				{{ content.field_form_icon_font_awesome_mar}}
+				<h2 class="underline-title full blue">
+					{{ content.field_form_title }}
+				</h2>
+				{{ content.field_form_icon_font_awesome_mar }}
 			</div>
 			{{ content.body }}
 		</div>

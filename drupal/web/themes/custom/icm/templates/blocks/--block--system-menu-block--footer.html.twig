@@ -1,0 +1,21 @@
+{# 
+/**
+* Template for Blocks displaying footer menu columns
+ #}
+
+{% set classes = [
+	'block',
+	'block-' ~ (configuration.provider|clean_class),
+	'block-' ~ (plugin_id|clean_class),
+	'menu-footer-block',
+	'align-self-start'
+] %}
+
+<nav {{ attributes.addClass(classes) }}>
+	<div class="px-4">
+		<h2 class="h4 fw-normal">
+			{{ label }}
+		</h2>
+		{{ content }}
+	</div>
+</nav>

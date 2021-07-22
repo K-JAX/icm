@@ -23,15 +23,26 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git
 
+RUN apt-get install -y vim
+
+RUN apt-get install -y ghostscript
+
+# RUN apt-get update && apt-get install -y \
+#     libmagickwand-dev --no-install-recommends \
+#     && pecl install imagick \
+# 	&& docker-php-ext-enable imagick
+
 
 # # Replacing the existing drush since it seems to be causing problems right now.
-RUN rm -rf /usr/local/bin/drush
-RUN composer global require drush/drush
-RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
-RUN drush --version
+# RUN rm -rf /usr/local/bin/drush
+# RUN composer global require drush/drush
+# RUN ln -s /root/.composer/vendor/bin/drush /usr/local/bin
+# RUN drush --version
+RUN composer require drush/drush
 
 # Let's try instally drupal console using composer
 # RUN require drupal/console:~1.0 --prefer-dist --optimize-autoloader -W
 
 RUN composer require drupal/devel
 RUN composer require kint-php/kint
+RUN composer require spatie/pdf-to-image

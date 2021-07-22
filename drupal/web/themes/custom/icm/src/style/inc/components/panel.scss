@@ -1,0 +1,109 @@
+@import '../var';
+
+.panel {
+	background: white;
+	box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+	.panel-header {
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+.panel-icon {
+	font-size: 3em;
+}
+
+.panel {
+	position: relative;
+	.contextual-region {
+		position: static;
+	}
+}
+
+.external-resources.panel {
+	.external-link {
+		i {
+			font-size: 1.5em;
+		}
+	}
+}
+
+.market-insights.panel {
+	ul li {
+		i {
+			font-size: 1.1em;
+			margin-right: 1em;
+		}
+	}
+}
+
+.block-views-blockbrochures-and-content-media-items-block-1.panel,
+.view-id-brochures_and_content_media_items {
+	a {
+		text-decoration: none;
+		figure {
+			img {
+				max-width: 100%;
+				height: auto;
+				box-shadow: 7px 7px 4px 0 rgba(0, 0, 0, 0.35);
+			}
+		}
+	}
+}
+
+// panel decorations
+
+.decorated {
+	position: relative;
+	.inner-container {
+		z-index: 1;
+		padding: 2rem 2.5rem;
+		background: #fff;
+		box-shadow: 3px 7px 5px 0 rgba(0, 0, 0, 0.25);
+	}
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+	}
+}
+
+.decorated.double-corner {
+	&:before {
+		width: 100px;
+		height: 120px;
+		top: -3%;
+		left: -3%;
+		background: $lightOrange;
+	}
+	&:after {
+		width: 275px;
+		height: 125px;
+		bottom: -5%;
+		right: -3%;
+		background: $blue;
+	}
+}
+
+.decorated.single-corner-dots {
+	&:before {
+		width: 150px;
+		height: 150px;
+		bottom: -8%;
+		left: -3%;
+		background: url('../../img/blue-dots.png') no-repeat;
+	}
+}
+
+.decorated.linear-dots {
+	&:after {
+		bottom: -30px;
+		width: 100%;
+		left: 5%;
+		height: 15px;
+		background: url('../../img/orange-dot-line.png') no-repeat;
+	}
+}
+
+// // panel decorations

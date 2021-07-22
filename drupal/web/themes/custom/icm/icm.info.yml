@@ -1,8 +1,8 @@
 name: iCM Drupal Theme
 type: theme
-description: "Theme used by iCM company for main presentation of the site icm-invest.com."
+description: 'Theme used by iCM company for main presentation of the site icm-invest.com.'
 core_version_requirement: ^9
-base theme: "classy"
+base theme: 'classy'
 libraries:
   - icm/fonts
   - icm/aos-script
@@ -14,5 +14,10 @@ libraries:
 regions:
   header: Header
   content: Content
-  sidebar_first: "First sidebar"
-  footer: Footer
+  sidebar_first: 'First sidebar'
+  # footer: Footer
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+  footer_third: 'Footer third'
+  footer_fourth: 'Footer fourth'
+  footer_fifth: 'Footer fifth'

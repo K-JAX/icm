@@ -1,0 +1,190 @@
+@import "../var";
+
+#vboutEmbedFormWrapper-31921 a,
+#vboutEmbedFormWrapper-31921 div,
+#vboutEmbedFormWrapper-31921 dl,
+#vboutEmbedFormWrapper-31921 dt,
+#vboutEmbedFormWrapper-31921 em,
+#vboutEmbedFormWrapper-31921 fieldset,
+#vboutEmbedFormWrapper-31921 form,
+#vboutEmbedFormWrapper-31921 h1,
+#vboutEmbedFormWrapper-31921 h2,
+#vboutEmbedFormWrapper-31921 h3,
+#vboutEmbedFormWrapper-31921 h4,
+#vboutEmbedFormWrapper-31921 h5,
+#vboutEmbedFormWrapper-31921 h6,
+#vboutEmbedFormWrapper-31921 hr,
+#vboutEmbedFormWrapper-31921 img,
+#vboutEmbedFormWrapper-31921 label,
+#vboutEmbedFormWrapper-31921 li,
+#vboutEmbedFormWrapper-31921 ol,
+#vboutEmbedFormWrapper-31921 p,
+#vboutEmbedFormWrapper-31921 pre,
+#vboutEmbedFormWrapper-31921 span,
+#vboutEmbedFormWrapper-31921 strong,
+#vboutEmbedFormWrapper-31921 table,
+#vboutEmbedFormWrapper-31921 tbody,
+#vboutEmbedFormWrapper-31921 td,
+#vboutEmbedFormWrapper-31921 tfoot,
+#vboutEmbedFormWrapper-31921 th,
+#vboutEmbedFormWrapper-31921 thead,
+#vboutEmbedFormWrapper-31921 tr,
+#vboutEmbedFormWrapper-31921 ul {
+  border: 0;
+  font-size: 100%;
+}
+#vboutEmbedFormWrapper-31921 {
+  height: 100%;
+}
+#vboutEmbedFormWrapper-31921 b,
+#vboutEmbedFormWrapper-31921 strong {
+  font-weight: bold;
+}
+#vboutEmbedFormWrapper-31921 img {
+  color: transparent;
+  font-size: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+#vboutEmbedFormWrapper-31921 li {
+  display: list-item;
+}
+#vboutEmbedFormWrapper-31921 table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#vboutEmbedFormWrapper-31921 th,
+#vboutEmbedFormWrapper-31921 td,
+#vboutEmbedFormWrapper-31921 caption {
+  font-weight: normal;
+  vertical-align: top;
+  text-align: left;
+}
+
+#vboutEmbedFormWrapper-31921 form {
+  display: block;
+  position: relative;
+  text-align: left;
+}
+#vboutEmbedFormWrapper-31921 h1 {
+  font-weight: bold;
+  padding: 0;
+  margin: 15px 0;
+  font-size: 1.4em;
+}
+
+#vboutEmbedFormWrapper-31921 input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+#vboutEmbedFormWrapper-31921 input[type="radio"] {
+  -webkit-appearance: radio;
+}
+#vboutEmbedFormWrapper-31921 .small-meta {
+  font-size: 11px;
+}
+#vboutEmbedFormWrapper-31921 .vboutEmbedFormRow {
+  padding-bottom: 10px;
+}
+
+#vboutEmbedFormWrapper-31921 label {
+  font-size: 14px;
+  width: 130px;
+  text-align: right;
+  color: $blue;
+  float: none;
+  width: auto;
+  font-weight: 500;
+  text-align: left;
+  line-height: 20px;
+  padding-top: 0;
+  margin-bottom: 4px;
+}
+
+#vboutEmbedFormWrapper-31921 input:not([type="submit"]),
+#vboutEmbedFormWrapper-31921 textarea,
+#vboutEmbedFormWrapper-31921 select,
+#vboutEmbedFormWrapper-31921 .vbt-birthdayfield {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  padding: 9px 10px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+  color: $blue;
+  resize: none;
+}
+#vboutEmbedFormWrapper-31921 input[type="checkbox"],
+#vboutEmbedFormWrapper-31921 input[type="radio"] {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 3px 5px 3px 0px;
+  line-height: normal;
+  border: none;
+}
+#vboutEmbedFormWrapper-31921 input[type="file"] {
+  background-color: #fff;
+  padding: initial;
+  border: initial;
+  line-height: initial;
+  box-shadow: none;
+  height: 27px;
+}
+#vboutEmbedFormWrapper-31921 input:-moz-placeholder {
+  color: #bfbfbf;
+}
+#vboutEmbedFormWrapper-31921 input::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+#vboutEmbedFormWrapper-31921 input input,
+#vboutEmbedFormWrapper-31921 input textarea {
+  transition: border 0.2s linear;
+}
+
+#vboutEmbedFormWrapper-31921 textarea {
+  height: auto;
+}
+#vboutEmbedFormWrapper-31921 select[multiple] {
+  height: inherit;
+}
+#vboutEmbedFormWrapper-31921 input.error,
+#vboutEmbedFormWrapper-31921 textarea.error {
+  border-color: #c87872;
+}
+#vboutEmbedFormWrapper-31921 input.error:focus,
+#vboutEmbedFormWrapper-31921 textarea.error:focus {
+  border-color: #b9554d;
+}
+#vboutEmbedFormWrapper-31921 .vboutEmbedFormErrorMessage {
+  color: #b9554d;
+  margin: 0;
+  display: block;
+}
+#vboutEmbedFormWrapper-31921 ul {
+  list-style: none;
+}
+#vboutEmbedFormWrapper-31921 input[type="submit"],
+#vboutEmbedFormWrapper-31921 input[type="text"],
+#vboutEmbedFormWrapper-31921 input[type="email"],
+#vboutEmbedFormWrapper-31921 input[type="phone"],
+#vboutEmbedFormWrapper-31921 input[type="number"],
+#vboutEmbedFormWrapper-31921 input[type="tel"],
+#vboutEmbedFormWrapper-31921 input[type="date"],
+#vboutEmbedFormWrapper-31921 textarea,
+#vboutEmbedFormWrapper-31921 .vbt-birthdayfield {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+#vboutEmbedFormWrapper-31921 label {
+  color: #33475b;
+}
+
+#vboutEmbedFormWrapper-31921 .iti {
+  display: block;
+}
+#vboutEmbedFormWrapper-31921 input[type="tel"] {
+  padding-left: 48px !important;
+}
+
