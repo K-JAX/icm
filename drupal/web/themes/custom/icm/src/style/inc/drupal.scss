@@ -7,7 +7,7 @@
 .layout-container {
 	position: relative;
 	width: 100%;
-	// overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 .region-header .menu-item--expanded {
@@ -71,3 +71,11 @@
 //   background-color: transparent;
 //   border: 0;
 // }
+
+.search-results {
+	padding-left: 0;
+	li {
+		margin-left: 0;
+		margin-bottom: 1rem;
+	}
+}

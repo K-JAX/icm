@@ -70,11 +70,11 @@
 
 	{{ page.help }}
 
-	<main role="main" class="row my-5 justify-content-center">
+	<main role="main" class="row mx-0 my-5 justify-content-center">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
 
-		<div class="layout-content panel decorated double-corner market-insight-archives {{
+		<div class="layout-content panel decorated double-corner view-documents {{
 			page.sidebar_first
 				? 'col-12 col-lg-9'
 				: 'col-11 col-md-9'
@@ -95,5 +95,6 @@
 			</aside>
 		{% endif %}
 	</main>
+	{% include '@icm/includes/modal.html.twig' %}
 	{% include '@icm/includes/footer.html.twig' %}
 </div>

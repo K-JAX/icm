@@ -42,6 +42,7 @@
  * @see html.html.twig
  */
 #}
+{% set containerClass = node.layout_builder__layout ? 'container-fluid' : 'container' %}
 
 {% set corner = node.field_background_hero_image_posi.value %}
 {% if corner == 'Top-Right' %}
@@ -49,8 +50,7 @@
 {% else %}
 	{% set yVal = '100%' %}
 {% endif %}
-
-<div class="layout-container container-fluid px-0"
+<div class="layout-container px-0"
 	style="background-image: url({{
 	file_url(
 		node.field_background_hero_image.entity.fileuri
@@ -69,28 +69,28 @@
 	{{ page.highlighted }}
 
 	{{ page.help }}
+	<div class="{{ containerClass }}">
+		<main role="main" class="{{ page.sidebar_first ? 'row' : '' }}">
+			<a id="main-content" tabindex="-1"></a>
+			{# link is in html.html.twig #}
 
-	<main role="main" class="row">
-		<a id="main-content" tabindex="-1"></a>
-		{# link is in html.html.twig #}
+			<div class="layout-content {{ page.sidebar_first ? 'col-12 col-lg-9' : '' }} px-0">
+				{{ page.content }}
+			</div>
+			{# /.layout-content #}
 
-		<div class="layout-content {{ page.sidebar_first ? 'col-12 col-lg-9' : '' }} px-0">
-			{# {{ kint(file_url(node.field_background_hero_image.entity.fileuri)) }} #}
-			{{ page.content }}
-		</div>
-		{# /.layout-content #}
+			{% if page.sidebar_first %}
+				<aside class="layout-sidebar-first col-12 col-lg-3" role="complementary">
+					{{ page.sidebar_first }}
+				</aside>
+			{% endif %}
 
-		{% if page.sidebar_first %}
-			<aside class="layout-sidebar-first col-12 col-lg-3" role="complementary">
-				{{ page.sidebar_first }}
-			</aside>
-		{% endif %}
-
-		{% if page.sidebar_second %}
-			<aside class="layout-sidebar-second" role="complementary">
-				{{ page.sidebar_second }}
-			</aside>
-		{% endif %}
-	</main>
+			{% if page.sidebar_second %}
+				<aside class="layout-sidebar-second" role="complementary">
+					{{ page.sidebar_second }}
+				</aside>
+			{% endif %}
+		</main>
+	</div>
 	{% include '@icm/includes/footer.html.twig' %}
 </div>

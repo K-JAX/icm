@@ -247,7 +247,7 @@
 // }
 
 .inset-shadow {
-	box-shadow: 3px 0 2px -1px rgba(0, 0, 0, 0.25);
+	box-shadow: 3px 2px 2px -1px rgba(0, 0, 0, 0.25) inset;
 }
 
 .inset-section {
@@ -283,6 +283,12 @@
 	img {
 		max-width: 100%;
 		height: auto;
+	}
+}
+
+.text-decoration-none {
+	a {
+		text-decoration: none;
 	}
 }
 

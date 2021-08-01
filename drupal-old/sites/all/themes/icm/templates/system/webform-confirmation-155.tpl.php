@@ -22,16 +22,16 @@
 <?php print $progressbar; ?>
 
 <div class="webform-confirmation">
-  <?php if ($confirmation_message): ?>
-    <?php print $confirmation_message ?>
-  <?php else: ?>
-      <h2>Results</h2>
-  <?php endif; ?>
+	<?php if ($confirmation_message): ?>
+	<?php print $confirmation_message ?>
+	<?php else: ?>
+	<h2>Results</h2>
+	<?php endif; ?>
 </div>
 <h5><a href="<?php print url('node/'. $node->nid . '/submission/'. $sid .'/edit')?>">Update Questionaire</a></h5>
 
 <div id="Quiz Results">
-<?php 
+	<?php 
 
 include_once(drupal_get_path('module', 'webform') .'/includes/webform.submissions.inc');
 $nid = arg(1); // need to hard-code nid if this is a custom page
@@ -305,58 +305,87 @@ switch(true){
 // $horizon = 3;
 ?>
 
-<style>
-    .l-main{
-        padding-top:0%;
-    }
-    #right-copy{
-        font-size:18px;
-    }
-    #risk-matrix{
-        position:relative;
-    }
-    p{
-        color:#000;
-    }
-    @media screen and (min-width: 1250px){
-        #right-copy{
-            width:35%;
-            display:inline-block;
-            margin-left:20px;
-            margin-top:50px;
-        }
-        #risk-matrix{
-            width:60%;
-            display:inline-block;
-            vertical-align:top;
-        }
-    }
-    
-    
-</style>
+	<style>
+	.l-main {
+		padding-top: 0%;
+	}
 
-<?php // print_r($strategy_id); ?>
+	#right-copy {
+		font-size: 18px;
+	}
 
+	#risk-matrix {
+		position: relative;
+	}
 
-<div id="risk-matrix">
-<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 1){echo'17%';}elseif($horizon <= 10){echo(12+ 13/2.2*$horizon).'%';}else{echo'72%';}; ?>; left:<?php echo (10/2.7*$strategy_id+12).'%'; ?>;"  src="/sites/all/themes/icm/images/icmlogo.png" />
-<img style="width:100%" src="/sites/all/themes/icm/images/risk-matrix.jpg" />
-</div>
+	p {
+		color: #000;
+	}
 
-<div id="right-copy">
-<p>Based on your Time Horizon and Risk Tolerance you may belong in the: <br /><strong><?php echo $strategy_info[$strategy_id-1]['title']; ?></strong>. <br />
-<?php echo $strategy_info[$strategy_id-1]['description']; ?>
+	@media screen and (min-width: 1250px) {
+		#right-copy {
+			width: 35%;
+			display: inline-block;
+			margin-left: 20px;
+			margin-top: 50px;
+		}
 
-</div>
+		#risk-matrix {
+			width: 60%;
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+	</style>
 
-<p><em>All data presented in this matrix is prepared using information we believe to be correct at the time of production, but may be subject to revision and/or adjustment. Graphs, charts, formulas and other data should not be used alone to determine investment decisions without considering all disclosure information, offering documents and other relevant data. </em></p>
+	<?php // print_r($strategy_id); ?>
 
 
+	<div id="risk-matrix">
+		<img style="position:absolute; width:8%; bottom:<?php  if($horizon <= 1){echo'17%';}elseif($horizon <= 10){echo(12+ 13/2.2*$horizon).'%';}else{echo'72%';}; ?>; left:<?php echo (10/2.7*$strategy_id+12).'%'; ?>;"
+			src="/sites/all/themes/icm/images/icmlogo.png" />
+		<img style="width:100%" src="/sites/all/themes/icm/images/risk-matrix.jpg" />
+	</div>
 
-<p>The Risk Tolerance Questionnaire’s sole purpose is to assist you, along with your financial advisor, in determining your general attitude towards investment risk. This questionnaire does not consider all factors necessary in making an investment decision (e.g., personal and financial information and investment objective). In no way should this questionnaire be viewed as advice or establishing any kind of advisory relationship with Integrated Capital Management (iCM). iCM does not endorse or maintain soft dollar relationships with any financial product or service that may be used in conjunction with the asset allocation models that are presented. Please consult with your Financial Professional and obtain the financial prospectus (or its equivalent) and read it carefully prior to investing.</p>
-<p>By using this website, you accept our <a href="http://icm-invest.com/disclaimer" target="_blank">Terms of Use and Privacy Policy</a>. Past performance is no guarantee of future results. Different types of investments involve varying degrees of risk and there can be no assurance that the future performance of any specific investment or investment strategy will be profitable.  You should understand that investment decisions made for the account are subject to various market, currency, economic, political and business risks and that those investment decisions will not always be profitable.  It is important to note that the information contained herein is subject to deviations that may occur due to market conditions and fluctuations, or as a result of client-directed cash flows. Any historical returns, expected returns, or probability projections may not reflect actual future performance. All securities involve risk and may result in loss of all amounts invested. </p>
-<p>iCM’s Risk Tolerance Questionnaire is  not designed  to be used alone, rather in conjunction with a comprehensive evaluation of a client's entire personal portfolio. While the data iCM uses from third parties is believed to be reliable, iCM cannot ensure the accuracy or completeness of data provided by clients or third parties. All data is subject to change.</p>
-<p>iCM does not provide tax advice, and does not represent in any manner that the outcomes described herein will result in any particular tax consequence. Prospective investors should confer with their personal tax advisors regarding the tax consequences based on their particular circumstances. iCM assumes no responsibility for the tax consequences for any investor.</p>
+	<div id="right-copy">
+		<p>Based on your Time Horizon and Risk Tolerance you may belong in the:
+			<br /><strong><?php echo $strategy_info[$strategy_id-1]['title']; ?></strong>. <br />
+			<?php echo $strategy_info[$strategy_id-1]['description']; ?>
+
+	</div>
+
+	<p><em>All data presented in this matrix is prepared using information we believe to be correct at the time of
+			production, but may be subject to revision and/or adjustment. Graphs, charts, formulas and other data should
+			not be used alone to determine investment decisions without considering all disclosure information, offering
+			documents and other relevant data. </em></p>
+
+
+
+	<p>The Risk Tolerance Questionnaire’s sole purpose is to assist you, along with your financial advisor, in
+		determining your general attitude towards investment risk. This questionnaire does not consider all factors
+		necessary in making an investment decision (e.g., personal and financial information and investment objective).
+		In no way should this questionnaire be viewed as advice or establishing any kind of advisory relationship with
+		Integrated Capital Management (iCM). iCM does not endorse or maintain soft dollar relationships with any
+		financial product or service that may be used in conjunction with the asset allocation models that are
+		presented. Please consult with your Financial Professional and obtain the financial prospectus (or its
+		equivalent) and read it carefully prior to investing.</p>
+	<p>By using this website, you accept our <a href="http://icm-invest.com/disclaimer" target="_blank">Terms of Use and
+			Privacy Policy</a>. Past performance is no guarantee of future results. Different types of investments
+		involve varying degrees of risk and there can be no assurance that the future performance of any specific
+		investment or investment strategy will be profitable. You should understand that investment decisions made for
+		the account are subject to various market, currency, economic, political and business risks and that those
+		investment decisions will not always be profitable. It is important to note that the information contained
+		herein is subject to deviations that may occur due to market conditions and fluctuations, or as a result of
+		client-directed cash flows. Any historical returns, expected returns, or probability projections may not reflect
+		actual future performance. All securities involve risk and may result in loss of all amounts invested. </p>
+	<p>iCM’s Risk Tolerance Questionnaire is not designed to be used alone, rather in conjunction with a comprehensive
+		evaluation of a client's entire personal portfolio. While the data iCM uses from third parties is believed to be
+		reliable, iCM cannot ensure the accuracy or completeness of data provided by clients or third parties. All data
+		is subject to change.</p>
+	<p>iCM does not provide tax advice, and does not represent in any manner that the outcomes described herein will
+		result in any particular tax consequence. Prospective investors should confer with their personal tax advisors
+		regarding the tax consequences based on their particular circumstances. iCM assumes no responsibility for the
+		tax consequences for any investor.</p>
 
 
 </div>
