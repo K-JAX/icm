@@ -11,10 +11,10 @@ function icm_preprocess_webform_confirmation(&$variables)
         $terms    = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vocab_id);
         foreach ($terms as $term) {
             $term_data[] = array(
-                'id'          => $term->tid,
-                'name'        => $term->name,
-                'description' => $term->description__value,
-                'weight'      => $term->weight,
+                'id'      => $term->tid,
+                'name'    => $term->name,
+                '#markup' => $term->description__value,
+                'weight'  => $term->weight,
             );
         }
 

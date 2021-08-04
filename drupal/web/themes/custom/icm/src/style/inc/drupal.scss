@@ -79,3 +79,27 @@
 		margin-bottom: 1rem;
 	}
 }
+
+.webform-type-fieldset,
+.form-type-webform-table {
+	box-shadow: 3px 4px 5px 3px rgba(0, 0, 0, 0.25);
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding: 1.5rem;
+	color: #333;
+	& > legend {
+		font-family: $oswald;
+		font-weight: 100;
+		color: $blue;
+		font-size: 1.75rem;
+	}
+	legend {
+		color: $blue;
+	}
+}
+
+.form-textarea-wrapper {
+	textarea {
+		resize: none;
+	}
+}

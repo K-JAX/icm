@@ -61,6 +61,17 @@ input[type='submit'] {
 	}
 }
 
+table {
+	thead {
+		color: white;
+		background-color: #828282;
+		th {
+			padding: 0.5rem 1rem;
+
+		}
+	}
+}
+
 // for vendors
 [data-aos] {
 	pointer-events: inherit !important;

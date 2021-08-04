@@ -41,7 +41,7 @@
 }
 
 .blue-angle {
-	z-index: -1;
+	z-index: 0;
 	position: absolute;
 	width: 200px;
 	height: 300px;
@@ -69,8 +69,8 @@
 	z-index: 2;
 	background: linear-gradient(
 		180deg,
-		rgba(255, 255, 255, 1) 45%,
-		rgba(255, 255, 255, 0) 75%
+		rgba(255, 255, 255, 1) 58%,
+		rgba(255, 255, 255, 0) 100%
 	);
 	margin-top: 1.5rem;
 	padding: 1.25rem 1rem 5rem 1rem;
@@ -1592,6 +1592,41 @@ ul.account-resources {
 			}
 			&:last-of-type:before {
 				left: -2.325rem;
+			}
+		}
+	}
+}
+
+.webform-submission-risk-tolerance-questionnaire-test-form {
+	.form-item-investments {
+		table {
+			thead {
+				th {
+					&:first-of-type {
+						width: 40%;
+					}
+					&:nth-of-type(2),
+					&:nth-of-type(3) {
+						width: 15%;
+					}
+				}
+			}
+			.webform-table-row td {
+				vertical-align: middle;
+			}
+			.odd {
+				background: #f2f2f2;
+			}
+			.even {
+				background: white;
+			}
+			.form-text {
+				text-align: left;
+				box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25) inset;
+				background: #f2f2f2;
+			}
+			.form-type-textfield {
+				padding: 1px 0.25rem;
 			}
 		}
 	}
