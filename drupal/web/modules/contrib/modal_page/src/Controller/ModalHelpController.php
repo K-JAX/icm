@@ -59,39 +59,55 @@ class ModalHelpController extends ControllerBase {
    */
   public function index() {
     $build = [];
-    $name = 'modal_page';
+    $projectMachineName = 'modal_page';
 
-    $project_name = $this->moduleHandler()->getName($name);
+    $projectName = $this->moduleHandler()->getName($projectMachineName);
+
     $build['#title'] = 'Modal Page Help';
-    $temp = $this->moduleHandler()->invoke($name, 'help', ["help.page.$name", $this->routeMatch]);
 
-    if (!is_array($temp)) {
-      $temp = ['#markup' => $temp];
+    $helperMarkup = $this->moduleHandler()->invoke($projectMachineName, 'help', [
+      "help.page.$projectMachineName",
+      $this->routeMatch,
+    ]);
+
+    if (!is_array($helperMarkup)) {
+      $helperMarkup = ['#markup' => $helperMarkup];
     }
-    $build['top'] = $temp;
+
+    $build['top'] = $helperMarkup;
 
     // Only print list of administration pages if the project in question has
     // any such pages associated with it.
-    $admin_tasks = system_get_module_admin_tasks($name, $this->extensionListModule->getExtensionInfo($name));
-    if (!empty($admin_tasks)) {
-      $links = [];
-      foreach ($admin_tasks as $task) {
-        $link['url'] = $task['url'];
-        $link['title'] = $task['title'];
-        if ($link['url']->getRouteName() === 'modal_page.settings') {
-          $link['title'] = 'Modal Settings';
-        }
-        $links[] = $link;
-      }
-      $build['links'] = [
-        '#theme' => 'links__help',
-        '#heading' => [
-          'level' => 'h3',
-          'text' => $this->t('@project_name administration pages', ['@project_name' => $project_name]),
-        ],
-        '#links' => $links,
-      ];
+    $adminTasks = system_get_module_admin_tasks($projectMachineName, $this->extensionListModule->getExtensionInfo($projectMachineName));
+
+    if (empty($adminTasks)) {
+      return $build;
     }
+
+    $links = [];
+
+    foreach ($adminTasks as $adminTask) {
+
+      $link['url'] = $adminTask['url'];
+
+      $link['title'] = $adminTask['title'];
+
+      if ($link['url']->getRouteName() === 'modal_page.settings') {
+        $link['title'] = 'Modal Settings';
+      }
+
+      $links[] = $link;
+    }
+
+    $build['links'] = [
+      '#theme' => 'links__help',
+      '#heading' => [
+        'level' => 'h3',
+        'text' => $this->t('@project_name administration pages', ['@project_name' => $projectName]),
+      ],
+      '#links' => $links,
+    ];
+
     return $build;
   }
 

@@ -15,6 +15,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\path_alias\AliasManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Path\CurrentPathStack;
 
 /**
  * Modal Page Service Class.
@@ -103,7 +104,7 @@ class ModalPageService {
   /**
    * Construct of Modal Page service.
    */
-  public function __construct(LanguageManagerInterface $language_manager, EntityTypeManagerInterface $entity_manager, ConfigFactoryInterface $config_factory, Connection $database, RequestStack $request_stack, PathMatcherInterface $path_matcher, UuidInterface $uuid_service, AccountProxyInterface $current_user, AliasManagerInterface $alias_manager, ModuleHandlerInterface $project_handler) {
+  public function __construct(LanguageManagerInterface $language_manager, EntityTypeManagerInterface $entity_manager, ConfigFactoryInterface $config_factory, Connection $database, RequestStack $request_stack, PathMatcherInterface $path_matcher, UuidInterface $uuid_service, AccountProxyInterface $current_user, AliasManagerInterface $alias_manager, ModuleHandlerInterface $project_handler, CurrentPathStack $current_path) {
     $this->languageManager = $language_manager;
     $this->entityTypeManager = $entity_manager;
     $this->pathMatcher = $path_matcher;
@@ -114,6 +115,7 @@ class ModalPageService {
     $this->currentUser = $current_user;
     $this->aliasManager = $alias_manager;
     $this->projectHandler = $project_handler;
+    $this->currentPath = $current_path;
   }
 
   /**
@@ -121,67 +123,78 @@ class ModalPageService {
    */
   public function checkModalToShow() {
 
-    $result = [];
-
+    // Get Modals to Show.
     $modals = $this->getModalToShow();
 
     if (empty($modals)) {
       return FALSE;
     }
 
-    foreach ($modals as $modalToShow) {
-
-      $button = $this->t('OK');
-
-      if (!empty($modalToShow->getOkLabelButton())) {
-        $button = $this->clearText($modalToShow->getOkLabelButton());
-      }
+    foreach ($modals as $key => $modal) {
 
       $body = '';
 
       // Check body by string.
-      if (is_string($modalToShow->getBody()) && !empty($modalToShow->getBody())) {
-        $body = $this->clearText($modalToShow->getBody());
+      if (is_string($modal->getBody()) && !empty($modal->getBody())) {
+        $body = $this->clearText($modal->getBody());
       }
 
       // Check by array.
-      if (!empty($modalToShow->getBody()['value'])) {
+      if (!empty($modal->getBody()['value'])) {
         $body = [
           '#type' => 'processed_text',
-          '#text' => $this->getAutheticatedUserName($modalToShow->getBody()['value']),
-          '#format' => $modalToShow->getBody()['format'],
+          '#text' => $modal->getBody()['value'],
+          '#format' => $modal->getBody()['format'],
         ];
       }
 
-      $modal = [
-        'id' => $modalToShow->id(),
-        'title' => $this->clearText($modalToShow->label()),
-        'display_title' => $modalToShow->getDisplayTitle(),
-        'text' => $body,
-        'delay_display' => $modalToShow->getDelayDisplay(),
-        'modal_size' => $modalToShow->getModalSize(),
-        'button' => $button,
-        'do_not_show_again' => empty($modalToShow->getDontShowAgainLabel()) ? $this->t("Don't show again") : $modalToShow->getDontShowAgainLabel(),
-        'close_modal_esc_key' => $modalToShow->getCloseModalEscKey() == 1 ? 'true' : "false",
-        'close_modal_clicking_outside' => $modalToShow->getCloseModalClickingOutside() == 1 ? "true" : "static",
-        'open_modal_on_element_click' => $modalToShow->getOpenModalOnElementClick(),
-        'auto_open' => $modalToShow->getAutoOpen(),
-        'insert_horizontal_line_header' => $modalToShow->getInsertHorizontalLineHeader(),
-        'insert_horizontal_line_footer' => $modalToShow->getInsertHorizontalLineFooter(),
-        'enable_modal_header' => $modalToShow->getEnableModalHeader(),
-        'enable_modal_footer' => $modalToShow->getEnableModalFooter(),
-        'display_button_x_close' => $modalToShow->getDisplayButtonXclose(),
-      ];
+      $modal->setBody($body);
 
-      if ($modalToShow->getEnableDontShowAgainOption() == FALSE) {
-        unset($modal['do_not_show_again']);
+      // Default classes for Modal class. If there are user class, include it.
+      $modalClass = 'modal fade js-modal-page-show';
+
+      if (!empty($modal->getModalClass())) {
+        $modalClass .= ' ' . $modal->getModalClass();
       }
 
-      $result[] = $modal;
+      $modal->setModalClass($modalClass);
 
+      // Header class.
+      $headerClass = $modal->getHeaderClass();
+
+      if (empty($modal->getInsertHorizontalLineHeader())) {
+        $headerClass .= ' modal-no-border';
+        $modal->setHeaderClass($headerClass);
+      }
+
+      // Other class.
+      $footerClass = $modal->getFooterClass();
+
+      if (empty($modal->getInsertHorizontalLineFooter())) {
+        $footerClass .= ' modal-no-border';
+        $modal->setFooterClass($footerClass);
+      }
+
+      // Prepare Get close Modal Esc Key.
+      $closeModalEscKey = 'true';
+      if (empty($modal->getCloseModalEscKey())) {
+        $closeModalEscKey = 'false';
+      }
+
+      $modal->setCloseModalEscKey($closeModalEscKey);
+
+      // Prepare Get close Modal clicking Outside.
+      $closeModalClickingOutside = 'true';
+      if (empty($modal->getCloseModalClickingOutside())) {
+        $closeModalClickingOutside = 'static';
+      }
+
+      $modal->setCloseModalClickingOutside($closeModalClickingOutside);
+
+      $modals[$key] = $modal;
     }
 
-    return $result;
+    return $modals;
   }
 
   /**
@@ -201,8 +214,7 @@ class ModalPageService {
       $modalParameter = $this->clearText($modalParameter);
     }
 
-    // We need to use Depency Injection on this. @codingStandardsIgnoreLine.
-    $modals = \Drupal::entityTypeManager()->getStorage('modal')->loadMultiple();
+    $modals = $this->entityTypeManager->getStorage('modal')->loadMultiple();
 
     foreach ($modals as $modal) {
 
@@ -231,26 +243,23 @@ class ModalPageService {
       // permission.
       if (!empty($modalToShow) && $this->checkUserHasPermissionOnModal($modalToShow)) {
 
+        if (empty($this->verifyModalShouldAppearOnThisLanguage($modalToShow))) {
+          continue;
+        }
+
         // Get Modal ID.
-        $modal_id = $modalToShow->id();
+        $modalId = $modalToShow->id();
 
         // Enable alter for other projects with HOOK_modal_alter().
-        $this->projectHandler->alter('modal', $modalToShow, $modal_id);
+        $this->projectHandler->alter('modal', $modalToShow, $modalId);
 
         // Get Hook Name.
-        $hookModalFormIdAlterName = 'modal_' . $modal_id;
+        $hookModalFormIdAlterName = 'modal_' . $modalId;
 
         // Enable alter for other projects with HOOK_modal_ID_alter().
-        $this->projectHandler->alter($hookModalFormIdAlterName, $modalToShow, $modal_id);
+        $this->projectHandler->alter($hookModalFormIdAlterName, $modalToShow, $modalId);
 
-        // Check Site Language and Modal Language.
-        $lang = $modal->getlangcode();
-        $lang_code = $this->languageManager->getCurrentLanguage()->getId();
-
-        // Insert this Modal to show.
-        if ($lang_code == $lang) {
-          $modalsToShow[] = $modalToShow;
-        }
+        $modalsToShow[] = $modalToShow;
 
       }
     }
@@ -293,6 +302,32 @@ class ModalPageService {
   }
 
   /**
+   * Method to verify if this Modal Should Appear On This Language.
+   */
+  public function verifyModalShouldAppearOnThisLanguage($modal) {
+
+    // Verify Site Language and Modal Language.
+    $languagesToShow = $modal->getLanguagesToShow();
+
+    // Clear 0 values.
+    $languagesToShow = array_filter($languagesToShow);
+
+    // If none are selected on this Modal, show it.
+    if (empty($languagesToShow)) {
+      return TRUE;
+    }
+
+    $langCode = $this->languageManager->getCurrentLanguage()->getId();
+
+    // If this language is present on array "Languages to Show" show it.
+    if (!empty($languagesToShow[$langCode])) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
    * Apply the filter on text.
    */
   public function clearText($text) {
@@ -301,22 +336,6 @@ class ModalPageService {
     }
     $text = Xss::filter($text, $this->getAllowTags());
     return trim($text);
-  }
-
-  /**
-   * Get user name authenticate.
-   *
-   * @param string $text
-   *   The body text of modal.
-   *
-   * @return string
-   *   The text with user name or visitor text.
-   */
-  public function getAutheticatedUserName($text) :string {
-    if ($this->currentUser->isAuthenticated()) {
-      return str_replace('@user_name@', $this->currentUser->getAccountName(), $text);
-    }
-    return str_replace('@user_name@', $this->t('visitor'), $text);
   }
 
   /**
@@ -348,7 +367,6 @@ class ModalPageService {
   public function getModalToShowByPage($modal, $currentPath) {
     $pages = $modal->getPages();
     $pages = explode(PHP_EOL, $pages);
-    $currentPath = mb_strtolower($currentPath);
 
     foreach ($pages as $page) {
 
@@ -359,13 +377,14 @@ class ModalPageService {
 
       $path = trim($path);
 
-      // We need to use DI on this case. @codingStandardsIgnoreLine
-      $currentPath = \Drupal::service('path.current')->getPath();
+      $currentPath = $this->currentPath->getPath();
       $currentPath = $this->aliasManager->getAliasByPath($currentPath);
 
       if (strpos($currentPath, '/node/') !== FALSE && strpos($currentPath, '/node/') === 0) {
         $currentPath = $this->aliasManager->getAliasByPath($currentPath);
       }
+
+      $currentPath = mb_strtolower($currentPath);
 
       $path = str_replace('/', '\/', str_replace('*', '\.*', $path));
 
@@ -408,53 +427,11 @@ class ModalPageService {
    */
   public function getAllowTags() :array {
     $config = $this->configFactory->get('modal_page.settings');
-    $allowed_tags = $config->get('allowed_tags') ??
+    $allowedTags = $config->get('allowed_tags') ??
       "h1,h2,a,b,big,code,del,em,i,ins,pre,q,small,span,strong,sub,sup,tt,ol,ul,li,p,br,img";
-    $tags = explode(",", $allowed_tags);
+    $tags = explode(",", $allowedTags);
 
     return $tags;
-  }
-
-  /**
-   * Get ids modal.
-   *
-   * @param string $currentPath
-   *   Current path.
-   * @param string $modalParameter
-   *   Parameter for show modal.
-   *
-   * @return mixed
-   *   Return ids list.
-   */
-  protected function getModalIds(string $currentPath, string $modalParameter) {
-    $query = $this->entityTypeManager->getStorage('modal_page_modal')->getQuery();
-
-    if ($modalParameter) {
-      $query->condition('parameters', '%' . $modalParameter . '%', 'like');
-    }
-    else {
-      $currentPath = $this->aliasManager->getPathByAlias($currentPath);
-
-      $groupCondition = $query->orConditionGroup();
-
-      // Get all itens with wildcard.
-      $groupCondition->condition('pages', '%*%', 'like');
-
-      // Get all with current path.
-      $groupCondition->condition('pages', '%' . $currentPath . '%', 'like');
-
-      // Get all with NULL (all pages).
-      $groupCondition->condition('pages', NULL, 'IS');
-
-      $query->condition($groupCondition);
-    }
-
-    if (!empty($this->languageManager->getCurrentLanguage()->getId())) {
-      $lang_code = $this->languageManager->getCurrentLanguage()->getId();
-      $condition = $query->orConditionGroup()->condition('langcode', $lang_code, '=')->condition('langcode', '', '=');
-      $query->condition($condition);
-    }
-    return $query->execute();
   }
 
   /**
@@ -468,19 +445,19 @@ class ModalPageService {
 
     $modals = $config->get('modals');
 
-    $modals_by_parameter = $config->get('modals_by_parameter');
+    $modalsByParameter = $config->get('modals_by_parameter');
 
-    $allow_tags = $this->getAllowTags();
+    $allowTags = $this->getAllowTags();
 
-    if (empty($modals) && empty($modals_by_parameter)) {
+    if (empty($modals) && empty($modalsByParameter)) {
       return FALSE;
     }
 
     if (!empty($modals)) {
 
-      $modals_settings = explode(PHP_EOL, $modals);
+      $modalsSettings = explode(PHP_EOL, $modals);
 
-      foreach ($modals_settings as $modal_settings) {
+      foreach ($modalsSettings as $modal_settings) {
 
         $modal = explode('|', $modal_settings);
 
@@ -493,10 +470,10 @@ class ModalPageService {
         $path = trim($path);
         $path = ltrim($path, '/');
 
-        $title = Xss::filter($modal[1], $allow_tags);
+        $title = Xss::filter($modal[1], $allowTags);
         $title = trim($title);
 
-        $text = Xss::filter($modal[2], $allow_tags);
+        $text = Xss::filter($modal[2], $allowTags);
         $text = trim($text);
 
         $button = Xss::filter($modal[3]);
@@ -522,11 +499,11 @@ class ModalPageService {
       }
     }
 
-    if (!empty($modals_by_parameter)) {
+    if (!empty($modalsByParameter)) {
 
-      $modals_settings = explode(PHP_EOL, $modals_by_parameter);
+      $modalsSettings = explode(PHP_EOL, $modalsByParameter);
 
-      foreach ($modals_settings as $modal_settings) {
+      foreach ($modalsSettings as $modal_settings) {
 
         $modal = explode('|', $modal_settings);
 
@@ -538,10 +515,10 @@ class ModalPageService {
 
         $parameter_value = $parameter_data[1];
 
-        $title = Xss::filter($modal[1], $allow_tags);
+        $title = Xss::filter($modal[1], $allowTags);
         $title = trim($title);
 
-        $text = Xss::filter($modal[2], $allow_tags);
+        $text = Xss::filter($modal[2], $allowTags);
         $text = trim($text);
 
         $button = Xss::filter($modal[3]);
@@ -567,6 +544,24 @@ class ModalPageService {
 
       }
     }
+  }
+
+  /**
+   * Prepare class.
+   */
+  public function prepareClass($class) {
+
+    if (empty($class)) {
+      return FALSE;
+    }
+
+    $class = strtolower($class);
+
+    $class = str_replace(',', ' ', $class);
+
+    $class = str_replace('  ', ' ', $class);
+
+    return $class;
   }
 
 }

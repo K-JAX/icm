@@ -26,7 +26,12 @@ h6 {
 	font-family: 'Oswald', sans-serif;
 }
 
+input {
+	max-width: 100%;
+}
+
 input[type='text'],
+input[type='password'],
 input[type='email'],
 input[type='tel'],
 input[type='search'],
@@ -67,7 +72,6 @@ table {
 		background-color: #828282;
 		th {
 			padding: 0.5rem 1rem;
-
 		}
 	}
 }

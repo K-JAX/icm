@@ -114,6 +114,18 @@ class ModalPageSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('allowed_tags') ?? "h1,h2,a,b,big,code,del,em,i,ins,pre,q,small,span,strong,sub,sup,tt,ol,ul,li,p,br,img",
     ];
 
+    $form['global_settings']['performance'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Performance'),
+      '#open' => TRUE,
+    ];
+
+    $form['global_settings']['performance']['clear_caches_on_modal_save'] = [
+      '#title' => $this->t("Clear caches when save Modal"),
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('clear_caches_on_modal_save'),
+    ];
+
     $form['actions'] = [
       '#type' => 'actions',
     ];
@@ -139,10 +151,13 @@ class ModalPageSettingsForm extends ConfigFormBase {
     $config->set('load_bootstrap', $loadBootstrap);
     $config->set('verify_load_bootstrap_automatically', $verifyLoadBootstrapAutomatically);
     $config->set('allowed_tags', $form_state->getValue('allowed_tags'));
+    $config->set('clear_caches_on_modal_save', $form_state->getValue('clear_caches_on_modal_save'));
 
     $config->save();
 
-    PhpStorageFactory::get('twig')->deleteAll();
+    if (!empty($config->get('clear_caches_on_modal_save'))) {
+      PhpStorageFactory::get('twig')->deleteAll();
+    }
 
     parent::submitForm($form, $form_state);
 

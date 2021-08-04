@@ -19,14 +19,14 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *   ),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\modal_page\ModalListBuilder",
+ *     "list_builder" = "Drupal\modal_page\Entity\ListBuilder\ModalListBuilder",
  *     "form" = {
  *       "add" = "Drupal\modal_page\Form\ModalForm",
  *       "edit" = "Drupal\modal_page\Form\ModalForm",
  *       "delete" = "Drupal\modal_page\Form\ModalDeleteForm"
  *     },
  *     "route_provider" = {
- *       "html" = "Drupal\modal_page\ModalHtmlRouteProvider",
+ *       "html" = "Drupal\modal_page\Entity\RouteProvider\ModalHtmlRouteProvider",
  *     },
  *     "translation" = "Drupal\node\NodeTranslationHandler",
  *   },
@@ -58,6 +58,14 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "enable_modal_footer" = "enable_modal_footer",
  *     "display_title" = "display_title",
  *     "display_button_x_close" = "display_button_x_close",
+ *     "languages_to_show" = "languages_to_show",
+ *     "modal_class" = "modal_class",
+ *     "header_class" = "header_class",
+ *     "footer_class" = "footer_class",
+ *     "enable_left_button" = "enable_left_button",
+ *     "left_label_button" = "left_label_button",
+ *     "ok_button_class" = "ok_button_class",
+ *     "left_button_class" = "left_button_class",
  *   },
  *   config_export = {
  *     "id",
@@ -85,6 +93,14 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "enable_modal_footer",
  *     "display_title",
  *     "display_button_x_close",
+ *     "languages_to_show",
+ *     "modal_class",
+ *     "header_class",
+ *     "footer_class",
+ *     "enable_left_button",
+ *     "left_label_button",
+ *     "ok_button_class",
+ *     "left_button_class",
  *   },
  *   links = {
  *     "canonical" = "/admin/structure/modal/{modal}",
@@ -256,7 +272,6 @@ class Modal extends ConfigEntityBase implements ModalInterface {
    *
    * @var bool
    */
-
   protected $displayTitle;
 
   /**
@@ -264,8 +279,64 @@ class Modal extends ConfigEntityBase implements ModalInterface {
    *
    * @var bool
    */
-
   protected $displayButtonXclose;
+
+
+  /**
+   * Languages to Show.
+   *
+   * @var string
+   */
+  protected $languagesToShow;
+
+  /**
+   * Modal class.
+   *
+   * @var string
+   */
+  protected $modalClass;
+
+  /**
+   * Header class.
+   *
+   * @var string
+   */
+  protected $headerClass;
+
+  /**
+   * Footer class.
+   *
+   * @var string
+   */
+  protected $footerClass;
+
+  /**
+   * Enable Left Button.
+   *
+   * @var string
+   */
+  protected $enableLeftButton;
+
+  /**
+   * Left Label Button.
+   *
+   * @var string
+   */
+  protected $leftLabelButton;
+
+  /**
+   * Ok Button class.
+   *
+   * @var string
+   */
+  protected $okButtonClass;
+
+  /**
+   * Left Button class.
+   *
+   * @var string
+   */
+  protected $leftButtonClass;
 
   /**
    * Get Id.
@@ -620,10 +691,130 @@ class Modal extends ConfigEntityBase implements ModalInterface {
   }
 
   /**
-   * Get Display Button X close.
+   * Set Display Button X close.
    */
   public function setDisplayButtonXclose($displayButtonXclose) {
     $this->set('display_button_x_close', $displayButtonXclose);
+    return $this;
+  }
+
+  /**
+   * Get Languages to Show.
+   */
+  public function getLanguagesToShow() {
+    return $this->get('languages_to_show');
+  }
+
+  /**
+   * Set Languages to Show.
+   */
+  public function setLanguagesToShow($languagesToShow) {
+    $this->set('languages_to_show', $languagesToShow);
+    return $this;
+  }
+
+  /**
+   * Get Modal class.
+   */
+  public function getModalClass() {
+    return $this->get('modal_class');
+  }
+
+  /**
+   * Set Modal class.
+   */
+  public function setModalClass($modalClass) {
+    $this->set('modal_class', $modalClass);
+    return $this;
+  }
+
+  /**
+   * Get Header class.
+   */
+  public function getHeaderClass() {
+    return $this->get('header_class');
+  }
+
+  /**
+   * Set Header class.
+   */
+  public function setHeaderClass($headerClass) {
+    $this->set('header_class', $headerClass);
+    return $this;
+  }
+
+  /**
+   * Get footer class.
+   */
+  public function getFooterClass() {
+    return $this->get('footer_class');
+  }
+
+  /**
+   * Set footer class.
+   */
+  public function setFooterClass($footerClass) {
+    $this->set('footer_class', $footerClass);
+    return $this;
+  }
+
+  /**
+   * Get Enable Left Button.
+   */
+  public function getEnableLeftButton() {
+    return $this->get('enable_left_button');
+  }
+
+  /**
+   * Set Enable Left Button.
+   */
+  public function setEnableLeftButton($enableLeftButton) {
+    $this->set('enable_left_button', $enableLeftButton);
+    return $this;
+  }
+
+  /**
+   * Get Left Label Button.
+   */
+  public function getLeftLabelButton() {
+    return $this->get('left_label_button');
+  }
+
+  /**
+   * Set Left Label Button.
+   */
+  public function setLeftLabelButton($leftLabelButton) {
+    $this->set('left_label_button', $leftLabelButton);
+    return $this;
+  }
+
+  /**
+   * Get Ok Button class.
+   */
+  public function getOkButtonClass() {
+    return $this->get('ok_button_class');
+  }
+
+  /**
+   * Set Ok Button class.
+   */
+  public function setOkButtonClass($okButtonClass) {
+    $this->set('ok_button_class', $okButtonClass);
+    return $this;
+  }
+
+  /**
+   * Get Left Button class.
+   */
+  public function getLeftButtonClass() {
+    return $this->get('left_button_class');
+  }
+
+  /**
+   * Set Left Button class.
+   */
+  public function setLeftButtonClass($leftButtonClass) {
+    $this->set('left_button_class', $leftButtonClass);
     return $this;
   }
 

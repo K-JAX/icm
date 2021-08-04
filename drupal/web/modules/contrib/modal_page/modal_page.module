@@ -9,13 +9,12 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
-include_once __DIR__ . '/includes/modal_page.install.inc';
-
 /**
  * Implements hook_form_alter().
  */
 function modal_page_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
+  // Include Modal Page Admin Library only for Modal settings.
   if ($form_id == 'modal_add_form' || $form_id == 'modal_edit_form') {
     $form['#attached']['library'][] = 'modal_page/modal-page-admin';
   }
@@ -28,25 +27,28 @@ function modal_page_form_alter(&$form, FormStateInterface $form_state, $form_id)
  */
 function modal_page_page_attachments(array &$attachments) {
 
+  // Load Modals.
+  $modals = \Drupal::entityTypeManager()->getStorage('modal')->loadMultiple();
+
+  // If there is no, skip it.
+  if (empty($modals)) {
+    return FALSE;
+  }
+
+  // Load Modal Page Library.
+  $attachments['#attached']['library'][] = 'modal_page/modal-page';
+
+  // Modal Settings.
   $config = \Drupal::config('modal_page.settings');
 
   // Verify if needs to load Bootstrap CDN.
-  $load_bootstrap = $config->get('load_bootstrap');
+  $loadBootstrap = $config->get('load_bootstrap');
 
-  $entity_manager = \Drupal::entityTypeManager();
-  $entity_storage = $entity_manager->getStorage('modal');
-  $modals = $entity_storage->loadMultiple();
-
-  if (!empty($modals)) {
-
-    // Load Modal Page Library.
-    $attachments['#attached']['library'][] = 'modal_page/modal-page';
-
-    // Load Bootstrap Library only if necessary.
-    if (!empty($load_bootstrap)) {
-      $attachments['#attached']['library'][] = 'modal_page/modal-page-bootstrap';
-    }
+  // Load Bootstrap Library only if necessary.
+  if (!empty($loadBootstrap)) {
+    $attachments['#attached']['library'][] = 'modal_page/modal-page-bootstrap';
   }
+
 }
 
 /**
@@ -73,8 +75,20 @@ function modal_page_theme() {
         'display_button_x_close' => NULL,
         'open_modal_on_element_click' => NULL,
         'auto_open' => NULL,
+        'modal_class' => NULL,
+        'header_class' => NULL,
+        'footer_class' => NULL,
+        'enable_left_button' => NULL,
+        'left_label_button' => NULL,
+        'ok_button_class' => NULL,
+        'left_button_class' => NULL,
       ],
     ],
+
+    'modal_helper_admin' => [
+      'variables' => [],
+    ],
+
   ];
 }
 
@@ -83,70 +97,43 @@ function modal_page_theme() {
  */
 function modal_page_preprocess_html(&$variables) {
 
-  $modalsToShow = \Drupal::service('modal_page.modals')->checkModalToShow();
+  // Get Modals to show on this page.
+  $modals = \Drupal::service('modal_page.modals')->checkModalToShow();
 
-  if (empty($modalsToShow)) {
+  if (empty($modals)) {
     return FALSE;
   }
 
-  foreach ($modalsToShow as $modalToShow) {
-
-    $doNotShowAgain = FALSE;
-
-    if (!empty($modalToShow['do_not_show_again'])) {
-      $doNotShowAgain = $modalToShow['do_not_show_again'];
-    }
-
-    $title = $modalToShow['title'];
-    $displayTitle = $modalToShow['display_title'];
-    $text = $modalToShow['text'];
-    $delayDisplay = $modalToShow['delay_display'];
-    $modalSize = $modalToShow['modal_size'];
-    $button = $modalToShow['button'];
-    $id = $modalToShow['id'];
-    $openModalOnElementClick = $modalToShow['open_modal_on_element_click'];
-    $autoOpen = $modalToShow['auto_open'];
-    $closeModalEscKey = $modalToShow['close_modal_esc_key'];
-    $closeModalClickingOutside = $modalToShow['close_modal_clicking_outside'];
-    $modalHeaderClasses = 'modal-page-content modal-header';
-    $modalFooterClasses = 'modal-footer modal-page-footer';
-    $enableModalHeader = $modalToShow['enable_modal_header'];
-    $enableModalFooter = $modalToShow['enable_modal_footer'];
-    $displayButtonXclose = $modalToShow['display_button_x_close'];
-
-    if (empty($modalToShow['insert_horizontal_line_header'])) {
-      $modalHeaderClasses .= ' ';
-      $modalHeaderClasses .= 'modal-no-border';
-    }
-
-    if (empty($modalToShow['insert_horizontal_line_footer'])) {
-      $modalFooterClasses .= ' ';
-      $modalFooterClasses .= 'modal-no-border';
-    }
+  foreach ($modals as $modal) {
 
     $variables['page_top']['slidedown_templates'][] = [
       '#theme' => 'modal_page_modal',
-      '#do_not_show_again' => $doNotShowAgain,
-      '#title' => $title,
-      '#display_title' => $displayTitle,
-      '#text' => $text,
-      '#delay_display' => $delayDisplay,
-      '#modal_size' => $modalSize,
-      '#button' => $button,
-      '#id' => $id,
-      '#close_modal_esc_key' => $closeModalEscKey,
-      '#close_modal_clicking_outside' => $closeModalClickingOutside,
-      '#modal_header_classes' => $modalHeaderClasses,
-      '#modal_footer_classes' => $modalFooterClasses,
-      '#enable_modal_header' => $enableModalHeader,
-      '#enable_modal_footer' => $enableModalFooter,
-      '#display_button_x_close' => $displayButtonXclose,
-      '#open_modal_on_element_click' => $openModalOnElementClick,
-      '#auto_open' => $autoOpen,
+      '#do_not_show_again'            => $modal->getDontShowAgainLabel(),
+      '#title'                        => $modal->label(),
+      '#display_title'                => $modal->getDisplayTitle(),
+      '#text'                         => $modal->getBody(),
+      '#delay_display'                => $modal->getDelayDisplay(),
+      '#modal_size'                   => $modal->getModalSize(),
+      '#button'                       => $modal->getOkLabelButton(),
+      '#id'                           => $modal->id(),
+      '#close_modal_esc_key'          => $modal->getCloseModalEscKey(),
+      '#close_modal_clicking_outside' => $modal->getCloseModalClickingOutside(),
+      '#modal_header_classes'         => $modal->getHeaderClass(),
+      '#modal_footer_classes'         => $modal->getFooterClass(),
+      '#enable_modal_header'          => $modal->getEnableModalHeader(),
+      '#enable_modal_footer'          => $modal->getEnableModalFooter(),
+      '#display_button_x_close'       => $modal->getDisplayButtonXclose(),
+      '#open_modal_on_element_click'  => $modal->getOpenModalOnElementClick(),
+      '#auto_open'                    => $modal->getAutoOpen(),
+      '#modal_class'                  => $modal->getModalClass(),
+      '#enable_left_button'           => $modal->getEnableLeftButton(),
+      '#left_label_button'            => $modal->getLeftLabelButton(),
+      '#ok_button_class'              => $modal->getOkButtonClass(),
+      '#left_button_class'            => $modal->getLeftButtonClass(),
     ];
 
-    if (isset($modalToShow['do_not_show_again']) && !empty($modalToShow['do_not_show_again'])) {
-      $variables['page_top']['slidedown_templates']['#do_not_show_again'] = $modalToShow['do_not_show_again'];
+    if (!empty($modal->getEnableDontShowAgainOption())) {
+      $variables['page_top']['slidedown_templates']['#do_not_show_again'] = $modal->getEnableDontShowAgainOption();
     }
 
     // Drupal Settings.
@@ -284,5 +271,25 @@ function modal_page_entity_presave(EntityInterface $entity) {
   // Default value for Roles.
   if ($entity->getRoles() === NULL) {
     $entity->setRoles([]);
+  }
+
+  // Default value for Languages to Show.
+  if ($entity->getLanguagesToShow() === NULL) {
+    $entity->setLanguagesToShow([]);
+  }
+
+  // Default value for Languages to Show.
+  if ($entity->getModalClass() === NULL) {
+    $entity->setModalClass('');
+  }
+
+  // Default value for Enable Left Button.
+  if ($entity->getEnableLeftButton() === NULL) {
+    $entity->setEnableLeftButton(FALSE);
+  }
+
+  // Default value for Left Label Button.
+  if ($entity->getLeftLabelButton() === NULL) {
+    $entity->setLeftLabelButton(t('Dismiss'));
   }
 }

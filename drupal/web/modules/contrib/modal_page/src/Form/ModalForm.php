@@ -6,9 +6,12 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\modal_page\Service\ModalPageService;
 
 /**
- * Class ModalForm.
+ * Class Modal Form to use Entity.
  */
 class ModalForm extends EntityForm {
 
@@ -21,10 +24,34 @@ class ModalForm extends EntityForm {
   protected $languageManager;
 
   /**
+   * The config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
+   * The renderer.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
+   * The renderer.
+   *
+   * @var \Drupal\modal_page\Service\ModalPageService
+   */
+  protected $modalPageService;
+
+  /**
    * Construct of Modal Page.
    */
-  public function __construct(LanguageManagerInterface $language_manager) {
+  public function __construct(LanguageManagerInterface $language_manager, ConfigFactoryInterface $config_factory, RendererInterface $renderer, ModalPageService $modalPageService) {
     $this->languageManager = $language_manager;
+    $this->configFactory = $config_factory;
+    $this->renderer = $renderer;
+    $this->modalPageService = $modalPageService;
   }
 
   /**
@@ -32,7 +59,10 @@ class ModalForm extends EntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('language_manager')
+      $container->get('language_manager'),
+      $container->get('config.factory'),
+      $container->get('renderer'),
+      $container->get('modal_page.modals'),
     );
   }
 
@@ -42,8 +72,29 @@ class ModalForm extends EntityForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    /* @var \Drupal\modal_page\Entity\Modal $modal */
+    /** @var \Drupal\modal_page\Entity\Modal $modal */
     $modal = $this->entity;
+
+    $imagePath = $imageUrl = '/' . drupal_get_path('module', 'modal_page') . '/images/';
+
+    $modalImageMarkup = [
+      '#theme' => 'modal_helper_admin',
+    ];
+
+    $modalImageMarkup = (string) $this->renderer->renderPlain($modalImageMarkup);
+
+    $modalImageAllowedTags = [
+      'div',
+      'class',
+      'button',
+      'h4',
+      'img',
+    ];
+
+    $form['modal_image'] = [
+      '#markup' => $modalImageMarkup,
+      '#allowed_tags' => $modalImageAllowedTags,
+    ];
 
     $form['label'] = [
       '#type' => 'textfield',
@@ -144,32 +195,6 @@ class ModalForm extends EntityForm {
       '#description' => $descriptionOpenModalOnElementClick,
     ];
 
-    $languages = $this->languageManager->getLanguages();
-
-    $languagesOptions = [];
-    foreach ($languages as $lid => $language) {
-      $languagesOptions[$lid] = $language->getName();
-    }
-
-    $langCode = $modal->getLangCode();
-
-    if ($modal->isNew()) {
-      $langCode = $this->languageManager->getCurrentLanguage()->getId();
-    }
-
-    $form['langcode'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Language'),
-      '#options' => $languagesOptions,
-      '#default_value' => $langCode,
-    ];
-
-    if (count($languages) <= 1) {
-      $disabled = ['disabled' => 'disabled'];
-      $form['langcode']['#attributes'] = $disabled;
-      unset($form['langcode']);
-    }
-
     $form['advanced'] = [
       '#type' => 'vertical_tabs',
       '#default_tab' => 'modal_header',
@@ -183,7 +208,7 @@ class ModalForm extends EntityForm {
 
     $form['modal_header']['enable'] = [
       '#type' => 'details',
-      '#title' => $this->t('Enable'),
+      '#title' => $this->t('Modal Header'),
       '#open' => TRUE,
     ];
 
@@ -193,13 +218,16 @@ class ModalForm extends EntityForm {
       $enableModalFooterHeader = TRUE;
     }
 
+    $description = '<a href="' . $imagePath . 'header/modal-header.png" class="modal-image-example">See an example</a>';
+
     $form['modal_header']['enable']['enable_modal_header'] = [
       '#title' => $this->t('Show Modal Header'),
       '#type' => 'checkbox',
       '#default_value' => $enableModalFooterHeader,
+      '#description' => $description,
     ];
 
-    $form['modal_header']['title'] = [
+    $form['modal_header']['enable']['title'] = [
       '#type' => 'details',
       '#title' => $this->t('Title'),
       '#open' => TRUE,
@@ -210,7 +238,7 @@ class ModalForm extends EntityForm {
       ],
     ];
 
-    $form['modal_header']['title']['display_title_in_modal_header'] = [
+    $form['modal_header']['enable']['title']['display_title_in_modal_header'] = [
       '#title' => $this->t('Display title'),
       '#type' => 'checkbox',
       '#default_value' => $displayTitle,
@@ -222,9 +250,10 @@ class ModalForm extends EntityForm {
           ':input[name="display_title"]' => ['checked' => TRUE],
         ],
       ],
+      '#description' => '<a href="' . $imagePath . 'header/modal-header-title.png" class="modal-image-example">See an example</a>',
     ];
 
-    $form['modal_header']['button_close'] = [
+    $form['modal_header']['enable']['button_close'] = [
       '#type' => 'details',
       '#title' => $this->t('Button X close'),
       '#open' => TRUE,
@@ -241,7 +270,7 @@ class ModalForm extends EntityForm {
       $displayButtonXclose = $modal->getDisplayButtonXclose();
     }
 
-    $form['modal_header']['button_close']['display_button_x_close'] = [
+    $form['modal_header']['enable']['button_close']['display_button_x_close'] = [
       '#title' => $this->t('Display button "X" to close'),
       '#type' => 'checkbox',
       '#default_value' => $displayButtonXclose,
@@ -250,9 +279,10 @@ class ModalForm extends EntityForm {
           ':input[name="enable_modal_header"]' => ['checked' => TRUE],
         ],
       ],
+      '#description' => '<a href="' . $imagePath . 'header/modal-header-button-x-close.png" class="modal-image-example">See an example</a>',
     ];
 
-    $form['modal_header']['horizontal_line'] = [
+    $form['modal_header']['enable']['horizontal_line'] = [
       '#type' => 'details',
       '#title' => $this->t('Horizontal Line'),
       '#open' => TRUE,
@@ -269,10 +299,40 @@ class ModalForm extends EntityForm {
       $insertHorizontalLineHeader = TRUE;
     }
 
-    $form['modal_header']['horizontal_line']['insert_horizontal_line_header'] = [
+    $form['modal_header']['enable']['horizontal_line']['insert_horizontal_line_header'] = [
       '#title' => $this->t('Insert horizontal line'),
       '#type' => 'checkbox',
       '#default_value' => $insertHorizontalLineHeader,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#description' => '<a href="' . $imagePath . 'header/modal-header-horizontal-line.png" class="modal-image-example">See an example</a>',
+    ];
+
+    $form['modal_header']['enable']['header_class_details'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Class(es)'),
+      '#open' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $headerClass = $modal->getHeaderClass();
+
+    if ($modal->isNew()) {
+      $headerClass = '';
+    }
+
+    $form['modal_header']['enable']['header_class_details']['header_class'] = [
+      '#title' => $this->t('Class(es)'),
+      '#type' => 'textfield',
+      '#default_value' => $headerClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces'),
       '#states' => [
         'visible' => [
           ':input[name="enable_modal_header"]' => ['checked' => TRUE],
@@ -288,7 +348,7 @@ class ModalForm extends EntityForm {
 
     $form['modal_footer']['enable'] = [
       '#type' => 'details',
-      '#title' => $this->t('Enable'),
+      '#title' => $this->t('Modal footer'),
       '#open' => TRUE,
     ];
 
@@ -302,9 +362,10 @@ class ModalForm extends EntityForm {
       '#title' => $this->t('Show Modal Footer'),
       '#type' => 'checkbox',
       '#default_value' => $enableModalFooter,
+      '#description' => '<a href="' . $imagePath . 'footer/modal-footer.png" class="modal-image-example">See an example</a>',
     ];
 
-    $form['modal_footer']['horizontal_line'] = [
+    $form['modal_footer']['enable']['horizontal_line'] = [
       '#type' => 'details',
       '#title' => $this->t('Horizontal Line'),
       '#open' => TRUE,
@@ -321,7 +382,7 @@ class ModalForm extends EntityForm {
       $insertHorizontalLineFooter = TRUE;
     }
 
-    $form['modal_footer']['horizontal_line']['insert_horizontal_line_footer'] = [
+    $form['modal_footer']['enable']['horizontal_line']['insert_horizontal_line_footer'] = [
       '#title' => $this->t('Insert horizontal line'),
       '#type' => 'checkbox',
       '#default_value' => $insertHorizontalLineFooter,
@@ -330,40 +391,10 @@ class ModalForm extends EntityForm {
           ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
         ],
       ],
+      '#description' => '<a href="' . $imagePath . 'footer/horizontal-line.png" class="modal-image-example">See an example</a>',
     ];
 
-    $form['modal_footer']['ok_button'] = [
-      '#type' => 'details',
-      '#title' => $this->t('OK Button'),
-      '#open' => TRUE,
-      '#states' => [
-        'visible' => [
-          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
-        ],
-      ],
-    ];
-
-    $okLabelButton = $modal->getOkLabelButton();
-
-    if ($modal->isNew()) {
-      $okLabelButton = $this->t('OK');
-    }
-
-    $form['modal_footer']['ok_button']['ok_label_button'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('OK Label Button'),
-      '#default_value' => $okLabelButton,
-      '#description' => $this->t('If blank the value will be <b>@default_label@</b>', [
-        '@default_label@' => 'OK',
-      ]),
-      '#states' => [
-        'visible' => [
-          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
-        ],
-      ],
-    ];
-
-    $form['modal_footer']['dont_show_again'] = [
+    $form['modal_footer']['enable']['dont_show_again'] = [
       '#type' => 'details',
       '#title' => $this->t("Don't show again"),
       '#open' => TRUE,
@@ -380,7 +411,7 @@ class ModalForm extends EntityForm {
       $enableDontShowAgainOption = TRUE;
     }
 
-    $form['modal_footer']['dont_show_again']['enable_dont_show_again_option'] = [
+    $form['modal_footer']['enable']['dont_show_again']['enable_dont_show_again_option'] = [
       '#title' => $this->t('Enable option <b>@dont_show_again_label@</b>', [
         '@dont_show_again_label@' => "Don't show again",
       ]),
@@ -399,18 +430,250 @@ class ModalForm extends EntityForm {
       $dontShowAgainLabel = $this->t("Don't show again");
     }
 
-    $form['modal_footer']['dont_show_again']['dont_show_again_label'] = [
+    $form['modal_footer']['enable']['dont_show_again']['dont_show_again_label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
       '#default_value' => $dontShowAgainLabel,
-      '#description' => $this->t('If blank the value will be <b>@dont_show_again_label@</b>', [
+      '#description' => $this->t('If blank the value will be <b>@dont_show_again_label@.</b>', [
         '@dont_show_again_label@' => "Don't show again",
-      ]),
+      ]) . ' <a href="' . $imagePath . 'footer/dont-show-again-label.png" class="modal-image-example">See an example</a>',
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+        'disabled' => [
+          ':input[name="enable_dont_show_again_option"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
+    $form['modal_footer']['enable']['footer_class_details'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Class(es)'),
+      '#open' => FALSE,
       '#states' => [
         'visible' => [
           ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
         ],
       ],
+    ];
+
+    $footerClass = $modal->getFooterClass();
+
+    if ($modal->isNew()) {
+      $footerClass = '';
+    }
+
+    $form['modal_footer']['enable']['footer_class_details']['footer_class'] = [
+      '#title' => $this->t('Class(es)'),
+      '#type' => 'textfield',
+      '#default_value' => $footerClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['modal_buttons'] = [
+      '#type' => 'details',
+      '#title' => $this->t('MODAL BUTTONS'),
+      '#group' => 'advanced',
+    ];
+
+    $form['modal_buttons']['information'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Information'),
+      '#open' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
+    $form['modal_buttons']['information']['information_message'] = [
+      '#markup' => $this->t('To use buttons you need to enable Modal footer') . ' ',
+    ];
+
+    $form['modal_buttons']['information']['information_message_enable'] = [
+      '#markup' => 'Yes, enable please',
+      '#allowed_tags' => ['a'],
+      '#prefix' => '<a href="#" class="js-enable-modal-footer">',
+      '#suffix' => '</a>',
+    ];
+
+    $form['modal_buttons']['ok_button'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Right Button'),
+      '#open' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $okLabelButton = $modal->getOkLabelButton();
+
+    if ($modal->isNew()) {
+      $okLabelButton = $this->t('OK');
+    }
+
+    $form['modal_buttons']['ok_button']['ok_label_button'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Right Button Label'),
+      '#default_value' => $okLabelButton,
+      '#description' => $this->t('If blank the value will be <b>@default_label@</b>.', [
+        '@default_label@' => 'OK',
+      ]) . ' <a href="' . $imagePath . 'buttons/ok-label-button.png" class="modal-image-example">See an example</a>',
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $okButtonClass = '';
+
+    if (!empty($modal->getOkButtonClass())) {
+      $okButtonClass = $modal->getOkButtonClass();
+    }
+
+    $form['modal_buttons']['ok_button']['ok_button_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Class(es)'),
+      '#default_value' => $okButtonClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces'),
+    ];
+
+    $form['modal_buttons']['left_button'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Left Button'),
+      '#open' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#description' => '<a href="' . $imagePath . 'buttons/left-button.png" class="modal-image-example">See an example</a>',
+    ];
+
+    $enableLeftButton = FALSE;
+
+    if (!empty($modal->getEnableLeftButton())) {
+      $enableLeftButton = $modal->getEnableLeftButton();
+    }
+
+    $form['modal_buttons']['left_button']['enable_left_button'] = [
+      '#title' => $this->t('Enable Left Button'),
+      '#type' => 'checkbox',
+      '#default_value' => $enableLeftButton,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $leftLabelButton = $this->t('Dismiss');
+
+    if (!empty($modal->getLeftLabelButton())) {
+      $leftLabelButton = $modal->getLeftLabelButton();
+    }
+
+    $form['modal_buttons']['left_button']['left_label_button'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Left Label Button'),
+      '#default_value' => $leftLabelButton,
+      '#description' => $this->t('If blank the value will be <b>@default_label@</b>.', [
+        '@default_label@' => 'Dismiss',
+      ]),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_left_button"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $leftButtonClass = '';
+
+    if (!empty($modal->getLeftButtonClass())) {
+      $leftButtonClass = $modal->getLeftButtonClass();
+    }
+
+    $form['modal_buttons']['left_button']['left_button_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Class(es)'),
+      '#default_value' => $leftButtonClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces'),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_left_button"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['modal_close'] = [
+      '#type' => 'details',
+      '#title' => strtoupper($this->t('MODAL close')),
+      '#group' => 'advanced',
+    ];
+
+    $form['modal_close']['how_to_close_modal'] = [
+      '#type' => 'details',
+      '#title' => $this->t("How to close Modal"),
+      '#open' => TRUE,
+    ];
+
+    $closeModalEscKey = $modal->getCloseModalEscKey();
+
+    if ($modal->isNew()) {
+      $closeModalEscKey = TRUE;
+    }
+
+    $form['modal_close']['how_to_close_modal']['close_modal_esc_key'] = [
+      '#title' => $this->t('Close Modal pressing ESC key'),
+      '#type' => 'checkbox',
+      '#default_value' => $closeModalEscKey,
+    ];
+
+    $closeModalClickingOutside = $modal->getCloseModalClickingOutside();
+
+    if ($modal->isNew()) {
+      $closeModalClickingOutside = TRUE;
+    }
+
+    $form['modal_close']['how_to_close_modal']['close_modal_clicking_outside'] = [
+      '#title' => $this->t('Close Modal clicking outside the Modal'),
+      '#type' => 'checkbox',
+      '#default_value' => $closeModalClickingOutside,
+    ];
+
+    $form['modal_class'] = [
+      '#type' => 'details',
+      '#title' => $this->t('MODAL CLASS'),
+      '#group' => 'advanced',
+    ];
+
+    $form['modal_class']['modal_class_details'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Modal Class'),
+      '#open' => TRUE,
+    ];
+
+    $modalClass = '';
+
+    if (!empty($modal->getModalClass())) {
+      $modalClass = $modal->getModalClass();
+    }
+
+    $form['modal_class']['modal_class_details']['modal_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Modal Class(es)'),
+      '#default_value' => $modalClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces'),
     ];
 
     $form['modal_customization'] = [
@@ -437,41 +700,18 @@ class ModalForm extends EntityForm {
       $modalSizeDefaultValue = 'modal-md';
     }
 
+    $modalSizeDescription = $this->t('You can see example of') . ' ';
+    $modalSizeDescription .= '<a href="' . $imagePath . 'modal-size/Modal-Medium.png" class="modal-image-example">' . $this->t('Modal Medium') . '</a>' . ', ';
+    $modalSizeDescription .= '<a href="' . $imagePath . 'modal-size/Modal-small.png" class="modal-image-example">' . $this->t('Modal small') . '</a> ';
+    $modalSizeDescription .= $this->t('and') . ' ';
+    $modalSizeDescription .= '<a href="' . $imagePath . 'modal-size/Modal-large.png" class="modal-image-example">' . $this->t('Modal large') . '</a>';
+
     $form['modal_customization']['modal_size']['modal_size'] = [
       '#type' => 'select',
       '#title' => $this->t('Modal Size'),
       '#options' => $modalSizeOptions,
       '#default_value' => $modalSizeDefaultValue,
-    ];
-
-    $form['modal_customization']['close_modal_options'] = [
-      '#type' => 'details',
-      '#title' => $this->t("Close Modal"),
-      '#open' => TRUE,
-    ];
-
-    $closeModalEscKey = $modal->getCloseModalEscKey();
-
-    if ($modal->isNew()) {
-      $closeModalEscKey = TRUE;
-    }
-
-    $form['modal_customization']['close_modal_options']['close_modal_esc_key'] = [
-      '#title' => $this->t('Close Modal pressing ESC key'),
-      '#type' => 'checkbox',
-      '#default_value' => $closeModalEscKey,
-    ];
-
-    $closeModalClickingOutside = $modal->getCloseModalClickingOutside();
-
-    if ($modal->isNew()) {
-      $closeModalClickingOutside = TRUE;
-    }
-
-    $form['modal_customization']['close_modal_options']['close_modal_clicking_outside'] = [
-      '#title' => $this->t('Close Modal clicking outside the modal'),
-      '#type' => 'checkbox',
-      '#default_value' => $closeModalClickingOutside,
+      '#description' => $modalSizeDescription,
     ];
 
     $form['roles_restriction'] = [
@@ -499,6 +739,9 @@ class ModalForm extends EntityForm {
       '#default_value' => $roles,
       '#description' => $this->t('If no role is selected this Modal will be visible to everyone.'),
     ];
+
+    // Insert Language.
+    $this->insertLanguageField($form, $modal);
 
     $form['extras'] = [
       '#type' => 'details',
@@ -553,6 +796,57 @@ class ModalForm extends EntityForm {
   }
 
   /**
+   * Method to insert Language.
+   */
+  public function insertLanguageField(array &$form, $modal) {
+
+    // If isn't Multilingual skip this.
+    if (empty($this->languageManager->isMultilingual())) {
+      return FALSE;
+    }
+
+    $form['languages'] = [
+      '#type' => 'details',
+      '#title' => $this->t('LANGUAGES'),
+      '#group' => 'advanced',
+    ];
+
+    $form['languages']['languages_details'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Languages to show'),
+      '#open' => TRUE,
+    ];
+
+    $languages = $modal->getLanguagesToShow();
+
+    if ($modal->isNew()) {
+      $languages = [];
+    }
+
+    $languageOptions = [];
+
+    // We need to use Depency Injection on this.
+    if (empty($this->languageManager->getLanguages())) {
+      return FALSE;
+    }
+
+    // We need to use Depency Injection on this.
+    $langCodes = $this->languageManager->getLanguages();
+
+    foreach ($langCodes as $key => $language) {
+      $languageOptions[$key] = $language->getName();
+    }
+
+    $form['languages']['languages_details']['languages_to_show'] = [
+      '#title' => $this->t('Languages'),
+      '#type' => 'checkboxes',
+      '#options' => $languageOptions,
+      '#default_value' => $languages,
+      '#description' => $this->t('If none are selected, all languages will be allowed.'),
+    ];
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
@@ -564,23 +858,78 @@ class ModalForm extends EntityForm {
     }
 
     $pages = $values['pages'];
-
+    $urlsUpdated = FALSE;
     $urlList = [];
     $urlList = explode(PHP_EOL, $pages);
 
-    foreach ($urlList as $url) {
+    foreach ($urlList as $key => $url) {
 
       $trimUrl = trim($url);
 
       // Validate Slash.
       if ($trimUrl !== '<front>' && $trimUrl[0] !== '/' && $trimUrl[0] !== '') {
-        $form_state->setErrorByName('pages', $this->t("@url path needs to start with a slash.", ['@url' => $trimUrl]));
+        $urlList[$key] = '/' . $trimUrl;
+        $urlsUpdated = TRUE;
       }
 
       // Validate wildcard.
       if (strpos($trimUrl, '*') !== FALSE && substr($trimUrl, -1) != '*') {
         $form_state->setErrorByName('pages', $this->t("The wildcard * must be used at the end of the path. E.g. /admin/*"));
       }
+    }
+
+    if (!empty($urlsUpdated)) {
+      $pages = implode(PHP_EOL, $urlList);
+      $form_state->setValue('pages', $pages);
+    }
+
+    if (!empty($values['modal_class'])) {
+
+      $modalClass = $this->modalPageService->prepareClass($values['modal_class']);
+
+      $form_state->setValue('modal_class', $modalClass);
+    }
+
+    if (!empty($values['header_class'])) {
+
+      $headerClass = $this->modalPageService->prepareClass($values['header_class']);
+
+      $form_state->setValue('header_class', $headerClass);
+    }
+
+    if (!empty($values['footer_class'])) {
+
+      $footerClass = $values['footer_class'];
+
+      $footerClass = $this->modalPageService->prepareClass($values['footer_class']);
+
+      $form_state->setValue('footer_class', $footerClass);
+    }
+
+    if (!empty($values['ok_button_class'])) {
+
+      $okButtonClass = $values['ok_button_class'];
+
+      $okButtonClass = strtolower($okButtonClass);
+
+      $okButtonClass = str_replace(',', ' ', $okButtonClass);
+
+      $okButtonClass = str_replace('  ', ' ', $okButtonClass);
+
+      $form_state->setValue('ok_button_class', $okButtonClass);
+    }
+
+    if (!empty($values['left_button_class'])) {
+
+      $leftButtonClass = $values['left_button_class'];
+
+      $leftButtonClass = strtolower($leftButtonClass);
+
+      $leftButtonClass = str_replace(',', ' ', $leftButtonClass);
+
+      $leftButtonClass = str_replace('  ', ' ', $leftButtonClass);
+
+      $form_state->setValue('left_button_class', $leftButtonClass);
     }
   }
 
@@ -589,22 +938,26 @@ class ModalForm extends EntityForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
 
+    // Get Modal.
     $modal = $this->entity;
 
-    $body = '';
-    if (!empty($form_state->getValue('body'))) {
-      $body = $form_state->getValue('body');
+    // Modal Label.
+    if (!empty($modal->label())) {
+      $label = $this->modalPageService->clearText($modal->label());
+      $modal->setLabel($label);
     }
 
-    $modal->setBody($body);
-
-    $pages = '';
-    if (!empty($form_state->getValue('pages'))) {
-      $pages = $form_state->getValue('pages');
+    // Modal OK Button.
+    if (empty($modal->getOkLabelButton())) {
+      $modal->setOkLabelButton((string) $this->t('OK'));
     }
 
-    $modal->setPages($pages);
+    // Modal don't show again label.
+    if (empty($modal->getDontShowAgainLabel())) {
+      $modal->setDontShowAgainLabel((string) $this->t("Don't show again"));
+    }
 
+    // Modal Save.
     $status = $modal->save();
 
     switch ($status) {
@@ -619,10 +972,19 @@ class ModalForm extends EntityForm {
           '%label' => $modal->label(),
         ]));
     }
-    $form_state->setRedirectUrl($modal->toUrl('collection'));
 
-    // Clear Views' cache.
-    drupal_flush_all_caches();
+    // Get Settings.
+    $settings = $this->configFactory->getEditable('modal_page.settings');
+
+    // Verify if is necessary clear.
+    $clearCachesOnModalSave = $settings->get('clear_caches_on_modal_save');
+
+    // Clear Views' cache if necessary.
+    if (!empty($clearCachesOnModalSave)) {
+      drupal_flush_all_caches();
+    }
+
+    $form_state->setRedirectUrl($modal->toUrl('collection'));
   }
 
 }

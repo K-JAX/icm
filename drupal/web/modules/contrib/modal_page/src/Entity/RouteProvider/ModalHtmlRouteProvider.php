@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\modal_page;
+namespace Drupal\modal_page\Entity\RouteProvider;
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;

@@ -189,4 +189,24 @@ interface ModalInterface extends ConfigEntityInterface {
    */
   public function setPublished($published);
 
+  /**
+   * Get Languages to Show.
+   */
+  public function getLanguagesToShow();
+
+  /**
+   * Set Languages to Show.
+   */
+  public function setLanguagesToShow($languagesToShow);
+
+  /**
+   * Get Modal Class.
+   */
+  public function getModalClass();
+
+  /**
+   * Set Modal Class.
+   */
+  public function setModalClass($modalClass);
+
 }

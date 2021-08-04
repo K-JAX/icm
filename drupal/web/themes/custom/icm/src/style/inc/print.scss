@@ -1,0 +1,48 @@
+// .blue-angle,
+// .white-fade-overlay,
+// .menu--main,
+// .header-placeholder {
+// 	@media print {
+// 		display: none !important;
+// 	}
+// }
+
+@media print {
+	.blue-angle,
+	.white-fade-overlay,
+	.menu--main,
+	.header-placeholder {
+		display: none;
+	}
+	.region-header {
+		margin-top: 0 !important;
+		padding: 0 !important;
+		top: 0 !important;
+	}
+
+	.webform-progress {
+		display: none;
+	}
+	.site-footer {
+		// padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		.row > div:not(.page-footer_first) {
+			display: none;
+		}
+		.page-footer_first {
+			.field--name-body {
+				> p:first-of-type {
+					display: none;
+				}
+				.acronym {
+					font-size: 1.25rem !important;
+				}
+			}
+		}
+	}
+
+	.webform-confirmation__back,
+	.webform-confirmation__message {
+		display: none;
+	}
+}

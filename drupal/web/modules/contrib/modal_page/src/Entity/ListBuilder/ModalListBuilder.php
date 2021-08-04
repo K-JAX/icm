@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\modal_page;
+namespace Drupal\modal_page\Entity\ListBuilder;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;

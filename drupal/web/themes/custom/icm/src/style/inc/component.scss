@@ -75,17 +75,19 @@
 	margin-top: 1.5rem;
 	padding: 1.25rem 1rem 5rem 1rem;
 	transition: padding 0s, margin 0s;
-	&[data-aos='stick'].aos-animate {
-		background: white;
-		position: fixed;
-		width: 100%;
-		top: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		padding: 1.25rem 2.5rem 1rem 2.5rem;
-		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-		animation: slideDown 0.5s forwards;
+	@media screen {
+		&[data-aos='stick'].aos-animate {
+			background: white;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			padding: 1.25rem 2.5rem 1rem 2.5rem;
+			box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+			animation: slideDown 0.5s forwards;
+		}
 	}
 	.navbar {
 		font-size: 0.875em;
@@ -121,6 +123,7 @@
 			}
 			.menu {
 				position: absolute;
+				z-index: -1;
 				min-width: 150px;
 				max-height: 0;
 				overflow: hidden;
@@ -128,11 +131,12 @@
 				background: white;
 				box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
 				transform-origin: top;
-				transform: translateY(-20px);
+				transform: translateY(-10px);
 				opacity: 0;
 			}
 			&:hover {
 				.menu {
+					z-index: 1;
 					max-height: 300px;
 					transform: translateY(0px);
 					opacity: 1;
@@ -203,6 +207,7 @@
 }
 
 .header-placeholder {
+	height: 0;
 	&[data-aos='stick'].aos-animate {
 		height: 183px;
 	}
@@ -362,16 +367,6 @@
 			}
 		}
 	}
-}
-
-.hero-section.home {
-	background-image: url('../../img/desktop-home-hero-img.png');
-	background-position: right bottom;
-}
-
-.hero-section.about {
-	background-image: url('../../img/desktop-about-hero-img.png');
-	background-position: right top;
 }
 
 .hero-section {
@@ -1629,5 +1624,12 @@ ul.account-resources {
 				padding: 1px 0.25rem;
 			}
 		}
+	}
+}
+
+.login,
+.register {
+	.description {
+		display: none;
 	}
 }

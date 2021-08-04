@@ -7,14 +7,14 @@
  * @see modal_page_preprocess_html()
  */
 #}
-<div aria-modal="true" {{ enable_modal_header and display_title ? 'aria-labelledby=' ~ title|raw|lower|replace({' ': '_'}) ~ '_label' ~ '' }} aria-describedby="{{ title|raw|lower|replace({' ': '_'}) ~ '_desc' }}" class="modal fade js-modal-page-show" id="js-modal-page-show-modal" data-open-modal-element-click="{{ open_modal_on_element_click }}" data-auto-open="{{ auto_open }}" role="dialog" style="display: none;" data-modal-id="{{ id }}" data-keyboard="{{ close_modal_esc_key }}" data-backdrop="{{ close_modal_clicking_outside }}" tabindex="-1">
+<div aria-modal="true" {{ enable_modal_header and display_title ? 'aria-labelledby=' ~ title|raw|lower|replace({' ': '_'}) ~ '_label' ~ '' }} aria-describedby="{{ title|raw|lower|replace({' ': '_'}) ~ '_desc' }}" class="{{ modal_class }}" id="js-modal-page-show-modal" data-open-modal-element-click="{{ open_modal_on_element_click }}" data-auto-open="{{ auto_open }}" role="dialog" style="display: none;" data-modal-id="{{ id }}" data-keyboard="{{ close_modal_esc_key }}" data-backdrop="{{ close_modal_clicking_outside }}" tabindex="-1">
   <div role="document" class="modal-page-dialog modal-dialog {{ modal_size }}">
     <div class="modal-page-content modal-content">
 
       {# Verify if Modal Header is enabled. #}
       {% if enable_modal_header %}
 
-        <div class="{{ modal_header_classes }}">
+        <div class="modal-page-content modal-header {{ modal_header_classes }}">
 
           {# Verify if should Display button X. #}
           {% if display_button_x_close %}
@@ -38,12 +38,24 @@
       {# Verify if Modal footer is enabled. #}
       {% if enable_modal_footer %}
 
-        <div class="{{ modal_footer_classes }}">
+        <div class="modal-footer modal-page-footer {{ modal_footer_classes }}">
+
+          {# Don't Show Again option #}
           {% if do_not_show_again %}
             <label class ="modal-dont-show-again-label"><input type="checkbox" class="modal-page-please-do-not-show-again" value="{{ id }}"> {{ do_not_show_again }}</label>
           {% endif %}
+
+          {# Left Button #}
+          {% if enable_left_button %}
+            <button type="button" class="btn btn-default js-modal-page-left-button {{ left_button_class }}" data-dismiss="modal">{{ left_label_button }}</button>
+          {% endif %}
+
+          {# Right Button #}
+          <button type="button" class="btn btn-default js-modal-page-ok-button {{ ok_button_class }}" data-dismiss="modal">{{ button }}</button>
+
+          {# Delay to Display #}
           <input type="hidden" id="delay_display" name="delay_display" value="{{ delay_display|raw }}" />
-          <button type="button" class="btn btn-default js-modal-page-ok-button" data-dismiss="modal">{{ button }}</button>
+
         </div>
 
       {% endif %}

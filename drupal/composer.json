@@ -18,6 +18,7 @@
         "composer/installers": "^1.9",
         "defuse/php-encryption": "^2.3",
         "doctrine/common": "^3.1",
+        "drupal/admin_content_notification": "^3.8",
         "drupal/admin_toolbar": "^3.0",
         "drupal/block_form_alter": "^1.2",
         "drupal/block_visibility_groups": "^1.4",

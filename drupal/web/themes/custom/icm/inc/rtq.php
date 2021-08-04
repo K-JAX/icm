@@ -44,7 +44,7 @@ function get_scaled_value($name, $variables)
     $val       = 0;
     foreach ($questions as $question) {
         $score += $variables['webform_submission']->getRawData()[$question];
-        $max += count($variables['webform']->getElementsDecoded()[$name][$question]['#options']) - 1;
+        $max += count($variables['webform']->getElementsDecoded()[$name . '_page'][$name][$question]['#options']) - 1;
     }
     $val = round($score * 10 / $max, 1);
     return $val;

@@ -9,16 +9,13 @@ modal_page.modal.*:
       type: string
     label:
       type: label
-      label: 'Label'
-    body.value:
-      type: text
+      label: 'Modal Title'
+    body:
+      type: text_format
       label: 'Body'
     pages:
       type: text
-      label: 'Pages'
-    parameters:
-      type: text
-      label: 'Parameters'
+      label: 'Pages to show'
     auto_open:
       type: boolean
       label: 'Auto Open'
@@ -29,14 +26,14 @@ modal_page.modal.*:
       type: string
       label: 'Language'
     ok_label_button:
-      type: string
+      type: text
       label: 'OK Label Button'
     enable_dont_show_again_option:
       type: boolean
       label: 'Enable option Dont show again'
     dont_show_again_label:
-      type: string
-      label: 'Dont show again'
+      type: text
+      label: "Don't show again"
     modal_size:
       type: list_string
       label: 'Modal Size'

@@ -504,7 +504,7 @@ function modal_page_update_40006() {
     // Set Display Button X as TRUE by default.
     $modal->setDisplayButtonXclose(TRUE);
 
-    // Modal Safe.
+    // Modal Save.
     $modal->save();
   }
 }
@@ -549,8 +549,53 @@ function modal_page_update_40008() {
   $config->save();
 }
 
+/**
+ * Update the "Languages to Show" field baseed on the old "language" field.
+ */
+function modal_page_update_40009() {
+
+  // Load all Modals.
+  $modals = \Drupal::entityTypeManager()->getStorage('modal')->loadMultiple();
+
+  foreach ($modals as $modal) {
+
+    // If there is no language code, skip.
+    if (empty($modal->getlangcode())) {
+      continue;
+    }
+
+    // Get the Modal's language code.
+    $langCode = $modal->getlangcode();
+
+    // Get Languages to Show.
+    $languagesToShow = $modal->getLanguagesToShow();
+
+    // Include the new lang code.
+    $languagesToShow[$langCode] = $langCode;
+
+    // Store the new value.
+    $modal->setLanguagesToShow($languagesToShow);
+
+    // Modal Save.
+    $modal->save();
+  }
+
+}
+
+/**
+ * Update the performance settings with default value.
+ */
+function modal_page_update_40010() {
+
+  $config = \Drupal::configFactory()->getEditable('modal_page.settings');
+
+  $config->set('clear_caches_on_modal_save', 1);
+
+  $config->save();
+}
+
 // -----------------------------------------------------------------------------
-// Auxiliar Methods.
+// Auxiliar Methods. @codingStandardsIgnoreLine
 // -----------------------------------------------------------------------------
 
 /**

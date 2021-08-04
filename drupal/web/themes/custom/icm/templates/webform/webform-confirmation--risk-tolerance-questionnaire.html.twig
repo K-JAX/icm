@@ -20,8 +20,11 @@
 {% endif %}
 
 <div {{ attributes.addClass('webform-confirmation') }}>
-	<div class="row gx-0 justify-content-between align-content-start">
-			<div class="panel row col-12 col-lg-7 decorated single-corner-dots align-content-start">
+	<div class="row gx-0 justify-content-center justify-content-lg-between align-content-start">
+			<div class="panel p-3 row col-12 col-lg-7 decorated single-corner-dots align-content-start">
+				<div class="panel-header">
+					<h2 class="underline-title full blue">Your Placement</h2>
+				</div>
 				<div id="data-chart" class="col-12 col-xxl-7" height=200 width=450></div>
 				<div class="scoring-key inset-shadow p-2 my-3 col-12 col-xxl-5">
 					<h3 class="fs-5">Portfolio Scoring Key</h3>
@@ -38,6 +41,7 @@
 						<li>Equity Completion</li>
 					</ol>
 				</div>
+				<div><button class="border-0 d-flex align-items-center" onclick="window.print()"><i class="fas fa-print fs-1"></i> <span class="ms-2">Save results</span></button></div>
 			</div>
 		<div class="panel p-3 col-12 col-lg-5 decorated linear-dots">				
 			<div class="panel-header">

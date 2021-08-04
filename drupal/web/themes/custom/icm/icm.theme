@@ -167,6 +167,17 @@ function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInt
  * @param $suggestions
  * @param array $variables
  */
+function icm_theme_suggestions_form_alter(&$suggestions, array $variables)
+{
+    if ($variables['element']['#form_id'] === 'user_login_form') {
+        $suggestions[] = 'form__' . $variables['element']['#form_id'];
+    }
+}
+
+/**
+ * @param $suggestions
+ * @param array $variables
+ */
 function icm_theme_suggestions_input_alter(&$suggestions, array $variables)
 {
     $element = $variables['element'];
