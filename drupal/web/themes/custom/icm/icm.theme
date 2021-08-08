@@ -2,7 +2,6 @@
 /**
  * Theme hooks
  */
-// use Drupal\Core\Session;
 
 // function icm_theme_suggestions_node_alter(array &$suggestions, array $variables){
 //     if($variables['elements']['#node']->getType() == 'article'){
@@ -139,10 +138,12 @@ function icm_preprocess_page(&$variables)
 
     $route_name = \Drupal::routeMatch()->getRouteName();
 
-    if ($route_name == 'user.register') {
-        user_cookie_save(array('userType' => 'banana'));
-    }
+    // if ($route_name == 'user.register') {
+    //     user_cookie_save(array('userType' => 'banana'));
+    // }
+
     // kint($_COOKIE);
+    // $variables['userType'] = $_COOKIE['userType'];
 
 //     \Drupal::service('page_cache_kill_switch')->trigger();
     //     // $cookie = Session::getCookie('userType');
@@ -154,6 +155,19 @@ function icm_preprocess_page(&$variables)
 //     // if ( !isset($variables["userType"]) && isset($_COOKIE["userType"]) ) {
     //     //     $variables["userType"] = $_COOKIE["userType"];
     //     // }
+    return $variables;
+}
+
+function icm_preprocess_menu__main(&$variables)
+{
+    \Drupal::service('page_cache_kill_switch')->trigger();
+    $variables['#cache']['max-age'] = 0;
+
+    if (isset($_COOKIE['userType'])) {
+        $variables['userType'] = $_COOKIE['userType'];
+    }
+
+    return $variables;
 }
 
 function icm_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)

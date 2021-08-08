@@ -2,13 +2,14 @@
 AOS.init();
 
 (function ($, Drupal, drupalSettings) {
-  // // Argument passed from InvokeCommand.
+  console.log(document.cookie); // // Argument passed from InvokeCommand.
   // $.fn.setUserTypeCookie = function (argument) {
   //   console.log(argument);
   //   // Set cookie accordingly
   //   document.cookie = "userType=" + argument;
   // };
   // var myDropdown = $(".dropdown-toggle");
+
   $('.advisor-service-toggle').on('click', function () {
     $('.advisor-service-toggle:not(#' + $(this).attr('id') + ')').addClass('collapsed').attr('aria-expanded', 'false');
     $('.body-text').removeClass('show');

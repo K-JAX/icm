@@ -1,6 +1,7 @@
 // initialize the scroller
 AOS.init()
 ;(function ($, Drupal, drupalSettings) {
+	console.log(document.cookie)
 	// // Argument passed from InvokeCommand.
 	// $.fn.setUserTypeCookie = function (argument) {
 	//   console.log(argument);
