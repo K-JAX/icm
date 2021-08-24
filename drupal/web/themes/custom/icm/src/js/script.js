@@ -1,7 +1,6 @@
 // initialize the scroller
 AOS.init()
 ;(function ($, Drupal, drupalSettings) {
-	console.log(document.cookie)
 	// // Argument passed from InvokeCommand.
 	// $.fn.setUserTypeCookie = function (argument) {
 	//   console.log(argument);
@@ -22,10 +21,14 @@ AOS.init()
 	$('.dropdown-toggle').each(function () {
 		var toggle = this
 		toggle.addEventListener('show.bs.dropdown', function (toggle) {
+			$(this).parents('.dropdown').addClass('expanded')
+			$(this).parents('.layout.row').addClass('raise-section')
 			$(this).parents('.col-lg-4').addClass('focus')
 			$('.two-sides-section').addClass('blur')
 		})
 		toggle.addEventListener('hide.bs.dropdown', function () {
+			$(this).parents('.dropdown').removeClass('expanded')
+			$(this).parents('.layout.row').removeClass('raise-section')
 			$(this).parents('.col-lg-4').removeClass('focus')
 			$('.two-sides-section').removeClass('blur')
 		})
@@ -46,11 +49,11 @@ AOS.init()
 
 	Drupal.behaviors.myBehaviour = {
 		attach: function (context, settings) {
-			// console.log(settings.myLibrary.is_front)
-			var timeHorizon = settings.myLibrary.time_horizon
-			var riskLevel = settings.myLibrary.risk_level
-			// return settings.myLibrary.is_front
-			drawChart(timeHorizon, riskLevel)
+			if (settings?.myLibrary != undefined) {
+				var timeHorizon = settings?.myLibrary.time_horizon
+				var riskLevel = settings?.myLibrary.risk_level
+				drawChart(timeHorizon, riskLevel)
+			}
 		},
 	}
 })(jQuery, Drupal, drupalSettings)
@@ -207,16 +210,39 @@ const closePopUp = (e) => {
 	popup[0].classList.add('exit-popup')
 }
 
-function createCookie(name, value, days) {
-	if (days) {
-		var date = new Date()
-		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-		var expires = '; expires=' + date.toGMTString()
-	} else var expires = ''
-	document.cookie = name + '=' + value + ';'
+function createCookie() {
+	console.log('right, wats all this then?')
+
+	// if (days) {
+	// 	var date = new Date()
+	// 	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+	// 	var expires = '; expires=' + date.toGMTString()
+	// } else var expires = ''
+	// document.cookie = name + '=' + value + ';'
+}
+
+function getCookie(cname) {
+	let name = cname + '='
+	let decodedCookie = decodeURIComponent(document.cookie)
+	let ca = decodedCookie.split(';')
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i]
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1)
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length)
+		}
+	}
+	return ''
+}
+
+function haveConsent() {
+	return getCookie('cookieconsent_dismissed') === 'yes'
 }
 
 const setAdvisorCookie = (e) => {
+	console.log(haveConsent())
 	document.cookie = 'userType=advisor_type;'
 	// createCookie("userType", "advisor_type", "22");
 

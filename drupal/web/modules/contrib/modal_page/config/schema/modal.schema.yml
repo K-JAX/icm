@@ -27,7 +27,13 @@ modal_page.modal.*:
       label: 'Language'
     ok_label_button:
       type: text
-      label: 'OK Label Button'
+      label: 'Button: Right (OK)'
+    top_right_button_label:
+      type: text
+      label: 'Button: Top-Right (X)'
+    left_label_button:
+      type: text
+      label: 'Button: Left (Dismiss)'
     enable_dont_show_again_option:
       type: boolean
       label: 'Enable option Dont show again'

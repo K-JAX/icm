@@ -42,6 +42,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "auto_open" = "auto_open",
  *     "open_modal_on_element_click" = "open_modal_on_element_click",
  *     "langcode" = "langcode",
+ *     "enable_right_button" = "enable_right_button",
  *     "ok_label_button" = "ok_label_button",
  *     "enable_dont_show_again_option" = "enable_dont_show_again_option",
  *     "dont_show_again_label" = "dont_show_again_label",
@@ -58,6 +59,8 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "enable_modal_footer" = "enable_modal_footer",
  *     "display_title" = "display_title",
  *     "display_button_x_close" = "display_button_x_close",
+ *     "top_right_button_label" = "top_right_button_label",
+ *     "top_right_button_class" = "top_right_button_class",
  *     "languages_to_show" = "languages_to_show",
  *     "modal_class" = "modal_class",
  *     "header_class" = "header_class",
@@ -77,6 +80,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "auto_open",
  *     "open_modal_on_element_click",
  *     "langcode",
+ *     "enable_right_button",
  *     "ok_label_button",
  *     "enable_dont_show_again_option",
  *     "dont_show_again_label",
@@ -93,6 +97,8 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "enable_modal_footer",
  *     "display_title",
  *     "display_button_x_close",
+ *     "top_right_button_label",
+ *     "top_right_button_class",
  *     "languages_to_show",
  *     "modal_class",
  *     "header_class",
@@ -459,6 +465,21 @@ class Modal extends ConfigEntityBase implements ModalInterface {
   }
 
   /**
+   * Get Enable Right Button.
+   */
+  public function getEnableRightButton() {
+    return $this->get('enable_right_button');
+  }
+
+  /**
+   * Set Enable Right Button.
+   */
+  public function setEnableRightButton($enableRightButton) {
+    $this->set('enable_right_button', $enableRightButton);
+    return $this;
+  }
+
+  /**
    * Get Ok Label Button.
    */
   public function getOkLabelButton() {
@@ -695,6 +716,36 @@ class Modal extends ConfigEntityBase implements ModalInterface {
    */
   public function setDisplayButtonXclose($displayButtonXclose) {
     $this->set('display_button_x_close', $displayButtonXclose);
+    return $this;
+  }
+
+  /**
+   * Get Top Right Button Label.
+   */
+  public function getTopRightButtonLabel() {
+    return $this->get('top_right_button_label');
+  }
+
+  /**
+   * Set Top Right Button Label.
+   */
+  public function setTopRightButtonLabel($topRightButtonLabel) {
+    $this->set('top_right_button_label', $topRightButtonLabel);
+    return $this;
+  }
+
+  /**
+   * Get Top Right Button Class.
+   */
+  public function getTopRightButtonClass() {
+    return $this->get('top_right_button_class');
+  }
+
+  /**
+   * Set Top Right Button Class.
+   */
+  public function setTopRightButtonClass($topRightButtonClass) {
+    $this->set('top_right_button_class', $topRightButtonClass);
     return $this;
   }
 

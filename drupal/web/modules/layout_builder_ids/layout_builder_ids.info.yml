@@ -1,0 +1,12 @@
+name: Layout Builder Ids
+description: Add an id to sections and blocks in Layout Builder.
+type: module
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - drupal:layout_builder
+  - hook_event_dispatcher:core_event_dispatcher
+
+# Information added by Drupal.org packaging script on 2021-03-08
+version: '2.0.0-rc6'
+project: 'layout_builder_ids'
+datestamp: 1615215429

@@ -57,7 +57,7 @@ function modal_page_install() {
 
   $messenger = \Drupal::messenger();
 
-  $messenger->addStatus(t('Modal Page load bootstrap.min.js by default, if this library is already loaded in other place, you can check a option <b>Don\'t load external JS Bootstrap</b> on <a href="@modal_page_settings">Modal Settings</a>', [
+  $messenger->addStatus(t('Modal Page load bootstrap.min.js by default, if this library is already loaded in other place, you can verify a option <b>Don\'t load external JS Bootstrap</b> on <a href="@modal_page_settings">Modal Settings</a>', [
     '@modal_page_settings' => Url::fromRoute('modal_page.settings')->toString(),
   ]));
 }
@@ -436,7 +436,7 @@ function modal_page_update_40003() {
       continue;
     }
 
-    // Check if have all permissions to receive the new one.
+    // Verify if have all permissions to receive the new one.
     if (!empty($role->hasPermission('delete modal entity')) && !empty($role->hasPermission('add modal entity')) && !empty($role->hasPermission('view modal entity')) && !empty($role->hasPermission('edit modal entity')) && !empty($role->hasPermission('administer modal entity'))) {
       $role->grantPermission('administer modal page');
       $role->save();
@@ -585,13 +585,40 @@ function modal_page_update_40009() {
 /**
  * Update the performance settings with default value.
  */
-function modal_page_update_40010() {
+function modal_page_update_400010() {
 
   $config = \Drupal::configFactory()->getEditable('modal_page.settings');
 
   $config->set('clear_caches_on_modal_save', 1);
 
   $config->save();
+}
+
+/**
+ * Update the Top Right Label Button and Enable Right Button with Default Value.
+ */
+function modal_page_update_400011() {
+
+  $config = \Drupal::configFactory()->getEditable('modal_page.settings');
+
+  $config->set('clear_caches_on_modal_save', 1);
+
+  $config->save();
+
+  // Load all Modals.
+  $modals = \Drupal::entityTypeManager()->getStorage('modal')->loadMultiple();
+
+  foreach ($modals as $modal) {
+
+    // Set Enable Right Button.
+    $modal->setEnableRightButton(TRUE);
+
+    // Store the new value.
+    $modal->setTopRightButtonLabel('x');
+
+    // Modal Save.
+    $modal->save();
+  }
 }
 
 // -----------------------------------------------------------------------------

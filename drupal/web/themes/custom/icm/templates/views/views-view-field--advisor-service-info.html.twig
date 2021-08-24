@@ -18,4 +18,18 @@
  * @see template_preprocess_views_view_field()
  */
 #}
-<button class="btn advisor-service-toggle oswald rounded-0" data-bs-toggle="collapse" id="advisor-service-toggle-{{row.id}}" data-bs-target="#advisor-services-{{row.id}}" aria-expanded="false" aria-controls="collapseExample">{{ output -}}</button>
+
+{% if row._entity.field_link_to_other_content_.getValue() %}
+	{% set link = row._entity.field_link_to_other_content_.getValue()[0].uri|split('internal:', 2)[1] %}
+	{% set title = row._entity.field_link_to_other_content_.getValue()[0].title %}
+	<a class="btn advisor-service-toggle oswald rounded-0" href="{{ link }}" title="{{ title }}">{{ output -}}</a>
+{% else %}
+	<button class="btn advisor-service-toggle oswald rounded-0"
+		data-bs-toggle="collapse"
+		id="advisor-service-toggle-{{ row.id }}"
+		data-bs-target="#advisor-services-{{ row.id }}"
+		aria-expanded="false"
+		aria-controls="collapseExample">
+		{{ output -}}
+	</button>
+{% endif %}

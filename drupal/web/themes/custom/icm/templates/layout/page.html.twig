@@ -42,7 +42,7 @@
  * @see html.html.twig
  */
 #}
-{% set containerClass = node.layout_builder__layout ? 'container-fluid' : 'container' %}
+{% set containerClass = node.layout_builder__layout ? 'container-fluid position-relative px-0' : 'container' %}
 
 {% set corner = node.field_background_hero_image_posi.value %}
 {% if corner == 'Top-Right' %}

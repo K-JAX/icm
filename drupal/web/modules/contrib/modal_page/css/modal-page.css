@@ -129,7 +129,7 @@ button.close {
   outline: 0;
 }
 
-.js-modal-page-ok-button {
+.modal-buttons {
   float: right;
 }
 .modal-page-please-do-not-show-again {

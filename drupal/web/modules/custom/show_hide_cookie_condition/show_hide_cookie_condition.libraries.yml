@@ -1,0 +1,6 @@
+show_hide_lib:
+  version: 1.x
+  js:
+    js/show-hide-cookie-condition.js: {}
+  dependecies:
+    - core/jquery

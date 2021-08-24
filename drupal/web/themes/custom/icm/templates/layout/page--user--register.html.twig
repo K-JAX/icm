@@ -50,6 +50,10 @@
 {% else %}
 	{% set yVal = '100%' %}
 {% endif %}
+{{ attach_library('icm/global-scripts') }}
+{# <script type="text/javascript">
+	createCookie();
+</script> #}
 <div class="layout-container px-0"
 	style="background-image: url({{
 	file_url(

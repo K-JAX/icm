@@ -1,0 +1,53 @@
+<?php
+/**
+ * Implementation of
+ */
+
+function show_hide_cookie_condition_preprocess_page(&$variables)
+{
+    $route_name = \Drupal::routeMatch()->getRouteName();
+
+    // Set cookie on user register page
+    if ($route_name == 'user.register') {
+        if (isset($_COOKIE['cookieconsent_dismissed'])) {
+
+            user_cookie_save(array('userType' => $_GET['userType']));
+        }
+    }
+}
+
+function show_hide_cookie_condition_preprocess_menu__main(&$variables)
+{
+    // Try to prevent caching on menu items so that userType can change on page refresh
+    \Drupal::service('page_cache_kill_switch')->trigger();
+    $build['#cache']['max-age']     = 0;
+    $variables['#cache']['max-age'] = 0;
+    \Drupal::service('page_cache_kill_switch')->trigger();
+    $route_name                          = \Drupal::routeMatch()->getRouteName();
+    $variables['#attached']['library'][] = 'show_hide_cookie_condition/show_hide_lib';
+
+    if (isset($_COOKIE['Drupal_visitor_userType'])) {
+        $variables['userType'] = $_COOKIE['Drupal_visitor_userType'];
+    }
+
+    return $variables;
+}
+
+// Helper function to get the block id from machine name.
+function getBlockContentByMachineName($machine_name)
+{
+    $query_result = \Drupal::entityTypeManager()
+        ->getStorage('block_content')
+        ->getQuery()
+        ->condition('machine_name', $machine_name)
+        ->range(0, 1)
+        ->execute();
+    // Get the block id.
+    $block_id = reset($query_result);
+    if ($block_id) {
+        $block = \Drupal\block_content\Entity\BlockContent::load($block_id);
+        return $block;
+    } else {
+        return null;
+    }
+}

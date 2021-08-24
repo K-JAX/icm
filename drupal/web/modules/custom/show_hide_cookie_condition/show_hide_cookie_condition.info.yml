@@ -1,0 +1,11 @@
+name: Show/Hide on Cookie Condition
+type: module
+description: 'Custom module for showing/hiding concent based on cookies.'
+package: Custom
+core: 8.x
+hidden: false
+core_version_requirement: ^8 || ^9
+dependencies:
+  - cookieconsent
+libraries:
+  - show_hide_cookie_condition/show_hide_lib

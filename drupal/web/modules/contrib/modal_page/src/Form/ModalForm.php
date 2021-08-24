@@ -78,7 +78,7 @@ class ModalForm extends EntityForm {
     $imagePath = $imageUrl = '/' . drupal_get_path('module', 'modal_page') . '/images/';
 
     $modalImageMarkup = [
-      '#theme' => 'modal_helper_admin',
+      '#theme' => 'modal_page_helper_admin',
     ];
 
     $modalImageMarkup = (string) $this->renderer->renderPlain($modalImageMarkup);
@@ -251,35 +251,6 @@ class ModalForm extends EntityForm {
         ],
       ],
       '#description' => '<a href="' . $imagePath . 'header/modal-header-title.png" class="modal-image-example">See an example</a>',
-    ];
-
-    $form['modal_header']['enable']['button_close'] = [
-      '#type' => 'details',
-      '#title' => $this->t('Button X close'),
-      '#open' => TRUE,
-      '#states' => [
-        'visible' => [
-          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
-        ],
-      ],
-    ];
-
-    $displayButtonXclose = TRUE;
-
-    if (empty($modal->isNew())) {
-      $displayButtonXclose = $modal->getDisplayButtonXclose();
-    }
-
-    $form['modal_header']['enable']['button_close']['display_button_x_close'] = [
-      '#title' => $this->t('Display button "X" to close'),
-      '#type' => 'checkbox',
-      '#default_value' => $displayButtonXclose,
-      '#states' => [
-        'visible' => [
-          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
-        ],
-      ],
-      '#description' => '<a href="' . $imagePath . 'header/modal-header-button-x-close.png" class="modal-image-example">See an example</a>',
     ];
 
     $form['modal_header']['enable']['horizontal_line'] = [
@@ -494,14 +465,81 @@ class ModalForm extends EntityForm {
     ];
 
     $form['modal_buttons']['information']['information_message'] = [
-      '#markup' => $this->t('To use buttons you need to enable Modal footer') . ' ',
+      '#markup' => $this->t('To use buttons you need to enable Modal Header and footer') . ' ',
     ];
 
     $form['modal_buttons']['information']['information_message_enable'] = [
       '#markup' => 'Yes, enable please',
       '#allowed_tags' => ['a'],
-      '#prefix' => '<a href="#" class="js-enable-modal-footer">',
+      '#prefix' => '<a href="#" class="js-enable-modal-header">',
       '#suffix' => '</a>',
+    ];
+
+    $form['modal_buttons']['button_close'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Button X close'),
+      '#open' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $displayButtonXclose = TRUE;
+
+    if (empty($modal->isNew())) {
+      $displayButtonXclose = $modal->getDisplayButtonXclose();
+    }
+
+    $form['modal_buttons']['button_close']['display_button_x_close'] = [
+      '#title' => $this->t('Display button "X" to close'),
+      '#type' => 'checkbox',
+      '#default_value' => $displayButtonXclose,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_header"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#description' => '<a href="' . $imagePath . 'header/modal-header-button-x-close.png" class="modal-image-example">See an example</a>',
+    ];
+
+    $topRightButtonLabel = 'x';
+
+    if (!empty($modal->getTopRightButtonLabel())) {
+      $topRightButtonLabel = $modal->getTopRightButtonLabel();
+    }
+
+    $form['modal_buttons']['button_close']['top_right_button_label'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Label'),
+      '#default_value' => $topRightButtonLabel,
+      '#description' => $this->t('If blank the value will be <b>@default_label@</b>.', [
+        '@default_label@' => "x",
+      ]),
+      '#states' => [
+        'enabled' => [
+          ':input[name="display_button_x_close"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $topRightButtonClass = '';
+
+    if (!empty($modal->getTopRightButtonClass())) {
+      $topRightButtonClass = $modal->getTopRightButtonClass();
+    }
+
+    $form['modal_buttons']['button_close']['top_right_button_class'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Class(es)'),
+      '#default_value' => $topRightButtonClass,
+      '#description' => $this->t('You can use multiple classes separate by spaces'),
+      '#states' => [
+        'enabled' => [
+          ':input[name="display_button_x_close"]' => ['checked' => TRUE],
+        ],
+      ],
     ];
 
     $form['modal_buttons']['ok_button'] = [
@@ -515,6 +553,19 @@ class ModalForm extends EntityForm {
       ],
     ];
 
+    $enableRightButton = $modal->getEnableRightButton();
+
+    if ($modal->isNew()) {
+      $enableRightButton = TRUE;
+    }
+
+    $form['modal_buttons']['ok_button']['enable_right_button'] = [
+      '#title' => $this->t('Enable "OK" Button'),
+      '#type' => 'checkbox',
+      '#default_value' => $enableRightButton,
+      '#description' => '<a href="' . $imagePath . 'header/modal-header-button-x-close.png" class="modal-image-example">See an example</a>',
+    ];
+
     $okLabelButton = $modal->getOkLabelButton();
 
     if ($modal->isNew()) {
@@ -523,7 +574,7 @@ class ModalForm extends EntityForm {
 
     $form['modal_buttons']['ok_button']['ok_label_button'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Right Button Label'),
+      '#title' => $this->t('Label'),
       '#default_value' => $okLabelButton,
       '#description' => $this->t('If blank the value will be <b>@default_label@</b>.', [
         '@default_label@' => 'OK',
@@ -531,6 +582,9 @@ class ModalForm extends EntityForm {
       '#states' => [
         'visible' => [
           ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+        'enabled' => [
+          ':input[name="enable_right_button"]' => ['checked' => TRUE],
         ],
       ],
     ];
@@ -546,6 +600,14 @@ class ModalForm extends EntityForm {
       '#title' => $this->t('Class(es)'),
       '#default_value' => $okButtonClass,
       '#description' => $this->t('You can use multiple classes separate by spaces'),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_modal_footer"]' => ['checked' => TRUE],
+        ],
+        'enabled' => [
+          ':input[name="enable_right_button"]' => ['checked' => TRUE],
+        ],
+      ],
     ];
 
     $form['modal_buttons']['left_button'] = [
@@ -585,13 +647,13 @@ class ModalForm extends EntityForm {
 
     $form['modal_buttons']['left_button']['left_label_button'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Left Label Button'),
+      '#title' => $this->t('Label'),
       '#default_value' => $leftLabelButton,
       '#description' => $this->t('If blank the value will be <b>@default_label@</b>.', [
         '@default_label@' => 'Dismiss',
       ]),
       '#states' => [
-        'visible' => [
+        'enabled' => [
           ':input[name="enable_left_button"]' => ['checked' => TRUE],
         ],
       ],
@@ -609,7 +671,7 @@ class ModalForm extends EntityForm {
       '#default_value' => $leftButtonClass,
       '#description' => $this->t('You can use multiple classes separate by spaces'),
       '#states' => [
-        'visible' => [
+        'enabled' => [
           ':input[name="enable_left_button"]' => ['checked' => TRUE],
         ],
       ],
@@ -897,9 +959,15 @@ class ModalForm extends EntityForm {
       $form_state->setValue('header_class', $headerClass);
     }
 
-    if (!empty($values['footer_class'])) {
+    if (!empty($values['top_right_button_class'])) {
 
-      $footerClass = $values['footer_class'];
+      $topRightButtonClass = $this->modalPageService->prepareClass($values['top_right_button_class']);
+
+      $form_state->setValue('top_right_button_class', $topRightButtonClass);
+
+    }
+
+    if (!empty($values['footer_class'])) {
 
       $footerClass = $this->modalPageService->prepareClass($values['footer_class']);
 
@@ -908,26 +976,14 @@ class ModalForm extends EntityForm {
 
     if (!empty($values['ok_button_class'])) {
 
-      $okButtonClass = $values['ok_button_class'];
-
-      $okButtonClass = strtolower($okButtonClass);
-
-      $okButtonClass = str_replace(',', ' ', $okButtonClass);
-
-      $okButtonClass = str_replace('  ', ' ', $okButtonClass);
+      $okButtonClass = $this->modalPageService->prepareClass($values['ok_button_class']);
 
       $form_state->setValue('ok_button_class', $okButtonClass);
     }
 
     if (!empty($values['left_button_class'])) {
 
-      $leftButtonClass = $values['left_button_class'];
-
-      $leftButtonClass = strtolower($leftButtonClass);
-
-      $leftButtonClass = str_replace(',', ' ', $leftButtonClass);
-
-      $leftButtonClass = str_replace('  ', ' ', $leftButtonClass);
+      $leftButtonClass = $this->modalPageService->prepareClass($values['left_button_class']);
 
       $form_state->setValue('left_button_class', $leftButtonClass);
     }

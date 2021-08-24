@@ -39,16 +39,16 @@
         var id_modal = checkbox_please_do_not_show_again.val();
         var cookie_please_do_not_show_again = $.cookie('please_do_not_show_again_modal_id_' + id_modal);
 
-        // Check don't show again option.
+        // Verify don't show again option.
         if (cookie_please_do_not_show_again) {
           return false;
         }
 
-        // Check auto-open.
+        // Verify auto-open.
         var auto_open = true;
 
-        if (typeof modal.data("auto-open") != 'undefined' && typeof modal.data("auto-open") != 'undefined') {
-          auto_open = modal.data("auto-open");
+        if (typeof modal.data('modal-options').auto_open != 'undefined' && typeof modal.data('modal-options').auto_open != 'undefined') {
+          auto_open = modal.data('modal-options').auto_open;
         }
 
 
@@ -87,9 +87,9 @@
         });
 
         // Open Modal Page clicking on user custom element.
-        if (typeof modal.data( "open-modal-element-click") != 'undefined' && modal.data( "open-modal-element-click")) {
+        if (typeof modal.data('modal-options').open_modal_on_element_click != 'undefined' && modal.data('modal-options').open_modal_on_element_click) {
 
-          var link_open_modal = modal.data( "open-modal-element-click");
+          var link_open_modal = modal.data('modal-options').open_modal_on_element_click;
 
           $(link_open_modal).on('click', function () {
             modal.modal();
@@ -105,7 +105,37 @@
             $.cookie('please_do_not_show_again_modal_id_' + id_modal, true, {expires: 365 * 20, path: '/'});
 
           }
+
+          var modalElement = $('.js-modal-page-ok-button').parents('#js-modal-page-show-modal');
+
+          // URL to send data.
+          var urlModalSubmit = "/modal/ajax/hook-modal-submit";
+
+          // Get Modal Options.
+          var modalOptions = modalElement.data('modal-options');
+
+          // Get Modal ID.
+          var modalId = modalOptions.id;
+
+          var dontShowAgainOption = modalElement.find('.modal-page-please-do-not-show-again').is(':checked');
+
+          var modalState = new Object();
+
+          modalState.dont_show_again_option = dontShowAgainOption;
+
+          // Params to be sent.
+          var params = new Object();
+
+          // Send Modal ID.
+          params.id = modalId;
+
+          // Send Modal State.
+          params.modal_state = modalState;
+
+          $.post(urlModalSubmit, params, function(result) {});
+
         });
+
       });
     }
   };

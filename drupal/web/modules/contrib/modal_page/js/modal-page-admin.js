@@ -55,11 +55,27 @@
       });
 
       // Enable option if necessary.
-      $('.js-enable-modal-footer').on('click', function(event) {
+      $('.js-enable-modal-header').on('click', function(event) {
+
         event.preventDefault();
+
+        if ($('#edit-enable-modal-header').is(":checked") == false) {
+          $('#edit-enable-modal-header').trigger('click');
+        }
+
         if ($('#edit-enable-modal-footer').is(":checked") == false) {
           $('#edit-enable-modal-footer').trigger('click');
         }
+
+        // Update message.
+        if (!$('.information-message-header-enabled').length) {
+          $('#edit-modal-buttons').prepend( '<p class="information-message-header-enabled">Modal Header and footer was enabled</p>' );
+        }
+
+        // Hide after some seconds.
+        setTimeout(function() {
+          $(".information-message-header-enabled").remove();
+        }, 2000);
       });
     }
   };

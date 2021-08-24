@@ -58,7 +58,7 @@ function get_curve_position($risk, $time, $max)
         // check if risk and time coordinates fall within a circle positioned at
         // the top-right of graph with a radius of $i (the current iteration)
         if (
-            // formula for calculating whether coordinates all within a circle
+            // formula for calculating whether coordinates fall within a circle
             ceil(pow($risk - $max, 2) + pow($time - $max, 2)) <= pow($i, 2)
         ) {
             $strat_info = $max + $nudge - $i;

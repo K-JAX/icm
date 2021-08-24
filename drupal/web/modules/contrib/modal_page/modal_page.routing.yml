@@ -29,3 +29,12 @@ modal_page.enable_bootstrap:
     _controller: '\Drupal\modal_page\Controller\ModalHelpController::enableBootstrapAutomatically'
   requirements:
     _permission: 'administer modal page'
+
+modal_page.hook_modal_submit:
+  path: '/modal/ajax/hook-modal-submit'
+  defaults:
+    _title: 'Modal Submit'
+    _controller: '\Drupal\modal_page\Controller\ModalAjaxController::hookModalSubmit'
+  requirements:
+    _permission: 'access content'
+    _access: 'TRUE'

@@ -119,12 +119,12 @@ class ModalPageService {
   }
 
   /**
-   * Function to check Modal will show.
+   * Method to Get Modals to show.
    */
-  public function checkModalToShow() {
+  public function getModalsToShow() {
 
     // Get Modals to Show.
-    $modals = $this->getModalToShow();
+    $modals = $this->loadModalsToShow();
 
     if (empty($modals)) {
       return FALSE;
@@ -134,12 +134,12 @@ class ModalPageService {
 
       $body = '';
 
-      // Check body by string.
+      // Verify body by string.
       if (is_string($modal->getBody()) && !empty($modal->getBody())) {
         $body = $this->clearText($modal->getBody());
       }
 
-      // Check by array.
+      // Verify by array.
       if (!empty($modal->getBody()['value'])) {
         $body = [
           '#type' => 'processed_text',
@@ -149,6 +149,15 @@ class ModalPageService {
       }
 
       $modal->setBody($body);
+
+      // Default Top Right Button.
+      if (empty($modal->getTopRightButtonLabel()) || $modal->getTopRightButtonLabel() == 'x') {
+        $modal->setTopRightButtonLabel('&times;');
+      }
+
+      if (empty($modal->getEnableDontShowAgainOption())) {
+        $modal->setDontShowAgainLabel(FALSE);
+      }
 
       // Default classes for Modal class. If there are user class, include it.
       $modalClass = 'modal fade js-modal-page-show';
@@ -203,7 +212,7 @@ class ModalPageService {
    * @return object
    *   Return the modal to show.
    */
-  public function getModalToShow() {
+  public function loadModalsToShow() {
     $modalToShow = FALSE;
     $modalsToShow = [];
     $currentPath = $this->getCurrentPath();
@@ -241,7 +250,7 @@ class ModalPageService {
 
       // Return Modal if there isn't restriction configured or if user has
       // permission.
-      if (!empty($modalToShow) && $this->checkUserHasPermissionOnModal($modalToShow)) {
+      if (!empty($modalToShow) && $this->verifyUserHasPermissionOnModal($modalToShow)) {
 
         if (empty($this->verifyModalShouldAppearOnThisLanguage($modalToShow))) {
           continue;
@@ -268,9 +277,9 @@ class ModalPageService {
   }
 
   /**
-   * Check if the Current User has Permission to Access Modal.
+   * Verify if the Current User has Permission to Access Modal.
    */
-  public function checkUserHasPermissionOnModal($modal) {
+  public function verifyUserHasPermissionOnModal($modal) {
 
     if (empty(array_filter($modal->getRoles()))) {
       return TRUE;
@@ -386,12 +395,24 @@ class ModalPageService {
 
       $currentPath = mb_strtolower($currentPath);
 
-      $path = str_replace('/', '\/', str_replace('*', '\.*', $path));
+      $shouldAppear = $this->verifyModalShouldAppearOnThisPath($path, $currentPath);
 
-      if (preg_match('/^' . $path . '/', $currentPath)) {
+      if (!empty($shouldAppear)) {
         return $modal;
       }
     }
+  }
+
+  /**
+   * Verify if this Modal Should Appear on This Path.
+   *
+   * @return bool
+   *   Return TRUE or FALSE.
+   */
+  public function verifyModalShouldAppearOnThisPath($path, $currentPath) {
+    $path = preg_quote($path, '/');
+    $path = str_replace('\*', '.*', $path);
+    return preg_match('/^' . $path . '$/i', $currentPath);
   }
 
   /**
