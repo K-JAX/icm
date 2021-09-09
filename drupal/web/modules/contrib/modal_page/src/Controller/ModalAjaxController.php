@@ -10,6 +10,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\modal_page\Service\ModalPageHelperService;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Controller routines for Ajax routes.
@@ -59,15 +60,23 @@ class ModalAjaxController extends ControllerBase {
   protected $entityTypeManager;
 
   /**
+   * The request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
    * Creates a new HelpController.
    */
-  public function __construct(RouteMatchInterface $route_match, ExtensionList $extension_list_module, ConfigFactoryInterface $config_factory, ModalPageHelperService $modalPageHelperService, ModuleHandlerInterface $projectHandler, EntityTypeManagerInterface $entityManager) {
+  public function __construct(RouteMatchInterface $route_match, ExtensionList $extension_list_module, ConfigFactoryInterface $config_factory, ModalPageHelperService $modalPageHelperService, ModuleHandlerInterface $projectHandler, EntityTypeManagerInterface $entityManager, RequestStack $requestStack) {
     $this->routeMatch = $route_match;
     $this->extensionListModule = $extension_list_module;
     $this->configFactory = $config_factory;
     $this->modalPageHelperService = $modalPageHelperService;
     $this->projectHandler = $projectHandler;
     $this->entityTypeManager = $entityManager;
+    $this->requestStack = $requestStack;
   }
 
   /**
@@ -80,7 +89,8 @@ class ModalAjaxController extends ControllerBase {
       $container->get('config.factory'),
       $container->get('modal_page.helper'),
       $container->get('module_handler'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('request_stack')
     );
   }
 
@@ -89,14 +99,12 @@ class ModalAjaxController extends ControllerBase {
    */
   public function hookModalSubmit() {
 
-    // We need use Service on this item. @codingStandardsIgnoreLine
-    if (empty($_POST['id'])) {
+    if (empty($this->requestStack->getCurrentRequest()->request->get('id'))) {
       echo FALSE;
       exit;
     }
 
-    // We need use Service on this item. @codingStandardsIgnoreLine
-    $modalId = $_POST['id'];
+    $modalId = $this->requestStack->getCurrentRequest()->request->get('id');
 
     // Load Modal.
     $modal = $this->entityTypeManager->getStorage('modal')->load($modalId);
@@ -123,10 +131,8 @@ class ModalAjaxController extends ControllerBase {
     }
 
     $modalState = [];
-    // We need use Service on this item. @codingStandardsIgnoreLine
-    if (!empty($_POST['modal_state'])) {
-      // We need use Service on this item. @codingStandardsIgnoreLine
-      $modalState = $_POST['modal_state'];
+    if (!empty($this->requestStack->getCurrentRequest()->request->get('modal_state'))) {
+      $modalState = $this->requestStack->getCurrentRequest()->request->get('modal_state');
     }
 
     // Arguments to be sent to Hook.

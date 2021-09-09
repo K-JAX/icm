@@ -90,3 +90,4 @@ vendor/bin/phpunit modules/modal_page
 ### Current maintainers:
  * Renato Gonçalves (RenatoG) - https://www.drupal.org/user/3326031
  * Thalles Ferreira (thalles) - https://www.drupal.org/user/3589086
+ * Paulo Henrique Cota Starling (paulocs) - https://www.drupal.org/user/3640109

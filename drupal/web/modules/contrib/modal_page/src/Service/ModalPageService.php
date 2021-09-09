@@ -380,6 +380,12 @@ class ModalPageService {
     foreach ($pages as $page) {
 
       $path = mb_strtolower($page);
+
+      // Check if the modal is displayed on front page.
+      if ($path == '<front>' && $currentPath == '<front>') {
+        return $modal;
+      }
+
       if ($path != '<front>') {
         $path = Xss::filter($path);
       }

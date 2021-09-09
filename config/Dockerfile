@@ -27,10 +27,10 @@ RUN apt-get install -y vim
 
 RUN apt-get install -y ghostscript
 
-RUN apt-get update && apt-get install -y \
-    libmagickwand-dev --no-install-recommends \
-    && pecl install imagick \
-	&& docker-php-ext-enable imagick
+# RUN apt-get update && apt-get install -y \
+#     libmagickwand-dev --no-install-recommends \
+#     && pecl install imagick \
+# 	&& docker-php-ext-enable imagick
 
 
 # # Replacing the existing drush since it seems to be causing problems right now.

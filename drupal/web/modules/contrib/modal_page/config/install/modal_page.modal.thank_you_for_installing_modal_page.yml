@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: {  }
+id: thank_you_for_installing_modal_page
+label: 'Thank you for installing Modal Page'
+body: '<p>You can create your Modal at <a href="/admin/structure/modal/add">Structure » Modal » Add Modal</a></p><p>Have fun :)</p><p>If liked, give us a <a href="https://www.drupal.org/project/modal_page" target="blank">star</a></p>'
+pages: '/admin/*'
+parameters: null
+auto_open: true
+open_modal_on_element_click: null
+enable_right_button: true
+ok_label_button: OK
+enable_dont_show_again_option: true
+dont_show_again_label: 'Don''t show again'
+modal_size: modal-md
+close_modal_esc_key: true
+close_modal_clicking_outside: true
+roles:
+  administrator: administrator
+type: page
+delay_display: null
+published: true
+insert_horizontal_line_header: true
+insert_horizontal_line_footer: true
+enable_modal_header: true
+enable_modal_footer: true
+display_title: true
+display_button_x_close: true
+top_right_button_label: x
+top_right_button_class: null
+languages_to_show: {  }
+modal_class: ''
+header_class: null
+footer_class: null
+enable_left_button: false
+left_label_button: Dismiss
+ok_button_class: null
+left_button_class: null

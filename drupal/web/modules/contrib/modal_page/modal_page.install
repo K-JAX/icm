@@ -21,45 +21,12 @@ include_once __DIR__ . '/includes/modal_page.install.inc';
  */
 function modal_page_install() {
 
-  $id = 'thank_you_for_installing_modal_page';
-  $title = 'Thank you for installing Modal Page';
-  $body = '<p>You can create your Modal at <a href="/admin/structure/modal/add">Structure » Modal » Add Modal</a></p>';
-  $body .= '<p>Have fun :)</p>';
-  $body .= '<p>If liked, give us a <a href="https://www.drupal.org/project/modal_page" target="blank">star</a></p>';
-  $type = 'page';
-  $pages = '/admin/*';
-  $roles = ['administrator' => 'administrator'];
-  $modalSize = 'modal-md';
-
-  $modal = \Drupal::entityTypeManager()->getStorage('modal')->create();
-  $modal->setId($id);
-  $modal->setLabel($title);
-  $modal->setBody($body);
-  $modal->setType($type);
-  $modal->setPages($pages);
-  $modal->setRoles($roles);
-  $modal->setPublished(TRUE);
-  $modal->setAutoOpen(TRUE);
-  $modal->setEnableDontShowAgainOption(TRUE);
-  $modal->setModalSize($modalSize);
-  $modal->setCloseModalEscKey(TRUE);
-  $modal->setCloseModalClickingOutside(TRUE);
-  $modal->setEnableModalHeader(TRUE);
-  $modal->setDisplayTitle(TRUE);
-  $modal->setDisplayButtonXclose(TRUE);
-  $modal->setInsertHorizontalLineHeader(TRUE);
-  $modal->setEnableModalFooter(TRUE);
-  $modal->setInsertHorizontalLineFooter(TRUE);
-
-  $modal->save();
-
-  \Drupal::service('cache.render')->invalidateAll();
-
   $messenger = \Drupal::messenger();
 
   $messenger->addStatus(t('Modal Page load bootstrap.min.js by default, if this library is already loaded in other place, you can verify a option <b>Don\'t load external JS Bootstrap</b> on <a href="@modal_page_settings">Modal Settings</a>', [
     '@modal_page_settings' => Url::fromRoute('modal_page.settings')->toString(),
   ]));
+
 }
 
 /**
