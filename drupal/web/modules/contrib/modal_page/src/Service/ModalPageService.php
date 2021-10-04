@@ -381,6 +381,7 @@ class ModalPageService {
 
       $path = mb_strtolower($page);
 
+      $path = trim($path);
       // Check if the modal is displayed on front page.
       if ($path == '<front>' && $currentPath == '<front>') {
         return $modal;

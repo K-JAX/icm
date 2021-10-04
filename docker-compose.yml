@@ -45,6 +45,7 @@ services:
       - PMA_USER=${OLD_DB}
       - PMA_PASSWORD=${PW}
       - PHP_UPLOAD_MAX_FILESIZE=1G
+      - UPLOAD_LIMIT=600M
       - PHP_MAX_INPUT_VARS=1
     ports:
       - '7001:80'
@@ -53,8 +54,8 @@ services:
   icm-mysql:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
-      - MYSQL_DATABASE=${DB}
-      - MYSQL_USER=${DB}
+      - MYSQL_DATABASE=${OLD_DB}
+      - MYSQL_USER=${OLD_DB}
       - MYSQL_PASSWORD=${PW}
     image: mysql:latest
     volumes:
@@ -78,8 +79,8 @@ services:
     environment:
       - DRUPAL_DATABASE_HOST=icm-mysql
       - DRUPAL_DATABASE_PORT=3306
-      - DRUPAL_DATABASE_NAME=${DB}
-      - DRUPAL_DATABASE_USERNAME=${DB}
+      - DRUPAL_DATABASE_NAME=${OLD_DB}
+      - DRUPAL_DATABASE_USERNAME=${OLD_DB}
       - DRUPAL_DATABASE_PASSWORD=${PW}
     image: drupal:9.2.0-apache
     restart: always
@@ -92,7 +93,7 @@ services:
       - icm
     environment:
       - PMA_HOST=icm-mysql
-      - PMA_USER=${DB}
+      - PMA_USER=${OLD_DB}
       - PMA_PASSWORD=${PW}
       - PHP_UPLOAD_MAX_FILESIZE=600M
       - UPLOAD_LIMIT=600M

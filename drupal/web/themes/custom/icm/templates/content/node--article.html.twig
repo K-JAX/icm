@@ -70,23 +70,19 @@
  *   in different view modes.
  */
 #}
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-
-  ]
-%}
+{% set classes = [
+	'node',
+	'node--type-' ~ (node.bundle|clean_class),
+	node.isPromoted() ? 'node--promoted',
+	node.isSticky() ? 'node--sticky',
+	not node.isPublished() ? 'node--unpublished',
+	view_mode ? 'node--view-mode-' ~ (view_mode|clean_class)
+] %}
 {{ attach_library('classy/node') }}
-<article{{attributes.addClass(classes)}}>
-
+<article {{ attributes.addClass(classes) }}>
 	{{ title_prefix }}
 	{% if label and not page %}
-		<h2{{title_attributes}}>
+		<h2 {{ title_attributes }}>
 			<a href="{{ url }}" rel="bookmark">{{ label }}</a>
 		</h2>
 	{% endif %}
@@ -94,7 +90,7 @@
 
 	{% if display_submitted %}
 		<footer class="node__meta">
-			<div{{author_attributes.addClass(['node__submitted','gray'])}}>
+			<div {{ author_attributes.addClass(['node__submitted', 'gray']) }}>
 				{% trans %}
 				{{ author_name }}
 				-
@@ -102,11 +98,9 @@
 				{{ metadata }}
 			</div>
 		</footer>
-		<br/>
+		<br />
 	{% endif %}
-
-	<div{{content_attributes.addClass('node__content')}}>
+	<div {{ content_attributes.addClass('node__content') }}>
 		{{ content }}
 	</div>
-
 </article>

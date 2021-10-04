@@ -4,6 +4,12 @@
 	position: relative;
 }
 
+.toolbar-bar {
+	@media all and (min-width: 264px) and (max-width: 975px) {
+		max-height: 78px;
+	}
+}
+
 .layout-container {
 	position: relative;
 	width: 100%;
@@ -101,5 +107,11 @@
 .form-textarea-wrapper {
 	textarea {
 		resize: none;
+	}
+}
+
+.progress-marker {
+	&:before {
+		z-index: 2;
 	}
 }

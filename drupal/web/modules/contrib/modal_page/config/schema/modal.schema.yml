@@ -41,7 +41,7 @@ modal_page.modal.*:
       type: text
       label: "Don't show again"
     modal_size:
-      type: list_string
+      type: string
       label: 'Modal Size'
     close_modal_esc_key:
       type: boolean
@@ -50,10 +50,12 @@ modal_page.modal.*:
       type: boolean
       label: 'Close Modal clicking outside the Modal'
     roles:
-      type: list_string
+      type: sequence
       label: 'Who can access this Modal'
+      sequence:
+        type: string
     type:
-      type: list_string
+      type: string
       label: 'Modal Type'
     delay_display:
       type: string
@@ -61,3 +63,69 @@ modal_page.modal.*:
     published:
       type: boolean
       label: 'Published'
+    insert_horizontal_line_header:
+      type: boolean
+      label: 'Insert horizontal line'
+    insert_horizontal_line_footer:
+      type: boolean
+      label: 'Insert horizontal footer'
+    enable_modal_header:
+      type: boolean
+      label: 'Enable Modal Header'
+    enable_modal_footer:
+      type: boolean
+      label: 'Enable Modal Footer'
+    display_title:
+      type: boolean
+      label: 'Display title'
+    display_button_x_close:
+      type: boolean
+      label: 'Display button "X" to close'
+    top_right_button_class:
+      type: string
+      label: 'Top right button class'
+    modal_class:
+      type: string
+      label: 'Modal class'
+    header_class:
+      type: string
+      label: 'Modal class'
+    footer_class:
+      type: string
+      label: 'Footer class'
+    enable_left_button:
+      type: boolean
+      label: 'Enable Left Button'
+    ok_button_class:
+      type: string
+      label: 'Ok button class'
+    left_button_class:
+      type: string
+      label: 'Left button class'
+    parameters:
+      type: string
+      label: 'Parameters'
+    enable_right_button:
+      type: boolean
+      label: 'Enable Right Button'
+    languages_to_show:
+      type: sequence
+      label: 'Enable Right Button'
+      sequence:
+        type: string
+
+modal_page.settings:
+  type: config_object
+  mapping:
+    verify_load_bootstrap_automatically:
+      type: boolean
+      label: 'Verify load bootstrap automatically'
+    load_bootstrap:
+      type: boolean
+      label: 'Load bootstrap'
+    allowed_tags:
+      type: string
+      label: 'Allowed tags'
+    clear_caches_on_modal_save:
+      type: boolean
+      label: 'Clear caches on modal save'

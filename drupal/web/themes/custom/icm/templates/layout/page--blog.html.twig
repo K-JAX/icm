@@ -44,7 +44,6 @@
 #}
 
 <div class="layout-container container-fluid px-0">
-
 	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
@@ -54,13 +53,17 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
-						<h1 class="page-head">Articles</h1>
-						<hr class="short orange my-4">
+						<h1 class="page-head">
+							Articles
+						</h1>
+						<hr class="short orange my-4" />
 					</div>
 				</div>
 			</div>
 			<svg viewbox="0 0 640 60" class="left-svg-text">
-				<text x="0" y="65" fill="none" stroke-width="1">iCM</text>
+				<text x="0" y="65" fill="none" stroke-width="1">
+					iCM
+				</text>
 			</svg>
 		</section>
 
@@ -70,17 +73,14 @@
 					<div class="col-lg-8 col-12">
 						{{ page.content }}
 					</div>
-					<div class="col-lg-4 col-12">{{ page.sidebar_first }}</div>
+					<div class="col-lg-4 col-12">
+						{{ page.sidebar_first }}
+					</div>
 				</div>
 			</div>
 		</section>
-
 	</main>
 
-	{% if page.footer %}
-		<footer class='site-footer px-4 py-5' role="contentinfo">
-			{{ page.footer }}
-		</footer>
-	{% endif %}
+	{% include '@icm/includes/footer.html.twig' %}
 </div>
 {# /.layout-container #}

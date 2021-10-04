@@ -1,0 +1,134 @@
+diff --git a/core/modules/migrate_drupal_ui/src/Batch/MigrateUpgradeImportBatch.php b/core/modules/migrate_drupal_ui/src/Batch/MigrateUpgradeImportBatch.php
+index c9c19a5c30..c894015cac 100644
+--- a/core/modules/migrate_drupal_ui/src/Batch/MigrateUpgradeImportBatch.php
++++ b/core/modules/migrate_drupal_ui/src/Batch/MigrateUpgradeImportBatch.php
+@@ -117,7 +117,7 @@ public static function run($initial_ids, $config, &$context) {
+       if ($definition['source']['plugin'] === 'd7_file_private') {
+         $configuration['source']['constants']['source_base_path'] = rtrim($config['source_private_file_path'], '/') . '/';
+       }
+-      $configuration['source']['constants']['source_base_path'] = rtrim($config['source_base_path'], '/') . '/';
++      $configuration['source']['constants']['source_base_path'] = rtrim($config['source_base_path'], '/');
+     }
+ 
+     /** @var \Drupal\migrate\Plugin\Migration $migration */
+diff --git a/core/modules/migrate_drupal_ui/tests/src/Functional/d7/DoubleSlashTest.php b/core/modules/migrate_drupal_ui/tests/src/Functional/d7/DoubleSlashTest.php
+new file mode 100644
+index 0000000000..1533ef3488
+--- /dev/null
++++ b/core/modules/migrate_drupal_ui/tests/src/Functional/d7/DoubleSlashTest.php
+@@ -0,0 +1,115 @@
++<?php
++
++namespace Drupal\Tests\migrate_drupal_ui\Functional\d7;
++
++use Drupal\Core\Database\Database;
++use Drupal\Tests\migrate_drupal_ui\Functional\MigrateUpgradeExecuteTestBase;
++use Drupal\migrate\Plugin\MigrationInterface;
++
++/**
++ * Tests that a double slash is not in d7_file file not found migrate messages.
++ *
++ * @group migrate_drupal_ui
++ */
++class DoubleSlashTest extends MigrateUpgradeExecuteTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected $profile = 'testing';
++
++  /**
++   * {@inheritdoc}
++   */
++  protected $defaultTheme = 'stark';
++
++  /**
++   * {@inheritdoc}
++   */
++  protected static $modules = [
++    'file',
++    'migrate_drupal_ui',
++  ];
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp(): void {
++    parent::setUp();
++
++    $this->loadFixture(drupal_get_path('module', 'migrate_drupal') . '/tests/fixtures/drupal7.php');
++  }
++
++  /**
++   * Executes all steps of migrations upgrade.
++   */
++  public function testMigrateUpgradeExecute() {
++    // Change fid 1 to a filename that does not exist.
++    $this->sourceDatabase
++      ->update('file_managed')
++      ->condition('fid', 1)
++      ->fields([
++        'filename' => 'foo.txt',
++        'uri' => 'public://foo.txt',
++      ])
++      ->execute();
++
++    // Get valid credentials.
++    $edits = $this->translatePostValues($this->getCredentials());
++
++    // Start the upgrade process.
++    $this->drupalGet('/upgrade');
++    $this->submitForm([], t('Continue'));
++    $this->submitForm($edits, t('Review upgrade'));
++    $this->submitForm([], t('I acknowledge I may lose data. Continue anyway.'));
++    $this->submitForm([], t('Perform upgrade'));
++
++    // Tests the migration log contains an error message.
++    $migration = $this->getMigrationPluginManager()->createInstance('d7_file');
++    $messages = $migration->getIdMap()->getMessages();
++
++    $count = 0;
++    foreach ($messages as $message) {
++      $count++;
++      $this->assertStringContainsString('/migrate_drupal_ui/tests/src/Functional/d7/files/sites/default/files/foo.txt', $message->message);
++      $this->assertSame(MigrationInterface::MESSAGE_ERROR, (int) $message->level);
++    }
++    $this->assertSame(1, $count);
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getSourceBasePath() {
++    return __DIR__ . '/files';
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getEntityCounts() {
++    return [];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getEntityCountsIncremental() {
++    return [];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getAvailablePaths() {
++    return [];
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getMissingPaths() {
++    return [];
++  }
++
++}

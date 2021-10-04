@@ -7,14 +7,17 @@
  * Requirements
  * Installation
  * Configuration
- * Hooks
+ * Hooks and Modal programatically
  * Maintainers
 
 
 ## INTRODUCTION
 
-The Modal Page allow create Modal in CMS and set page to show. If the user visit
-this page that configures it shows the modal.
+The Modal project allows you to create Modal using CMS only.
+
+You can place your Modal in specific page and configure if it'll appear when
+the end-user open the page (auto-open on page load) or if this Modal will appear
+when the user click in specific class or ID on HTML.
 
 * For a full description of the project, visit the project page:
    https://www.drupal.org/project/modal_page
@@ -40,15 +43,26 @@ No special requirements.
 
   Click in Add Modal
 
-   1. Set the Title of modal.
-   2. Set the Text of modal (Body).
-   3. Set type of modal.
-   4. Set pages or parameters to show the modal.
-   5. Set text for OK label button.
-   6. Choose modal language.
+   1. Set the Title of modal;
+   2. Set the Text of modal (Body);
+   4. Set pages to show the Modal;
+   6. Select if it'll appear on page load or in element click;
+   7. Use extra configuration in vertical tab (left side);
    7. Save.
 
-## HOOKS
+## HOOKS AND MODAL PROGRAMATICALLY
+
+* You can insert your Modal programatically using entityTypeManager like this:
+
+```
+$modal = \Drupal::entityTypeManager()->getStorage('modal')->create();
+
+$modal->setId('modal_id');
+$modal->setLabel('Modal Title');
+$modal->setBody('Modal Content');
+$modal->setPages('/hello');
+$modal->save();
+```
 
 * You can change Modals before display with these hooks
 
@@ -57,9 +71,12 @@ No special requirements.
 Example:
 
 ```
-function HOOK_modal_alter(&$modal, $modal_id) {
-  $modal->setLabel('New Title');
-  $modal->setBody('New Body');
+/**
+ * Implements hook_modal_alter().
+ */
+function PROJECT_modal_alter(&$modal, $modal_id) {
+  $modal->setLabel('Title Updated');
+  $modal->setBody('Body Updated');
 }
 ```
 
@@ -68,9 +85,28 @@ function HOOK_modal_alter(&$modal, $modal_id) {
 Example:
 
 ```
-function HOOK_modal_ID_alter(&$modal, $modal_id) {
+/**
+ * Implements hook_modal_ID_alter().
+ */
+function PROJECT_modal_ID_alter(&$modal, $modal_id) {
   $modal->setLabel('New Title');
   $modal->setBody('New Body');
+}
+```
+
+- HOOK_modal_submit(&$modal, $modal_id)
+
+Example:
+
+```
+/**
+ * Implements hook_modal_submit().
+ */
+function PROJECT_modal_submit($modal, $modal_state, $modal_id) {
+
+  // Your AJAX here.
+  \Drupal::logger('modal_page')->notice('Modal Submit was triggered');
+
 }
 ```
 
@@ -82,7 +118,7 @@ function HOOK_modal_ID_alter(&$modal, $modal_id) {
 ### EXECUTING UNITTESTS
 
 ```
-vendor/bin/phpunit modules/modal_page
+vendor/bin/phpunit modules/contrib/modal_page
 ```
 
 ## MAINTAINERS

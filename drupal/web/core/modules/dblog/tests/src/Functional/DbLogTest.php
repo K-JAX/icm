@@ -474,7 +474,7 @@ class DbLogTest extends BrowserTestBase {
       $link = mb_substr($value, strpos($value, 'admin/reports/dblog/event/'));
       $this->drupalGet($link);
       // Check for full message text on the details page.
-      $this->assertRaw($message);
+      $this->assertSession()->responseContains($message);
     }
     $this->assertNotEmpty($link, 'DBLog event was recorded: [delete user]');
     // Visit random URL (to generate page not found event).
@@ -851,7 +851,7 @@ class DbLogTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(200);
     // Make sure HTML tags are filtered out.
     $this->assertRaw('title="alert(&#039;foo&#039;);Lorem');
-    $this->assertNoRaw("<script>alert('foo');</script>");
+    $this->assertSession()->responseNotContains("<script>alert('foo');</script>");
 
     // Make sure HTML tags are filtered out in admin/reports/dblog/event/ too.
     $this->generateLogEntries(1, ['message' => "<script>alert('foo');</script> <strong>Lorem ipsum</strong>"]);
@@ -859,7 +859,7 @@ class DbLogTest extends BrowserTestBase {
     $query->addExpression('MAX([wid])');
     $wid = $query->execute()->fetchField();
     $this->drupalGet('admin/reports/dblog/event/' . $wid);
-    $this->assertNoRaw("<script>alert('foo');</script>");
+    $this->assertSession()->responseNotContains("<script>alert('foo');</script>");
     $this->assertRaw("alert('foo'); <strong>Lorem ipsum</strong>");
   }
 
@@ -876,9 +876,9 @@ class DbLogTest extends BrowserTestBase {
     $this->drupalGet('admin/reports/dblog');
 
     $entries = $this->getLogEntries();
-    $this->assertEquals($entries[0]['message'], 'Third Entry #0');
-    $this->assertEquals($entries[1]['message'], 'Second Entry #0');
-    $this->assertEquals($entries[2]['message'], 'First Entry #0');
+    $this->assertEquals('Third Entry #0', $entries[0]['message']);
+    $this->assertEquals('Second Entry #0', $entries[1]['message']);
+    $this->assertEquals('First Entry #0', $entries[2]['message']);
   }
 
   /**

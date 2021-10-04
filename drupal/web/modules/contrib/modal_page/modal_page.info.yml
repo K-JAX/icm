@@ -7,7 +7,7 @@ configure: modal_page.settings
 dependencies:
   - 'drupal:system (>= 8.8)'
 
-# Information added by Drupal.org packaging script on 2021-08-30
-version: '4.1.5'
+# Information added by Drupal.org packaging script on 2021-09-07
+version: '4.1.7'
 project: 'modal_page'
-datestamp: 1630365917
+datestamp: 1631023938

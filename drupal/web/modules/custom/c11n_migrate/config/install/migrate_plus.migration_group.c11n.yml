@@ -1,0 +1,8 @@
+id: c11n
+label: Custom migrations
+description: Custom data migrations.
+source_type: CSV files
+dependencies:
+  enforced:
+    module:
+      - c11n_migrate

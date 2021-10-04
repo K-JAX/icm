@@ -128,15 +128,14 @@ function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array
     }
 }
 
-// // Creating variable based on cookie so that I can change content based on userType of anonymous users
 function icm_preprocess_page(&$variables)
 {
-    // $variables['#attached']['drupalSettings']['myname'] = 'himanshu';
 
     // Define {{ field_image }} field value available in the template.
     if (isset($variables['node'])) {
         if (null !== $variables['node']->field_image) {
-            $variables['page']['image_in_page'] = $variables['node']->field_image->view();
+            $variables['page']['featured_image_url'] = $variables['node']->field_image->view();
+            // kint($variables['node']->field_image->view());
 
         }
     }

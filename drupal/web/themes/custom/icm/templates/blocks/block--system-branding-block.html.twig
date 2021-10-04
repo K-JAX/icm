@@ -13,38 +13,45 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
-{%
-  set classes = [
-    'block',
-    'block-' ~ configuration.provider|clean_class,
-    'block-' ~ plugin_id|clean_class,
+{% set classes = [
+	'block',
+	'block-' ~ (configuration.provider|clean_class),
+	'block-' ~ (plugin_id|clean_class),
 	'col-lg-4',
 	'col-9'
-  ]
-%}
-	<div{{attributes.addClass(classes)}}>
+] %}
+<div {{ attributes.addClass(classes) }}>
 	{{ title_prefix }}
-		{% if label %}
-			<h2{{title_attributes}}>
-		{{ label }}
-	</h2>
+	{% if label %}
+		<h2 {{ title_attributes }}>
+			{{ label }}
+		</h2>
 	{% endif %}
 	{{ title_suffix }}
-		{% block content %}
-			<div class="col d-flex align-items-center"> {% if site_logo %}
+	{% block content %}
+		<div class="col d-flex align-items-center">
+			{% if site_logo %}
 				<a href="{{ path('<front>') }}" rel="home" class="site-logo">
-					<img width="46" src="{{ site_logo }}" alt="{{ 'Home'|t }}"/>
+					<img width="46" src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
 				</a>
 			{% endif %}
 			{# currently keeping this hard coded so that I can style the font of individual letters{% if site_name %}{% endif %} #}
 			<div class="site-name">
 				<a class="text-decoration-none" href="{{ path('<front>') }}" rel="home">
-					<b>I</b>ntegrated
-					<b>C</b>apital
-					<b>M</b>anagement</a>
+					<div class="desktop-name">
+						<b>I</b>ntegrated
+						<b>C</b>apital
+						<b>M</b>anagement
+					</div>
+					<div class="mobile-name">
+						<b>iCM</b>
+					</div>
+				</a>
 			</div>
 			{% if site_slogan %}
-				<div class="site-slogan">{{ site_slogan }}</div>
+				<div class="site-slogan">
+					{{ site_slogan }}
+				</div>
 			{% endif %}
 		</div>
 	{% endblock %}

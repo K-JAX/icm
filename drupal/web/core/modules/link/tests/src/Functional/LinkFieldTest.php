@@ -300,7 +300,7 @@ class LinkFieldTest extends BrowserTestBase {
 
       if ($title_setting === DRUPAL_DISABLED) {
         $this->assertSession()->fieldNotExists("{$field_name}[0][title]");
-        $this->assertNoRaw('placeholder="Enter the text for this link"');
+        $this->assertSession()->responseNotContains('placeholder="Enter the text for this link"');
       }
       else {
         $this->assertRaw('placeholder="Enter the text for this link"');
@@ -327,7 +327,7 @@ class LinkFieldTest extends BrowserTestBase {
             "{$field_name}[0][uri]" => '',
           ];
           $this->submitForm($edit, 'Save');
-          $this->assertNoText('Link text field is required.');
+          $this->assertSession()->pageTextNotContains('Link text field is required.');
 
           // Verify that a URL and link text meets requirements.
           $this->drupalGet('entity_test/add');
@@ -336,7 +336,7 @@ class LinkFieldTest extends BrowserTestBase {
             "{$field_name}[0][title]" => 'Example',
           ];
           $this->submitForm($edit, 'Save');
-          $this->assertNoText('Link text field is required.');
+          $this->assertSession()->pageTextNotContains('Link text field is required.');
         }
       }
     }
@@ -820,6 +820,20 @@ class LinkFieldTest extends BrowserTestBase {
     $id = $match[1];
     $output = $this->renderTestEntity($id);
     $expected_link = (string) $this->container->get('link_generator')->generate('Title, none', Url::fromUri('route:<none>'));
+    $this->assertStringContainsString($expected_link, $output);
+
+    // Test a link with a <button> uri.
+    $edit = [
+      "{$field_name}[0][title]" => 'Title, button',
+      "{$field_name}[0][uri]" => '<button>',
+    ];
+
+    $this->drupalGet('/entity_test/add');
+    $this->submitForm($edit, 'Save');
+    preg_match('|entity_test/manage/(\d+)|', $this->getUrl(), $match);
+    $id = $match[1];
+    $output = $this->renderTestEntity($id);
+    $expected_link = (string) $this->container->get('link_generator')->generate('Title, button', Url::fromUri('route:<button>'));
     $this->assertStringContainsString($expected_link, $output);
   }
 

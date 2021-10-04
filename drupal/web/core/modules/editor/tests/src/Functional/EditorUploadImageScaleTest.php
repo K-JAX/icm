@@ -90,7 +90,7 @@ class EditorUploadImageScaleTest extends BrowserTestBase {
     list($uploaded_image_file_width, $uploaded_image_file_height) = $this->uploadImage($test_image->uri);
     $this->assertEquals($image_file_width, $uploaded_image_file_width);
     $this->assertEquals($image_file_height, $uploaded_image_file_height);
-    $this->assertNoRaw((string) new FormattableMarkup('The image was resized to fit within the maximum allowed dimensions of %dimensions pixels.', ['%dimensions' => $max_width . 'x' . $max_height]));
+    $this->assertSession()->pageTextNotContains("The image was resized to fit within the maximum allowed dimensions of {$max_width}x{$max_height} pixels.");
 
     // Case 2: max width smaller than uploaded image: image scaled down.
     $test_image = $testing_image_list[1];
@@ -126,7 +126,7 @@ class EditorUploadImageScaleTest extends BrowserTestBase {
     list($uploaded_image_file_width, $uploaded_image_file_height) = $this->uploadImage($test_image->uri);
     $this->assertEquals($image_file_width, $uploaded_image_file_width);
     $this->assertEquals($image_file_height, $uploaded_image_file_height);
-    $this->assertNoRaw((string) new FormattableMarkup('The image was resized to fit within the maximum allowed dimensions of %dimensions pixels.', ['%dimensions' => $max_width . 'x' . $max_height]));
+    $this->assertSession()->pageTextNotContains("The image was resized to fit within the maximum allowed dimensions of {$max_width}x{$max_height} pixels.");
 
     // Case 5: only max width dimension was provided and it was smaller than
     // uploaded image: image scaled down.
@@ -219,8 +219,6 @@ class EditorUploadImageScaleTest extends BrowserTestBase {
    *   The expected width of the uploaded image.
    * @param string $height
    *   The expected height of the uploaded image.
-   *
-   * @return bool
    */
   protected function assertSavedMaxDimensions($width, $height) {
     $image_upload_settings = Editor::load('basic_html')->getImageUploadSettings();
@@ -228,9 +226,8 @@ class EditorUploadImageScaleTest extends BrowserTestBase {
       'width' => $image_upload_settings['max_dimensions']['width'],
       'height' => $image_upload_settings['max_dimensions']['height'],
     ];
-    $same_width = $this->assertEquals($expected['width'], $width, 'Actual width of "' . $width . '" equals the expected width of "' . $expected['width'] . '"');
-    $same_height = $this->assertEquals($expected['height'], $height, 'Actual height of "' . $height . '" equals the expected width of "' . $expected['height'] . '"');
-    return $same_width && $same_height;
+    $this->assertEquals($expected['width'], $width, 'Actual width of "' . $width . '" equals the expected width of "' . $expected['width'] . '"');
+    $this->assertEquals($expected['height'], $height, 'Actual height of "' . $height . '" equals the expected width of "' . $expected['height'] . '"');
   }
 
 }

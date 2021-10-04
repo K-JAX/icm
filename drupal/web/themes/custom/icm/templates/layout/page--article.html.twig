@@ -49,7 +49,6 @@ set mainClasses = [
 ]
 %} #}
 <div class="layout-container">
-
 	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
@@ -66,11 +65,20 @@ set mainClasses = [
 	<main role="main" class="mb-5">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
-		{{page.image_in_page}}
+		{# {{ kint(page.image_in_page[0]['#item'].getValue()) }} #}
+		{# {{ kint(file_url(page.image_in_page['#items'].entity.uri.value)) }} #}
+		
+		{% set feature_image_url = file_url(page.featured_image['#items'].entity.uri.value) %}
+		{% set feature_image_attr = page.featured_image[0]['#item'].getValue() %}
+		
+		{{ page.image_in_page }}
 
 		<div class="layout-content container bg-white document-shadow">
 			{# {{ kint( [node.field_image.entity | keys, page.image_in_page['#item'] ] ) }} #}
-			<img class="author-image" src="{{file_url(node.Owner.user_picture.0.entity.uri.value)}}" alt="Image of the article author, {{node.Owner.name.value}}">
+			<img class="author-image"
+				src="{{ file_url(node.Owner.user_picture[0].entity.uri.value) }}"
+				alt="Image of the article author, {{ node.Owner.name.value }}" />
+				
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}
@@ -86,14 +94,8 @@ set mainClasses = [
 				{{ page.sidebar_second }}
 			</aside>
 		{% endif %}
-
 	</main>
 
-	{% if page.footer %}
-		<footer class='site-footer mt-5 px-4 py-5' role="contentinfo">
-			{{ page.footer }}
-		</footer>
-	{% endif %}
-
+	{% include '@icm/includes/footer.html.twig' %}
 </div>
 {# /.layout-container #}

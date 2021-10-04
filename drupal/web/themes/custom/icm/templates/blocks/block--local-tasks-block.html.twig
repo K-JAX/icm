@@ -1,4 +1,4 @@
-{% extends "block.html.twig" %}
+{% extends 'block.html.twig' %}
 {#
 /**
  * @file
@@ -10,7 +10,17 @@
 		<div class="tasks-block container-fluid px-0">
 			<div class="row">
 				<nav class="tabs col-12" role="navigation" aria-label="{{ 'Tabs'|t }}">
-					{{ content }}
+					<button class="tasks-burger"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#collapseMenu"
+						aria-expanded="false"
+						aria-controls="collapseMenu">
+						Page Edit Actions <i class="fas fa-caret-down"></i>
+					</button>
+					<div class="collapse" id="collapseMenu">
+						{{ content }}
+					</div>
 				</nav>
 			</div>
 		</div>

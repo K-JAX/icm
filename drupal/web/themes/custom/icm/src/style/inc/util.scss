@@ -210,6 +210,9 @@
 			height: 140%;
 		}
 	}
+}
+
+.abe-bg-section {
 	&:after {
 		content: '';
 		position: absolute;
@@ -219,8 +222,8 @@
 		inset: 0 0 0 0;
 		margin: auto;
 		transform-origin: center center;
-		transform: rotate(-7deg) translate(-20%, -25%);
-		// background: url('/sites/default/files/2021-07/img-lincoln_0.png');
+		transform: scale(0.9) rotate(-7deg) translate(-20%, -22%);
+		background: url('/sites/default/files/2021-07/img-lincoln_0.png');
 		background-repeat: no-repeat;
 		background-position: 65% 45%;
 		background-size: auto 150%;
@@ -233,6 +236,9 @@
 		@media all and (min-width: 1500px) {
 			height: 140%;
 		}
+	}
+	.abe-quote {
+		margin-top: -5em;
 	}
 }
 
