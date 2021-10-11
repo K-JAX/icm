@@ -18,4 +18,24 @@
  * @see template_preprocess_views_view_field()
  */
 #}
-<div aria-labelledby="dropdownMenuButton1" class="dropdown-menu">{{ output -}}</div>
+{# {{ kint(row._entity.info.getValue()[0]['value']) }} #}
+{# {{ kint(row._entity.info.getValue()[0]['value']) }} #}
+<div class="modal fade"
+	id="lr-modal-{{ row.id }}"
+	aria-hidden="true"
+	aria-labelledby="lr-modal-{{ row.id }}-Label"
+	tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalToggleLabel">
+					{{ row._entity.info.getValue()[0]['value'] }}
+				</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				{{ output -}}
+			</div>
+		</div>
+	</div>
+</div>

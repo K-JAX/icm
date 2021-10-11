@@ -18,21 +18,21 @@ AOS.init()
 		$('.body-text').removeClass('show')
 	})
 
-	$('.dropdown-toggle').each(function () {
-		var toggle = this
-		toggle.addEventListener('show.bs.dropdown', function (toggle) {
-			$(this).parents('.dropdown').addClass('expanded')
-			$(this).parents('.layout.row').addClass('raise-section')
-			$(this).parents('.col-lg-4').addClass('focus')
-			$('.two-sides-section').addClass('blur')
-		})
-		toggle.addEventListener('hide.bs.dropdown', function () {
-			$(this).parents('.dropdown').removeClass('expanded')
-			$(this).parents('.layout.row').removeClass('raise-section')
-			$(this).parents('.col-lg-4').removeClass('focus')
-			$('.two-sides-section').removeClass('blur')
-		})
-	})
+	// $('.dropdown-toggle').each(function () {
+	// 	var toggle = this
+	// 	toggle.addEventListener('show.bs.dropdown', function (toggle) {
+	// 		$(this).parents('.dropdown').addClass('expanded')
+	// 		$(this).parents('.layout.row').addClass('raise-section')
+	// 		$(this).parents('.col-lg-4').addClass('focus')
+	// 		$('.two-sides-section').addClass('blur')
+	// 	})
+	// 	toggle.addEventListener('hide.bs.dropdown', function () {
+	// 		$(this).parents('.dropdown').removeClass('expanded')
+	// 		$(this).parents('.layout.row').removeClass('raise-section')
+	// 		$(this).parents('.col-lg-4').removeClass('focus')
+	// 		$('.two-sides-section').removeClass('blur')
+	// 	})
+	// })
 
 	var modal = $('#generalModal')
 

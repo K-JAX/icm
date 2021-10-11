@@ -48,7 +48,8 @@ set mainClasses = [
 	'document-shadow',
 ]
 %} #}
-<div class="layout-container">
+{% set bg = file_url(page.background) %}
+<div class="layout-container" style="background-image: url({{ bg }})">
 	<header role="banner" class="mx-4">
 		{{ page.header }}
 	</header>
@@ -65,20 +66,14 @@ set mainClasses = [
 	<main role="main" class="mb-5">
 		<a id="main-content" tabindex="-1"></a>
 		{# link is in html.html.twig #}
-		{# {{ kint(page.image_in_page[0]['#item'].getValue()) }} #}
-		{# {{ kint(file_url(page.image_in_page['#items'].entity.uri.value)) }} #}
-		
-		{% set feature_image_url = file_url(page.featured_image['#items'].entity.uri.value) %}
-		{% set feature_image_attr = page.featured_image[0]['#item'].getValue() %}
-		
-		{{ page.image_in_page }}
 
+		{# {{ kint(bg) }} #}
 		<div class="layout-content container bg-white document-shadow">
 			{# {{ kint( [node.field_image.entity | keys, page.image_in_page['#item'] ] ) }} #}
 			<img class="author-image"
 				src="{{ file_url(node.Owner.user_picture[0].entity.uri.value) }}"
 				alt="Image of the article author, {{ node.Owner.name.value }}" />
-				
+
 			{{ page.content }}
 		</div>
 		{# /.layout-content #}

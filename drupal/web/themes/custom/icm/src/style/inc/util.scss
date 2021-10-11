@@ -239,6 +239,11 @@
 	}
 	.abe-quote {
 		margin-top: -5em;
+		background-color: #275c975e;
+		@media all and(max-width: 992px) {
+			display: none;
+			margin-top: 0;
+		}
 	}
 }
 

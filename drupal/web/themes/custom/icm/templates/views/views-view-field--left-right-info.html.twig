@@ -18,10 +18,9 @@
  * @see template_preprocess_views_view_field()
  */
 #}
-<a aria-expanded="false"
-	class="btn dropdown-toggle rounded-0"
-	data-bs-toggle="dropdown"
-	id="dropdownMenuButton1"
+<button class="btn dropdown-toggle rounded-0"
+	data-bs-toggle="modal"
+	data-bs-target="#lr-modal-{{ row.id }}"
 	type="button">
 	{{ output -}}
-</a>
+</button>

@@ -1,7 +1,0 @@
-block_cookie_condition.form:
-  path: '/cookieform'
-  defaults:
-    _form: '\Drupal\block_cookie_condition\Form\CookieForm'
-    _title: 'Put in the shiggidy shwangz'
-  requirements:
-    _permission: 'access content'

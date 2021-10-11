@@ -2,7 +2,6 @@
 /**
  * Theme hooks
  */
-
 // function icm_theme_suggestions_node_alter(array &$suggestions, array $variables){
 //     if($variables['elements']['#node']->getType() == 'article'){
 //         $suggestions[] = 'page__node__article';
@@ -132,13 +131,29 @@ function icm_preprocess_page(&$variables)
 {
 
     // Define {{ field_image }} field value available in the template.
-    if (isset($variables['node'])) {
-        if (null !== $variables['node']->field_image) {
-            $variables['page']['featured_image_url'] = $variables['node']->field_image->view();
-            // kint($variables['node']->field_image->view());
+    // if (isset($variables['node'])) {
+    //     if (null !== $variables['node']->field_background_hero_image) {
 
-        }
-    }
+    //         if (isset($variables['node']->field_background_hero_image->view()[0]['#item'])) {
+    //             if (isset($variables['node']->field_background_hero_image->view()[0]['#item']->getValue()['_is_default'])) {
+    //                 $isDefault = true;
+    //             }
+    //         } else {
+    //             $isDefault = false;
+    //         }
+
+    //         if ($isDefault) {
+    //             $default_image                   = $variables['node']->field_background_hero_image->getSetting('default_image');
+    //             $entityrepository                = Drupal::service('entity.repository');
+    //             $defaultImageFile                = $entityrepository->loadEntityByUuid('file', $default_image['uuid']);
+    //             $variables['page']['background'] = $defaultImageFile->getFileUri();
+    //         } else {
+
+    //             $variables['page']['background'] = $variables['node']->field_background_hero_image->entity->uri->value;
+    //         }
+
+    //     }
+    // }
 
     $route_name = \Drupal::routeMatch()->getRouteName();
 

@@ -32,9 +32,13 @@
  *
  * @see https://wiki.php.net/rfc/expectations
  */
-assert_options(ASSERT_ACTIVE, TRUE);
+assert_options(ASSERT_ACTIVE, true);
 \Drupal\Component\Assertion\Handle::register();
 
+include_once DRUPAL_ROOT . './../vendor/kint-php/kint/src/Kint.php';
+if (class_exists('Kint')) {
+    Kint::$max_depth = 6;
+}
 
 /**
  * Enable local development services.
@@ -52,8 +56,8 @@ $config['system.logging']['error_level'] = 'verbose';
 /**
  * Disable CSS and JS aggregation.
  */
-$config['system.performance']['css']['preprocess'] = FALSE;
-$config['system.performance']['js']['preprocess'] = FALSE;
+$config['system.performance']['css']['preprocess'] = false;
+$config['system.performance']['js']['preprocess']  = false;
 
 /**
  * Disable the render cache.
@@ -89,13 +93,13 @@ $settings['cache']['bins']['render'] = 'cache.backend.null';
  *
  * Only use this setting once the site has been installed.
  */
- $settings['cache']['bins']['page'] = 'cache.backend.null';
+$settings['cache']['bins']['page'] = 'cache.backend.null';
 
 /**
  * Disable Dynamic Page Cache.
  *
  * Note: you should test with Dynamic Page Cache enabled, to ensure the correct
- * 
+ *
  * cacheability metadata is present (and hence the expected behavior). However,
  * in the early stages of development, you may want to disable it.
  */
@@ -118,7 +122,7 @@ $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
  * be gained by generating a query string from rebuild_token_calculator.sh and
  * using these parameters in a request to rebuild.php.
  */
-$settings['rebuild_access'] = TRUE;
+$settings['rebuild_access'] = true;
 
 /**
  * Skip file system permissions hardening.
@@ -130,7 +134,7 @@ $settings['rebuild_access'] = TRUE;
  * user pulling in the changes won't have permissions to modify files in the
  * directory.
  */
-$settings['skip_permissions_hardening'] = TRUE;
+$settings['skip_permissions_hardening'] = true;
 
 /**
  * Exclude modules from configuration synchronization.
@@ -155,9 +159,9 @@ $settings['skip_permissions_hardening'] = TRUE;
  * the language or field module.
  */
 # $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
-$settings['cache'] = 0;
-$settings['block_cache'] = 0;
-$settings['views_skip_cache'] = TRUE;
+$settings['cache']            = 0;
+$settings['block_cache']      = 0;
+$settings['views_skip_cache'] = true;
 $settings['page_compression'] = 0;
-$settings['preprocess_css'] = 0;
-$settings['preprocess_js'] = 0;
+$settings['preprocess_css']   = 0;
+$settings['preprocess_js']    = 0;
