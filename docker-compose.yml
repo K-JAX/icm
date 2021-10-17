@@ -1,57 +1,7 @@
 version: '3.8'
 
 services:
-  icm-mysql-old:
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
-      - MYSQL_DATABASE=${OLD_DB}
-      - MYSQL_USER=${OLD_DB}
-      - MYSQL_PASSWORD=${PW}
-    image: mysql:5.7
-    volumes:
-      - ./data-old:/var/lib/mysql:Z
-      # - ./data-old:/docker-entrypoint-initdb.d/1.sql
-      # - ./config-old/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
-    ports:
-      - '3307:3307'
-    restart: always
-    networks:
-      - icm
-  drupal-old:
-    depends_on:
-      - icm-mysql-old
-    volumes:
-      - ./drupal-old:/var/www/html
-      - ./config-old/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-    ports:
-      - '7080:80'
-    environment:
-      - DRUPAL_DATABASE_HOST=icm-mysql-old
-      - DRUPAL_DATABASE_PORT=3306
-      - DRUPAL_DATABASE_NAME=${OLD_DB}
-      - DRUPAL_DATABASE_USERNAME=${OLD_DB}
-      - DRUPAL_DATABASE_PASSWORD=${PW}
-    image: drupal:7.69
-    restart: always
-    networks:
-      - icm
-  phpmyadmin-old:
-    depends_on:
-      - icm-mysql-old
-    networks:
-      - icm
-    environment:
-      - PMA_HOST=icm-mysql-old
-      - PMA_USER=${OLD_DB}
-      - PMA_PASSWORD=${PW}
-      - PHP_UPLOAD_MAX_FILESIZE=1G
-      - UPLOAD_LIMIT=600M
-      - PHP_MAX_INPUT_VARS=1
-    ports:
-      - '7001:80'
-    image: phpmyadmin/phpmyadmin
-    restart: always
-  icm-mysql:
+  mysql:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
       - MYSQL_DATABASE=${OLD_DB}
@@ -66,7 +16,7 @@ services:
     restart: always
     networks:
       - icm
-  icm-drupal:
+  drupal:
     depends_on:
       - icm-mysql
     build: ./config
@@ -102,33 +52,5 @@ services:
       - '8001:80'
     image: phpmyadmin/phpmyadmin
     restart: always
-  # default-mysql:
-  #     environment:
-  #         - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
-  #         - MYSQL_DATABASE='test'
-  #         - MYSQL_USER='test'
-  #         - MYSQL_PASSWORD='test'
-  #     image: mysql:latest
-  #     # volumes:
-  #     #     - ./data:/var/lib/mysql:Z
-  #     #     - ./config/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
-  #     ports:
-  #         - "3309:3309"
-  #     restart: always
-  #     networks:
-  #         - icm
-  # default-drupal:
-  #     image: drupal:9.2.0-apache
-  #     restart: always
-  #     networks:
-  #         - icm
-  #     ports:
-  #         - "9080:80"
-  #     environment:
-  #         - DRUPAL_DATABASE_HOST=default-mysql
-  #         - DRUPAL_DATABASE_PORT=3306
-  #         - DRUPAL_DATABASE_NAME=test
-  #         - DRUPAL_DATABASE_USERNAME=test
-  #         - DRUPAL_DATABASE_PASSWORD=test
 networks:
   icm:
