@@ -67,11 +67,11 @@
 	top: 0;
 	right: 0;
 	z-index: 1;
-	background: rgb(255, 255, 255);
+	background: #f2f2f2;
 	background: linear-gradient(
 		180deg,
-		rgba(255, 255, 255, 1) 40%,
-		rgba(255, 255, 255, 0) 100%
+		#f2f2f2 40%,
+		rgba(242, 242, 242, 0) 100%
 	);
 }
 
@@ -112,6 +112,9 @@
 				padding: 0.5rem 0.8rem;
 				@media all and (max-width: 1200px) {
 					padding: 0.5rem 0.4rem;
+				}
+				@media all and (max-width: 1040px) {
+					padding: 0.5rem 0.2rem;
 				}
 				&.is-active {
 					color: desaturate($blue, 65%);
@@ -230,12 +233,18 @@
 
 .header-placeholder {
 	height: 0;
+	margin-top: 24px;
+	top: 0;
+	width: 100%;
+	position: absolute;
 	&.aos-init[data-aos] {
 		transition-duration: 0s;
 	}
 	&.aos-animate[data-aos='stick'] {
-		height: 183px;
-		margin-top: 24px;
+		// height: 183px;
+		position: relative;
+
+		height: 153px;
 	}
 }
 
@@ -295,6 +304,7 @@
 .site-footer {
 	background: $blueGrad;
 	padding: 3rem 1.5rem;
+	position: relative;
 	#block-footerbrandingblock {
 		position: relative;
 		display: flex;
@@ -562,10 +572,16 @@
 			bottom: -3%;
 			right: -3%;
 			font-size: 2em;
-			padding: 0.2em 0.4em;
+
 			background: $blueGrad;
 			@media all and (max-width: 991px) {
 				right: 5%;
+			}
+			a {
+				padding: 0.2em 0.4em;
+				&[href=''] {
+					display: none;
+				}
 			}
 			i {
 				font-size: 3em;
@@ -588,12 +604,13 @@
 	}
 }
 
-.blog-list {
+.view-id-recent_blog_posts,
+.view-archive {
 	.entry {
 		.img-container {
 			position: relative;
-			margin-top: -15%;
-			margin-left: -2%;
+			margin-top: -3em;
+			margin-left: -1.5em;
 			img {
 				position: relative;
 				z-index: 1;
@@ -604,7 +621,7 @@
 				position: absolute;
 				width: 40px;
 				height: 50px;
-				top: -8%;
+				top: -0.5em;
 				left: -9%;
 				background: $orange;
 			}
@@ -823,8 +840,12 @@
 	}
 }
 .modal {
+	iframe,
 	img {
 		max-width: 100%;
+	}
+	img {
+		height: auto;
 	}
 }
 
@@ -1219,7 +1240,10 @@
 			}
 			.views-field-user-picture {
 				margin-left: -40px;
+				margin-bottom: 1em;
 				img {
+					width: 100px;
+					height: auto;
 					box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.25);
 				}
 			}
@@ -1814,4 +1838,49 @@ ul.account-resources {
 .offset-above-overlay-section {
 	margin-top: -16em;
 	padding-top: 10em;
+}
+
+// fact sheets view pages
+.view-fact-sheets {
+	.view-footer {
+		.view {
+			display: inline-block;
+			width: 32%;
+			position: relative;
+			margin: 1rem;
+			vertical-align: top;
+			@media all and(max-width: 992px) {
+				width: 100%;
+			}
+		}
+		.more-link {
+			position: relative;
+			display: inline-block;
+			margin: 1rem 0;
+		}
+	}
+
+	.view {
+		.view-header {
+			img {
+				max-width: 100%;
+				max-height: 60px;
+				width: auto;
+				height: auto;
+			}
+		}
+	}
+}
+
+.snapwidget-widget {
+	height: 800px;
+	@media all and (max-width: 992px) {
+		height: 600px;
+	}
+	@media all and (max-width: 767px) {
+		height: 500px;
+	}
+	@media all and (max-width: 450px) {
+		height: 350px;
+	}
 }

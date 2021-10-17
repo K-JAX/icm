@@ -8,6 +8,11 @@
 //     }
 // }
 
+function icm_preprocess_node(&$variables)
+{
+    $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), 'full_date_no_time');
+}
+
 //  Producing a better template suggest for pages
 function icm_theme_suggestions_page_alter(array &$suggestions, array $variables)
 {
@@ -104,9 +109,11 @@ function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array
 
     if (isset($variables['view']->filter['bundle']->value)) {
         $view_name = reset($variables['view']->filter['bundle']->value);
-
         if ($view_name === 'market_insight' || $view_name === 'fact_sheet' || $view_name === 'white_papers' || $view_name === 'advisor_white_papers') {
-            $suggestions[] = 'views_view_field__document_archive';
+            if ($variables['field']->field === 'name') {
+                $suggestions[] = 'views_view_field__document_archive';
+
+            }
         }
 
     }
@@ -131,29 +138,29 @@ function icm_preprocess_page(&$variables)
 {
 
     // Define {{ field_image }} field value available in the template.
-    // if (isset($variables['node'])) {
-    //     if (null !== $variables['node']->field_background_hero_image) {
+    if (isset($variables['node'])) {
+        if (null !== $variables['node']->field_background_hero_image) {
 
-    //         if (isset($variables['node']->field_background_hero_image->view()[0]['#item'])) {
-    //             if (isset($variables['node']->field_background_hero_image->view()[0]['#item']->getValue()['_is_default'])) {
-    //                 $isDefault = true;
-    //             }
-    //         } else {
-    //             $isDefault = false;
-    //         }
+            if (isset($variables['node']->field_background_hero_image->view()[0]['#item'])) {
+                if (isset($variables['node']->field_background_hero_image->view()[0]['#item']->getValue()['_is_default'])) {
+                    $isDefault = true;
+                }
+            } else {
+                $isDefault = false;
+            }
 
-    //         if ($isDefault) {
-    //             $default_image                   = $variables['node']->field_background_hero_image->getSetting('default_image');
-    //             $entityrepository                = Drupal::service('entity.repository');
-    //             $defaultImageFile                = $entityrepository->loadEntityByUuid('file', $default_image['uuid']);
-    //             $variables['page']['background'] = $defaultImageFile->getFileUri();
-    //         } else {
+            if ($isDefault) {
+                $default_image                   = $variables['node']->field_background_hero_image->getSetting('default_image');
+                $entityrepository                = Drupal::service('entity.repository');
+                $defaultImageFile                = $entityrepository->loadEntityByUuid('file', $default_image['uuid']);
+                $variables['page']['background'] = $defaultImageFile->getFileUri();
+            } else {
 
-    //             $variables['page']['background'] = $variables['node']->field_background_hero_image->entity->uri->value;
-    //         }
+                $variables['page']['background'] = $variables['node']->field_background_hero_image->entity->uri->value;
+            }
 
-    //     }
-    // }
+        }
+    }
 
     $route_name = \Drupal::routeMatch()->getRouteName();
 

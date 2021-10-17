@@ -10,8 +10,9 @@ function show_hide_cookie_condition_preprocess_page(&$variables)
     // Set cookie on user register page
     if ($route_name == 'user.register') {
         if (isset($_COOKIE['cookieconsent_dismissed'])) {
-
-            user_cookie_save(array('userType' => $_GET['userType']));
+            if (isset($_GET['userType'])) {
+                user_cookie_save(array('userType' => $_GET['userType']));
+            }
         }
     }
 }

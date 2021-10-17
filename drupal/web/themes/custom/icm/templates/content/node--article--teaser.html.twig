@@ -70,31 +70,26 @@
  *   in different view modes.
  */
 #}
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+{% set classes = [
+	'node',
+	'node--type-' ~ (node.bundle|clean_class),
+	node.isPromoted() ? 'node--promoted',
+	node.isSticky() ? 'node--sticky',
+	not node.isPublished() ? 'node--unpublished',
+	view_mode ? 'node--view-mode-' ~ (view_mode|clean_class),
 	'entry',
 	'py-3',
 	'bg-blueGrad',
 	'text-white',
 	'd-flex',
-	'align-items-center',
 	'position-relative'
-  ]
-%}
+] %}
 {{ attach_library('classy/node') }}
-<article{{attributes.addClass(classes)}}>
-
+<article {{ attributes.addClass(classes) }}>
 	{% if display_submitted %}
-		<div
-			class="img-container">
+		<div class="img-container">
 			{# {{ author_picture }} #}
-			<img width="114px" src="{{file_url(node.Owner.user_picture.0.entity.uri.value) }}"/>
+			<img width="114px" src="{{ file_url(node.Owner.user_picture[0].entity.uri.value) }}" />
 		</div>
 	{% endif %}
 
@@ -102,26 +97,26 @@
 	{% if label and not page %}
 		<div class="ms-4 pe-4">
 			<a class="text-decoration-none" href="{{ url }}" rel="bookmark">
-				<h2{{title_attributes}}>
+				<h2 {{ title_attributes }}>
 					{{ label }}
 				</h2>
 			</a>
 			{% if display_submitted %}
-				<div{{author_attributes.addClass('node__submitted')}}>
+				<div {{ author_attributes.addClass('node__submitted') }}>
 					{% trans %}
-					<p>{{ author_name }}
+					<p>
+						{{ author_name }}
 						-
-						{{ date }}</p>
+						{{ date }}
+					</p>
 					{% endtrans %}
 					{{ metadata }}
 				</div>
 			{% endif %}
-			<div{{content_attributes.addClass('node__content')}}>
+			<div {{ content_attributes.addClass('node__content') }}>
 				{{ content }}
 			</div>
 		</div>
 	{% endif %}
 	{{ title_suffix }}
-
-
 </article>

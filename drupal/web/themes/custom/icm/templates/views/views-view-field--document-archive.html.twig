@@ -18,12 +18,12 @@
  * @see template_preprocess_views_view_field()
  */
 #}
-<div
-	{{ attributes }}>
+<div {{ attributes }}>
 	{# {{ kint(row) }} #}
-	<a href="{{file_url(row._entity.field_media_document.entity.uri.value)}}" target="_blank" class="document-link">
-		<span class="icon">
-			<i class="far fa-file-pdf"></i>
-		</span>
-		{{row._entity.name.value}}</a>
+	<a href="{{ file_url(row._entity.field_media_document.entity.uri.value) }}"
+		target="_blank"
+		class="document-link d-flex">
+		<span class="icon"><i class="far fa-file-pdf"></i></span>
+		<span>{{ row._entity.name.value }}</span>
+	</a>
 </div>
