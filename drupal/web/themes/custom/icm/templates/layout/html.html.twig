@@ -35,6 +35,15 @@
 <html{{html_attributes}}>
 	<head>
 		<head-placeholder token="{{ placeholder_token }}">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-65002354-1"></script>
+			<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-65002354-1');
+			</script>
 			<title>{{ head_title|safe_join(' | ') }}</title>
 			<css-placeholder token="{{ placeholder_token }}">
 			<js-placeholder token="{{ placeholder_token }}">
