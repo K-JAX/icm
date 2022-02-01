@@ -13,7 +13,6 @@ services:
     #     - ./config/mysql/mysql-dump/blugiant_icm_inv.sql:/docker-entrypoint-initdb.d/1.sql
     ports:
       - '3308:3308'
-    restart: always
     networks:
       - icm
   drupal:
@@ -33,7 +32,6 @@ services:
       - DRUPAL_DATABASE_USERNAME=${OLD_DB}
       - DRUPAL_DATABASE_PASSWORD=${PW}
     image: drupal:9.2.0-apache
-    restart: always
     networks:
       - icm
   phpmyadmin:
@@ -51,6 +49,5 @@ services:
     ports:
       - '8001:80'
     image: phpmyadmin/phpmyadmin
-    restart: always
 networks:
   icm:

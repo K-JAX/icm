@@ -3,16 +3,16 @@
 * File for overriding the footer theme
  #}
 
-{% 
-	set classes = [
-    'region',
-    'region-' ~ region|clean_class,
-    'row',
+{% set classes = [
+	'region',
+	'region-' ~ (region|clean_class),
+	'row',
 	'align-items-center',
 	'text-white',
 	'container-fluid',
 	'mx-auto'
-	] 
- %}
+] %}
 
-<div {{attributes.addClass(classes)}}>{{content}}</div>
+<div {{ attributes.addClass(classes) }}>
+	{{ content }}
+</div>

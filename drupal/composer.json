@@ -28,6 +28,7 @@
 		"drupal/block_form_alter": "^1.2",
 		"drupal/block_visibility_groups": "^1.4",
 		"drupal/bootstrap_layout_builder": "^2.0",
+		"drupal/ckeditor_entity_link": "^1.2",
 		"drupal/color_field": "^2.4",
 		"drupal/config_delete": "^1.17",
 		"drupal/console": "^1.9",
@@ -37,6 +38,7 @@
 		"drupal/current_year": "^1.0",
 		"drupal/db_maintenance": "^2.0",
 		"drupal/easy_breadcrumb": "^2.0",
+		"drupal/editor_advanced_link": "^2.0",
 		"drupal/entity_block": "1.x-dev",
 		"drupal/entity_browser_block": "^1.1",
 		"drupal/entity_reference_revisions": "^1.9",
@@ -66,6 +68,7 @@
 		"drupal/token_filter": "^1.2",
 		"drupal/video_embed_field": "^2.4",
 		"drupal/views_templates": "^1.1",
+		"drupal/yoast_seo": "^1.7",
 		"kint-php/kint": "^3.3",
 		"oomphinc/composer-installers-extender": "^2.0",
 		"spatie/pdf-to-image": "^2.1"

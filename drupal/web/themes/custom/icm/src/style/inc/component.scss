@@ -1241,6 +1241,7 @@
 			.views-field-user-picture {
 				margin-left: -40px;
 				margin-bottom: 1em;
+				min-height: 125px;
 				img {
 					width: 100px;
 					height: auto;
@@ -1360,6 +1361,18 @@
 				rgba(255, 255, 255, 0.35) 100%
 			);
 		}
+		.block-local-tasks-block {
+			margin-right: 0;
+		}
+		nav.tabs {
+			padding: 0 0.75rem;
+		}
+		.field--name-field-image {
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
 		.layout-content {
 			position: relative;
 			padding: 5em 10em;
@@ -1397,13 +1410,41 @@
 			}
 			article {
 				color: black;
+				font-family: 'Roboto', sans-serif !important;
 				h1,
 				h2,
 				h3,
 				h4,
 				h5,
 				h6 {
+					font-family: 'Oswald', sans-serif !important;
 					color: $blue;
+				}
+				p,
+				span {
+					font-family: 'Roboto', sans-serif !important;
+					font-size: 1rem !important;
+				}
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+			blockquote {
+				position: relative;
+				padding-left: 1.5rem;
+				color: $blue;
+				opacity: 0.9;
+				&:before {
+					position: absolute;
+					content: '';
+					top: 0;
+					left: 0;
+					bottom: 0;
+					height: 110%;
+					width: 2px;
+					opacity: 0.75;
+					background: $blue;
 				}
 			}
 			.node__links {
