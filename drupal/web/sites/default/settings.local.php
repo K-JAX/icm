@@ -37,7 +37,9 @@ assert_options(ASSERT_ACTIVE, true);
 
 include_once DRUPAL_ROOT . './../vendor/kint-php/kint/src/Kint.php';
 if (class_exists('Kint')) {
-    Kint::$max_depth = 6;
+    if(property_exists('Kint', 'max_depth')){
+        Kint::$max_depth = 6;
+    }
 }
 
 /**

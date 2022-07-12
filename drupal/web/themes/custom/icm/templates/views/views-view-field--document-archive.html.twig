@@ -18,12 +18,18 @@
  * @see template_preprocess_views_view_field()
  */
 #}
+{% if(row._entity.field_media_document.entity.uri.value) %}
+	{% set fileVal = row._entity.field_media_document.entity.uri.value %}
+{% endif %}
+{% if(row._entity.field_media_file.entity.uri.value) %}
+	{% set fileVal = row._entity.field_media_file.entity.uri.value %}
+{% endif %}
 <div {{ attributes }}>
 	{# {{ kint(row) }} #}
-	<a href="{{ file_url(row._entity.field_media_document.entity.uri.value) }}"
+	<a href="{{ file_url(fileVal) }}"
 		target="_blank"
 		class="document-link d-flex">
-		<span class="icon"><i class="far fa-file-pdf"></i></span>
+		<span class="icon me-3"><i class="far fa-file-pdf"></i></span>
 		<span>{{ row._entity.name.value }}</span>
 	</a>
 </div>

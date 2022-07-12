@@ -109,7 +109,7 @@ function icm_theme_suggestions_views_view_field_alter(array &$suggestions, array
 
     if (isset($variables['view']->filter['bundle']->value)) {
         $view_name = reset($variables['view']->filter['bundle']->value);
-        if ($view_name === 'market_insight' || $view_name === 'fact_sheet' || $view_name === 'white_papers' || $view_name === 'advisor_white_papers') {
+        if ($view_name === 'market_insight' || $view_name === 'fact_sheet' || $view_name === 'white_paper' || $view_name === 'advisor_white_paper') {
             if ($variables['field']->field === 'name') {
                 $suggestions[] = 'views_view_field__document_archive';
 
